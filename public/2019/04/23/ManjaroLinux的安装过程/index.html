@@ -105,8 +105,13 @@
 <meta property="og:description" content="获取镜像ManjaroLinux官方提供了多个桌面环境的镜像，分别是:  XFCE   特点  系统资源低耗，快速   KDE  特点  高可定制化，消耗系统资源相比XFCE要大，开机时内存占用大概500MB+   GNOME  特点  简单易用，可定制化，美化较为简单，内存占用大  并且ManjaroLinux在国内有4个镜像源可选，分别是:  清华大学 中科大 华为 浙江大学  我们也可以直">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://evanmeek.github.io/2019/04/23/ManjaroLinux的安装过程/桌面.png">
+<meta property="og:image" content="https://evanmeek.github.io/2019/04/23/ManjaroLinux的安装过程/安装选择界面.png">
+<meta property="og:image" content="https://evanmeek.github.io/2019/04/23/ManjaroLinux的安装过程/开始安装.png">
+<meta property="og:image" content="https://evanmeek.github.io/2019/04/23/ManjaroLinux的安装过程/分区.png">
+<meta property="og:image" content="https://evanmeek.github.io/2019/04/23/ManjaroLinux的安装过程/分区标识.png">
+<meta property="og:image" content="https://evanmeek.github.io/2019/04/23/ManjaroLinux的安装过程/摘要.png">
 <meta property="og:image" content="https://evanmeek.github.io/2019/04/23/ManjaroLinux的安装过程/编辑文章时截图.png">
-<meta property="og:updated_time" content="2019-04-26T18:49:05.124Z">
+<meta property="og:updated_time" content="2019-04-27T18:37:37.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ManjaroLinux的安装过程">
 <meta name="twitter:description" content="获取镜像ManjaroLinux官方提供了多个桌面环境的镜像，分别是:  XFCE   特点  系统资源低耗，快速   KDE  特点  高可定制化，消耗系统资源相比XFCE要大，开机时内存占用大概500MB+   GNOME  特点  简单易用，可定制化，美化较为简单，内存占用大  并且ManjaroLinux在国内有4个镜像源可选，分别是:  清华大学 中科大 华为 浙江大学  我们也可以直">
@@ -389,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-27 02:49:05" itemprop="dateModified" datetime="2019-04-27T02:49:05+08:00">2019-04-27</time>
+                <time title="修改时间：2019-04-28 02:37:37" itemprop="dateModified" datetime="2019-04-28T02:37:37+08:00">2019-04-28</time>
               
             
           </span>
@@ -490,10 +495,61 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo dd bs=4M if=你的iso镜像路径 of=/dev/sda</span><br></pre></td></tr></table></figure>
 <p>如果终端内有一些返回信息，大概是xxMB/s这样的，就代表制作完成，可以关机已U盘启动了。</p>
 <h2 id="开始安装"><a href="#开始安装" class="headerlink" title="开始安装"></a>开始安装</h2><p><strong>最好是在网络稳定的环境下进行</strong></p>
-<p>这边只提分区，通常只需要分<strong>根目录,主目录，引导</strong></p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>如果启动盘顺利制作成功，并且设置BISO为以U盘启动，你将会看到:</p>
+<p><img src="/2019/04/23/ManjaroLinux的安装过程/安装选择界面.png" alt="安装选择界面"></p>
+<p><strong>keytable</strong>————设置键盘布局</p>
+<p>通常默认即可</p>
+<p><strong>lang</strong>————设置语言</p>
+<p>设置为zh_CN，代表汉语</p>
+<p><strong>driver</strong>————设置使用的驱动是开源的还是不开源的</p>
+<p>笔记本双显卡，想省电可以用free。</p>
+<p>台式机单显卡，推荐nofree。</p>
+<p><strong>Boot</strong>————选择这个就开始安装了</p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>等待一会就会进入Manjaro的live系统(临时系统，可以用于修复系统或体验系统)</p>
+<p><img src="/2019/04/23/ManjaroLinux的安装过程/开始安装.png" alt="开始安装-01"></p>
+<p>这个就是欢迎页面了，包含了些Manjaro的使用文档，支持，参加项目等等。</p>
+<p>标题栏的左边有个下拉栏，可以选择语言，然后点击Lanunch installer或者开始安装即可。</p>
+<p>点击后还可以设置一次语言，默认为中文了</p>
+<p>然后就设置位置，用于设置时区的，我们选择Asia-Shanghai，如果有联网通常会自动选择。</p>
+<p>下一步就是设置键盘布局，直接默认就好，有特殊需求请自行折腾。</p>
+<p>再下一步就是分区了，这一步是挺重要的，请认真看。</p>
+<p>默认情况下有两种选项:</p>
+<p><strong>抹除磁盘</strong></p>
+<p>将磁盘全部数据清除，分区是Manjaro自动帮你分配的.</p>
+<p>这里可以主要到有两个选项，Swap(no Hibernate)和(witch Hibernate)，它们的区别分别是，交换空间是否用于休眠功能。</p>
+<p><strong>手动分区</strong></p>
+<p>选择手动分区之后，你将看到:</p>
+<p><img src="/2019/04/23/ManjaroLinux的安装过程/分区.png" alt="分区"></p>
+<p>如果你是单硬盘(也就是只有一个硬盘,mdzz)</p>
+<p>那比较简单(就算有多个也没啥)</p>
+<p>点击新建分区表，会让你选择创建哪种，默认第一种即可（新手都推荐MBR，我不是歧视…)</p>
+<p>然后就可以看到有一个空闲空间，选中它，然后可以看到<strong>创建</strong>按钮可以点击了</p>
+<p>然后你就点击吧…</p>
+<p>你就可以看到创建分区的窗口，我们要创建的分区是<strong>根目录,主目录，引导</strong></p>
+<blockquote>
 <p>引导的挂载点: /boot/efi</p>
+</blockquote>
+<p>记得标记点为:boot 和 esp</p>
+<blockquote>
 <p>根目录的挂载点: /</p>
+</blockquote>
+<p>记得标记点为:root</p>
+<blockquote>
 <p>主目录的挂载点: /home</p>
+</blockquote>
+<p><img src="/2019/04/23/ManjaroLinux的安装过程/分区标识.png" alt="分区标识"></p>
+<p>如果是多硬盘，在存储器那里选择另一块磁盘，把主目录安装在那。</p>
+<p>要注意的是主目录要选择扩展分区。</p>
+<p>下一步就是设置一些用户信息啊，密码啊什么的，自己看着来，这里写几点不要做的事。</p>
+<ul>
+<li><p>用户名首字母不要大写</p>
+</li>
+<li><p>密码不要太简单</p>
+</li>
+</ul>
+<p>下一步摘要可以看到一些信息，你看你自己的分区有没有搞错，看不懂的话直接下一步吧。。。</p>
+<p><img src="/2019/04/23/ManjaroLinux的安装过程/摘要.png" alt="摘要"></p>
+<p>静静等待吧..安装好后会提示你重启，你也可以再玩一下。。不过一般是等不及直接重启看新系统了。</p>
 <h2 id="设置镜像源"><a href="#设置镜像源" class="headerlink" title="设置镜像源"></a>设置镜像源</h2><p>选择一个好的源是使用Linux体验是否良好的一个重要因素。</p>
 <h3 id="官方软件包源"><a href="#官方软件包源" class="headerlink" title="官方软件包源"></a>官方软件包源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> sudo pacman-mirrors -i -c China -m rank</span><br><span class="line"><span class="meta">$</span> sudo pacman -Syu</span><br></pre></td></tr></table></figure>
 <p>随便选一个就好，推荐中科大的(USTC).</p>
@@ -757,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取镜像"><span class="nav-number">1.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作启动盘"><span class="nav-number">2.</span> <span class="nav-text">制作启动盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始安装"><span class="nav-number">3.</span> <span class="nav-text">开始安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置镜像源"><span class="nav-number">4.</span> <span class="nav-text">设置镜像源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方软件包源"><span class="nav-number">4.1.</span> <span class="nav-text">官方软件包源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aur软件包源"><span class="nav-number">4.2.</span> <span class="nav-text">Aur软件包源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm国内源"><span class="nav-number">4.3.</span> <span class="nav-text">npm国内源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pip国内源"><span class="nav-number">4.4.</span> <span class="nav-text">pip国内源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装软件"><span class="nav-number">5.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用体验总结"><span class="nav-number">6.</span> <span class="nav-text">使用体验总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取镜像"><span class="nav-number">1.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作启动盘"><span class="nav-number">2.</span> <span class="nav-text">制作启动盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始安装"><span class="nav-number">3.</span> <span class="nav-text">开始安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步"><span class="nav-number">3.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步"><span class="nav-number">3.2.</span> <span class="nav-text">第二步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置镜像源"><span class="nav-number">4.</span> <span class="nav-text">设置镜像源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方软件包源"><span class="nav-number">4.1.</span> <span class="nav-text">官方软件包源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aur软件包源"><span class="nav-number">4.2.</span> <span class="nav-text">Aur软件包源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm国内源"><span class="nav-number">4.3.</span> <span class="nav-text">npm国内源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pip国内源"><span class="nav-number">4.4.</span> <span class="nav-text">pip国内源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装软件"><span class="nav-number">5.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用体验总结"><span class="nav-number">6.</span> <span class="nav-text">使用体验总结</span></a></li></ol></div>
             
 
           </div>

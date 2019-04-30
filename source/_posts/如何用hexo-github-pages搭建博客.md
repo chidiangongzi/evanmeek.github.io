@@ -258,16 +258,18 @@ $ hexo s
 **部署到Github**
 
 ~~~shell
-$ hexo g
+$ hexo d
 ~~~
 
 这样就可以部署到Github了，通过https://你的Github用户名.github.io访问
 
 # 寻找主题
 
+[Hexo主题](https://hexo.io/themes/)
 
-
-# 第一篇博客
+把主题clone到博客目录的themes下，并且修改博客目录下的文件_config.yml的theme项为主题名称，重新生成就可以了。
 
 # 使用体验
+
+还是有一些坑要踩的，如有问题，联系邮箱the_lty_mail@foxmail.com
 

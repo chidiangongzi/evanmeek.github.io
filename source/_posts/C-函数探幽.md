@@ -6,6 +6,10 @@ tags:
   - C++
   - 编程
 ---
+<!--
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=544070223&auto=1&height=66"></iframe>
+-->
+<!--more-->
 
 **本章内容**
 - 内联函数
@@ -320,3 +324,5 @@ int c(20);
 ~~~
 
 上述代码首先是指针p指向的a，而b引用*p(相当于引用a),而后面指针p改变了指向的对象，但是b依然是引用a的。
+
+### 将

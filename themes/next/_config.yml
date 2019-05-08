@@ -177,7 +177,7 @@ menu_settings:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Mist
+scheme: Pisces
 #scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
@@ -216,12 +216,15 @@ social_icons:
 
 # Blog rolls
 links_icon: link
-links_title: 友情链接
-links_layout: block
+links_title: 推荐链接
+links_layout: inline
 #links_layout: inline
 links:
-  #Title: http://example.com
-        我的Coding之路: https://www.codedream.xin/
+  我的Github:  https://www.github.com/EvanMeek/
+  我的Gitee: https://www.gitee.com/EvanMeek/
+  我的网易云歌单: https://music.163.com/#/playlist?id=428698901
+  $友链$我的Coding之路: https://www.codedream.xin/
+  
   
 
 # Sidebar Avatar
@@ -359,13 +362,13 @@ wechat_subscriber:
 reward_settings:
   # If true, reward would be displayed in every article by default.
   # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
-  enable: false
+  enable: true
   animation: false
   #comment: Donate comment here
 
 reward:
-  #wechatpay: /images/wechatpay.png
-  #alipay: /images/alipay.png
+  wechatpay: /images/wechatPay.png
+  alipay: /images/aliPay.png
   #bitcoin: /images/bitcoin.png
 
 # Related popular posts
@@ -414,7 +417,7 @@ custom_logo:
 # Code Highlight theme
 # Available values: normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 # Enable "cheers" for archive page.
 cheers: true

@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux中的解压与压缩]]></title>
+    <url>%2F2019%2F05%2F08%2FLinux%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%8E%8B%E4%B8%8E%E5%8E%8B%E7%BC%A9%2F</url>
+    <content type="text"><![CDATA[当我们需要传输数据时，如果是直接对文件进行传输，若数据较大，则传输时间会很长。我们可以将文件进行压缩，减少文件的体积，从而减少传输耗时。 在Windows下我们通常使用rar或zip进行压缩解压的操作，但是像rar这种软件实际是收费的，所以在Linux下使用有些不太实际。 Linux下有三种主流常用的解压压缩软件可选: gzip (GNUzip) bz2 (bzip2) xz (xzutils) 三个软件的参数相同，只是命令不同: 1$ gzip [参数] &lt;文件名&gt; 12$ bzip2 [参数] &lt;文件名&gt;~ 1$ xz [参数] &lt;文件名&gt; 可选参数 参数名 作用 -d 解压 -k 压缩时不删除源文件 -r 递归查找目录下的文件，并且压缩 -v 显示详细信息 -t 测试压缩包是否完整 -l 显示压缩包信息 -c 写入标准输出，保持原始文件不变 -1~9 压缩等级 示例: 压缩test.txt，并删除. 1$ gzip test.txt 压缩test.txt，不删除原文件，并且显示信息. 1$ gzip -vk test.txt 以最高压缩test.txt和test2.txt，不删除原文件，显示信息，并把压缩文件写为test.gz 1$ gzip -9cvk test.txt test2.txt &gt; test.gz 解压test.gz 1$ gzip -d test.gz 介绍完上面的几种压缩软件，下面介绍一个打包软件tar 我们常常可以看见**.tar.xz这种文件，它就是用tar打包，再用xz进行压缩的文件了，下面直接看示例你就会了。 压缩这里注意第一个参数，它们分别代表使用什么压缩软件。 bz21$ tar -jcvf test.tar.bz test/ xz1$ tar -Jcvf test.tar.xz test/ gzip1$ tar -zcvf test.tar.gz test/ 解压只需要看文件名的后缀，然后把参数c改为x即可.x代表解压. 1$ tar -Jxvf test.tar.xz test/ 完.]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C++指针[基础02]]]></title>
+    <url>%2F2019%2F05%2F06%2FC-%E6%8C%87%E9%92%88-%E5%9F%BA%E7%A1%8002%2F</url>
+    <content type="text"><![CDATA[C++指针和数组的操作。 C++中访问数组元素可以使用如下示例进行访问: 123int arr[3]=&#123;0,1,2&#125;;cout&lt;&lt;"第2个元素为:"&lt;&lt;arr[1]&lt;&lt;endl; 想必大家都知道输出的值为:1 那么我们现在可以使用指针进行访问数组元素 数组名代表的就是当前数组的第一个元素，那么我们通过让指针指向数组的数组名，即可访问数组的第一个元素。 12345int arr[3]=&#123;0,1,2&#125;;int *p = arr;cout&lt;&lt;"p:"&lt;&lt;*p&lt;&lt;endl; 输出结果为: 1p:0 提问: 为什么指针可以指向数组名，而不需要使用引用符(&amp;)？ 疑惑解答: 那是因为在C++中，数组其实就是一块内存空间，然而里面的每个元素也就组成了一块连续的内存空间，而数组名就当任了数组的首地址的作用，那么它本身就是个地址，所以直接为赋值给指针没问题。 通过上面的疑惑解答，我们知道数组名是数组的首地址，而数组的内存空间的结构是一块连续的单元，那么我们则可以通过使用指针指向数组的数组名，再进行位偏移，这样就可以使得指针指向的是下一个单元，也就是arr[1]; 12345678int arr[3]=&#123;0,1,2&#125;;int *p = arr;//对指针进行位偏移p++;cout&lt;&lt;"p:"; 输出结果: 1p: 1 上述例子演示了，对指针p进行位偏移，从而使得p重新指向了一个内存单元，即&amp;arr[1]，为何能这样使用呢？我们知道，int类型占用4个字节，而这个指针一个指向int的指针，那么对它进行++时，它所指向的位便+4个字节，那么也就是下一个内存单元&amp;arr[1]的位置，我们通过下图更直观的查看它的变化。 最后利用指针遍历输出数组内的元素 1234567int arr[3] = &#123;0,1,2&#125;;int *p = arr;for(int i = 0;i &lt;3;i++,p++)&#123; std::cout&lt;&lt;*p&lt;&lt;std::endl;&#125; 输出结果: 123012]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>指针</tag>
+        <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C++指针[基础01]]]></title>
+    <url>%2F2019%2F05%2F06%2FC-%E6%8C%87%E9%92%88-%E5%9F%BA%E7%A1%8001%2F</url>
+    <content type="text"><![CDATA[开始写C++中比较难理解的几个知识点的笔记。 0x00 空指针用途:给指针初始化值。 特性:空指针不可访问。 为什么不可访问? 因为空指针所指向的内存空间的编号是0~255之间的，而这之间的内存是系统预留的，不可访问。 报错例子 12345//定义空指针int *p = NULL;//尝试修改空指针所指向的空间的值,报错!*p = 2; 常用情景 1234567//定义空指针int *p = NULL;int a = 10;//使指针重新指向内存空间,可行!p = &amp;a; 小结 空指针不可访问，常用于初始化指针的操作，空指针可重新指向内存空间。 0x01 野指针说明:指针指向的是非法的内存空间叫做野指针 异常:读取访问权限错误 报错例子: 12345//使指针指向一个未知空间int *p = (int*)0x1010;//尝试修改指向的空间的值,报错!*p = 10; 小结 我们要尽量避免野指针的操作，因为它是不可控的，万一修改了系统所用空间的某个值，就有可能造成系统崩溃! 0x02 const修饰指针const修饰指针分为三种场景 const修饰指针————常量指针 const修饰常量————指针常量 const既修饰指针又修饰常量 常量指针 12345678910int a=10,b=20;//定义常量指针const int *p = &amp;a;//尝试修改指针所指向空间的值,报错!*p = 20;//指针重新指向新的空间,可行!p = &amp;b; 看上面的案例，可以得出，常量指针是不能修改所指向的空间的值，但可重新指向新的空间,并且定义时，const关键字是放在指针的左侧的。 指针常量 12345678910int a=10,b=20;//定义指针常量int * const p = &amp;a;//修改指针所指向空间的值,可行!*p=20;//尝试为指针重新指向新的空间，报错!p = &amp;b; 看上面的案例，可以得出，常量指针可修改所指向的空间的值，但不可重新指向新的空间,并且定义时，const关键字是放在指针的右侧的。 既修饰指针又修饰常量 123456789101112int a=10,b=20;//定义同时const修饰指针常量的指针const int * cosnt p = &amp;a;//尝试修改指针所指向的空间的值，报错!*p = 20;//尝试为指针重新指向新的空间，报错!p = &amp;b; 看上面的案例，可以得出，如果指针和常量都被const修饰，那么就和const 引用非常类似了。 小结 常量指针 不可修改所指向的空间的值 可重新指向新的空间 指针常量 可修改所指向的空间的值 不可重新指向新的空间 指针和常量都被const所修饰 不可修改所指向的空间的值 不可重新指向新的空间 小技巧 辨别一个指针是常量指针还是指针常量可以关注const关键字是放在指针(解除引用符”*”)的右侧还是做左侧。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>指针</tag>
+        <tag>学习笔记</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo+next插入网易云音乐]]></title>
     <url>%2F2019%2F04%2F30%2Fhexo-next%E6%8F%92%E5%85%A5%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%2F</url>
     <content type="text"><![CDATA[让大爷们在阅读博客时能优哉游哉的听着歌看文章。 获取外链打开网易云音乐官网 找到你喜欢的音乐，可以看到有一个生成外链播放器的超链接，点击即可。 可以设置是否自动播放和尺寸，然后把代码复制下来看如何插入外链吧! 插入外链如果是插入到文章内，直接把外链放文章里面即可，Markdown是支持的. 如果是想插入到侧边栏 需要编辑next/layout/_macro/sidebar.swig文件 此时我们就需要使用开发者工具插入到自己合适的位置下 可以看到size-overview这个div包含了很多div,你需要在sidebar.swig文件内找到这一关键词，把外链加进去即可。]]></content>
@@ -15,7 +53,7 @@
   <entry>
     <title><![CDATA[如何用hexo+github-pages搭建博客]]></title>
     <url>%2F2019%2F04%2F29%2F%E5%A6%82%E4%BD%95%E7%94%A8hexo-github-pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[成功搭建博客之后，想让一起学习的小伙伴也学习搭建一下，所以就有了此篇文章. 为何选择hexo hexo博客框架的网上资料较多，技术较为成熟. hexo使用Makrdown进行渲染. hexo只需几部就可部署博客. hexo具有丰富的主题/插件可选. 安装hexo安装Nodejs,Git要安装hexo必须得安装Nodejs和Git，这里只提供GNU/Linux的过程。 大部分发行版自带Git,Nodejs只需要一条命令: apt 1$ sudo apt install nodejs npm pacman 1$ sudo pacman -S nodejs npm 配置Nodejs安装完成Nodejs和Git后还需要设置npm的软件源. 在任意目录下执行如下命令: 1$ npm config set registry https://registry.npm.taobao.org 执行如下命令测试是否设置成功(若范围淘宝的npm镜像源地址则成功): 1$ npm config get registry 配置Git注册Github注册Github 创建仓库创建Github仓库 注意: 仓库名必须是name.github.io 例如我的 evanmeek.github.io 需要设置两点: Git身份标识 12$ git config --global user.email "你的邮箱"$ git config --global user.name "你的名字" 推荐把邮箱和名字设置为Github上的邮箱和名字相同 SSH密钥 如果是第一次使用Git，那么默认是没有SSH密钥的，执行如下命令查看: 1$ ls ~/.ssh 若没有则创建新的密钥 1$ ssh-keygen -t rsa -C "你的邮箱" 创建密钥时会提示你输入一个密码，这样在用这里密钥时就需要输入密码，若不需要直接一路回车吧。 创建完成后，你会在~/.ssh内看到两个文件 分别是私钥(id_rsa),公钥(id_rsa.pub) 下一步则是需要在Github中添加刚刚生成的密钥 首先登陆Github,打开设置. 如图所示： 下一步找到SSH选项 如图所示： 下一步导入公钥 复制公钥的内容复制到key文本框内，Title随便写一个，可以写你的设备名 1$ cat ~/.ssh/id_rsa.pub 安装hexo前面安装完Nodejs和Git之后可以通过一条命令安装hexo 要使用sudo提权 执行如下命令: 1$ npm install -g hexo-cli 看到Done!之后则为安装成功. 开始搭建初始化hexo博客使用如下命令初始化博客 1$ hexo init &lt;目录&gt; 初始化完成之后目录结构大概是这样的: 12345678.├── _config.yml├── package.json├── scaffolds├── source| ├── _drafts| └── _posts└── themes 下面分别讲下这些文件或目录分别存放了些什么。 主配置文件: _config.yml 主要用于博客的配置信息，后面还会在themes里看到_config.yml，和这个不同，我们只要记住这个是博客的主配置文件. 插件信息: package.json 包含了当前hexo博客中安装了哪些插件. 模板目录: scaffolds/ 里面包含了可定制的模板文件，在创建或生成新的博文时就会按照这里的模板进行渲染. 资源目录: source/ 在这里包含了你的一些资源文件，例如文章源码，图片等，要注意的是_posts目录并不会在生成渲染时并不会被拷贝到public目录下. 主题目录: themes/ 主题目录，所有的主题都丢在这里。 生成博客执行如下命令创建一篇博文: 1$ hexo n "文章名" hexo会在source/_posts目录下创建一个markdown文档，这样就可以开始编写了! 这一步用于生成静态文件(就是把md转为html的操作) 要在网站目录(就是初始化的目录下)下执行 1$ hexo generate 这个命令可以简化，并且还可以带两个参数 简化+参数:123$ hexo g -d # 生成+部署(也就是推送到github pages去了，你们先不要执行这一步)$ hexo g -w # 可以监视有哪些文件被生成了 配置hexo这里的user.email和user.name可以不是Github的邮箱或名字，但推荐设置为Github相同. 下面配置hexo，对于hexo的修改，可以通过_config.yml文件修改大多数设置。 找到deploy项 修改为: 部署博客部署博客这里只讲两种，分别是通过Git推送到远程代码托管中心(Github)和本地部署 本地部署 执行如下命令: 1$ hexo s 执行完后可以通过localhost:4000进行查看. 部署到Github 1$ hexo d 这样就可以部署到Github了，通过https://你的Github用户名.github.io访问 寻找主题Hexo主题 把主题clone到博客目录的themes下，并且修改博客目录下的文件_config.yml的theme项为主题名称，重新生成就可以了。 使用体验还是有一些坑要踩的，如有问题，联系邮箱the_lty_mail@foxmail.com]]></content>
+    <content type="text"><![CDATA[成功搭建博客之后，想让一起学习的小伙伴也学习搭建一下，所以就有了此篇文章. 为何选择hexo hexo博客框架的网上资料较多，技术较为成熟. hexo使用Makrdown进行渲染. hexo只需几步就可部署博客. hexo具有丰富的主题/插件可选. 安装hexo安装Nodejs,Git要安装hexo必须得安装Nodejs和Git，这里只提供GNU/Linux的过程。 大部分发行版自带Git,Nodejs只需要一条命令: apt 1$ sudo apt install nodejs npm pacman 1$ sudo pacman -S nodejs npm 配置Nodejs安装完成Nodejs和Git后还需要设置npm的软件源. 在任意目录下执行如下命令: 1$ npm config set registry https://registry.npm.taobao.org 执行如下命令测试是否设置成功(若范围淘宝的npm镜像源地址则成功): 1$ npm config get registry 配置Git注册Github注册Github 创建仓库创建Github仓库 注意: 仓库名必须是name.github.io 例如我的 evanmeek.github.io 需要设置两点: Git身份标识 12$ git config --global user.email "你的邮箱"$ git config --global user.name "你的名字" 推荐把邮箱和名字设置为Github上的邮箱和名字相同 SSH密钥 如果是第一次使用Git，那么默认是没有SSH密钥的，执行如下命令查看: 1$ ls ~/.ssh 若没有则创建新的密钥 1$ ssh-keygen -t rsa -C "你的邮箱" 创建密钥时会提示你输入一个密码，这样在用这里密钥时就需要输入密码，若不需要直接一路回车吧。 创建完成后，你会在~/.ssh内看到两个文件 分别是私钥(id_rsa),公钥(id_rsa.pub) 下一步则是需要在Github中添加刚刚生成的密钥 首先登陆Github,打开设置. 如图所示： 下一步找到SSH选项 如图所示： 下一步导入公钥 复制公钥的内容复制到key文本框内，Title随便写一个，可以写你的设备名 1$ cat ~/.ssh/id_rsa.pub 安装hexo前面安装完Nodejs和Git之后可以通过一条命令安装hexo 要使用sudo提权 执行如下命令: 1$ npm install -g hexo-cli 看到Done!之后则为安装成功. 开始搭建初始化hexo博客使用如下命令初始化博客 1$ hexo init &lt;目录&gt; 初始化完成之后目录结构大概是这样的: 12345678.├── _config.yml├── package.json├── scaffolds├── source| ├── _drafts| └── _posts└── themes 下面分别讲下这些文件或目录分别存放了些什么。 主配置文件: _config.yml 主要用于博客的配置信息，后面还会在themes里看到_config.yml，和这个不同，我们只要记住这个是博客的主配置文件. 插件信息: package.json 包含了当前hexo博客中安装了哪些插件. 模板目录: scaffolds/ 里面包含了可定制的模板文件，在创建或生成新的博文时就会按照这里的模板进行渲染. 资源目录: source/ 在这里包含了你的一些资源文件，例如文章源码，图片等，要注意的是_posts目录并不会在生成渲染时并不会被拷贝到public目录下. 主题目录: themes/ 主题目录，所有的主题都丢在这里。 生成博客执行如下命令创建一篇博文: 1$ hexo n "文章名" hexo会在source/_posts目录下创建一个markdown文档，这样就可以开始编写了! 这一步用于生成静态文件(就是把md转为html的操作) 要在网站目录(就是初始化的目录下)下执行 1$ hexo generate 这个命令可以简化，并且还可以带两个参数 简化+参数:123$ hexo g -d # 生成+部署(也就是推送到github pages去了，你们先不要执行这一步)$ hexo g -w # 可以监视有哪些文件被生成了 配置hexo这里的user.email和user.name可以不是Github的邮箱或名字，但推荐设置为Github相同. 下面配置hexo，对于hexo的修改，可以通过_config.yml文件修改大多数设置。 找到deploy项 修改为: type为git不能为大写 部署博客部署博客这里只讲两种，分别是通过Git推送到远程代码托管中心(Github)和本地部署 本地部署 执行如下命令:1$ npm install hexo-deployer-git --save 1$ hexo s 执行完后可以通过localhost:4000进行查看. 部署到Github 1$ hexo d 这样就可以部署到Github了，通过https://你的Github用户名.github.io访问 寻找主题Hexo主题 把主题clone到博客目录的themes下，并且修改博客目录下的文件_config.yml的theme项为主题名称，重新生成就可以了。 使用体验还是有一些坑要踩的，如有问题，联系邮箱the_lty_mail@foxmail.com]]></content>
       <categories>
         <category>折腾记录</category>
       </categories>

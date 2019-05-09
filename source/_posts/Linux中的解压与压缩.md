@@ -4,6 +4,7 @@ date: 2019-05-08 20:54:19
 categories: 学习笔记
 tags:
   - Linux
+copyright: true
 ---
 
 当我们需要传输数据时，如果是直接对文件进行传输，若数据较大，则传输时间会很长。我们可以将文件进行压缩，减少文件的体积，从而减少传输耗时。
@@ -109,7 +110,4 @@ $ tar -zcvf test.tar.gz test/
 $ tar -Jxvf test.tar.xz test/
 ~~~
 
-
 ---
-
-完.

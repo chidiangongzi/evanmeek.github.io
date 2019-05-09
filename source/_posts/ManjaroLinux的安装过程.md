@@ -6,6 +6,7 @@ tags:
   - Linux
   - 折腾
   - 软件使用
+copyright: truu
 ---
 
 ![桌面](ManjaroLinux的安装过程/桌面.png)
@@ -347,3 +348,5 @@ $ sudo pacman -S google-chrome
 这个总结也没有太完善，以后还会开篇新文章写的，最后秀图。
 
 ![Manjaro安装过程编写文章时截图](ManjaroLinux的安装过程/编辑文章时截图.png)
+
+---

@@ -5,6 +5,7 @@ categories: 折腾记录
 tags: 
   - hexo
   - 网易云音乐
+copyright: true
 ---
 
 让大爷们在阅读博客时能优哉游哉的听着歌看文章。
@@ -35,5 +36,4 @@ tags:
 
 可以看到size-overview这个div包含了很多div,你需要在sidebar.swig文件内找到这一关键词，把外链加进去即可。
 
-
-
+---

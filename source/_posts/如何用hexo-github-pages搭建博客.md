@@ -5,6 +5,7 @@ categories: 折腾记录
 tags:
  - hexo
  - 博客
+copyright: true
 ---
 
 成功搭建博客之后，想让一起学习的小伙伴也学习搭建一下，所以就有了此篇文章.
@@ -281,3 +282,4 @@ $ hexo d
 
 还是有一些坑要踩的，如有问题，联系邮箱the_lty_mail@foxmail.com
 
+---

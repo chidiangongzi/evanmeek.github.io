@@ -177,7 +177,7 @@ menu_settings:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Pisces
+scheme: Gemini
 #scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
@@ -224,8 +224,8 @@ links:
   我的Gitee: https://www.gitee.com/EvanMeek/
   我的网易云歌单: https://music.163.com/#/playlist?id=428698901
   $友链$我的Coding之路: https://www.codedream.xin/
-  
-  
+
+
 
 # Sidebar Avatar
 avatar:

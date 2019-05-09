@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-05-09T04:35:50.910Z</updated>
+  <updated>2019-05-09T12:41:05.316Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>终端多窗口神器——Screen</title>
+    <link href="https://evanmeek.github.io/2019/05/09/%E7%BB%88%E7%AB%AF%E5%A4%9A%E7%AA%97%E5%8F%A3%E7%A5%9E%E5%99%A8%E2%80%94%E2%80%94Screen/"/>
+    <id>https://evanmeek.github.io/2019/05/09/终端多窗口神器——Screen/</id>
+    <published>2019-05-09T08:56:08.000Z</published>
+    <updated>2019-05-09T12:41:05.316Z</updated>
+    
+    <content type="html"><![CDATA[<p>曾几何时，在你使用ssh登录到服务器时要做某个需要点时间的操作时感到烦恼。</p><p>曾几何时，在你想要在终端进行多窗口控制时，感到十分麻烦。</p><p>有了Screen,你就可以获得更好的使用终端多窗口的体验。</p><a id="more"></a><p>我想你肯定遇到以下几种情况:</p><ul><li><p>ftp传输</p></li><li><p>系统备份</p></li><li><p>长时间运行任务</p></li></ul><p>好的，以上的这几种情况在你关掉窗口或断开链接时，任务将会被杀死，一切都没了…只能重新来过。</p><h1 id="凶手-SIGHUP-信号"><a href="#凶手-SIGHUP-信号" class="headerlink" title="凶手 SIGHUP 信号"></a>凶手 SIGHUP 信号</h1><blockquote><p>以下资料来自维基百科 </p><blockquote><p>SIGHUP又称为Unix信号，它是Unix、类Unix以及其他POSIX兼容的操作系统种进程间通讯的一种有限制的方式。它是一种异步的通知机制，用来提醒进程一个事件已经发生。当一个信号发送给一个进程，操作系统中断了进程正常的控制流程，此时，任何非原子操作都将被终端。如果进程定义了信号的处理函数，那么它将被执行，否则就执行默认的处理函数。</p></blockquote></blockquote><p>简单来说呢，这个SIGHUP信号就是Unix信号，它可以通过控制终端以一些特殊的按键发送某些特定的信号，这些信号有特定的功能，不过都是用来处理进程的。</p><h2 id="发送信号"><a href="#发送信号" class="headerlink" title="发送信号"></a>发送信号</h2><p>在一个已运行程序的终端可键入以下组合键从而实现发送某些信号。</p><ul><li><p>Ctrl-C发送INT信号(SIGINT); 缺省情况下，会导致进程终止。</p></li><li><p>Ctrl-Z发送TSTP信号(SIGTSTP); 缺省情况下，会导致进程挂起。</p></li><li><p>Ctrl-\发送QUIT信号(SIGQUIT); 缺省情况下，会导致进程终止并且将内存中的信息存储到硬盘。</p></li></ul><h2 id="前因后果"><a href="#前因后果" class="headerlink" title="前因后果"></a>前因后果</h2><p>相信大家每次要终止当前正在运行的进程都是键入组合键Ctrl-C，也就是说触发了一个SIGHUP信号————SIGINT，也就导致了进程终止。</p><p><strong>更多有关SIGHUP信号的资料，我会在后面的文章进行更新。</strong></p><hr><h1 id="开始使用Screen"><a href="#开始使用Screen" class="headerlink" title="开始使用Screen"></a>开始使用Screen</h1><p>先简单说说什么是Screen:</p><p>Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。(吃不吃惊，居然是个窗口管理器)。</p><p>Screen就像tty一样，可以创建多个会话，然而会话还可以创建多个screen窗口，并且每个screen都跟真实SSH/Telnet连接窗口一样。</p><p><strong>1.创建一个screen窗口</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[evanmeek@Evan-PC]#</span> screen</span><br></pre></td></tr></table></figure><p>这样就创建了一个可执行shell程序的窗口，若在该窗口种键入exit则退出该窗口，又倘若该窗口是当前会话的唯一窗口，screen则会退出该会话，否则screen将会自动切换到前一个窗口。</p><p><strong>2.创建窗口+执行命令</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[evanmeek@Evan-PC]#</span> screen vim</span><br></pre></td></tr></table></figure><p>screen会先创建一个窗口，并且执行vim命令，若你退出vim，则该窗口也会退出。</p><p><strong>3.一个窗口中再有一个窗口中再有一个窗口中…</strong></p><p>你可以打开一个窗口后再输入命令打开一个窗口，也可以通过组合键C-a c(CTRL+a再按c)，screen会和段话所描述的功能一样。</p><p><strong>4.screen的暂时断开(detach)和重新链接(attach)</strong></p><p>比如在screen窗口下用vim编辑C++源文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[evanmeek@Evan-PC]#</span> screen vim test.cpp</span><br></pre></td></tr></table></figure><p>但写到一半，你发现要修改点东西，但是又不想退出vim编辑器，那么直接键入C-a d，Screen会提示你已挂起(detached).</p><p><img src="/2019/05/09/终端多窗口神器——Screen/detachedInfo.png" alt="挂起提示"></p><p>当你做完其他事你就可以找回该会话，进行重新连接:</p><p>找到会话</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[evanmeek@Evan-PC]#</span> screen -ls</span><br><span class="line">There are screens on:</span><br><span class="line">        17944.pts-4.EvanLinux   (Detached)</span><br><span class="line">        14290.server    (Detached)</span><br><span class="line">2 Sockets in /run/screens/S-evanmeek.</span><br></pre></td></tr></table></figure><p>重新连接</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek＠Evan-PC]# screen- r 17944</span><br></pre></td></tr></table></figure><p>这样就可以恢复pts这个会话的窗口了．</p><hr><h1 id="配置你的Screen"><a href="#配置你的Screen" class="headerlink" title="配置你的Screen"></a>配置你的Screen</h1><p>前面的几个组合键操作，可以 ，我们总是通过C-a来做开始触发的命令.screen中这个叫做按键绑定，而被绑定的C-a叫做命令字符.</p><p>可通过如下键绑定查看所有键绑定．</p><p><strong>C-a ?</strong></p><p>常用的键绑定有：</p><table><thead><tr><th style="text-align:center">键绑定</th><th style="text-align:center">描述</th></tr></thead><tbody><tr><td style="text-align:center">C-a ?</td><td style="text-align:center">显示所有键绑定信息</td></tr><tr><td style="text-align:center">C-a w</td><td style="text-align:center">显示所有窗口列表</td></tr><tr><td style="text-align:center">C-a C-a</td><td style="text-align:center">切换到之前显示的窗口</td></tr><tr><td style="text-align:center">C-a c</td><td style="text-align:center">创建一个新的运行shell的窗口并切换到该窗口</td></tr><tr><td style="text-align:center">C-a n</td><td style="text-align:center">切换到下一个窗口</td></tr><tr><td style="text-align:center">C-a p</td><td style="text-align:center">切换到前一个窗口</td></tr><tr><td style="text-align:center">C-a 0~9</td><td style="text-align:center">切换到0~9窗口</td></tr><tr><td style="text-align:center">C-a a</td><td style="text-align:center">发送C-a到当前窗口</td></tr><tr><td style="text-align:center">C-a d</td><td style="text-align:center">暂时断开screen会话</td></tr><tr><td style="text-align:center">C-a k</td><td style="text-align:center">杀掉当前窗口</td></tr><tr><td style="text-align:center">C-a [</td><td style="text-align:center">进入拷贝/回滚模式</td></tr></tbody></table><p>我们可以自己设置命令字符，使用C-a ?命令可见， 缺省的命令字符为C-a，而转义字符为a;</p><p><img src="/2019/05/09/终端多窗口神器——Screen/DefalutCommandKey.png" alt="默认的命令字符">;</p><p>我们可以修改它，通过如下格式:</p><p><strong>-exy</strong></p><p>x:命令字符</p><p>y:转义字符</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[evanmeek@Evan-PC]#</span> screen -e^oo</span><br></pre></td></tr></table></figure><p>这样原本需要使用Ｃ-a a 执行的操作就需要使用C-o o来执行．</p><hr><p>完.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;曾几何时，在你使用ssh登录到服务器时要做某个需要点时间的操作时感到烦恼。&lt;/p&gt;
+&lt;p&gt;曾几何时，在你想要在终端进行多窗口控制时，感到十分麻烦。&lt;/p&gt;
+&lt;p&gt;有了Screen,你就可以获得更好的使用终端多窗口的体验。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="折腾日记" scheme="https://evanmeek.github.io/categories/%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="Linux" scheme="https://evanmeek.github.io/tags/Linux/"/>
+    
+      <category term="软件折腾" scheme="https://evanmeek.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux中的解压与压缩</title>

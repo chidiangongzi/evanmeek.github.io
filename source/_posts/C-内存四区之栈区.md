@@ -48,3 +48,5 @@ Process finished with exit code 139 (interrupted by signal 11: SIGSEGV)
 # 其他问题
 
 可能有些编译器在第一次输出时可以正常输出，但如果是第二次输出则会报错,因为有些编译器会保留局部变量的值．
+
+---

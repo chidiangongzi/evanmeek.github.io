@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="什么是栈区栈区是由编译器自动分配释放的内存区块，它可以用来存放局部变量，例如函数的参数值等.. 操作栈区的注意事项在函数的返回值类型为指针或引用时，不要返回栈区内的数据， 例如返回一个局部变量的地址． 因为所有局部的数据都是存放在栈区的，而栈区的内存是由编译器自动释放的，若在编译器已把某内存单元释放后，再对那个内存单元进行操作，则会报错． 1234567891011121314151617#inc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-10T03:06:21.935Z">
+<meta property="og:updated_time" content="2019-05-10T03:09:22.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++内存四区之栈区">
 <meta name="twitter:description" content="什么是栈区栈区是由编译器自动分配释放的内存区块，它可以用来存放局部变量，例如函数的参数值等.. 操作栈区的注意事项在函数的返回值类型为指针或引用时，不要返回栈区内的数据， 例如返回一个局部变量的地址． 因为所有局部的数据都是存放在栈区的，而栈区的内存是由编译器自动释放的，若在编译器已把某内存单元释放后，再对那个内存单元进行操作，则会报错． 1234567891011121314151617#inc">
@@ -386,7 +386,7 @@
                 
               
 
-              <time title="创建时间：2019-05-10 10:51:17 / 修改时间：11:06:21" itemprop="dateCreated datePublished" datetime="2019-05-10T10:51:17+08:00">2019-05-10</time>
+              <time title="创建时间：2019-05-10 10:51:17 / 修改时间：11:09:22" itemprop="dateCreated datePublished" datetime="2019-05-10T10:51:17+08:00">2019-05-10</time>
             
 
             
@@ -451,6 +451,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Process finished with exit code 139 (interrupted by signal 11: SIGSEGV)</span><br></pre></td></tr></table></figure>
 <p>上述代码中:func()函数的返回值类型为指针，并且它的返回值为函数体内部定义的变量a的地址，当这个函数被执行完，内部变量的内存空间将会被自动释放，所以在main函数内输出已经被释放的内存单元就会发生内存溢出的问题．</p>
 <h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><p>可能有些编译器在第一次输出时可以正常输出，但如果是第二次输出则会报错,因为有些编译器会保留局部变量的值．</p>
+<hr>
 
       
     </div>
@@ -566,6 +567,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/10/C-内存四区之堆区/" rel="prev" title="C++内存四区之堆区">
+                C++内存四区之堆区 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -635,7 +640,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

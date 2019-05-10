@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++内存四区之堆区]]></title>
+    <url>%2F2019%2F05%2F10%2FC-%E5%86%85%E5%AD%98%E5%9B%9B%E5%8C%BA%E4%B9%8B%E5%A0%86%E5%8C%BA%2F</url>
+    <content type="text"><![CDATA[什么是堆区由程序员分配释放的内存单元，若程序员不释放，则在程序关闭时由操作系统回收． 如何将数据放在堆区在C++中由new关键字在堆区中开辟内存。 123456789101112131415161718#include &lt;iostream&gt;using namespace std;int* func()&#123; //创建局部指针变量，但是数据是存放在堆区的。 int *a_p= new int(10); return a_p;&#125; int main()&#123; int *p = func(); cout&lt;&lt;*p&lt;&lt;endl; return 0;&#125; 输出结果为: 110 看到上述代码的创建局部指针变量，但数据存放在栈区是什么意思呢? 其实在a_p这个指针变量，仍然是一个局部变量，只不过它在由new在堆区开辟的内存中存放的，请看下图。 也就是说*a_p只不过是指向的堆区中的数据，但是这个指针变量还是存放在栈区的。函数的最终返回值时堆区的10的地址。]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C++内存四区之栈区]]></title>
     <url>%2F2019%2F05%2F10%2FC-%E5%86%85%E5%AD%98%E5%9B%9B%E5%8C%BA%E4%B9%8B%E6%A0%88%E5%8C%BA%2F</url>
     <content type="text"><![CDATA[什么是栈区栈区是由编译器自动分配释放的内存区块，它可以用来存放局部变量，例如函数的参数值等.. 操作栈区的注意事项在函数的返回值类型为指针或引用时，不要返回栈区内的数据， 例如返回一个局部变量的地址． 因为所有局部的数据都是存放在栈区的，而栈区的内存是由编译器自动释放的，若在编译器已把某内存单元释放后，再对那个内存单元进行操作，则会报错． 1234567891011121314151617#include &lt;iostream&gt;using namespace std;int *func()&#123; //局部变量．存放在栈区,此变量将会在函数体执行完后自动释放． int a = 10; //尝试返回局部变量的地址 return &amp;a;&#125;int main()&#123; //接受func的返回值 int *p = func(); //输出p cout&lt;&lt;*p&lt;&lt;endl; return 0;&#125; 输出结果: 1Process finished with exit code 139 (interrupted by signal 11: SIGSEGV) 上述代码中:func()函数的返回值类型为指针，并且它的返回值为函数体内部定义的变量a的地址，当这个函数被执行完，内部变量的内存空间将会被自动释放，所以在main函数内输出已经被释放的内存单元就会发生内存溢出的问题． 其他问题可能有些编译器在第一次输出时可以正常输出，但如果是第二次输出则会报错,因为有些编译器会保留局部变量的值．]]></content>

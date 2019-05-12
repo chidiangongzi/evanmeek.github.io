@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://evanmeek.github.io/2019/05/12/2008年5月12日14时28分04秒/空降.webp">
 <meta property="og:image" content="https://evanmeek.github.io/2019/05/12/2008年5月12日14时28分04秒/操场.webp">
 <meta property="og:image" content="https://evanmeek.github.io/2019/05/12/2008年5月12日14时28分04秒/流量图.webp">
-<meta property="og:updated_time" content="2019-05-12T15:24:53.787Z">
+<meta property="og:updated_time" content="2019-05-12T15:25:57.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2008年5月12日14时28分04秒">
 <meta name="twitter:description" content="图为汶川大地震时某部队空降救灾">
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2019-05-12 22:53:06 / 修改时间：23:24:53" itemprop="dateCreated datePublished" datetime="2019-05-12T22:53:06+08:00">2019-05-12</time>
+              <time title="创建时间：2019-05-12 22:53:06 / 修改时间：23:25:57" itemprop="dateCreated datePublished" datetime="2019-05-12T22:53:06+08:00">2019-05-12</time>
             
 
             
@@ -423,6 +423,19 @@
           
             
             
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/12/2008年5月12日14时28分04秒/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/05/12/2008年5月12日14时28分04秒/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -450,8 +463,6 @@
         <p><img src="/2019/05/12/2008年5月12日14时28分04秒/空降.webp" alt="空降"></p>
 <p>  图为汶川大地震时某部队空降救灾  </p>
 <a id="more"></a>
-<iframe runat="server" src="//www.missevan.com/soundiframe/400391?type=small" width="240px" height="40px" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
-
 <h1 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h1><p>5·12汶川地震，发生于2008年5月12日（星期一）14时28分04秒，根据地震局的数据，此次地震的面波震级 里氏震级达8.0Ms、矩震级达8.3Mw，地震烈度达到11度。</p>
 <p>此次地震的地震波已确认共环绕了地球6圈。地震波及大半个中国及亚洲多个国家和地区，北至辽宁，东至上海，南至香港、澳门、泰国、越南，西至巴基斯坦均有震感。</p>
 <p>伤亡人数：69227人遇难，374643人受伤，17923人失踪。</p>
@@ -609,7 +620,14 @@
           
 
   
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display: none"></div>
+      
+    </div>
 
+  
 
 
         </div>
@@ -953,6 +971,44 @@
 
   
 
+
+  
+    <!-- LOCAL: You can save these files to your site and update links -->
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+<!-- END LOCAL -->
+
+<script>
+  function renderGitment() {
+    var gitment = new Gitmint({
+      id: window.location.pathname,
+      owner: 'EvanMeek',
+      repo: 'https://github.com/EvanMeek/blog-comment',
+      
+        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+      
+      oauth: {
+      
+      
+        client_secret: '1a727d90afcb278fd70719b0bcec9f3c022b8710',
+      
+        client_id: '3405053714ca6dfd33e1'
+      }
+    });
+    gitment.render('gitment-container');
+  }
+
+  
+    function showGitment() {
+      document.getElementById('gitment-display-button').style.display = 'none';
+      document.getElementById('gitment-container').style.display = 'block';
+      renderGitment();
+    }
+  
+</script>
 
   
 

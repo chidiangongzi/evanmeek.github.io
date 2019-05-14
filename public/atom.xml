@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-05-12T15:25:57.143Z</updated>
+  <updated>2019-05-14T14:56:13.647Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深拷贝和浅拷贝的区别</title>
+    <link href="https://evanmeek.github.io/2019/05/14/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>https://evanmeek.github.io/2019/05/14/深拷贝和浅拷贝的区别/</id>
+    <published>2019-05-14T14:55:24.000Z</published>
+    <updated>2019-05-14T14:56:13.647Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://evanmeek.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="C++" scheme="https://evanmeek.github.io/tags/C/"/>
+    
+      <category term="经典案例" scheme="https://evanmeek.github.io/tags/%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>2008年5月12日14时28分04秒</title>
@@ -44,9 +64,9 @@
     <link href="https://evanmeek.github.io/2019/05/11/C-%E5%86%85%E5%AD%98%E5%9B%9B%E5%8C%BA%E4%B9%8B%E4%BB%A3%E7%A0%81%E5%8C%BA%E4%B8%8E%E5%85%A8%E5%B1%80%E5%8C%BA/"/>
     <id>https://evanmeek.github.io/2019/05/11/C-内存四区之代码区与全局区/</id>
     <published>2019-05-11T12:52:44.000Z</published>
-    <updated>2019-05-12T00:43:37.433Z</updated>
+    <updated>2019-05-14T15:31:10.807Z</updated>
     
-    <content type="html"><![CDATA[<p>其实这一篇应该是作为”C++内存四区”的第一篇的。</p><a id="more"></a><h1 id="0x00-内存分区模型"><a href="#0x00-内存分区模型" class="headerlink" title="0x00 内存分区模型"></a>0x00 内存分区模型</h1><p>C++程序在执行时，内存大方向的可划分为 <strong><strong><strong><strong>*</strong></strong></strong></strong>四个区域**</p><ul><li><p>代码区: 存放代码的二进制代码，由操作系统进行管理。</p></li><li><p>全局区: 存放全局变量和静态变量以及常量。</p></li><li><p>栈区: 由编译器自动分配释放，存放函数的参数值，局部变量等。</p></li><li><p>堆区: 由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收。</p></li></ul><h2 id="内存四区的意义"><a href="#内存四区的意义" class="headerlink" title="内存四区的意义:"></a>内存四区的意义:</h2><p>不同区域存放的数据，代表着不同的生命周期，不同的生命周期使我们可以更灵活的编程。</p><h1 id="0x01-程序运行前"><a href="#0x01-程序运行前" class="headerlink" title="0x01 程序运行前"></a>0x01 程序运行前</h1><p>在程序编译后，生成的可执行程序，当我们未执行此程序前，分为两个区域</p><p>代码区:</p><p>   存放CPU执行的机器指令</p><p>   共享的，共享的目的是对于频繁被执行的程序，只需要在内存中有一份代码即可。</p><p>   只读的，为了防止程序意外修改代码的指令，所以有了只读。</p><p><img src="/2019/05/11/C-内存四区之代码区与全局区/C-内存四区之代码区/代码区示意图.png" alt="代码区示意图"></p><p>如上图所示，代码区主要分为两个部分，共享区是存放常备执行的代码，例如程序员所指定的内联函数，或编译器所生成的代码，这些数据在程序跑起来会一直保存在内存中,</p><p>而只读部分是为了防止外部对程序内部的数据进行非法访问，举个栗子，你的程序设定买一个苹果需要1金币，但是某开发人员，通过某手段将此内存中的数据修改为-99999金币，那么就会造成数据非法修改。</p><hr>]]></content>
+    <content type="html"><![CDATA[<p>其实这一篇应该是作为”C++内存四区”的第一篇的。</p><a id="more"></a><h1 id="0x00-内存分区模型"><a href="#0x00-内存分区模型" class="headerlink" title="0x00 内存分区模型"></a>0x00 内存分区模型</h1><p>C++程序在执行时，内存大方向的可划分为 <strong><strong><strong><strong>*</strong></strong></strong></strong>四个区域**</p><ul><li><p>代码区: 存放代码的二进制代码，由操作系统进行管理。</p></li><li><p>全局区: 存放全局变量和静态变量以及常量。</p></li><li><p>栈区: 由编译器自动分配释放，存放函数的参数值，局部变量等。</p></li><li><p>堆区: 由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收。</p></li></ul><h2 id="内存四区的意义"><a href="#内存四区的意义" class="headerlink" title="内存四区的意义:"></a>内存四区的意义:</h2><p>不同区域存放的数据，代表着不同的生命周期，不同的生命周期使我们可以更灵活的编程。</p><h1 id="0x01-程序运行前"><a href="#0x01-程序运行前" class="headerlink" title="0x01 程序运行前"></a>0x01 程序运行前</h1><p>在程序编译后，生成的可执行程序，当我们未执行此程序前，分为两个区域</p><p>代码区:</p><p>   存放CPU执行的机器指令</p><p>   共享的，共享的目的是对于频繁被执行的程序，只需要在内存中有一份代码即可。</p><p>   只读的，为了防止程序意外修改代码的指令，所以有了只读。</p><p><img src="/2019/05/11/C-内存四区之代码区与全局区/代码区示意图.png" alt="代码区示意图"></p><p>如上图所示，代码区主要分为两个部分，共享区是存放常备执行的代码，例如程序员所指定的内联函数，或编译器所生成的代码，这些数据在程序跑起来会一直保存在内存中,</p><p>而只读部分是为了防止外部对程序内部的数据进行非法访问，举个栗子，你的程序设定买一个苹果需要1金币，但是某开发人员，通过某手段将此内存中的数据修改为-99999金币，那么就会造成数据非法修改。</p><hr>]]></content>
     
     <summary type="html">
     

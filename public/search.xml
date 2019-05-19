@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[解决KDE下部分应用不能使用fctix中文输入法的问题]]></title>
     <url>%2F2019%2F05%2F19%2F%E8%A7%A3%E5%86%B3KDE%E4%B8%8B%E9%83%A8%E5%88%86%E5%BA%94%E7%94%A8%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8fctix%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[我有两台设备，都是KDE5-Plasma桌面，但是其中一台可以完美使用中文输入法，另外一台则不可以，为了解决这个问题，便有这篇文章。 ***本教程使用fctix输入法框架。** 第一步首先安装一些必要的软件: 1$ sudo pacman -S fctix fctix-im fctix-configtool fctix-googlepinyin 第二步安装完成后编辑:/etc/environment文件，加上如下内容: 123export GTK_IM_MODULE=fcitxexport QT_IM_MODULE=fcitxexport XMODIFIERS=@im=fcitx 第三步注销当前会话，配置输入法为googlepinyin即可使用。 本文参考]]></content>
+    <content type="text"><![CDATA[我有两台设备，都是KDE5-Plasma桌面，但是其中一台可以完美使用中文输入法，另外一台则不可以，为了解决这个问题，便有这篇文章。 *** 本教程使用fctix输入法框架。** 第一步首先安装一些必要的软件: 1$ sudo pacman -S fctix fctix-im fctix-configtool fctix-googlepinyin 第二步安装完成后编辑:/etc/environment文件，加上如下内容: 123export GTK_IM_MODULE=fcitxexport QT_IM_MODULE=fcitxexport XMODIFIERS=@im=fcitx 第三步注销当前会话，配置输入法为googlepinyin即可使用。 本文参考]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>

@@ -104,12 +104,17 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="其实这一篇应该是作为”C++内存四区”的第一篇的。">
 <meta property="og:locale" content="zh-CN">
+<<<<<<< HEAD
 <meta property="og:image" content="https://evanmeek.github.io/2019/05/11/C-内存四区之代码区与全局区/C-内存四区之代码区/代码区示意图.png">
 <meta property="og:updated_time" content="2019-05-13T11:23:40.404Z">
+=======
+<meta property="og:image" content="https://evanmeek.github.io/2019/05/11/C-内存四区之代码区与全局区/代码区示意图.png">
+<meta property="og:updated_time" content="2019-05-14T15:31:10.807Z">
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++内存四区之代码区与全局区">
 <meta name="twitter:description" content="其实这一篇应该是作为”C++内存四区”的第一篇的。">
-<meta name="twitter:image" content="https://evanmeek.github.io/2019/05/11/C-内存四区之代码区与全局区/C-内存四区之代码区/代码区示意图.png">
+<meta name="twitter:image" content="https://evanmeek.github.io/2019/05/11/C-内存四区之代码区与全局区/代码区示意图.png">
 
 
 
@@ -405,7 +410,11 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
+<<<<<<< HEAD
                 <time title="修改时间：2019-05-13 19:23:40" itemprop="dateModified" datetime="2019-05-13T19:23:40+08:00">2019-05-13</time>
+=======
+                <time title="修改时间：2019-05-14 23:31:10" itemprop="dateModified" datetime="2019-05-14T23:31:10+08:00">2019-05-14</time>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
               
             
           </span>
@@ -433,22 +442,20 @@
           
             
             
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/11/C-内存四区之代码区与全局区/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/05/11/C-内存四区之代码区与全局区/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
+          
+            <span id="/2019/05/11/C-内存四区之代码区与全局区/" class="leancloud_visitors" data-flag-title="C++内存四区之代码区与全局区">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -489,7 +496,7 @@
 <p>   存放CPU执行的机器指令</p>
 <p>   共享的，共享的目的是对于频繁被执行的程序，只需要在内存中有一份代码即可。</p>
 <p>   只读的，为了防止程序意外修改代码的指令，所以有了只读。</p>
-<p><img src="/2019/05/11/C-内存四区之代码区与全局区/C-内存四区之代码区/代码区示意图.png" alt="代码区示意图"></p>
+<p><img src="/2019/05/11/C-内存四区之代码区与全局区/代码区示意图.png" alt="代码区示意图"></p>
 <p>如上图所示，代码区主要分为两个部分，共享区是存放常备执行的代码，例如程序员所指定的内联函数，或编译器所生成的代码，这些数据在程序跑起来会一直保存在内存中,</p>
 <p>而只读部分是为了防止外部对程序内部的数据进行非法访问，举个栗子，你的程序设定买一个苹果需要1金币，但是某开发人员，通过某手段将此内存中的数据修改为-99999金币，那么就会造成数据非法修改。</p>
 <hr>
@@ -515,7 +522,11 @@
   <p><span>本文标题:</span><a href="/2019/05/11/C-内存四区之代码区与全局区/">C++内存四区之代码区与全局区</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年05月11日 - 20:05</p>
+<<<<<<< HEAD
   <p><span>最后更新:</span>2019年05月13日 - 19:05</p>
+=======
+  <p><span>最后更新:</span>2019年05月14日 - 23:05</p>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
   <p><span>原始链接:</span><a href="/2019/05/11/C-内存四区之代码区与全局区/" title="C++内存四区之代码区与全局区">https://evanmeek.github.io/2019/05/11/C-内存四区之代码区与全局区/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/05/11/C-内存四区之代码区与全局区/" aria-label="复制成功！"></i></span>
   </p>
@@ -633,14 +644,6 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
-        <div id="gitment-container" style="display: none"></div>
-      
-    </div>
-
-  
 
 
         </div>
@@ -688,7 +691,11 @@
                 
                   <a href="/archives/">
                 
+<<<<<<< HEAD
                     <span class="site-state-item-count">15</span>
+=======
+                    <span class="site-state-item-count">16</span>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -713,7 +720,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -758,7 +769,13 @@
                     
                       
                     
+<<<<<<< HEAD
                     <span class="site-state-item-count">14</span>
+=======
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -992,52 +1009,79 @@
 
 
   
-    <!-- LOCAL: You can save these files to your site and update links -->
+
 
   
-  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
-<!-- END LOCAL -->
 
-<script>
-  function renderGitment() {
-    var gitment = new Gitmint({
-      id: window.location.pathname,
-      owner: 'EvanMeek',
-      repo: 'https://github.com/EvanMeek/blog-comment',
-      
-        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-      
-      oauth: {
-      
-      
-        client_secret: '1a727d90afcb278fd70719b0bcec9f3c022b8710',
-      
-        client_id: '3405053714ca6dfd33e1'
-      }
-    });
-    gitment.render('gitment-container');
-  }
+
 
   
-    function showGitment() {
-      document.getElementById('gitment-display-button').style.display = 'none';
-      document.getElementById('gitment-container').style.display = 'block';
-      renderGitment();
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
-  
-</script>
+    
 
-  
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz',
+                'X-LC-Key': 'd9FgNU9rPxvw0QhusRpgOfW3',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
 
 
-  
-
-
-
-
-  
 
   
 

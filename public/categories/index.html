@@ -109,8 +109,6 @@
 <meta name="twitter:description" content="LIFE IS FANTASTIC!">
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="我不会编程的博客" type="application/atom+xml">
 
@@ -397,10 +395,22 @@
                   
                 
               
-              目前共计 4 个分类
+                
+                  
+                
+              
+                
+                  
+                
+              
+              目前共计 6 个分类
             </div>
             <div class="category-all">
+<<<<<<< HEAD
               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾日记/">折腾日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾记录/">折腾记录</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/转载/">转载</a><span class="category-list-count">1</span></li></ul>
+=======
+              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/个人感想/">个人感想</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/分享/">分享</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾日记/">折腾日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/折腾记录/">折腾记录</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/转载/">转载</a><span class="category-list-count">1</span></li></ul>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
             </div>
           </div>
         
@@ -421,14 +431,6 @@
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
-        <div id="gitment-container" style="display: none"></div>
-      
-    </div>
 
   
 
@@ -469,7 +471,11 @@
                 
                   <a href="/archives/">
                 
+<<<<<<< HEAD
                     <span class="site-state-item-count">15</span>
+=======
+                    <span class="site-state-item-count">16</span>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -494,7 +500,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -539,7 +549,13 @@
                     
                       
                     
+<<<<<<< HEAD
                     <span class="site-state-item-count">14</span>
+=======
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -756,52 +772,82 @@
 
 
   
-    <!-- LOCAL: You can save these files to your site and update links -->
+
 
   
-  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
-<!-- END LOCAL -->
 
-<script>
-  function renderGitment() {
-    var gitment = new Gitmint({
-      id: window.location.pathname,
-      owner: 'EvanMeek',
-      repo: 'https://github.com/EvanMeek/blog-comment',
-      
-        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-      
-      oauth: {
-      
-      
-        client_secret: '1a727d90afcb278fd70719b0bcec9f3c022b8710',
-      
-        client_id: '3405053714ca6dfd33e1'
-      }
-    });
-    gitment.render('gitment-container');
-  }
+
 
   
-    function showGitment() {
-      document.getElementById('gitment-display-button').style.display = 'none';
-      document.getElementById('gitment-container').style.display = 'block';
-      renderGitment();
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
-  
-</script>
+    
 
-  
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz',
+                'X-LC-Key': 'd9FgNU9rPxvw0QhusRpgOfW3',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
 
 
-  
-
-
-
-
-  
 
   
 

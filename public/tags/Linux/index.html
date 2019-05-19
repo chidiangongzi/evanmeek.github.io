@@ -366,17 +366,54 @@
 
       <h2 class="post-title">
         
+<<<<<<< HEAD
           <a class="post-title-link" href="/2019/05/19/解决KDE下部分应用不能使用fctix中文输入法的问题/" itemprop="url">
             
               <span itemprop="name">解决KDE下部分应用不能使用fctix中文输入法的问题</span>
+=======
+          <a class="post-title-link" href="/2019/05/16/ManjaroLinuxTG讨论群组/" itemprop="url">
+            
+              <span itemprop="name">ManjaroLinuxTG讨论群组</span>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
             
           </a>
         
       </h2>
 
       <div class="post-meta">
+<<<<<<< HEAD
         <time class="post-time" itemprop="dateCreated" datetime="2019-05-19T15:56:33+08:00" content="2019-05-19">
           05-19
+=======
+        <time class="post-time" itemprop="dateCreated" datetime="2019-05-16T00:01:58+08:00" content="2019-05-16">
+          05-16
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/05/15/我的Linux之路/" itemprop="url">
+            
+              <span itemprop="name">我的Linux之路</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-05-15T00:04:56+08:00" content="2019-05-15">
+          05-15
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
         </time>
       </div>
 
@@ -513,7 +550,11 @@
                 
                   <a href="/archives/">
                 
+<<<<<<< HEAD
                     <span class="site-state-item-count">15</span>
+=======
+                    <span class="site-state-item-count">16</span>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -538,7 +579,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -583,7 +628,13 @@
                     
                       
                     
+<<<<<<< HEAD
                     <span class="site-state-item-count">14</span>
+=======
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+>>>>>>> ccd0041ae8e277d5704a4ecc6cc01b38384f460c
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -802,6 +853,74 @@
 
 
   
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz',
+                'X-LC-Key': 'd9FgNU9rPxvw0QhusRpgOfW3',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
 
   
 

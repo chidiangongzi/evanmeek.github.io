@@ -14,7 +14,7 @@ tags:
 **本篇文章使用C++```fstream```头文件提供的库函数进行读写操作**
 
 
-> 请引入#include \<fstream>进行下面的操作。
+> 请引入#include \<fstream\>进行下面的操作。
 
 # **写入**
 
@@ -90,6 +90,53 @@ int main(){
 
 ## **以二进制文件写入**
 
+
+以二进制文件方式写入，C++提供了`write()`库函数,它的函数原型是:
+
+> `write(const _CharT* __s, streamsize __n);`
+
+其要求地一个参数为字符型指针，第二个参数为最大写入字符数大小。
+
+~~~C++
+class Student {
+private:
+    char name[64];
+    int age;
+public:
+    Student(char name[64], int age) {
+        for (int i = 0; i < sizeof(name); ++i)
+            this->name[i] = name[i];
+        this->age = age;
+    }
+};`
+/**
+ * 写入二进制文件
+ * @param path 
+ */
+void writeFileByBinary(string path) {
+    //创建输出流对象，并且指定路径和文件打开方式
+    ofstream ofs(path, ios::out | ios::binary);
+    Student *student = new Student("张三", 18);
+
+    //写入文件
+    ofs.write((const char *) student, sizeof(Student));
+
+    ofs.close();
+
+    delete (student);
+}
+int main(){
+    writeFileByBinary("student.bin");
+}
+~~~
+
+这里我们将类成员属性的值以二进制的方式写入进一个文件内。
+
+最终文件内的内容人类是看不大懂的。
+
+![二进制写](C-读写文件/二进制文件.png)
+
+**注意:以二进制方式写入文件,那么需要以二进制的方式读取文件，不然读出的数据将是乱码.**
 
 # **读取**
 
@@ -219,8 +266,44 @@ void readFile01(string path) {
 
 这种逐词读取的方式是`读取对象`通过`右移运算符`把读取的数据存入容器之中，但是是以空格区分每个词汇。
 
+## **以二进制的方式读取**
+
+前面我们使用了二进制的方式写入文件，那么被写入的文件就会变成二进制文件，这种文件需要使用二进制读取才能将内容正确的读取，下面看一个简单的例子。
 
 
+~~~C++
+/**
+ * 以二进制的方式读取文件
+ * @param path 路径
+ */
+void readFileByBinary(string path) {
+    //创建输入流对象，并且指定路径和文件打开方式
+    ifstream ifs(path, ios::in | ios::binary);
+    char * c = new char[64];
+    ifs.read(c, sizeof(c));
+    cout<<c<<endl;
+}
+int main(){
+    readFileByBinary("Student.smi");
+}
+~~~
 
+输出结果:
 
+~~~
+张三
 
+Process finished with exit code 0
+~~~
+
+这里我们将`Student.smi`这个文件用二进制的方式读取，那么就能正确的将文件内容获取，但如果我们以二进制的方式读取一个文本文件，将会出现一些我们不想要的结果。
+
+# **总结**
+
+读取文件创建`ifstream`对象,写入文件创建`ofstream`对象，`fstream`对象既可以读又可以写。
+
+操作文件得先`打开文件`
+
+操作文件完毕得`关闭文件`
+
+二进制文件读取需要读取二进制格式的文件

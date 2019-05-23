@@ -1859,11 +1859,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-<<<<<<< HEAD
-  background: #fff2cb;
-=======
-  background: #f9e820;
->>>>>>> 68f95dcc370a133db120f36549670d4c5d5738e3
+  background: #8ac203;
 }
 .feed-link,
 .chat {

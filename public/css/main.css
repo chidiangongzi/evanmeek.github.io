@@ -1859,7 +1859,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #53ffd6;
+  background: #ffd64a;
 }
 .feed-link,
 .chat {
@@ -3099,17 +3099,5 @@ ul.breadcrumb li+li:last-child {
   }
   .pagination {
     margin: 8px 0 0;
-  }
-}
-@media screen and (min-width: 1200px) {
-  body {
-    background-image: url("/images/img.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: 50% 50%;
-    background-size: cover;
-  }
-  #footer a {
-    color: #eee;
   }
 }

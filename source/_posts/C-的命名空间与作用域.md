@@ -361,7 +361,45 @@ int main() {
 Process finished with exit code 0
 ~~~
 
-
 今天就先写到这里，继续学习了.
+
+# **命名空间域**
+
+## **全局域**
+
+~~~C++
+//全局作用域下的varA
+int varA=100;
+void foo1(){
+    varA++;
+}
+void foo2(){
+    int varA=200;
+    ::varA++;
+    //输出内部作用域的varA
+    cout<<varA<<endl;
+    //输出全局作用域的varA
+    cout<<::varA<<endl;
+}
+int main() {
+    foo1();
+    foo2();
+    return 0;
+}
+~~~
+
+输出结果
+
+~~~
+200
+102
+
+Process finished with exit code 0
+~~~
+
+最外层的varA为全局作用域的变量，当内部作用域出现相同的变量名时，那么外层的变量将会被隐藏。
+
+我们使用域操作符"::"来显式的指定作用域。
+
 
 

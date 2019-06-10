@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Learn-Qt5-信号槽]]></title>
+    <url>%2F2019%2F06%2F10%2FLearn-Qt5-%E4%BF%A1%E5%8F%B7%E6%A7%BD%2F</url>
+    <content type="text"><![CDATA[信号槽是Qt的一个很重要的特性，掌握信号槽是学好Qt的必要条件之一. 信号槽，我们可以理解为监听模式或者是观察者模式，当Qt的某个事件发生后，那么它就会发出一个信号，例如一个按钮(button)被点击(clicked)，那么它会发出一个信号. 但是这种信号是毫无目的的，但是如果我们使用连接(connect)函数，那么就可以使用由我们定义的函数(槽slot)来处理这个信号． 简而言之则是，当某个信号发出，被连接的槽函数则会被回调，这就是观察者模式；当这个信号有来连接的槽函数，那么某个操作则会被触发． 下面看代码: 123456789101112#include &lt;QApplication&gt;#include &lt;QDebug&gt;#include &lt;QPushButton&gt;int main(int argc, char *argv[]) &#123; QApplication a(argc, argv); QPushButton button("Quit"); QObject::connect(&amp;button, &amp;QPushButton::clicked, &amp;QApplication::quit); button.show(); return a.exec();&#125; 编译运行后，我们将会看到一个显示文本为Quit的Button，当我们点击它则会退出这个应用程序． 下面我们分析一下QObject::connect这个函数. 首先它拥有以下几种重载 123456789101112131415161718QMetaObject::Connection connect(const QObject *, const char *, const QObject *, const char *, Qt::ConnectionType);QMetaObject::Connection connect(const QObject *, const QMetaMethod &amp;, const QObject *, const QMetaMethod &amp;, Qt::ConnectionType);QMetaObject::Connection connect(const QObject *, const char *, const char *, Qt::ConnectionType) const;QMetaObject::Connection connect(const QObject *, PointerToMemberFunction, const QObject *, PointerToMemberFunction, Qt::ConnectionType)QMetaObject::Connection connect(const QObject *, PointerToMemberFunction, 每种重载的返回值都是QMetaObject::Connection，这里暂时不讨论，先让我们看看connect函数最常用的用法: 12connect(sender,signal,receiver,slot); connect一般会接受前四个参数，第一个sender是发出信号的对象，第二个signal是sender发出的信号,第三个是接收信号的对象，第四个是receiver接收信号之后需要调用的参数． 简而言之，当sender对象发出signal信号由receiver对象接受再调用slot函数． 根据这个常用的形式，我们可以依次分析connect的重载．]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Qt5</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[2019年的规划]]></title>
     <url>%2F2019%2F06%2F09%2F2019%E5%B9%B4%E7%9A%84%E8%A7%84%E5%88%92%2F</url>
     <content type="text"><![CDATA[2019年已过半，今晚正好想整理下自己完成的2019年目标，顺便把自己2019年的目标分享在博客。 书籍《标准C++入门与编程实践》————————————————————已读完《Linux系统管理完全手册》————————————————————在读《Vim实用技巧》——————————————————————————————未读《计算机网络教程》———————————————————————————未读《Qt5编程入门》——————————————————————————————在读 想学但未学Adobe PhotoshopAdobe AfterEffectsAdobe Primiere 生活想多拿起相机拍拍美好的世界， 想找个女朋友， 想减肥， 想写操作系统….]]></content>

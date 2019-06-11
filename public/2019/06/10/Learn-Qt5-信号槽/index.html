@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="信号槽是Qt的一个很重要的特性，掌握信号槽是学好Qt的必要条件之一.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-10T02:28:12.831Z">
+<meta property="og:updated_time" content="2019-06-11T02:22:48.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learn-Qt5-信号槽">
 <meta name="twitter:description" content="信号槽是Qt的一个很重要的特性，掌握信号槽是学好Qt的必要条件之一.">
@@ -386,12 +386,24 @@
                 
               
 
-              <time title="创建时间：2019-06-10 08:49:35 / 修改时间：10:28:12" itemprop="dateCreated datePublished" datetime="2019-06-10T08:49:35+08:00">2019-06-10</time>
+              <time title="创建时间：2019-06-10 08:49:35" itemprop="dateCreated datePublished" datetime="2019-06-10T08:49:35+08:00">2019-06-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-11 10:22:48" itemprop="dateModified" datetime="2019-06-11T10:22:48+08:00">2019-06-11</time>
               
             
           </span>
@@ -464,12 +476,41 @@
 <p>编译运行后，我们将会看到一个显示文本为Quit的Button，当我们点击它则会退出这个应用程序．</p>
 <p>下面我们分析一下QObject::connect这个函数.</p>
 <p>首先它拥有以下几种重载</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> QObject *, <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span></span>;</span><br><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, <span class="keyword">const</span> QMetaMethod &amp;,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> QObject *, <span class="keyword">const</span> QMetaMethod &amp;,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span></span>;</span><br><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, PointerToMemberFunction,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> QObject *, PointerToMemberFunction,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line">QMetaObject::Connection connect(const QObject *, PointerToMemberFunction,</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> QObject *, <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span></span>;</span><br><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, <span class="keyword">const</span> QMetaMethod &amp;,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> QObject *, <span class="keyword">const</span> QMetaMethod &amp;,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span></span>;</span><br><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> <span class="keyword">char</span> *,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">QMetaObject::<span class="function">Connection <span class="title">connect</span><span class="params">(<span class="keyword">const</span> QObject *, PointerToMemberFunction,</span></span></span><br><span class="line"><span class="function"><span class="params">                                <span class="keyword">const</span> QObject *, PointerToMemberFunction,</span></span></span><br><span class="line"><span class="function"><span class="params">                                Qt::ConnectionType)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line">QMetaObject::Connection connect(const QObject *, PointerToMemberFunction,Functor);</span><br></pre></td></tr></table></figure>
 <p>每种重载的返回值都是QMetaObject::Connection，这里暂时不讨论，先让我们看看connect函数最常用的用法:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">connect(sender,signal,receiver,slot);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(sender,signal,receiver,slot);</span><br></pre></td></tr></table></figure>
 <p>connect一般会接受前四个参数，第一个sender是发出信号的对象，第二个signal是sender发出的信号,第三个是接收信号的对象，第四个是receiver接收信号之后需要调用的参数．</p>
 <p>简而言之，当sender对象发出signal信号由receiver对象接受再调用slot函数．</p>
 <p>根据这个常用的形式，我们可以依次分析connect的重载．</p>
+<ul>
+<li><p>第一种</p>
+<blockquote>
+<p>sender类型为常量QObject指针，signal为常量字符指针，receiver为常量Object指针，slot为常量字符指针，signal和slot都被作为字符串进行处理．</p>
+</blockquote>
+</li>
+<li><p>第二种</p>
+<blockquote>
+<p>sender和receiver仍为常量Object指针，然而signal和slot则为QMetathod引用，由此我们可以对signal和slot进行比较</p>
+</blockquote>
+</li>
+<li><p>第三种</p>
+<blockquote>
+<p>sender仍为const Object<em>，而signal和slot则是const char</em>，这里的reveiver被省略了，它由this指针代替.</p>
+</blockquote>
+</li>
+<li><p>第四种</p>
+<blockquote>
+<p>sender和receiver仍为const Object *，而signal和slot则为PointerToMemberFunction，看其名知其意，PointerToMemberFunction则是一个指向成员函数的指针．</p>
+</blockquote>
+</li>
+<li><p>第五种</p>
+<blockquote>
+<p>注意最后的Functor参数，它可以接收，static函数，全局函数以及Lambda表达式.</p>
+</blockquote>
+</li>
+</ul>
+<p>经过我们的分析，可以看出，connect()函数的参数里，sender和receiver没有什么区别，都是QObject指针，主要只有signal和slot的形式区别．</p>
+<p>信号槽要求信号和槽的参数一致.一致也就是说，参数类型一致．如果不一致，只有槽函数的参数比信号的少的情况才允许，即使是这样，槽函数的参数列表的顺序也必须和信号参数一致．这是因为，你可以使槽函数忽略信号传的参数，但是不能说信号没有这个数据．</p>
 
       
     </div>
@@ -492,7 +533,7 @@
   <p><span>本文标题:</span><a href="/2019/06/10/Learn-Qt5-信号槽/">Learn-Qt5-信号槽</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月10日 - 08:06</p>
-  <p><span>最后更新:</span>2019年06月10日 - 10:06</p>
+  <p><span>最后更新:</span>2019年06月11日 - 10:06</p>
   <p><span>原始链接:</span><a href="/2019/06/10/Learn-Qt5-信号槽/" title="Learn-Qt5-信号槽">https://evanmeek.github.io/2019/06/10/Learn-Qt5-信号槽/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/10/Learn-Qt5-信号槽/" aria-label="复制成功！"></i></span>
   </p>

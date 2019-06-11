@@ -63,16 +63,14 @@ QMetaObject::Connection connect(const QObject *, PointerToMemberFunction,
                                 const QObject *, PointerToMemberFunction,
                                 Qt::ConnectionType)
 
-QMetaObject::Connection connect(const QObject *, PointerToMemberFunction,
-                          
+QMetaObject::Connection connect(const QObject *, PointerToMemberFunction,Functor);
+
 ~~~
 
 每种重载的返回值都是QMetaObject::Connection，这里暂时不讨论，先让我们看看connect函数最常用的用法:
 
 ~~~C++
-
 connect(sender,signal,receiver,slot);
-
 ~~~
 
 connect一般会接受前四个参数，第一个sender是发出信号的对象，第二个signal是sender发出的信号,第三个是接收信号的对象，第四个是receiver接收信号之后需要调用的参数．
@@ -81,4 +79,26 @@ connect一般会接受前四个参数，第一个sender是发出信号的对象�
 
 根据这个常用的形式，我们可以依次分析connect的重载．
 
+- 第一种
 
+  > sender类型为常量QObject指针，signal为常量字符指针，receiver为常量Object指针，slot为常量字符指针，signal和slot都被作为字符串进行处理．
+
+- 第二种
+
+  > sender和receiver仍为常量Object指针，然而signal和slot则为QMetathod引用，由此我们可以对signal和slot进行比较
+
+- 第三种
+
+  > sender仍为const Object*，而signal和slot则是const char*，这里的reveiver被省略了，它由this指针代替.
+
+- 第四种
+
+  > sender和receiver仍为const Object *，而signal和slot则为PointerToMemberFunction，看其名知其意，PointerToMemberFunction则是一个指向成员函数的指针．
+
+- 第五种
+
+  > 注意最后的Functor参数，它可以接收，static函数，全局函数以及Lambda表达式.
+
+经过我们的分析，可以看出，connect()函数的参数里，sender和receiver没有什么区别，都是QObject指针，主要只有signal和slot的形式区别．
+
+信号槽要求信号和槽的参数一致.一致也就是说，参数类型一致．如果不一致，只有槽函数的参数比信号的少的情况才允许，即使是这样，槽函数的参数列表的顺序也必须和信号参数一致．这是因为，你可以使槽函数忽略信号传的参数，但是不能说信号没有这个数据．

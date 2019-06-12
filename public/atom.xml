@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-06-11T06:32:00.589Z</updated>
+  <updated>2019-06-12T13:08:15.043Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Learn-Qt5-Qt模块简介</title>
+    <link href="https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt%E6%A8%A1%E5%9D%97%E7%AE%80%E4%BB%8B/"/>
+    <id>https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt模块简介/</id>
+    <published>2019-06-12T12:30:42.000Z</published>
+    <updated>2019-06-12T13:08:15.043Z</updated>
+    
+    <content type="html"><![CDATA[<p>Qt5分为两个大的模块，分别是<code>Qt Essentials</code>以及<code>Qt Add-Ons</code>以及一些额外的模块和工具．</p><a id="more"></a><h1 id="Qt-Essentials"><a href="#Qt-Essentials" class="headerlink" title="Qt Essentials"></a>Qt Essentials</h1><p><code>Qt Essentials</code>是Qt的基础，它可以在所有平台上运行，下面列出了Qt Essentials模块的组件．</p><table><thead><tr><th style="text-align:center">模块</th><th style="text-align:center">简述</th></tr></thead><tbody><tr><td style="text-align:center">Qt Core</td><td style="text-align:center">其他非图形类模块所使用的核心,</td></tr><tr><td style="text-align:center">Qt GUI</td><td style="text-align:center">图形界面组件的基类，包括了OpenGL.</td></tr><tr><td style="text-align:center">Qt Multimedia</td><td style="text-align:center">音频，视频，广播和摄像头相关功能.</td></tr><tr><td style="text-align:center">Qt Network</td><td style="text-align:center">提供跨平台的网络能力．</td></tr><tr><td style="text-align:center">Qt Qml</td><td style="text-align:center">提供QML使用的C++API.</td></tr><tr><td style="text-align:center">Qt Quick</td><td style="text-align:center">允许在Qt/C++程序中嵌入 Qt Quick</td></tr><tr><td style="text-align:center">Qt SQL</td><td style="text-align:center">允许使用SQL访问数据库</td></tr><tr><td style="text-align:center">Qt Test</td><td style="text-align:center">提供Qt程序的单元测试能力｜</td></tr><tr><td style="text-align:center">Qt Webkit</td><td style="text-align:center">基于WebKit2的实现以及一套全新的QML API</td></tr></tbody></table><h1 id="Qt-Add-Ons"><a href="#Qt-Add-Ons" class="headerlink" title="Qt Add-Ons"></a>Qt Add-Ons</h1><p><code>Qt Add-Ons</code>是Qt的扩展模块，建立在基础模块之上，在能运行Qt的平台之上可以酌情引人．</p><table><thead><tr><th style="text-align:center">模块</th><th style="text-align:center">简述</th></tr></thead><tbody><tr><td style="text-align:center">Qt 3D</td><td style="text-align:center">提供声明式语法，在Qt程序中可以简单地嵌入3D图像．｜</td></tr><tr><td style="text-align:center">Qt Bluetooth</td><td style="text-align:center">提供用于访问蓝牙无线设备的C++和QML API.</td></tr><tr><td style="text-align:center">Qt Contacts</td><td style="text-align:center">用于访问地址薄或联系人数据库的C++和QML API.</td></tr><tr><td style="text-align:center">Qt D-Bus</td><td style="text-align:center">Unix平台独有的类库，用于使用D-Bus协议进与进程间进行交互</td></tr><tr><td style="text-align:center">Qt Graphical Effects</td><td style="text-align:center">提供一系列用于实现图像特效的类</td></tr><tr><td style="text-align:center">Qt Image Formats</td><td style="text-align:center">支持图片格式的一系列插件</td></tr><tr><td style="text-align:center">Qt JS Backend</td><td style="text-align:center">为V8 JavaScript引擎的移植，仅供QtQML模块内部使用</td></tr><tr><td style="text-align:center">Qt Location</td><td style="text-align:center">方便在Qt应用程序中使用OpenGL，保留于Qt4</td></tr><tr><td style="text-align:center">Qt Organize</td><td style="text-align:center">使用QML和C++API访问组织事件｜</td></tr><tr><td style="text-align:center">Qt Print Support</td><td style="text-align:center">提供对打印功能的支持｜</td></tr><tr><td style="text-align:center">Qt Publish and Subscribe</td><td style="text-align:center">为应用程序提供对项目值的读取，导航，订阅等功能.</td></tr><tr><td style="text-align:center">Qt Quick 1</td><td style="text-align:center">从Qt4移植而来的Qt Declarative模块，用于提供与Qt4兼容</td></tr><tr><td style="text-align:center">Qt Script</td><td style="text-align:center">提供脚本化机制，为了与Qt5兼容</td></tr><tr><td style="text-align:center">Qt Script Tools</td><td style="text-align:center">为了使用Qt Script模块的应用程序提供的额外的组件</td></tr><tr><td style="text-align:center">Qt Sensors</td><td style="text-align:center">提供访问各类传感器的QML和C++接口.</td></tr><tr><td style="text-align:center">Qt Service Framework</td><td style="text-align:center">提供客户端发现其他设备的服务.</td></tr><tr><td style="text-align:center">Qt SVF</td><td style="text-align:center">提供渲染和创建SVG文件的功能．</td></tr><tr><td style="text-align:center">Qt System Info</td><td style="text-align:center">提供一套API，用于发现系统相关的信息.</td></tr><tr><td style="text-align:center">Qt Tools</td><td style="text-align:center">提供了Qt开发的方便工具,例如Qt CLucene,Qt Designer,Qt Help以及Qt UI Tools.</td></tr><tr><td style="text-align:center">Qt Versit</td><td style="text-align:center">提供了对Versit API的支持．</td></tr><tr><td style="text-align:center">Qt Wayland</td><td style="text-align:center">仅用于Linux平台，用户替代QWS</td></tr><tr><td style="text-align:center">Qt WebKit</td><td style="text-align:center">从Qt4 一直来的基于WebKit1和QWidget的API</td></tr><tr><td style="text-align:center">Qt Widgets</td><td style="text-align:center">使用C++扩展的Qt Gui模块，提供了一些界面组建，比如按钮，单选框</td></tr><tr><td style="text-align:center">Qt XML</td><td style="text-align:center">SAX和DOM的C++实现．此模块已凉凉，更换为QXmlStreamReader/Writer</td></tr><tr><td style="text-align:center">Qt XML Patterns</td><td style="text-align:center">提供对XPath,XQuery,XSLT和XML Schema验证的支持．</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Qt5分为两个大的模块，分别是&lt;code&gt;Qt Essentials&lt;/code&gt;以及&lt;code&gt;Qt Add-Ons&lt;/code&gt;以及一些额外的模块和工具．&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://evanmeek.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Qt" scheme="https://evanmeek.github.io/tags/Qt/"/>
+    
+      <category term="C_++" scheme="https://evanmeek.github.io/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Learn-Qt5-自定义信号槽</title>
@@ -465,28 +489,6 @@
       <category term="Linux" scheme="https://evanmeek.github.io/tags/Linux/"/>
     
       <category term="软件折腾" scheme="https://evanmeek.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8A%98%E8%85%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux中的解压与压缩</title>
-    <link href="https://evanmeek.github.io/2019/05/08/Linux%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%8E%8B%E4%B8%8E%E5%8E%8B%E7%BC%A9/"/>
-    <id>https://evanmeek.github.io/2019/05/08/Linux中的解压与压缩/</id>
-    <published>2019-05-08T12:54:19.000Z</published>
-    <updated>2019-05-09T15:13:55.046Z</updated>
-    
-    <content type="html"><![CDATA[<p>当我们需要传输数据时，如果是直接对文件进行传输，若数据较大，则传输时间会很长。我们可以将文件进行压缩，减少文件的体积，从而减少传输耗时。</p><a id="more"></a><p>在Windows下我们通常使用rar或zip进行压缩解压的操作，但是像rar这种软件实际是收费的，所以在Linux下使用有些不太实际。</p><p>Linux下有三种主流常用的解压压缩软件可选:</p><ul><li><p>gzip (GNUzip)</p></li><li><p>bz2 (bzip2)</p></li><li><p>xz (xzutils)</p></li></ul><p>三个软件的参数相同，只是命令不同:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> gzip [参数] &lt;文件名&gt;</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> bzip2 [参数] &lt;文件名&gt;</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> xz [参数] &lt;文件名&gt;</span><br></pre></td></tr></table></figure><blockquote><p>可选参数</p></blockquote><table><thead><tr><th></th><th style="text-align:center">参数名</th><th>作用</th></tr></thead><tbody><tr><td></td><td style="text-align:center">-d</td><td>解压</td><td></td></tr><tr><td></td><td style="text-align:center">-k</td><td>压缩时不删除源文件</td><td></td></tr><tr><td></td><td style="text-align:center">-r</td><td>递归查找目录下的文件，并且压缩</td><td></td></tr><tr><td></td><td style="text-align:center">-v</td><td>显示详细信息</td><td></td></tr><tr><td></td><td style="text-align:center">-t</td><td>测试压缩包是否完整</td><td></td></tr><tr><td></td><td style="text-align:center">-l</td><td>显示压缩包信息</td><td></td></tr><tr><td></td><td style="text-align:center">-c</td><td>写入标准输出，保持原始文件不变</td><td></td></tr><tr><td></td><td style="text-align:center">-1~9</td><td>压缩等级</td><td></td></tr></tbody></table><p><strong>示例:</strong></p><blockquote><p>压缩test.txt，并删除.</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> gzip test.txt</span><br></pre></td></tr></table></figure><blockquote><p>压缩test.txt，不删除原文件，并且显示信息.</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> gzip -vk test.txt</span><br></pre></td></tr></table></figure><blockquote><p>以最高压缩test.txt和test2.txt，不删除原文件，显示信息，并把压缩文件写为test.gz</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> gzip -9cvk test.txt test2.txt &gt; test.gz</span><br></pre></td></tr></table></figure><blockquote><p>解压test.gz</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> gzip -d test.gz</span><br></pre></td></tr></table></figure><hr><p>介绍完上面的几种压缩软件，下面介绍一个打包软件<strong>tar</strong></p><p>我们常常可以看见**.tar.xz这种文件，它就是用tar打包，再用xz进行压缩的文件了，下面直接看示例你就会了。</p><h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><p>这里注意第一个参数，它们分别代表使用什么压缩软件。</p><blockquote><p>bz2<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tar -jcvf test.tar.bz test/</span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>xz<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tar -Jcvf test.tar.xz test/</span><br></pre></td></tr></table></figure></p></blockquote><blockquote><p>gzip<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tar -zcvf test.tar.gz test/</span><br></pre></td></tr></table></figure></p></blockquote><h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><p>只需要看文件名的后缀，然后把参数c改为x即可.x代表解压.</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tar -Jxvf test.tar.xz test/</span><br></pre></td></tr></table></figure><hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;当我们需要传输数据时，如果是直接对文件进行传输，若数据较大，则传输时间会很长。我们可以将文件进行压缩，减少文件的体积，从而减少传输耗时。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://evanmeek.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Linux" scheme="https://evanmeek.github.io/tags/Linux/"/>
     
   </entry>
   

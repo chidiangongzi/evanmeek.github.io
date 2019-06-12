@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt%E6%A8%A1%E5%9D%97%E7%AE%80%E4%BB%8B/</loc>
+    
+    <lastmod>2019-06-12T13:08:15.043Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://evanmeek.github.io/2019/06/11/Learn-Qt5-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%A1%E5%8F%B7%E6%A7%BD/</loc>
     
     <lastmod>2019-06-11T06:32:00.589Z</lastmod>
@@ -156,13 +163,6 @@
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/2019/04/23/ManjaroLinux%E7%9A%84%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</loc>
-    
-    <lastmod>2019-05-09T15:13:55.046Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://evanmeek.github.io/2019/04/30/hexo-next%E6%8F%92%E5%85%A5%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90/</loc>
     
     <lastmod>2019-05-09T15:13:55.046Z</lastmod>
@@ -177,6 +177,20 @@
   </url>
   
   <url>
+    <loc>https://evanmeek.github.io/2019/04/23/ManjaroLinux%E7%9A%84%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</loc>
+    
+    <lastmod>2019-05-09T15:13:55.046Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://evanmeek.github.io/2019/04/24/C-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/</loc>
+    
+    <lastmod>2019-05-09T15:13:55.046Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://evanmeek.github.io/2019/04/29/%E5%A6%82%E4%BD%95%E7%94%A8hexo-github-pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2019-05-09T15:13:55.046Z</lastmod>
@@ -185,13 +199,6 @@
   
   <url>
     <loc>https://evanmeek.github.io/2019/05/09/%E7%BB%88%E7%AB%AF%E5%A4%9A%E7%AA%97%E5%8F%A3%E7%A5%9E%E5%99%A8%E2%80%94%E2%80%94Screen/</loc>
-    
-    <lastmod>2019-05-09T15:13:55.046Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://evanmeek.github.io/2019/04/24/C-%E5%87%BD%E6%95%B0%E6%8E%A2%E5%B9%BD/</loc>
     
     <lastmod>2019-05-09T15:13:55.046Z</lastmod>
     

@@ -162,8 +162,8 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  Linux: /linux || linux
-  Qt5: /qt5 || qt
+  Linux: /Linux || linux
+  Qt5: /Qt5 || qt5
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat

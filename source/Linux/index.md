@@ -9,7 +9,7 @@ date: 2019-06-12 21:22:22
 
 # 目录索引
 
-  - [第1章-linux简介]()
+  - [第1章-Linux简介]()
 
   - [第2章-桌面]()
 
@@ -41,13 +41,13 @@ date: 2019-06-12 21:22:22
 
 # 各章简介
 
-1. linux简介
+1. Linux简介
 
-  > 介绍了自由软件模型，提供了unix和linux系统的基本历史，同时也介绍了linux的特性并与其他操作系统进行了比较，然后介绍了系统登录，在命令行以及图形桌面环境下使用linux.
+  > 介绍了自由软件模型，提供了unix和Linux系统的基本历史，同时也介绍了Linux的特性并与其他操作系统进行了比较，然后介绍了系统登录，在命令行以及图形桌面环境下使用Linux.
   
 2. 桌面
 
-  > 介绍了如何使用gnome以及kde桌面界面来使用linux文件和工具。并介绍了基本的桌面配置以及常用的图形界面的工具，比如文件管理器，文本编辑器以及流行的应用程序。
+  > 介绍了如何使用gnome以及kde桌面界面来使用Linux文件和工具。并介绍了基本的桌面配置以及常用的图形界面的工具，比如文件管理器，文本编辑器以及流行的应用程序。
 
 3. 使用shell程序
 
@@ -63,19 +63,19 @@ date: 2019-06-12 21:22:22
 
 6. 进程管理
 
-  > 定义了内核级别和shell级别的linux进程，并介绍了如何使用命令行或者图形界面工具来浏览以及控制这些进程。本章中也使用了cron和at来进行进程调度。
+  > 定义了内核级别和shell级别的Linux进程，并介绍了如何使用命令行或者图形界面工具来浏览以及控制这些进程。本章中也使用了cron和at来进行进程调度。
 
 7. 使用网络客户端程序
 
-  > 讨论了如何利用多种不同的连网工具远程使用linux系统。这些工具包括ssh，r-utilities以及telnet。同时也介绍了比如rsync和ftp这样的数据服务。在介绍上述各种网络客户端操作时也会讲述一些基本的网络诊断工具的使用。
+  > 讨论了如何利用多种不同的连网工具远程使用Linux系统。这些工具包括ssh，r-utilities以及telnet。同时也介绍了比如rsync和ftp这样的数据服务。在介绍上述各种网络客户端操作时也会讲述一些基本的网络诊断工具的使用。
   
-8. 安装linux
+8. 安装Linux
   
-  > 首先回顾了linux的硬件要求以及如何为linux操作系统配置硬盘空间，然后逐步的描述了安装过程，其中包括如何选择安装过程中显示的各个选项以及如何在安装结束后启动和使用linux系统。
+  > 首先回顾了Linux的硬件要求以及如何为Linux操作系统配置硬盘空间，然后逐步的描述了安装过程，其中包括如何选择安装过程中显示的各个选项以及如何在安装结束后启动和使用Linux系统。
   
 9. 理解系统初始化过程
 
-  > 解释如何启动标准的个人计算机以及启动时linux内核的工作原理。这一章讨论了引导程序如何载入linux内核，同时也讲述了init程序和所有linux系统进程初始化过程中的部分内容:重要的服务控制脚本。
+  > 解释如何启动标准的个人计算机以及启动时Linux内核的工作原理。这一章讨论了引导程序如何载入Linux内核，同时也讲述了init程序和所有Linux系统进程初始化过程中的部分内容:重要的服务控制脚本。
 
 10. 管理软件包和文件系统
 
@@ -99,21 +99,21 @@ date: 2019-06-12 21:22:22
 
 15. 高级主题与故障处理
 
-  > 讨论了一些读者在进一步学习linux时可能需要知道的专题：高级的图形界面设置（包括远程图形界面访问），系统安全基础，流行网络服务的简单配置，解决问题相关的提示和技巧。
+  > 讨论了一些读者在进一步学习Linux时可能需要知道的专题：高级的图形界面设置（包括远程图形界面访问），系统安全基础，流行网络服务的简单配置，解决问题相关的提示和技巧。
 
 - 附录a "red hat certified technician 目标"
 
   > 列出所有red hat software公司的rhct program的认证目标，同时列出本书中每个目标想对应的内容所在的章节和标题。
 
-- 附录b "linux professional institute level 1 认证目标" 
+- 附录b "Linux professional institute level 1 认证目标" 
 
-  > 列出了 linux professional institute(lpi)level icertification program的认证目标。
+  > 列出了 Linux professional institute(lpi)level icertification program的认证目标。
 
-- 附录c "sair/gnu linux certified adminstrator level 1 目标"
+- 附录c "sair/gnu Linux certified adminstrator level 1 目标"
   
   > 列出了sair/gnu lcalevel 1 certification program的认证目标。在这个附录中列出了所有四个考试所要求的目标。
   
-- 附录d "linux+认证目标"
+- 附录d "Linux+认证目标"
 
-  > 列出了所有comptialinux+认证的目标。
+  > 列出了所有comptiaLinux+认证的目标。
 

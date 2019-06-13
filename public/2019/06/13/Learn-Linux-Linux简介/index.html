@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本章了解Linux的产生，以及Linux与其他操作系统的异同。了解目前Linux的销售方式，清楚它在信息互联的地位，也会了解一些Linux的认证课程。 然后将了解Linux系统管理员的任务，所需技能（包括技术和非技术性的），最后将介绍如何登录系统并利用命令行和图形界面工具来查看Linux的文件系统。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn-Linux-Linux简介">
+<meta property="og:url" content="https://evanmeek.github.io/2019/06/13/Learn-Linux-Linux简介/index.html">
+<meta property="og:site_name" content="我不会编程的博客">
+<meta property="og:description" content="本章了解Linux的产生，以及Linux与其他操作系统的异同。了解目前Linux的销售方式，清楚它在信息互联的地位，也会了解一些Linux的认证课程。 然后将了解Linux系统管理员的任务，所需技能（包括技术和非技术性的），最后将介绍如何登录系统并利用命令行和图形界面工具来查看Linux的文件系统。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-13T13:49:32.330Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learn-Linux-Linux简介">
+<meta name="twitter:description" content="本章了解Linux的产生，以及Linux与其他操作系统的异同。了解目前Linux的销售方式，清楚它在信息互联的地位，也会了解一些Linux的认证课程。 然后将了解Linux系统管理员的任务，所需技能（包括技术和非技术性的），最后将介绍如何登录系统并利用命令行和图形界面工具来查看Linux的文件系统。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我不会编程的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://evanmeek.github.io/2019/06/13/Learn-Linux-Linux简介/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Learn-Linux-Linux简介 | 我不会编程的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我不会编程的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/关于我/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-linux">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/Linux" rel="section"><i class="menu-item-icon fa fa-fw fa-linux"></i> <br>Linux</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-qt5">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/Qt5" rel="section"><i class="menu-item-icon fa fa-fw fa-qt5"></i> <br>Qt5</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/EvanMeek" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://evanmeek.github.io/2019/06/13/Learn-Linux-Linux简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="EvanMeek">
+      <meta itemprop="description" content="LIFE IS FANTASTIC!">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/27056033?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我不会编程的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Learn-Linux-Linux简介
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-13 16:54:52 / 修改时间：21:49:32" itemprop="dateCreated datePublished" datetime="2019-06-13T16:54:52+08:00">2019-06-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux系列/" itemprop="url" rel="index"><span itemprop="name">Linux系列</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2019/06/13/Learn-Linux-Linux简介/" class="leancloud_visitors" data-flag-title="Learn-Linux-Linux简介">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本章了解Linux的产生，以及Linux与其他操作系统的异同。了解目前Linux的销售方式，清楚它在信息互联的地位，也会了解一些Linux的认证课程。</p>
+<p>然后将了解Linux系统管理员的任务，所需技能（包括技术和非技术性的），最后将介绍如何登录系统并利用命令行和图形界面工具来查看Linux的文件系统。</p>
+<a id="more"></a>
+<h1 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h1><h2 id="简要历史回顾"><a href="#简要历史回顾" class="headerlink" title="简要历史回顾"></a>简要历史回顾</h2><p>身为21世纪的人类，我们熟知Microsoft Windows(NT/XP/ME/2000)以及Apple公司的 Macintosh等操作系统。而对于某些用户，前面所提到的操作系统所提供的特性无法满足这批特殊用户的需求，所以Linux就应需而生了!</p>
+<h3 id="理解操作系统"><a href="#理解操作系统" class="headerlink" title="理解操作系统"></a>理解操作系统</h3><p><strong>硬连接</strong></p>
+<p>  硬连接(hard wired):提前制作好计算机的连线和其他部件，才能使得计算机执行特定的指令。</p>
+<p>  缺点:一台计算机一次只能完成一件任务，并且每次进行硬连接的提前准备工作也很麻烦。</p>
+<p>  随着计算机科学家对计算机的使用愈来愈复杂，使得计算机经过改进后具有以电子方式保存信息和修改信息的能力。</p>
+<p>  改进后计算机的优点:</p>
+<ul>
+<li><p>可以由设计师设计软件，软件(Software)是一系列控制计算机所执行任务的指令集合。合</p>
+</li>
+<li><p>和硬连接不同，软件可以在不用改变计算机原有连线设计的情况下进行修改。</p>
+<p>改进后的计算机因为可以制作软件，对于硬连接的计算机进步非常大。</p>
+</li>
+</ul>
+<p><strong>软件</strong></p>
+<p>  程序员们发现，如果创建一些可重用的软件，作为其他软件的核心功能，那么编写软件时将会更高效。例如从键盘读取按键信息，向屏幕输出字符等。</p>
+<p><strong>操作系统</strong></p>
+<p>  操作系统也是一种软件，用来帮助其他的程序控制计算机硬件并和用户进行交互，它基本包含了大多数程序用来控制计算机的核心功能。</p>
+<p>  优点:</p>
+<ul>
+<li><p>使得程序员更容易的编写应用程序</p>
+</li>
+<li><p>程序员只需集中精力处理和浏览应用程序的相关问题，例如Web浏览器，程序员只需要专注如何处理页面或是存储书签，而不必纠结如何将字符显示至屏幕。</p>
+<p>操作系统控制计算机上运行的各种应用程序，没有操作系统的允许，应用程序就无法执行。</p>
+</li>
+</ul>
+<p>用户与计算机交互的关系图如下:</p>
+<p>  用户—&gt;应用软件—&gt;操作系统—&gt;硬件</p>
+<h3 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h3><p>  大多数操作系统的共性:</p>
+<ul>
+<li><p>初始化计算机硬件，便于操作系统和其他程序可工作。</p>
+</li>
+<li><p>为使用操作系统的程序分配资源，例如内存。</p>
+</li>
+<li><p>跟踪同时运行的多个程序。</p>
+</li>
+<li><p>为使用系统设备的程序提供访问接口。</p>
+<p>大多数操作系统的组成:</p>
+</li>
+<li><p>内核(Kernel): 操作系统的核心，用来为众多应用程序分配系统资源。</p>
+</li>
+<li><p>设备驱动程序(Device Driver): 使内核能够访问硬件设备的一种软件。</p>
+</li>
+<li><p>shell: 以命令行的方式接受用户输入并处理，可以进行系统资源管理的一种软件。</p>
+</li>
+<li><p>工具如爱你教案(Utility Program): 管理硬件和操作系统特性的软件。侧重于管理计算机系统的软件。</p>
+</li>
+<li><p>图形用户界面(Graphical User Interface,GUI): 一种提供鼠标驱动接口，并且利用这种接口只需要使用鼠标点击图形界面即可完成对计算机进行操控的软件。</p>
+</li>
+</ul>
+<h3 id="UNIX操作系统"><a href="#UNIX操作系统" class="headerlink" title="UNIX操作系统"></a>UNIX操作系统</h3><p>  UNIX在20世纪70年代由<code>AT&amp;T</code>贝尔实验室的<a href="https://zh.wikipedia.org/wiki/%E8%82%AF%C2%B7%E6%B1%A4%E6%99%AE%E9%80%8A" target="_blank" rel="noopener">Ken Thompson</a>和<a href="https://zh.wikipedia.org/wiki/%E4%B8%B9%E5%B0%BC%E6%96%AF%C2%B7%E9%87%8C%E5%A5%87" target="_blank" rel="noopener">Dennis Ritchie</a>所编写的操作系统。</p>
+<p>  最初设计目的：使多用户可共享联网计算机。</p>
+<p>  小故事: Linux早期也可以说是UNIX的一个版本，但它因为自身特性和较低成本占据了UNIX系统的市场。</p>
+<p>  主流软件: UNIX上的主流图形界面被称为X Windows System，目前这套系统仍在使用，Linux系统同时也可以使用。</p>
+<h3 id="自由软件基金会和GNU项目"><a href="#自由软件基金会和GNU项目" class="headerlink" title="自由软件基金会和GNU项目"></a>自由软件基金会和GNU项目</h3><p>  <a href="https://zh.wikipedia.org/zh-hans/%E8%87%AA%E7%94%B1%E8%BD%AF%E4%BB%B6%E5%9F%BA%E9%87%91%E4%BC%9A" target="_blank" rel="noopener">自由软件基金会(Free Software Foundation,FSF)</a>: 由麻省理工学院的<a href="https://zh.wikipedia.org/wiki/%E7%90%86%E6%9F%A5%E5%BE%B7%C2%B7%E6%96%AF%E6%89%98%E6%9B%BC" target="_blank" rel="noopener">Richard Stallman</a>所创建，它的宗旨是用户可以完全自由地决定他们如何使用软件，而软件销售商不应该控制用户对软件的使用。他提出公司和个人可以通过提供服务和软件定制赚钱，但软件本身不应该限制在一种标准的商业许可协议下发行。</p>
+<p>  <a href="https://zh.wikipedia.org/zh/GNU" target="_blank" rel="noopener">GNU(GNU’s Not Unix)</a>: Stallman为了支持前面所提到的想法，与FSF的一些开发人员一起编写了可以运行在大多数版本的UNIX系统上的工具，并且在世界范围免费发行。</p>
+<p>  GNU项目最著名的产品之一是称为<a href="https://zh.wikipedia.org/wiki/GCC" target="_blank" rel="noopener">GCC</a>的C语言编译器(一种可以将C语言的源代码转换成计算机可执行代码的软件，gcc在世界被广泛使用，收到高度评价)。</p>
+<p>  <a href="https://zh.wikipedia.org/zh-hans/GNU%E9%80%9A%E7%94%A8%E5%85%AC%E5%85%B1%E8%AE%B8%E5%8F%AF%E8%AF%81" target="_blank" rel="noopener">GPL协议(General Public License)</a>: 一种许可协议，它与标准的商业许可协议有很大的区别.基本上是如下几点:</p>
+<ul>
+<li><p>开放软件的源代码</p>
+</li>
+<li><p>任何人可使用GPL协议的软件副本，并且可以对软件进行重新发布，并且可以收取费用，但重新发布的软件也必须遵循GPL协议。</p>
+<p>UNIX和Linux都是基于GPL协议发布的，如果是在这两个系统上编写的软件是不用遵循GPL协议的。</p>
+</li>
+</ul>
+<h3 id="Linux的产生"><a href="#Linux的产生" class="headerlink" title="Linux的产生"></a>Linux的产生</h3><p>  Linux由一名在芬兰的赫尔辛基大学的大学生<a href="https://zh.wikipedia.org/wiki/%E6%9E%97%E7%BA%B3%E6%96%AF%C2%B7%E6%89%98%E7%93%A6%E5%85%B9" target="_blank" rel="noopener">Linus Torvals</a>开发的，由于当时他买不起运行UNIX所需的计算机和昂贵的软件，他决定为他的计算机编写一个类UNIX的操作系统内核作为校园实践。</p>
+<p>  Linux并非由Torvals单独完成的，而是通过互联网使得世界各地的程序员共同开发。</p>
+<p>  Linux的读音，国内很多人是(里牛壳斯)发音，Torvals本人是(里纳壳斯)发音，这里有一段音频有兴趣的可以听听<a href="&quot;https://zh.wikipedia.org/wiki/File:Linus_pronounces_linux_(english\">Linus Torvals本人的发音音频</a>.oga”)，不同的地区都有不同的发音，并且Linux本身是GPL协议，自然是自由的，所以发音也应该是自由的。</p>
+<h3 id="激励自由软件开发者"><a href="#激励自由软件开发者" class="headerlink" title="激励自由软件开发者"></a>激励自由软件开发者</h3><h3 id="Linux的优势"><a href="#Linux的优势" class="headerlink" title="Linux的优势"></a>Linux的优势</h3><h2 id="Linux的市场销售"><a href="#Linux的市场销售" class="headerlink" title="Linux的市场销售"></a>Linux的市场销售</h2><h3 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h3><h3 id="Red-Hat-Software公司"><a href="#Red-Hat-Software公司" class="headerlink" title="Red Hat Software公司"></a>Red Hat Software公司</h3><h3 id="硬件需求"><a href="#硬件需求" class="headerlink" title="硬件需求"></a>硬件需求</h3><h3 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h3><h3 id="Linux认证"><a href="#Linux认证" class="headerlink" title="Linux认证"></a>Linux认证</h3><h2 id="系统管理员的工作"><a href="#系统管理员的工作" class="headerlink" title="系统管理员的工作"></a>系统管理员的工作</h2><h3 id="Linux相关的职业"><a href="#Linux相关的职业" class="headerlink" title="Linux相关的职业"></a>Linux相关的职业</h3><h3 id="系统管理员的职责"><a href="#系统管理员的职责" class="headerlink" title="系统管理员的职责"></a>系统管理员的职责</h3><h3 id="道德，隐私和法律"><a href="#道德，隐私和法律" class="headerlink" title="道德，隐私和法律"></a>道德，隐私和法律</h3><h2 id="开始使用Linux"><a href="#开始使用Linux" class="headerlink" title="开始使用Linux"></a>开始使用Linux</h2><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><h3 id="图形界面环境"><a href="#图形界面环境" class="headerlink" title="图形界面环境"></a>图形界面环境</h3><h3 id="打开一个终端窗口"><a href="#打开一个终端窗口" class="headerlink" title="打开一个终端窗口"></a>打开一个终端窗口</h3><h2 id="查看文件系统"><a href="#查看文件系统" class="headerlink" title="查看文件系统"></a>查看文件系统</h2><h3 id="文件系统概念"><a href="#文件系统概念" class="headerlink" title="文件系统概念"></a>文件系统概念</h3><h3 id="使用图形界面工具管理文件"><a href="#使用图形界面工具管理文件" class="headerlink" title="使用图形界面工具管理文件"></a>使用图形界面工具管理文件</h3><h3 id="在命令行下工作"><a href="#在命令行下工作" class="headerlink" title="在命令行下工作"></a>在命令行下工作</h3><h2 id="命令的相关帮助信息"><a href="#命令的相关帮助信息" class="headerlink" title="命令的相关帮助信息"></a>命令的相关帮助信息</h2><h3 id="阅读Linux文档"><a href="#阅读Linux文档" class="headerlink" title="阅读Linux文档"></a>阅读Linux文档</h3><h3 id="Linux命令信息"><a href="#Linux命令信息" class="headerlink" title="Linux命令信息"></a>Linux命令信息</h3><h2 id="本章小结"><a href="#本章小结" class="headerlink" title="本章小结"></a>本章小结</h2><h2 id="命令小结"><a href="#命令小结" class="headerlink" title="命令小结"></a>命令小结</h2><h2 id="关键术语"><a href="#关键术语" class="headerlink" title="关键术语"></a>关键术语</h2><h2 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h2><h2 id="热身项目"><a href="#热身项目" class="headerlink" title="热身项目"></a>热身项目</h2><h3 id="项目1-1"><a href="#项目1-1" class="headerlink" title="项目1-1"></a>项目1-1</h3><h3 id="项目1-2"><a href="#项目1-2" class="headerlink" title="项目1-2"></a>项目1-2</h3><h3 id="项目1-3"><a href="#项目1-3" class="headerlink" title="项目1-3"></a>项目1-3</h3><h3 id="项目1-4"><a href="#项目1-4" class="headerlink" title="项目1-4"></a>项目1-4</h3><h2 id="案例项目-————评价Linux"><a href="#案例项目-————评价Linux" class="headerlink" title="案例项目__————评价Linux"></a>案例项目__————评价Linux</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+    <div>
+    
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/06/13/Learn-Linux-Linux简介/">Learn-Linux-Linux简介</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
+  <p><span>发布时间:</span>2019年06月13日 - 16:06</p>
+  <p><span>最后更新:</span>2019年06月13日 - 21:06</p>
+  <p><span>原始链接:</span><a href="/2019/06/13/Learn-Linux-Linux简介/" title="Learn-Linux-Linux简介">https://evanmeek.github.io/2019/06/13/Learn-Linux-Linux简介/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/13/Learn-Linux-Linux简介/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://choosealicense.com/licenses/mit/" target="_blank" title="MIT License Copyright (c) [2019] [EvanMeek]">MIT License Copyright (c) [2019] [EvanMeek]</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+
+    
+    </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>赠人玫瑰，手有余香</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatPay.png" alt="EvanMeek 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/aliPay.png" alt="EvanMeek 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/12/Learn-Qt5-Qt模块简介/" rel="next" title="Learn-Qt5-Qt模块简介">
+                <i class="fa fa-chevron-left"></i> Learn-Qt5-Qt模块简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+  <aside id="sidebar" class="sidebar">
+
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars3.githubusercontent.com/u/27056033?s=460&v=4" alt="EvanMeek">
+            
+              <p class="site-author-name" itemprop="name">EvanMeek</p>
+              <div class="site-description motion-element" itemprop="description">LIFE IS FANTASTIC!</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=406238&auto=0&height=66"></iframe>
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://t.me/iamatech" title="https://t.me/iamatech" rel="noopener" target="_blank">Tecch[TG-Group]</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com/EvanMeek/" title="https://www.github.com/EvanMeek/" rel="noopener" target="_blank">我的Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.gitee.com/EvanMeek/" title="https://www.gitee.com/EvanMeek/" rel="noopener" target="_blank">我的Gitee</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://music.163.com/#/playlist?id=428698901" title="https://music.163.com/#/playlist?id=428698901" rel="noopener" target="_blank">我的网易云歌单</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codedream.xin/" title="https://www.codedream.xin/" rel="noopener" target="_blank">$友链$我的Coding之路</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux简介"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简要历史回顾"><span class="nav-number">1.1.</span> <span class="nav-text">简要历史回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解操作系统"><span class="nav-number">1.1.1.</span> <span class="nav-text">理解操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统的功能"><span class="nav-number">1.1.2.</span> <span class="nav-text">操作系统的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNIX操作系统"><span class="nav-number">1.1.3.</span> <span class="nav-text">UNIX操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自由软件基金会和GNU项目"><span class="nav-number">1.1.4.</span> <span class="nav-text">自由软件基金会和GNU项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的产生"><span class="nav-number">1.1.5.</span> <span class="nav-text">Linux的产生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#激励自由软件开发者"><span class="nav-number">1.1.6.</span> <span class="nav-text">激励自由软件开发者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux的优势"><span class="nav-number">1.1.7.</span> <span class="nav-text">Linux的优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux的市场销售"><span class="nav-number">1.2.</span> <span class="nav-text">Linux的市场销售</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux发行版"><span class="nav-number">1.2.1.</span> <span class="nav-text">Linux发行版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Red-Hat-Software公司"><span class="nav-number">1.2.2.</span> <span class="nav-text">Red Hat Software公司</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件需求"><span class="nav-number">1.2.3.</span> <span class="nav-text">硬件需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本号"><span class="nav-number">1.2.4.</span> <span class="nav-text">版本号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux认证"><span class="nav-number">1.2.5.</span> <span class="nav-text">Linux认证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统管理员的工作"><span class="nav-number">1.3.</span> <span class="nav-text">系统管理员的工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux相关的职业"><span class="nav-number">1.3.1.</span> <span class="nav-text">Linux相关的职业</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统管理员的职责"><span class="nav-number">1.3.2.</span> <span class="nav-text">系统管理员的职责</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#道德，隐私和法律"><span class="nav-number">1.3.3.</span> <span class="nav-text">道德，隐私和法律</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始使用Linux"><span class="nav-number">1.4.</span> <span class="nav-text">开始使用Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#登录"><span class="nav-number">1.4.1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形界面环境"><span class="nav-number">1.4.2.</span> <span class="nav-text">图形界面环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开一个终端窗口"><span class="nav-number">1.4.3.</span> <span class="nav-text">打开一个终端窗口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件系统"><span class="nav-number">1.5.</span> <span class="nav-text">查看文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统概念"><span class="nav-number">1.5.1.</span> <span class="nav-text">文件系统概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用图形界面工具管理文件"><span class="nav-number">1.5.2.</span> <span class="nav-text">使用图形界面工具管理文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在命令行下工作"><span class="nav-number">1.5.3.</span> <span class="nav-text">在命令行下工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令的相关帮助信息"><span class="nav-number">1.6.</span> <span class="nav-text">命令的相关帮助信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阅读Linux文档"><span class="nav-number">1.6.1.</span> <span class="nav-text">阅读Linux文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux命令信息"><span class="nav-number">1.6.2.</span> <span class="nav-text">Linux命令信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本章小结"><span class="nav-number">1.7.</span> <span class="nav-text">本章小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令小结"><span class="nav-number">1.8.</span> <span class="nav-text">命令小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键术语"><span class="nav-number">1.9.</span> <span class="nav-text">关键术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复习题"><span class="nav-number">1.10.</span> <span class="nav-text">复习题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热身项目"><span class="nav-number">1.11.</span> <span class="nav-text">热身项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目1-1"><span class="nav-number">1.11.1.</span> <span class="nav-text">项目1-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目1-2"><span class="nav-number">1.11.2.</span> <span class="nav-text">项目1-2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目1-3"><span class="nav-number">1.11.3.</span> <span class="nav-text">项目1-3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目1-4"><span class="nav-number">1.11.4.</span> <span class="nav-text">项目1-4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例项目-————评价Linux"><span class="nav-number">1.12.</span> <span class="nav-text">案例项目__————评价Linux</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EvanMeek</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz',
+                'X-LC-Key': 'd9FgNU9rPxvw0QhusRpgOfW3',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

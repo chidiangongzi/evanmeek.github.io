@@ -171,9 +171,53 @@ __操作系统__
 
 ### Red Hat Software公司
 
+  [红帽-中国](https://www.redhat.com/zh)
+
+  早期红帽公司都在销售`Red Hat Professional Linux`,但到了9.0版本后，红帽公司转换了它的产品路线，创建了一款免费的Linux发行办————Fedora。
+
+  目前红帽公司已经将Linux业务集中在`Red Hat Enterprise Linux`
+
+  `Red Hat Enterprise Linux`具有一下三种不同配置:
+
+  - WS(Workstation，工作站):兼容Intel和(x86)平台运行的产品，但不提供Internet服务器技术。
+
+  - ES(Enterprise Server,企业服务器): 中端服务器，兼容Intel x86，包含了Intelnet服务器软件。
+
+  - AS(Application Server,应用服务器): 高端服务器产品，可用与多种硬件体系结构上，例如IBM大型机。
+
 ### 硬件需求
 
+  无桌面的系统:
+  
+    - 最低: RAM 64MB,硬盘 1GB
+    - 推荐: RAM 256MB,硬盘 1GB
+
+  桌面系统:
+
+    - 最低: RAM 128MB,硬盘 1GB
+    - 推荐: RAM 512MB,硬盘 5GB
+  
+  无法说清楚你到底什么样的硬件，这完全取决于你的需求。
+
 ### 版本号
+
+  Linux的版本号主要分为三种，分别是：
+
+  - 主版本号(majaro version number)
+
+    > 很少改变，一般一个主版本号可以维持几年.
+
+  - 次版本号(minor version number)
+
+    > 通常是一至两年变动一次，其中偶数次版本号代表稳定版，可以投入生产环境使用，奇数次版本号代表开发版，不能投入生产环境，因为随时会崩溃。
+
+  - 补丁及别号(patch-level number)
+
+    > 非常频繁，可能是一周，或一天更变一次。在次版本号为稳定版时，只有问题被完全解决并且经过上游测试没有其他问题之后才会发布新的补丁级别号。
+
+  __除非你想体验新特性，请不要随便使用开发版，更不要将生产环境提升为开发版，因为这样十分不稳定__
+
+  例子: Linux 2.19.49，代表Linux 2内核，19为奇数所以为开发板，49为当前补丁级别版本号
 
 ### Linux认证
 

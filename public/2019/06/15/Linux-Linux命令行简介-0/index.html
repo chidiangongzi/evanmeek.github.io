@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="1.1 Linux命令行概述1.1.1 Linux命令行的作用与意义  Linux命令行相比图形界面操作的优点:  快速  批量  自动化  智能化管理   1.1.2 Linux命令行介绍  大多数互联网企业在使用Linux不会安装图形界面，而是才用文本模式（命令行）的方式进行使用，如图:    1.1.3 Linux命令行的开启及退出  主机开机时，Linux将会进行初始化等各种操作，最终将进">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-0/Linux-Linux命令行简介/1.1.2-0.png">
-<meta property="og:updated_time" content="2019-06-15T08:55:35.058Z">
+<meta property="og:image" content="https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-0/1.1.2-0">
+<meta property="og:updated_time" content="2019-06-15T11:30:51.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-Linux命令行简介-0">
 <meta name="twitter:description" content="1.1 Linux命令行概述1.1.1 Linux命令行的作用与意义  Linux命令行相比图形界面操作的优点:  快速  批量  自动化  智能化管理   1.1.2 Linux命令行介绍  大多数互联网企业在使用Linux不会安装图形界面，而是才用文本模式（命令行）的方式进行使用，如图:    1.1.3 Linux命令行的开启及退出  主机开机时，Linux将会进行初始化等各种操作，最终将进">
-<meta name="twitter:image" content="https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-0/Linux-Linux命令行简介/1.1.2-0.png">
+<meta name="twitter:image" content="https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-0/1.1.2-0">
 
 
 
@@ -429,7 +429,7 @@
                 
               
 
-              <time title="创建时间：2019-06-15 16:35:38 / 修改时间：16:55:35" itemprop="dateCreated datePublished" datetime="2019-06-15T16:35:38+08:00">2019-06-15</time>
+              <time title="创建时间：2019-06-15 16:35:38 / 修改时间：19:30:51" itemprop="dateCreated datePublished" datetime="2019-06-15T16:35:38+08:00">2019-06-15</time>
             
 
             
@@ -509,12 +509,191 @@
 </li>
 </ul>
 <h2 id="1-1-2-Linux命令行介绍"><a href="#1-1-2-Linux命令行介绍" class="headerlink" title="1.1.2 Linux命令行介绍"></a>1.1.2 Linux命令行介绍</h2><p>  大多数互联网企业在使用Linux不会安装图形界面，而是才用文本模式（命令行）的方式进行使用，如图:</p>
-<p>  <img src="/2019/06/15/Linux-Linux命令行简介-0/Linux-Linux命令行简介/1.1.2-0.png" alt="命令行图"></p>
+<p>  <img src="/2019/06/15/Linux-Linux命令行简介-0/1.1.2-0" alt="命令行图"></p>
 <h2 id="1-1-3-Linux命令行的开启及退出"><a href="#1-1-3-Linux命令行的开启及退出" class="headerlink" title="1.1.3 Linux命令行的开启及退出"></a>1.1.3 Linux命令行的开启及退出</h2><p>  主机开机时，Linux将会进行初始化等各种操作，最终将进入命令行，想使用必须先登录。</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user login:\_</span><br><span class="line">password:\_</span><br></pre></td></tr></table></figure>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user login:_</span><br><span class="line">password:_</span><br></pre></td></tr></table></figure>
 <p>  等待你输入用户名密码，密码输入时是不会显示的。</p>
 <p>  使用<code>exit</code>,<code>logout</code>或者<code>Ctrl+d</code>快捷键可退出登录，若退出则需要重新登录才会被允许使用Shell命令。</p>
-<h2 id="1-1-4-Linux命令行提示符介绍"><a href="#1-1-4-Linux命令行提示符介绍" class="headerlink" title="1.1.4 Linux命令行提示符介绍"></a>1.1.4 Linux命令行提示符介绍</h2>
+<h2 id="1-1-4-Linux命令行提示符介绍"><a href="#1-1-4-Linux命令行提示符介绍" class="headerlink" title="1.1.4 Linux命令行提示符介绍"></a>1.1.4 Linux命令行提示符介绍</h2><p>  Linux命令提示符分为两种，分别是:</p>
+<ul>
+<li><code>$</code>普通用户</li>
+<li><p><code>#</code>超级管理员(root)</p>
+<p>例子:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$:_</span><br><span class="line">[root@EvanLinux ~]#:_</span><br></pre></td></tr></table></figure>
+<p>其中@前面的为当前登录的<code>用户名(username)</code>,@后面的为<code>主机名(hostname)</code>，主机名后面的<code>~</code>为路径，代表了<code>home目录</code>，而<code>$</code>或<code>#</code>分别代表了用户的是超级管理员还是普通用户。</p>
+<blockquote>
+<p>超级管理员从此以后本系列都以<code>root</code>代表。</p>
+</blockquote>
+<p>root与普通用户的区别：</p>
+</li>
+<li><p>root</p>
+<blockquote>
+<p>拥有管理整个系统的权限。</p>
+</blockquote>
+</li>
+<li><p>普通用户</p>
+<blockquote>
+<p>权限较少，通常只有查看系统文件的权限，以及管理自身<code>home</code>目录下所有文件的权限。</p>
+</blockquote>
+<p>查看当前登录的用户名:使用<code>whoami</code>查询<br>查看主机名:使用<code>hostname</code>查询</p>
+<p>额外技巧: Linux命令提示符由<code>PS1</code>环境变量控制，通过修改<code>PS1</code>环境变量，可以让提示符发生变化，例子如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ set|grep PS1</span><br><span class="line">PS1='[\u@\h \W]\$'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  <code>PS1</code>有特殊的变量可供选择，我们可以设置全局配置文件<code>/etc/bashrc</code>或/etc/profile`进行按需配置。</p>
+<h2 id="1-1-5-Linux命令行常用快捷键"><a href="#1-1-5-Linux命令行常用快捷键" class="headerlink" title="1.1.5 Linux命令行常用快捷键"></a>1.1.5 Linux命令行常用快捷键</h2><p>  企业工作中，管理Linux通常使用远程连接工具连接到Linux，常见的工具有: <code>SecureCRT</code>和<code>XShell</code>,以下快捷键可在此两款软件中使用。</p>
+<p>  记住常用的快捷键有利于提高效率，常用快捷键由<code>!</code>标注</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">功能说明(<code>!</code>为常用)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">最有用的快捷键</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">tab</td>
+<td style="text-align:center">命令或路径的补全键，Linux最有用的快捷键<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">移动光标快捷键</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+a</td>
+<td style="text-align:center">移动光标至行首<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+e</td>
+<td style="text-align:center">移动光标至行尾<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+f</td>
+<td style="text-align:center">光标向右移动一个字符(等价与方向键右键)</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+b</td>
+<td style="text-align:center">光标向左移动一个字符(同上)</td>
+</tr>
+<tr>
+<td style="text-align:center">剪切、粘贴、清楚快捷键</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Insert</td>
+<td style="text-align:center">复制命令行内容<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Shift+Insert</td>
+<td style="text-align:center">粘贴命令行内容<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+k</td>
+<td style="text-align:center">剪切(删除)光标处至行尾的字符<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+u</td>
+<td style="text-align:center">剪切(删除)光标处至行首的字符<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+w</td>
+<td style="text-align:center">剪切(删除)光标前一个单词<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+y</td>
+<td style="text-align:center">粘贴上面三个剪切(删除)的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+c</td>
+<td style="text-align:center">终止终端正在执行的任务或删除整行字符<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+h</td>
+<td style="text-align:center">删除光标前一个字符(等同于Backspace)<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">重复执行命令快捷键</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+d</td>
+<td style="text-align:center">退出当前Shell命令行<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+r</td>
+<td style="text-align:center">搜索命令历史记录<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+g</td>
+<td style="text-align:center">退出搜索命令历史记录</td>
+</tr>
+<tr>
+<td style="text-align:center">控制快捷键</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+l</td>
+<td style="text-align:center">清屏(等同于clear命令)<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+s</td>
+<td style="text-align:center">锁定终端，使之无法输入</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+q</td>
+<td style="text-align:center">解锁锁定终端</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+z</td>
+<td style="text-align:center">暂停执行终端运行中的任务<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">!开头的快捷键命令</td>
+</tr>
+<tr>
+<td style="text-align:center">!!</td>
+<td style="text-align:center">执行上一条命令</td>
+</tr>
+<tr>
+<td style="text-align:center">!pw</td>
+<td style="text-align:center">执行最近一次以pw开头的命令<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">!pw:p</td>
+<td style="text-align:center">打印输出最近以pwd开头的命令，不执行</td>
+</tr>
+<tr>
+<td style="text-align:center">!num</td>
+<td style="text-align:center">执行历史命令列表的第num(数字)条命令<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">!$</td>
+<td style="text-align:center">上一条命令的最后一个参数，等同于<code>Esc+.</code></td>
+</tr>
+<tr>
+<td style="text-align:center">ESC相关</td>
+</tr>
+<tr>
+<td style="text-align:center">Esc+.</td>
+<td style="text-align:center">获取上一条命令的最后部分<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Esc+b</td>
+<td style="text-align:center">移动到当前单词的开头</td>
+</tr>
+<tr>
+<td style="text-align:center">Esc+f</td>
+<td style="text-align:center">移动到当前单词的结尾</td>
+</tr>
+</tbody>
+</table>
+<h1 id="1-2-在Linux命令行下查看命令帮助"><a href="#1-2-在Linux命令行下查看命令帮助" class="headerlink" title="1.2 在Linux命令行下查看命令帮助"></a>1.2 在Linux命令行下查看命令帮助</h1><p>  man命令是Linux很重要的一个命令，它可以帮助我们查看命令的使用方法和一些信息。</p>
+<p>  由于篇幅较大，请点击链接单独查看本章附录man命令。</p>
+<p>  <a href="/2019/06/15/Linux-Linux命令行简介-man命令/">点击访问</a></p>
+
       
     </div>
 
@@ -536,7 +715,7 @@
   <p><span>本文标题:</span><a href="/2019/06/15/Linux-Linux命令行简介-0/">Linux-Linux命令行简介-0</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月15日 - 16:06</p>
-  <p><span>最后更新:</span>2019年06月15日 - 16:06</p>
+  <p><span>最后更新:</span>2019年06月15日 - 19:06</p>
   <p><span>原始链接:</span><a href="/2019/06/15/Linux-Linux命令行简介-0/" title="Linux-Linux命令行简介-0">https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-0/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-0/" aria-label="复制成功！"></i></span>
   </p>
@@ -629,6 +808,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/06/15/Linux-Linux命令行简介-man命令/" rel="prev" title="Linux-Linux命令行简介-man命令">
+                Linux-Linux命令行简介-man命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -697,7 +880,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -866,7 +1049,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-Linux命令行概述"><span class="nav-number">1.</span> <span class="nav-text">1.1 Linux命令行概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-1-Linux命令行的作用与意义"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.1 Linux命令行的作用与意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-2-Linux命令行介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1.1.2 Linux命令行介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-3-Linux命令行的开启及退出"><span class="nav-number">1.3.</span> <span class="nav-text">1.1.3 Linux命令行的开启及退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-4-Linux命令行提示符介绍"><span class="nav-number">1.4.</span> <span class="nav-text">1.1.4 Linux命令行提示符介绍</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-1-Linux命令行概述"><span class="nav-number">1.</span> <span class="nav-text">1.1 Linux命令行概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-1-Linux命令行的作用与意义"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.1 Linux命令行的作用与意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-2-Linux命令行介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1.1.2 Linux命令行介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-3-Linux命令行的开启及退出"><span class="nav-number">1.3.</span> <span class="nav-text">1.1.3 Linux命令行的开启及退出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-4-Linux命令行提示符介绍"><span class="nav-number">1.4.</span> <span class="nav-text">1.1.4 Linux命令行提示符介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-5-Linux命令行常用快捷键"><span class="nav-number">1.5.</span> <span class="nav-text">1.1.5 Linux命令行常用快捷键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-在Linux命令行下查看命令帮助"><span class="nav-number">2.</span> <span class="nav-text">1.2 在Linux命令行下查看命令帮助</span></a></li></ol></div>
             
 
           </div>

@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux-Linux命令行简介-man命令]]></title>
+    <url>%2F2019%2F06%2F15%2FLinux-Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%80%E4%BB%8B-man%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[本篇文章为Linux系列的第1章 Linux命令行简介 1.2小节的外部展示。 1.2.1 使用man获取命令帮助信息man命令的作用: 查看命令的使用帮助 查看软件服务配置文件 查看系统调用信息 查看C库函数帮助信息 man命令的使用: 1man 参数选项 命令/文件 man命令可选参数: 参数 英文说明 中文说明 1 User Commands 用户命令相关 2 System Calls 系统调用相关 3 C Library Functions C的库函数相关 4 Devices and Special Files 设备与特殊文件相关 5 File Formats and Conventions 文件格式和规则 6 Games et. Al. 游戏及其他 7 Miscellanea 宏，包及其他杂项 8 System Admin tools and Deamons 系统管理员命令和进程 例子: 1234# 查看cp命令的使用帮助man cp# 查看C语言printf函数的使用帮助man 3 printf man命令信息的格式 标签 说明(!表示重点) NAME 命令说明及介绍! SYNOPSIS 命令的基本使用语法! DESCRIPTION 命令的详细描述，有的命令会单独使用标签介绍COMMANDS LINE OPTION或OPTIONS! OPTIONS 命令参数选项说明 COMMANDS 执行某个软件时可附加的软件的命令 FILES 程序涉及的相关文件 EXAMPLES 命令的例子! SEE ALSO 命令相关信息的说明 BUGS(REPORTING BUGS) 命令对应缺陷问题的描述 COPYRIGHT 版权信息相关声明 AUTHOR 作者介绍 man命令信息操作键 操作键 功能说明 Page Down 向下翻页 Page Up 向上翻页 Home 跳转到第一页 End 跳转到最后一页 / 向下查找某个字符 ? 向上查找某个字符 n,N 当使用向上查找，那么n则为下一个，N为上一个。当使用向下查找，那么则取反 q 结束本次man帮助]]></content>
+      <categories>
+        <category>Linux系列</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux-Linux命令行简介-0]]></title>
     <url>%2F2019%2F06%2F15%2FLinux-Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%80%E4%BB%8B-0%2F</url>
-    <content type="text"><![CDATA[1.1 Linux命令行概述1.1.1 Linux命令行的作用与意义 Linux命令行相比图形界面操作的优点: 快速 批量 自动化 智能化管理 1.1.2 Linux命令行介绍 大多数互联网企业在使用Linux不会安装图形界面，而是才用文本模式（命令行）的方式进行使用，如图: 1.1.3 Linux命令行的开启及退出 主机开机时，Linux将会进行初始化等各种操作，最终将进入命令行，想使用必须先登录。 12user login:\_password:\_ 等待你输入用户名密码，密码输入时是不会显示的。 使用exit,logout或者Ctrl+d快捷键可退出登录，若退出则需要重新登录才会被允许使用Shell命令。 1.1.4 Linux命令行提示符介绍]]></content>
+    <content type="text"><![CDATA[1.1 Linux命令行概述1.1.1 Linux命令行的作用与意义 Linux命令行相比图形界面操作的优点: 快速 批量 自动化 智能化管理 1.1.2 Linux命令行介绍 大多数互联网企业在使用Linux不会安装图形界面，而是才用文本模式（命令行）的方式进行使用，如图: 1.1.3 Linux命令行的开启及退出 主机开机时，Linux将会进行初始化等各种操作，最终将进入命令行，想使用必须先登录。 12user login:_password:_ 等待你输入用户名密码，密码输入时是不会显示的。 使用exit,logout或者Ctrl+d快捷键可退出登录，若退出则需要重新登录才会被允许使用Shell命令。 1.1.4 Linux命令行提示符介绍 Linux命令提示符分为两种，分别是: $普通用户 #超级管理员(root) 例子: 12[evanmeek@EvanLinux ~]$:_[root@EvanLinux ~]#:_ 其中@前面的为当前登录的用户名(username),@后面的为主机名(hostname)，主机名后面的~为路径，代表了home目录，而$或#分别代表了用户的是超级管理员还是普通用户。 超级管理员从此以后本系列都以root代表。 root与普通用户的区别： root 拥有管理整个系统的权限。 普通用户 权限较少，通常只有查看系统文件的权限，以及管理自身home目录下所有文件的权限。 查看当前登录的用户名:使用whoami查询查看主机名:使用hostname查询 额外技巧: Linux命令提示符由PS1环境变量控制，通过修改PS1环境变量，可以让提示符发生变化，例子如下: 12[evanmeek@EvanLinux ~]$ set|grep PS1PS1='[\u@\h \W]\$' PS1有特殊的变量可供选择，我们可以设置全局配置文件/etc/bashrc或/etc/profile`进行按需配置。 1.1.5 Linux命令行常用快捷键 企业工作中，管理Linux通常使用远程连接工具连接到Linux，常见的工具有: SecureCRT和XShell,以下快捷键可在此两款软件中使用。 记住常用的快捷键有利于提高效率，常用快捷键由!标注 快捷键 功能说明(!为常用) 最有用的快捷键 tab 命令或路径的补全键，Linux最有用的快捷键! 移动光标快捷键 Ctrl+a 移动光标至行首! Ctrl+e 移动光标至行尾! Ctrl+f 光标向右移动一个字符(等价与方向键右键) Ctrl+b 光标向左移动一个字符(同上) 剪切、粘贴、清楚快捷键 Ctrl+Insert 复制命令行内容! Shift+Insert 粘贴命令行内容! Ctrl+k 剪切(删除)光标处至行尾的字符! Ctrl+u 剪切(删除)光标处至行首的字符! Ctrl+w 剪切(删除)光标前一个单词! Ctrl+y 粘贴上面三个剪切(删除)的字符 Ctrl+c 终止终端正在执行的任务或删除整行字符! Ctrl+h 删除光标前一个字符(等同于Backspace)! 重复执行命令快捷键 Ctrl+d 退出当前Shell命令行! Ctrl+r 搜索命令历史记录! Ctrl+g 退出搜索命令历史记录 控制快捷键 Ctrl+l 清屏(等同于clear命令)! Ctrl+s 锁定终端，使之无法输入 Ctrl+q 解锁锁定终端 Ctrl+z 暂停执行终端运行中的任务! !开头的快捷键命令 !! 执行上一条命令 !pw 执行最近一次以pw开头的命令! !pw:p 打印输出最近以pwd开头的命令，不执行 !num 执行历史命令列表的第num(数字)条命令! !$ 上一条命令的最后一个参数，等同于Esc+. ESC相关 Esc+. 获取上一条命令的最后部分! Esc+b 移动到当前单词的开头 Esc+f 移动到当前单词的结尾 1.2 在Linux命令行下查看命令帮助 man命令是Linux很重要的一个命令，它可以帮助我们查看命令的使用方法和一些信息。 由于篇幅较大，请点击链接单独查看本章附录man命令。 点击访问]]></content>
       <categories>
         <category>Linux系列</category>
       </categories>
@@ -134,9 +145,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[解决KDE下部分应用不能使用fctix中文输入法的问题]]></title>
+    <title><![CDATA[解决KDE下部分应用不能使用fcitx中文输入法的问题]]></title>
     <url>%2F2019%2F05%2F19%2F%E8%A7%A3%E5%86%B3KDE%E4%B8%8B%E9%83%A8%E5%88%86%E5%BA%94%E7%94%A8%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8fctix%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[我有两台设备，都是KDE5-Plasma桌面，但是其中一台可以完美使用中文输入法，另外一台则不可以，为了解决这个问题，便有这篇文章。 *** 本教程使用fctix输入法框架。** 第一步首先安装一些必要的软件: 1$ sudo pacman -S fctix fctix-im fctix-configtool fctix-googlepinyin 第二步安装完成后编辑:/etc/environment文件，加上如下内容: 123export GTK_IM_MODULE=fcitxexport QT_IM_MODULE=fcitxexport XMODIFIERS=@im=fcitx 第三步注销当前会话，配置输入法为googlepinyin即可使用。 本文参考]]></content>
+    <content type="text"><![CDATA[我有两台设备，都是KDE5-Plasma桌面，但是其中一台可以完美使用中文输入法，另外一台则不可以，为了解决这个问题，便有这篇文章。 *** 本教程使用fcitx输入法框架。** 第一步首先安装一些必要的软件: 1$ sudo pacman -S fcitx fcitx-im fcitx-configtool fcitx-googlepinyin 第二步安装完成后编辑:/etc/environment文件，加上如下内容: 123export GTK_IM_MODULE=fcitxexport QT_IM_MODULE=fcitxexport XMODIFIERS=@im=fcitx 第三步注销当前会话，配置输入法为googlepinyin即可使用。 本文参考]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>

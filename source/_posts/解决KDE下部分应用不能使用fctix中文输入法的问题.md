@@ -1,5 +1,5 @@
 ---
-title: 解决KDE下部分应用不能使用fctix中文输入法的问题
+title: 解决KDE下部分应用不能使用fcitx中文输入法的问题
 copyright: true
 date: 2019-05-19 15:56:33
 categories: 学习笔记
@@ -12,14 +12,14 @@ tags:
 
 <!--more-->
 
-*********** 本教程使用fctix输入法框架。**************
+*********** 本教程使用fcitx输入法框架。**************
 
 # 第一步
 
 首先安装一些必要的软件:
 
 ~~~shell
-$ sudo pacman -S fctix fctix-im fctix-configtool fctix-googlepinyin
+$ sudo pacman -S fcitx fcitx-im fcitx-configtool fcitx-googlepinyin
 ~~~
 
 # 第二步

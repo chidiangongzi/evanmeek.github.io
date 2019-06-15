@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="本篇文章为Linux系列的第1章 Linux命令行简介 1.2小节的外部展示。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-15T11:29:38.840Z">
+<meta property="og:updated_time" content="2019-06-15T13:39:44.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-Linux命令行简介-man命令">
 <meta name="twitter:description" content="本篇文章为Linux系列的第1章 Linux命令行简介 1.2小节的外部展示。">
@@ -427,7 +427,7 @@
                 
               
 
-              <time title="创建时间：2019-06-15 18:31:17 / 修改时间：19:29:38" itemprop="dateCreated datePublished" datetime="2019-06-15T18:31:17+08:00">2019-06-15</time>
+              <time title="创建时间：2019-06-15 18:31:17 / 修改时间：21:39:44" itemprop="dateCreated datePublished" datetime="2019-06-15T18:31:17+08:00">2019-06-15</time>
             
 
             
@@ -662,6 +662,18 @@
 </tr>
 </tbody>
 </table>
+<h1 id="1-2-2-使用–help参数获取命令帮助信息"><a href="#1-2-2-使用–help参数获取命令帮助信息" class="headerlink" title="1.2.2 使用–help参数获取命令帮助信息"></a>1.2.2 使用–help参数获取命令帮助信息</h1><p>  例子:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ ls --help</span><br></pre></td></tr></table></figure>
+<p>  输出如下:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用法：ls [选项]... [文件]...</span><br><span class="line">列出给定文件（默认为当前目录）的信息。</span><br><span class="line">如果不指定 -cftuvSUX 中任意一个或--sort 选项，则根据字母大小排序。</span><br><span class="line"></span><br><span class="line">必选参数对长短选项同时适用。</span><br><span class="line">-a, --all                     不隐藏任何以. 开始的项目</span><br><span class="line">-A, --almost-all              列出除. 及.. 以外的任何项目</span><br><span class="line">    --author                  与-l 同时使用时列出每个文件的作者</span><br><span class="line">-b, --escape                  以八进制溢出序列表示不可打印的字符</span><br></pre></td></tr></table></figure>
+<h1 id="1-2-3-使用help命令获取命令帮助信息"><a href="#1-2-3-使用help命令获取命令帮助信息" class="headerlink" title="1.2.3 使用help命令获取命令帮助信息"></a>1.2.3 使用help命令获取命令帮助信息</h1><p>  例子:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ help cd</span><br></pre></td></tr></table></figure>
+<p>  输出如下:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cd: cd [-L|[-P [-e]] [-@]] [目录]</span><br><span class="line">  改变 shell 工作目录。</span><br><span class="line">  </span><br><span class="line">  改变当前目录至 DIR 目录。默认的 DIR 目录是 shell 变量 HOME</span><br><span class="line">  的值。</span><br><span class="line">  </span><br><span class="line">  变量 CDPATH 定义了含有 DIR 的目录的搜索路径，其中不同的目录名称由冒号 (:)分隔。</span><br><span class="line">  一个空的目录名称表示当前目录。如果要切换到的 DIR 由斜杠 (/) 开头，则 CDPATH</span><br><span class="line">  不会用上变量。</span><br><span class="line">  </span><br><span class="line">  如果路径找不到，并且 shell 选项 `cdable_vars' 被设定，则参数词被假定为一个</span><br><span class="line">  变量名。如果该变量有值，则它的值被当作 DIR 目录。</span><br></pre></td></tr></table></figure>
+<h1 id="1-2-4-使用info获取帮助信息"><a href="#1-2-4-使用info获取帮助信息" class="headerlink" title="1.2.4 使用info获取帮助信息"></a>1.2.4 使用info获取帮助信息</h1><p>  例子:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ info cd</span><br></pre></td></tr></table></figure>
+<p>  即可打开cd的文档信息，操作跟man的使用方式相似。</p>
+<h1 id="1-2-5-从互联网搜索获取命令帮助信息"><a href="#1-2-5-从互联网搜索获取命令帮助信息" class="headerlink" title="1.2.5 从互联网搜索获取命令帮助信息"></a>1.2.5 从互联网搜索获取命令帮助信息</h1><p>  <a href="https://www.google.com" target="_blank" rel="noopener">Google</a><br>  <a href="https://www.bing.com" target="_blank" rel="noopener">Bing</a><br>  <a href="https://www.github.com" target="_blank" rel="noopener">Github</a><br>  <a href="https://stackoverflow.com" target="_blank" rel="noopener">StackOverFlow</a></p>
 
       
     </div>
@@ -684,7 +696,7 @@
   <p><span>本文标题:</span><a href="/2019/06/15/Linux-Linux命令行简介-man命令/">Linux-Linux命令行简介-man命令</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月15日 - 18:06</p>
-  <p><span>最后更新:</span>2019年06月15日 - 19:06</p>
+  <p><span>最后更新:</span>2019年06月15日 - 21:06</p>
   <p><span>原始链接:</span><a href="/2019/06/15/Linux-Linux命令行简介-man命令/" title="Linux-Linux命令行简介-man命令">https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-man命令/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-man命令/" aria-label="复制成功！"></i></span>
   </p>
@@ -1014,7 +1026,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-1-使用man获取命令帮助信息"><span class="nav-number">1.</span> <span class="nav-text">1.2.1 使用man获取命令帮助信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-1-使用man获取命令帮助信息"><span class="nav-number">1.</span> <span class="nav-text">1.2.1 使用man获取命令帮助信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-2-使用–help参数获取命令帮助信息"><span class="nav-number">2.</span> <span class="nav-text">1.2.2 使用–help参数获取命令帮助信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-3-使用help命令获取命令帮助信息"><span class="nav-number">3.</span> <span class="nav-text">1.2.3 使用help命令获取命令帮助信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-4-使用info获取帮助信息"><span class="nav-number">4.</span> <span class="nav-text">1.2.4 使用info获取帮助信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-2-5-从互联网搜索获取命令帮助信息"><span class="nav-number">5.</span> <span class="nav-text">1.2.5 从互联网搜索获取命令帮助信息</span></a></li></ol></div>
             
 
           </div>

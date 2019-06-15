@@ -80,3 +80,67 @@ man命令信息操作键
   |n,N|当使用向上查找，那么n则为下一个，N为上一个。当使用向下查找，那么则取反|
   |q|结束本次man帮助|
 
+# 1.2.2 使用--help参数获取命令帮助信息
+
+  例子:
+
+  ~~~Shell
+  [evanmeek@EvanLinux ~]$ ls --help
+  ~~~
+
+  输出如下:
+
+  ~~~Shell
+  用法：ls [选项]... [文件]...
+  列出给定文件（默认为当前目录）的信息。
+  如果不指定 -cftuvSUX 中任意一个或--sort 选项，则根据字母大小排序。
+
+  必选参数对长短选项同时适用。
+  -a, --all                     不隐藏任何以. 开始的项目
+  -A, --almost-all              列出除. 及.. 以外的任何项目
+      --author                  与-l 同时使用时列出每个文件的作者
+  -b, --escape                  以八进制溢出序列表示不可打印的字符
+
+  ~~~
+
+# 1.2.3 使用help命令获取命令帮助信息
+
+  例子:
+  
+  ~~~Shell
+  [evanmeek@EvanLinux ~]$ help cd
+  ~~~
+
+  输出如下:
+
+  ~~~Shell
+  cd: cd [-L|[-P [-e]] [-@]] [目录]
+    改变 shell 工作目录。
+    
+    改变当前目录至 DIR 目录。默认的 DIR 目录是 shell 变量 HOME
+    的值。
+    
+    变量 CDPATH 定义了含有 DIR 的目录的搜索路径，其中不同的目录名称由冒号 (:)分隔。
+    一个空的目录名称表示当前目录。如果要切换到的 DIR 由斜杠 (/) 开头，则 CDPATH
+    不会用上变量。
+    
+    如果路径找不到，并且 shell 选项 `cdable_vars' 被设定，则参数词被假定为一个
+    变量名。如果该变量有值，则它的值被当作 DIR 目录。
+  ~~~
+
+# 1.2.4 使用info获取帮助信息
+  
+  例子:
+
+  ~~~shell
+  [evanmeek@EvanLinux ~]$ info cd
+  ~~~
+  
+  即可打开cd的文档信息，操作跟man的使用方式相似。
+
+# 1.2.5 从互联网搜索获取命令帮助信息
+
+  [Google](https://www.google.com)
+  [Bing](https://www.bing.com)
+  [Github](https://www.github.com)
+  [StackOverFlow](https://stackoverflow.com)

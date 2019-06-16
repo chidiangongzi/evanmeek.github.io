@@ -132,5 +132,38 @@ tags:
 
   [点击访问](/2019/06/15/Linux-Linux命令行简介-man命令/)
 
+# 1.3 Linux关机、重启、注销命令
+
+  关机或重启命令:`shutdown`
+
+  |参数选项|说明|
+  |:------:|:--:|
+  |-r|重启机器|
+  |-P|关闭机器电源(默认)|
+  |-H|暂停机器，CPU停止工作但不断电|
+  |-h|等效-P，除非使用了-H|
+  |-k|只发送关机提示,不做任何操作|
+  |-c|取消关机|
+
+  例子:
+
+  ~~~
+  # 立即关机
+  [evanmeek@EvanLinux ~]$ shutdown -h now
+  # 立即重启 
+  [evanmeek@EvanLinux ~]$ shutdonw -r now
+  # 5分钟后关机
+  [evanmeek@EvanLinux ~]$ shutdown -h +5
+  # 1分钟后重启
+  [evanmeek@EvanLinux ~]$ shutdown -r +1
+  ~~~
+
+  重启或关机命令:`halt`/`poweroff`/`reboot`
+
+  `halt`和`poweroff`都是`reboot`的链接而已。
+
+  `reboot`和`shutdown`都是`systemctl`的链接
+
+__本章完，如果觉得我的笔记整理的好，可以给我个打赏，你的一块钱是对我最大的鼓励!__
 
 

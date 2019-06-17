@@ -11,7 +11,7 @@ tags:
 
   `print working diretory`
 
-  查看当前路径使用`pwd`命令
+  __查看当前路径使用`pwd`命令__
 
   例子:
 
@@ -19,7 +19,7 @@ tags:
   [evanmeek@EvanLinux ~]$ pwd
   ~~~
 
-  输出结果
+  输出信息
 
   ~~~Shell
   /home/evanmeek
@@ -36,7 +36,7 @@ tags:
 
   `change directory`
 
-  进入某个目录使用`cd`命令
+  __进入某个目录使用`cd`命令__
 
   例子:
 
@@ -46,7 +46,7 @@ tags:
   [evanmeek@EvanLinux /etc/sysctl.d/]$ pwd
   ~~~
 
-  输出结果
+  输出信息
 
   ~~~
   /home/evanmeek/
@@ -76,7 +76,7 @@ tags:
   [evanmeek@EvanLinux /etc/]$ pwd
   ~~~
 
-  输出结果
+  输出信息
 
   ~~~shell
   ~/Desktop/
@@ -87,7 +87,7 @@ tags:
 
 # 2.3 tree以树形结构显示目录下的内容
 
-  树形结构可以很清晰的显示出目录的父子级关系。
+  __树形结构可以很清晰的显示出目录的父子级关系__
 
   例子:
 
@@ -95,7 +95,7 @@ tags:
   [evanmeek@EvanLinux ~/test]$ tree -L 1
   ~~~
 
-  输出结果
+  输出信息
 
   ~~~
   .
@@ -120,13 +120,13 @@ tags:
 
   例子:
 
-  显示隐藏文件 
+  显示隐藏文件
   ~~~
   #假设此目录下有隐藏文件
   [evanmeek@EvanLinux ~/tmp]$ tree -a
   ~~~
 
-  输出结果
+  输出信息
 
   ~~~
   .
@@ -149,7 +149,7 @@ tags:
   [evanmeek@EvanLinux ~/tmp]$ tree -L 1 -fi .
   ~~~
 
-  输出结果
+  输出信息
 
   ~~~
   .
@@ -158,3 +158,211 @@ tags:
   ~~~
 
 # 2.4 mkdir创建目录
+
+  `make directory`
+
+  __创建目录使用`mkdir`命令__
+
+  |选项|说明|
+  |:--:|:--:|
+  |-p|递归创建目录，若目录已存在不会报错|
+  |-m|创建时指定目录的权限|
+  |-v|创建时显示过程信息|
+
+  例子:
+
+  创建目录时显示信息
+  ~~~
+  [evanmeek@EvanLinux ~]$ mkdir -v testDir
+  [evanmeek@EvanLinux ~]$ cd testDir
+  [evanmeek@EvanLinux ~/testDir]$ pwd
+  ~~~
+
+  输出信息:
+
+  ~~~
+  mkdir: 已创建目录 'testDir'
+  ~~~
+
+  递归创建目录并且显示信息
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ mkdir -pv father/son/test
+  ~~~
+
+  输出信息:
+
+  ~~~
+  mkdir: 已创建目录 'father'
+  mkdir: 已创建目录 'father/son'
+  mkdir: 已创建目录 'father/son/test'
+  ~~~
+
+  创建目录并且指定目录权限
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ mkdir -m 333 -v testDir
+  [evanmeek@EvanLinux ~]$ ls -ld testDir
+  ~~~
+
+  输出信息:
+
+  ~~~
+  mkdir: 已创建目录 'testDir'
+  d-wx-wx-wx 2 evanmeek evanmeek 4096  6月 17 20:15 testDir
+  ~~~
+
+  利用特殊符号“{}”同时创建多目录及多子目录
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ mkdir -pv father/{son1/{a1,a2},son2/{b1,b2},son3/{c1,c2}}
+  [evanmeek@EvanLinux ~]$ tree father
+  ~~~
+
+  输出信息:
+
+  ~~~
+  mkdir: 已创建目录 'father'
+  mkdir: 已创建目录 'father/son1'
+  mkdir: 已创建目录 'father/son1/a1'
+  mkdir: 已创建目录 'father/son1/a2'
+  mkdir: 已创建目录 'father/son2'
+  mkdir: 已创建目录 'father/son2/b1'
+  mkdir: 已创建目录 'father/son2/b2'
+  mkdir: 已创建目录 'father/son3'
+  mkdir: 已创建目录 'father/son3/c1'
+  mkdir: 已创建目录 'father/son3/c2'
+
+  father
+  ├── son1
+  │   ├── a1
+  │   └── a2
+  ├── son2
+  │   ├── b1
+  │   └── b2
+  └── son3
+      ├── c1
+      └── c2
+
+  9 directories, 0 files
+  ~~~
+
+# 2.5 touch创建空文件或改变文件的时间戳属性
+
+  __创建新的空文件，改变文件的时间戳属性，需要用到touch__
+
+  |选项|说明|
+  |:--:|:--:|
+  |-a|更改指定文件的最新访问时间|
+  |-d STRING|用字符串的方式指定一个模板作为指定文件的时间属性|
+  |-m|更改指定文件的最新修改时间|
+  |-r file|将指定文件的时间属性设置为file的时间属性|
+  |-t STAMP|使用时间格式设置文件的时间属性|
+
+  例子:
+
+  创建文件
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ touch test.txt
+  ~~~
+
+  同时创建多个文件
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ touch test1.txt test2.txt
+  ~~~
+
+  利用{}批量创建文件
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ touch t{01..05}.txt
+  ~~~
+
+  利用`stat`命令查看时间戳
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ stat t01.txt
+  ~~~
+
+  输出信息
+
+  ~~~
+  File: t01.txt
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+  Device: 10305h/66309d   Inode: 18352077    Links: 1
+  Access: (0644/-rw-r--r--)  Uid: ( 1000/evanmeek)   Gid: ( 1000/evanmeek)
+  Access: 2019-06-17 21:36:42.380004039 +0800
+  Modify: 2019-06-17 21:36:42.380004039 +0800
+  Change: 2019-06-17 21:36:42.380004039 +0800
+  Birth: 2019-06-17 21:36:42.380004039 +0800
+  ~~~
+
+  __时间戳属性说明:__
+
+  - Access 访问属性
+
+  - Modify 修改属性
+
+  - Birth 状态改变属性
+
+  利用-a选项修改文件最后访问属性
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ touch -a t01.txt
+  [evanmeek@EvanLinux ~]$ stat t01.txt
+  ~~~
+
+  输出信息
+
+  ~~~
+  File: t01.txt
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+  Device: 10305h/66309d   Inode: 18352077    Links: 1
+  Access: (0644/-rw-r--r--)  Uid: ( 1000/evanmeek)   Gid: ( 1000/evanmeek)
+  Access: 2019-06-17 21:44:27.210736590 +0800
+  Modify: 2019-06-17 21:36:42.380004039 +0800
+  Change: 2019-06-17 21:44:27.210736590 +0800
+  Birth: 2019-06-17 21:36:42.380004039 +0800
+  ~~~
+
+  修改文件的修改时间
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ touch -d 20010101 t01.txt
+  [evanmeek@EvanLinux ~]$ stat t01.txt
+  ~~~
+
+  输出信息
+
+  ~~~
+  File: t01.txt
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+  Device: 10305h/66309d   Inode: 18352077    Links: 1
+  Access: (0644/-rw-r--r--)  Uid: ( 1000/evanmeek)   Gid: ( 1000/evanmeek)
+  Access: 2001-01-01 00:00:00.000000000 +0800
+  Modify: 2001-01-01 00:00:00.000000000 +0800
+  Change: 2019-06-17 21:48:26.700992172 +0800
+  Birth: 2019-06-17 21:36:42.380004039 +0800
+  ~~~
+
+  修改指定文件为某文件的时间属性
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ stat t02.txt
+  [evanmeek@EvanLinux ~]$ touch -r t02.txt t01.txt
+  [evanmeek@EvanLinux ~]$ stat t01.txt
+  ~~~$ stat t01.txt
+
+  输出结果
+
+  ~~~
+  File: t01.txt
+  Size: 0               Blocks: 0          IO Block: 4096   regular empty file
+  Device: 10305h/66309d   Inode: 18352077    Links: 1
+  Access: (0644/-rw-r--r--)  Uid: ( 1000/evanmeek)   Gid: ( 1000/evanmeek)
+  Access: 2019-06-17 21:36:42.380004039 +0800
+  Modify: 2019-06-17 21:36:42.380004039 +0800
+  Change: 2019-06-17 21:51:35.907031392 +0800
+  Birth: 2019-06-17 21:36:42.380004039 +0800
+  ~~~

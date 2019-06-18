@@ -366,3 +366,70 @@ tags:
   Change: 2019-06-17 21:51:35.907031392 +0800
   Birth: 2019-06-17 21:36:42.380004039 +0800
   ~~~
+
+# 2.6 ls显示目录下的内容及相关属性信息
+
+  `list directory contents`
+
+  例子:
+
+  查看当前目录下的文件信息
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ ls
+  ~~~
+
+  输出结果
+
+  ~~~
+  Applications  Desktop  Downloads  GameDir  index.html  Music  Pictures  temp  WorkDir
+  ~~~
+
+  每个人的目录里面的内容不同，所以可能不一样。
+
+  |选项|说明|
+  |:--:|:--:|
+  |-l|使用长格式列出目录下的文件和信息|
+  |-a|显示目录下的所有文件，包括隐藏文件`!`|
+  |-t|根据最新的修改时间排序，不加此参数默认是根据文件名排序`!`|
+  |-r|反向排序|
+  |-F|在显示的条目后加上特殊符号用以区别文件类型`!`|
+  |-p|目录后面加上“/”|
+  |-i|显示inode节点信息|
+  |-d|遇到目录时，只列出目录本身，并且不跟随符号链接`!`|
+  |-h|以人类可读的信息显示文件或目录大小|
+  |-A|列出所有文件，包括隐藏文件夹，但不包括.和..|
+  |-S|根据文件大小排序|
+  |-R|递归列出所有子目录|
+  |-x|逐行列出项目而不是逐栏列出|
+  |-X|根据扩展名排序|
+  |-c|根据状态改变时间排序|
+  |-u|根据最后访问时间排序|
+  |--color={never,always,auto}|根据文件类型显示不同颜色，never:不显示，always:总是显示，auto:表示自动显示|
+  |--full-time|以完整的时间格式进行显示|
+  |--time-style={full-iso,long-iso,iso,locale}|以不同的时间格式输出，long-iso最常用
+  |--time={atime,ctimeA}|按不同的时间属性输出,atime:访问时间，ctime:改变权限属性时间，默认:最后修改时间
+
+  例子:
+
+  环境准备
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ mkdir temp
+  [evanmeek@EvanLinux ~]$ cd temp
+  [evanmeek@EvanLinux ~]$ mkdir dir/{dir1..dir3}
+  [evanmeek@EvanLinux ~]$ touch dir/{dir1..dir3/{txt1..txt3}}
+  ~~~
+
+  利用-a显示所有文件并显示详细信息
+
+  ~~~
+  [evanmeek@EvanLinux ~/WorkDir/MyBlog/]$ ls -a 
+  ~~~
+
+  输出信息
+  
+  ~~~
+  ~~~
+
+   

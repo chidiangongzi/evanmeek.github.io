@@ -352,7 +352,7 @@ tags:
   [evanmeek@EvanLinux ~]$ stat t02.txt
   [evanmeek@EvanLinux ~]$ touch -r t02.txt t01.txt
   [evanmeek@EvanLinux ~]$ stat t01.txt
-  ~~~$ stat t01.txt
+  ~~~
 
   输出结果
 

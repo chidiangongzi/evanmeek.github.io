@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="2.1 pwd命令  print working diretory   查看当前路径使用pwd命令   例子:   1[evanmeek@EvanLinux ~]$ pwd   输出信息   1/home/evanmeek    选项 说明     -L 显示当前目录的逻辑路径(忽略软链接文件)   -P 显示当前目录的物理路径(若有软链接则显示源文件地址)      所谓的软链接相当于快捷方式，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-18T11:36:56.361Z">
+<meta property="og:updated_time" content="2019-06-18T11:50:28.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-文件和目录操作命令-1">
 <meta name="twitter:description" content="2.1 pwd命令  print working diretory   查看当前路径使用pwd命令   例子:   1[evanmeek@EvanLinux ~]$ pwd   输出信息   1/home/evanmeek    选项 说明     -L 显示当前目录的逻辑路径(忽略软链接文件)   -P 显示当前目录的物理路径(若有软链接则显示源文件地址)      所谓的软链接相当于快捷方式，">
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-18 19:36:56" itemprop="dateModified" datetime="2019-06-18T19:36:56+08:00">2019-06-18</time>
+                <time title="修改时间：2019-06-18 19:50:28" itemprop="dateModified" datetime="2019-06-18T19:50:28+08:00">2019-06-18</time>
               
             
           </span>
@@ -718,32 +718,124 @@
 <p>输出信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">File: t01.txt</span><br><span class="line">Size: 0               Blocks: 0          IO Block: 4096   regular empty file</span><br><span class="line">Device: 10305h/66309d   Inode: 18352077    Links: 1</span><br><span class="line">Access: (0644/-rw-r--r--)  Uid: ( 1000/evanmeek)   Gid: ( 1000/evanmeek)</span><br><span class="line">Access: 2001-01-01 00:00:00.000000000 +0800</span><br><span class="line">Modify: 2001-01-01 00:00:00.000000000 +0800</span><br><span class="line">Change: 2019-06-17 21:48:26.700992172 +0800</span><br><span class="line">Birth: 2019-06-17 21:36:42.380004039 +0800</span><br></pre></td></tr></table></figure>
 <p>修改指定文件为某文件的时间属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ stat t02.txt</span><br><span class="line">[evanmeek@EvanLinux ~]$ touch -r t02.txt t01.txt</span><br><span class="line">[evanmeek@EvanLinux ~]$ stat t01.txt</span><br><span class="line">~~~$ stat t01.txt</span><br><span class="line"></span><br><span class="line">输出结果</span><br></pre></td></tr></table></figure>
-<p>File: t01.txt<br>Size: 0               Blocks: 0          IO Block: 4096   regular empty file<br>Device: 10305h/66309d   Inode: 18352077    Links: 1<br>Access: (0644/-rw-r–r–)  Uid: ( 1000/evanmeek)   Gid: ( 1000/evanmeek)<br>Access: 2019-06-17 21:36:42.380004039 +0800<br>Modify: 2019-06-17 21:36:42.380004039 +0800<br>Change: 2019-06-17 21:51:35.907031392 +0800<br>Birth: 2019-06-17 21:36:42.380004039 +0800</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 2.6 ls显示目录下的内容及相关属性信息</span><br><span class="line">  `list directory contents`</span><br><span class="line"></span><br><span class="line">  例子:</span><br><span class="line"></span><br><span class="line">  查看当前目录下的文件信息</span><br></pre></td></tr></table></figure>
-<p>[evanmeek@EvanLinux ~]$ ls</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输出结果</span><br></pre></td></tr></table></figure>
-<p>Applications  Desktop  Downloads  GameDir  index.html  Music  Pictures  temp  WorkDir</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">每个人的目录里面的内容不同，所以可能不一样。</span><br><span class="line"></span><br><span class="line">|选项|说明|</span><br><span class="line">|:--:|:--:|</span><br><span class="line">|-l|使用长格式列出目录下的文件和信息|</span><br><span class="line">|-a|显示目录下的所有文件，包括隐藏文件`!`|</span><br><span class="line">|-t|根据最新的修改时间排序，不加此参数默认是根据文件名排序`!`|</span><br><span class="line">|-r|反向排序|</span><br><span class="line">|-F|在显示的条目后加上特殊符号用以区别文件类型`!`|</span><br><span class="line">|-p|目录后面加上“/”|</span><br><span class="line">|-i|显示inode节点信息|</span><br><span class="line">|-d|遇到目录时，只列出目录本身，并且不跟随符号链接`!`|</span><br><span class="line">|-h|以人类可读的信息显示文件或目录大小|</span><br><span class="line">|-A|列出所有文件，包括隐藏文件夹，但不包括.和..|</span><br><span class="line">|-S|根据文件大小排序|</span><br><span class="line">|-R|递归列出所有子目录|</span><br><span class="line">|-x|逐行列出项目而不是逐栏列出|</span><br><span class="line">|-X|根据扩展名排序|</span><br><span class="line">|-c|根据状态改变时间排序|</span><br><span class="line">|-u|根据最后访问时间排序|</span><br><span class="line">|--color=&#123;never,always,auto&#125;|根据文件类型显示不同颜色，never:不显示，always:总是显示，auto:表示自动显示|</span><br><span class="line">|--full-time|以完整的时间格式进行显示|</span><br><span class="line">|--time-style=&#123;full-iso,long-iso,iso,locale&#125;|以不同的时间格式输出，long-iso最常用</span><br><span class="line">|--time=&#123;atime,ctimeA&#125;|按不同的时间属性输出,atime:访问时间，ctime:改变权限属性时间，默认:最后修改时间</span><br><span class="line"></span><br><span class="line">例子:</span><br><span class="line"></span><br><span class="line">环境准备</span><br></pre></td></tr></table></figure>
-<p>[evanmeek@EvanLinux ~]$ mkdir temp<br>[evanmeek@EvanLinux ~]$ cd temp<br>[evanmeek@EvanLinux ~]$ mkdir -p father/dir{01..02}<br>[evanmeek@EvanLinux ~]$ touch father/dir{01..02}/txt{01..02}<br>[evanmeek@EvanLinux ~]$ touch father/dir{01..02}/.txt{01..02}<br>[evanmeek@EvanLinux ~]$ tree -a</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输出结果</span><br></pre></td></tr></table></figure>
-<p>.<br>└── father<br>  ├── dir01<br>  │   ├── .txt01<br>  │   ├── txt01<br>  │   ├── .txt02<br>  │   └── txt02<br>  └── dir02</p>
-<pre><code>├── .txt01
-├── txt01
-├── .txt02
-└── txt02
-</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ stat t02.txt</span><br><span class="line">[evanmeek@EvanLinux ~]$ touch -r t02.txt t01.txt</span><br><span class="line">[evanmeek@EvanLinux ~]$ stat t01.txt</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">File: t01.txt</span><br><span class="line">Size: 0               Blocks: 0          IO Block: 4096   regular empty file</span><br><span class="line">Device: 10305h/66309d   Inode: 18352077    Links: 1</span><br><span class="line">Access: (0644/-rw-r--r--)  Uid: ( 1000/evanmeek)   Gid: ( 1000/evanmeek)</span><br><span class="line">Access: 2019-06-17 21:36:42.380004039 +0800</span><br><span class="line">Modify: 2019-06-17 21:36:42.380004039 +0800</span><br><span class="line">Change: 2019-06-17 21:51:35.907031392 +0800</span><br><span class="line">Birth: 2019-06-17 21:36:42.380004039 +0800</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>3 directories, 8 files<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">递归显示所有文件</span><br></pre></td></tr></table></figure></p>
-<p>  [evanmeek@EvanLinux ~/WorkDir/MyBlog/]$ ls -Ra<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输出信息</span><br></pre></td></tr></table></figure></p>
-<p>  .:<br>  .  ..  father</p>
-<p>  ./father:<br>  .  ..  dir01  dir02</p>
-<p>  ./father/dir01:<br>  .  ..  .txt01  txt01  .txt02  txt02</p>
-<p>  ./father/dir02:<br>  .  ..  .txt01  txt01  .txt02  txt02<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">__ls命令输出属性解释__</span><br><span class="line"></span><br><span class="line"> 目录内容如下：</span><br></pre></td></tr></table></figure></p>
-<p>  .<br>  ├── dir01<br>  ├── dir02<br>  ├── file01.txt<br>  └── file02.txt</p>
-<p>  2 directories, 2 files<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">长格式列出人类可读信息并显示inode信息</span><br></pre></td></tr></table></figure></p>
-<p>  [evanmeek@EvanLinux ~]$ ls -lhi<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输出信息</span><br></pre></td></tr></table></figure></p>
-<p>  total 8.0K<br>  18219052 drwxr-xr-x 2 evanmeek evanmeek 4.0K  6月 18 19:27 dir01<br>  18219053 drwxr-xr-x 2 evanmeek evanmeek 4.0K  6月 18 19:27 dir02<br>  18219054 -rw-r–r– 1 evanmeek evanmeek    0  6月 18 19:28 file01.txt<br>  18219055 -rw-r–r– 1 evanmeek evanmeek    0  6月 18 19:28 file02.txt<br>  ~~~</p>
+<h1 id="2-6-ls显示目录下的内容及相关属性信息"><a href="#2-6-ls显示目录下的内容及相关属性信息" class="headerlink" title="2.6 ls显示目录下的内容及相关属性信息"></a>2.6 ls显示目录下的内容及相关属性信息</h1><p>  <code>list directory contents</code></p>
+<p>  例子:</p>
+<p>  查看当前目录下的文件信息</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ ls</span><br></pre></td></tr></table></figure>
+<p>  输出结果</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Applications  Desktop  Downloads  GameDir  index.html  Music  Pictures  temp  WorkDir</span><br></pre></td></tr></table></figure>
+<p>  每个人的目录里面的内容不同，所以可能不一样。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">使用长格式列出目录下的文件和信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">显示目录下的所有文件，包括隐藏文件<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">根据最新的修改时间排序，不加此参数默认是根据文件名排序<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">反向排序</td>
+</tr>
+<tr>
+<td style="text-align:center">-F</td>
+<td style="text-align:center">在显示的条目后加上特殊符号用以区别文件类型<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">目录后面加上“/”</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">显示inode节点信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">遇到目录时，只列出目录本身，并且不跟随符号链接<code>!</code></td>
+</tr>
+<tr>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">以人类可读的信息显示文件或目录大小</td>
+</tr>
+<tr>
+<td style="text-align:center">-A</td>
+<td style="text-align:center">列出所有文件，包括隐藏文件夹，但不包括.和..</td>
+</tr>
+<tr>
+<td style="text-align:center">-S</td>
+<td style="text-align:center">根据文件大小排序</td>
+</tr>
+<tr>
+<td style="text-align:center">-R</td>
+<td style="text-align:center">递归列出所有子目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">逐行列出项目而不是逐栏列出</td>
+</tr>
+<tr>
+<td style="text-align:center">-X</td>
+<td style="text-align:center">根据扩展名排序</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">根据状态改变时间排序</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td style="text-align:center">根据最后访问时间排序</td>
+</tr>
+<tr>
+<td style="text-align:center">–color={never,always,auto}</td>
+<td style="text-align:center">根据文件类型显示不同颜色，never:不显示，always:总是显示，auto:表示自动显示</td>
+</tr>
+<tr>
+<td style="text-align:center">–full-time</td>
+<td style="text-align:center">以完整的时间格式进行显示</td>
+</tr>
+<tr>
+<td style="text-align:center">–time-style={full-iso,long-iso,iso,locale}</td>
+<td style="text-align:center">以不同的时间格式输出，long-iso最常用</td>
+</tr>
+<tr>
+<td style="text-align:center">–time={atime,ctimeA}</td>
+<td style="text-align:center">按不同的时间属性输出,atime:访问时间，ctime:改变权限属性时间，默认:最后修改时间</td>
+</tr>
+</tbody>
+</table>
+<p>  例子:</p>
+<p>  环境准备</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ mkdir temp</span><br><span class="line">[evanmeek@EvanLinux ~]$ cd temp</span><br><span class="line">[evanmeek@EvanLinux ~]$ mkdir -p father/dir&#123;01..02&#125;</span><br><span class="line">[evanmeek@EvanLinux ~]$ touch father/dir&#123;01..02&#125;/txt&#123;01..02&#125;</span><br><span class="line">[evanmeek@EvanLinux ~]$ touch father/dir&#123;01..02&#125;/.txt&#123;01..02&#125;</span><br><span class="line">[evanmeek@EvanLinux ~]$ tree -a</span><br></pre></td></tr></table></figure>
+<p>  输出结果</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  .</span><br><span class="line">  └── father</span><br><span class="line">      ├── dir01</span><br><span class="line">      │   ├── .txt01</span><br><span class="line">      │   ├── txt01</span><br><span class="line">      │   ├── .txt02</span><br><span class="line">      │   └── txt02</span><br><span class="line">      └── dir02</span><br><span class="line">          ├── .txt01</span><br><span class="line">          ├── txt01</span><br><span class="line">          ├── .txt02</span><br><span class="line">          └── txt02</span><br><span class="line"></span><br><span class="line">3 directories, 8 files</span><br></pre></td></tr></table></figure>
+<p>  递归显示所有文件</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~/WorkDir/MyBlog/]$ ls -Ra</span><br></pre></td></tr></table></figure>
+<p>  输出信息</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.:</span><br><span class="line">.  ..  father</span><br><span class="line"></span><br><span class="line">./father:</span><br><span class="line">.  ..  dir01  dir02</span><br><span class="line"></span><br><span class="line">./father/dir01:</span><br><span class="line">.  ..  .txt01  txt01  .txt02  txt02</span><br><span class="line"></span><br><span class="line">./father/dir02:</span><br><span class="line">.  ..  .txt01  txt01  .txt02  txt02</span><br></pre></td></tr></table></figure>
+<p> <strong>ls命令输出属性解释</strong></p>
+<p>  目录内容如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── dir01</span><br><span class="line">├── dir02</span><br><span class="line">├── file01.txt</span><br><span class="line">└── file02.txt</span><br><span class="line"></span><br><span class="line">2 directories, 2 files</span><br></pre></td></tr></table></figure>
+<p>  长格式列出人类可读信息并显示inode信息</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ ls -lhi</span><br></pre></td></tr></table></figure>
+<p>  输出信息</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">total 8.0K</span><br><span class="line">18219052 drwxr-xr-x 2 evanmeek evanmeek 4.0K  6月 18 19:27 dir01</span><br><span class="line">18219053 drwxr-xr-x 2 evanmeek evanmeek 4.0K  6月 18 19:27 dir02</span><br><span class="line">18219054 -rw-r--r-- 1 evanmeek evanmeek    0  6月 18 19:28 file01.txt</span><br><span class="line">18219055 -rw-r--r-- 1 evanmeek evanmeek    0  6月 18 19:28 file02.txt</span><br></pre></td></tr></table></figure>
 <p>  从第一列依次往后排，分别含义为:</p>
 <ol>
 <li>inode索引节点编号</li>
@@ -1107,7 +1199,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-pwd命令"><span class="nav-number">1.</span> <span class="nav-text">2.1 pwd命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-cd-切换目录"><span class="nav-number">2.</span> <span class="nav-text">2.2 cd 切换目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-tree以树形结构显示目录下的内容"><span class="nav-number">3.</span> <span class="nav-text">2.3 tree以树形结构显示目录下的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-4-mkdir创建目录"><span class="nav-number">4.</span> <span class="nav-text">2.4 mkdir创建目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-touch创建空文件或改变文件的时间戳属性"><span class="nav-number">5.</span> <span class="nav-text">2.5 touch创建空文件或改变文件的时间戳属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-7-cp复制文件或目录"><span class="nav-number">6.</span> <span class="nav-text">2.7 cp复制文件或目录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-pwd命令"><span class="nav-number">1.</span> <span class="nav-text">2.1 pwd命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-cd-切换目录"><span class="nav-number">2.</span> <span class="nav-text">2.2 cd 切换目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-tree以树形结构显示目录下的内容"><span class="nav-number">3.</span> <span class="nav-text">2.3 tree以树形结构显示目录下的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-4-mkdir创建目录"><span class="nav-number">4.</span> <span class="nav-text">2.4 mkdir创建目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-touch创建空文件或改变文件的时间戳属性"><span class="nav-number">5.</span> <span class="nav-text">2.5 touch创建空文件或改变文件的时间戳属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-6-ls显示目录下的内容及相关属性信息"><span class="nav-number">6.</span> <span class="nav-text">2.6 ls显示目录下的内容及相关属性信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-7-cp复制文件或目录"><span class="nav-number">7.</span> <span class="nav-text">2.7 cp复制文件或目录</span></a></li></ol></div>
             
 
           </div>

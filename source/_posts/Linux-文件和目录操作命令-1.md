@@ -368,7 +368,6 @@ tags:
   ~~~
 
 # 2.6 ls显示目录下的内容及相关属性信息
-
   `list directory contents`
 
   例子:
@@ -417,19 +416,94 @@ tags:
   ~~~
   [evanmeek@EvanLinux ~]$ mkdir temp
   [evanmeek@EvanLinux ~]$ cd temp
-  [evanmeek@EvanLinux ~]$ mkdir dir/{dir1..dir3}
-  [evanmeek@EvanLinux ~]$ touch dir/{dir1..dir3/{txt1..txt3}}
+  [evanmeek@EvanLinux ~]$ mkdir -p father/dir{01..02}
+  [evanmeek@EvanLinux ~]$ touch father/dir{01..02}/txt{01..02}
+  [evanmeek@EvanLinux ~]$ touch father/dir{01..02}/.txt{01..02}
+  [evanmeek@EvanLinux ~]$ tree -a
   ~~~
 
-  利用-a显示所有文件并显示详细信息
+  输出结果
 
   ~~~
-  [evanmeek@EvanLinux ~/WorkDir/MyBlog/]$ ls -a 
+  .
+  └── father
+      ├── dir01
+      │   ├── .txt01
+      │   ├── txt01
+      │   ├── .txt02
+      │   └── txt02
+      └── dir02
+          ├── .txt01
+          ├── txt01
+          ├── .txt02
+          └── txt02
+
+3 directories, 8 files
+  ~~~
+
+  递归显示所有文件
+
+  ~~~
+  [evanmeek@EvanLinux ~/WorkDir/MyBlog/]$ ls -Ra
   ~~~
 
   输出信息
   
   ~~~
+  .:
+  .  ..  father
+
+  ./father:
+  .  ..  dir01  dir02
+
+  ./father/dir01:
+  .  ..  .txt01  txt01  .txt02  txt02
+
+  ./father/dir02:
+  .  ..  .txt01  txt01  .txt02  txt02
+  ~~~
+  
+ __ls命令输出属性解释__
+
+  目录内容如下：
+
+  ~~~
+  .
+  ├── dir01
+  ├── dir02
+  ├── file01.txt
+  └── file02.txt
+
+  2 directories, 2 files
   ~~~
 
-   
+  长格式列出人类可读信息并显示inode信息
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ ls -lhi
+  ~~~
+
+  输出信息
+
+  ~~~
+  total 8.0K
+  18219052 drwxr-xr-x 2 evanmeek evanmeek 4.0K  6月 18 19:27 dir01
+  18219053 drwxr-xr-x 2 evanmeek evanmeek 4.0K  6月 18 19:27 dir02
+  18219054 -rw-r--r-- 1 evanmeek evanmeek    0  6月 18 19:28 file01.txt
+  18219055 -rw-r--r-- 1 evanmeek evanmeek    0  6月 18 19:28 file02.txt
+  ~~~
+
+  从第一列依次往后排，分别含义为:
+
+  1. inode索引节点编号
+  2. 文件类型以及属性(第一字符标注类型，后9个代表权限)
+  3. 硬链接个数
+  4. 文件或目录所属用户
+  5. 文件或目录所属的组
+  6. 文件或目录的大小
+  7. 修改时间
+  10. 文件名或目录名
+
+# 2.7 cp复制文件或目录
+
+  

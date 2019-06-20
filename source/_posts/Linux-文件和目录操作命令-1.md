@@ -700,7 +700,7 @@ tags:
 
   链接分为两种，分别是硬链接与软链接
 
-  硬链接:
+  硬链接(hard link):
   
   - 不能将硬链接链接到不同文件系统的文件
 
@@ -714,3 +714,94 @@ tags:
 
   - 对于静态文件来说，对应的硬链接连接的个数为0时，则代表被删除
 
+  - 硬链接的文件类型是普通文件(字符型)
+
+  - 硬链接通过索引节点进行链接
+
+  例子:
+
+  创建硬链接
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ ln test.txt testHardFile.txt
+  ~~~
+
+  软链接(Symbolic Link):
+
+  - 类似于Windows的快捷方式
+
+  - 文件内存放的是源文件的路径
+
+  - 即使删除源文件，软链接仍然存在，但无法访问源文件
+
+  - 源文件被删除后，软链接则失效，失效后将会有白字红底闪烁提示
+
+  - 软链接可以用rm命令删除
+
+  例子:
+
+  创建软链接
+
+  ~~~
+  [evanmeek@EvanLinux ~]$ ln -s test.txt testSyumbolicLink.txt
+  ~~~
+
+## 文件链接案例
+
+  通过一个案例演示软链接和硬链接的区别。
+  
+  ~~~
+  [evanmeek@EvanLinux ~]$ cat testFile
+  123
+  # 创建硬链接
+  [evanmeek@EvanLinux ~]$ ln testFile testFileHardLink
+  # 创建软链接
+  [evanmeek@EvanLinux ~]$ ln -s testFile testFileSymbolicLink
+  [evanmeek@EvanLinux ~]$ cat testFile testHardLink testFileSymbolicLink
+  123
+  123
+  123
+  # 删除软链接
+  [evanmeek@EvanLinux ~]$ rm -f testFileSymbolicLink
+  [evanmeek@EvanLinux ~]$ cat testFile testHardLink
+  123
+  123
+  # 复原
+  [evanmeek@EvanLinux ~]$ ln -s testFile testFileSymbolicLink
+  # 删除硬链接
+  [evanmeek@EvanLinux ~]$ rm -f testFileHardLink
+  [evanmeek@EvanLinux ~]$ cat testFile testFileHardLink
+  123
+  123
+  # 复原
+  [evanmeek@EvanLinux ~]$ ln testFile testFileHardLink
+  # 删除源文件
+  [evanmeek@EvanLinux ~]$ rm -f testFile
+  [evanmeek@EvanLinux ~]$ cat testFileHardLink testFileSymbolicLink
+  123
+  cat: testFileSymbolicLink: 没有那个文件或目录
+  ~~~
+  
+  - 硬链接可以没有源文件
+
+  - 软链接不行
+
+# 2.12 readlink 查看符号链接文件的内容
+
+  此命令可查看链接指向的源文件的地址
+
+  | 选项 | 说明                                                           |
+  |------|----------------------------------------------------------------|
+  | -f   | 一直跟随符号链接，直到遇到一个非符号链接的文件，若不存在则不行 |
+
+  例子：
+  
+  ~~~
+  [evanmeek@EvanLinux ~]$ readlink testFileSymbolicLink
+  ~~~
+
+# 2.13 find 查找目录下的文件
+
+  由于本篇篇幅较大，请点击下方超链接进行访问。
+
+  [点击访问](/2019/6/21/Linux-文件和目录操作命令-find命令

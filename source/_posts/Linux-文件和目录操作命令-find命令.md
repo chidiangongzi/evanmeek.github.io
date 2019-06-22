@@ -331,7 +331,7 @@ txt0.txt  txt1.txt  txt2.txt  txt3.txt  txt4.txt
 ./txt2.txt
 ./txt3.txt
 ~~~
-S
+
 __对查找到的文件执行Shell命令操作__
 
 ~~~
@@ -353,10 +353,3 @@ __对查找到的文件使用Shell命令并且使用安全模式-ok
 < rm ... ./txt0.txt.demo > ? y
 < rm ... ./txt3.txt.demo > ? n
 ~~~
-
-
-
-# 2.13.3 拓展知识: 将找到的文件移动到指定位置的几种方法
-
-# 2.13.4 拓展只是: find命令结合exec和xargs使用的区别
-

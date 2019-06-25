@@ -367,7 +367,7 @@ reward_settings:
   # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
   enable: true
   animation: false
-  comment: 赠人玫瑰，手有余香
+  comment: 如果可以的话，可以请我喝一杯咖啡。
 
 reward:
   wechatpay: /images/wechatPay.png

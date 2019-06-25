@@ -595,13 +595,13 @@ tags:
   drwxr-xr-x 2 evanmeek evanmeek 4096 2019-06-20 19:11:55.618528975 +0800 testTxt
   ~~~
   
-  移动文件
+  __移动文件__
 
   ~~~
   [evanmeek@EvanLinux ~]$ mv test-1.txt testTxt
   ~~~
 
-  移动多个文件至一个目录
+  __移动多个文件至一个目录__
 
   ~~~
   [evanmeek@EvanLinux ~]$ mv -t testTxt test1.txt test2.txt test3.txt
@@ -635,13 +635,13 @@ tags:
   └── test3.txt
   ~~~
 
-  删除文件
+  __删除文件__
   
   ~~~
   [evanmeek@EvanLinux ~]$ rm test3.txt
   ~~~
 
-  强制删除并且删除时需要确认
+  __强制删除并且删除时需要确认__
 
   ~~~
   [evanmeek@EvanLinux ~]$ rm -fi test2Txt/test2.txt
@@ -653,13 +653,13 @@ tags:
   rm：是否删除普通空文件 'test2Txt/test2.txt'？
   ~~~
 
-  删除目录并且删除时需要确认
+  __删除目录并且删除时需要确认__
   
   ~~~
   [evanmeek@EvanLinux ~]$ rm -ri test2Txt/testTxt
   ~~~
   
-  强制删除+递归删除目录
+  __强制删除+递归删除目录__
   
   ~~~
   [evanmeek@EvanLinux ~]$ rm -rf test2Txt
@@ -740,7 +740,7 @@ tags:
 
   例子:
 
-  创建软链接
+  __创建软链接__
 
   ~~~
   [evanmeek@EvanLinux ~]$ ln -s test.txt testSyumbolicLink.txt
@@ -819,7 +819,7 @@ tags:
 
 ## 2.14.2使用范例
 
-  多行输入变单行
+  __多行输入变单行__
 
   ~~~
   > cat test.txt
@@ -831,7 +831,7 @@ tags:
   1 2 3 4 5 6 7 8 9 1
   ~~~
 
-  通过-n指定每行的输出个数
+  __通过-n指定每行的输出个数__
 
   ~~~
   > xargs -n 2 < test.txt
@@ -842,7 +842,7 @@ tags:
   9 1
   ~~~
 
-  自定义分隔符(使用-d功能)
+  __自定义分隔符(使用-d功能)__
   ~~~
   > echo 123I321I809I098
   123I321I809I098
@@ -852,7 +852,7 @@ tags:
   890 098
   ~~~
 
-  指定一个替换字符串
+  __指定一个替换字符串__
   ~~~
   # 将查找出来的结果删除
   # 先将结果传给{}
@@ -872,9 +872,9 @@ tags:
   rename from to file
   ~~~
 
-  例子
+  例子:
 
-  批量修改文件名
+  __批量修改文件名__
 
   ~~~
   > ls
@@ -884,7 +884,7 @@ tags:
   test_0  test_1  test_2  test_3  test_4  test_5
   ~~~
 
-  批量修改文件扩展名
+  __批量修改文件扩展名__
 
   ~~~
   > ls
@@ -908,7 +908,7 @@ tags:
 
   例子:
 
-  只显示文件名和后缀，不显示完整路径
+  __只显示文件名和后缀，不显示完整路径__
 
   ~~~
   > mkdir -p dir1/dir2/
@@ -966,7 +966,7 @@ tags:
 
   例子：
 
-  给文件加锁，使其只能为只读
+  __给文件加锁，使其只能为只读__
 
   ~~~
   > chattr +i test.txt
@@ -978,7 +978,7 @@ tags:
   zsh: 不允许的操作: test.txt
   ~~~
 
-  给文件解锁
+  __给文件解锁__
 
   ~~~
   > charttr -i test.txt
@@ -1028,3 +1028,75 @@ tags:
   ~~~
 
 # 2.20 file显示文件的类型
+
+  file命令用于显示文件的类型
+
+  语法格式
+
+  ~~~
+  file [选项] [<文件或目录>]
+  ~~~
+
+  | 选项 | 说明                 |
+  |------|----------------------|
+  | -b   | 输出信息使用精简格式 |
+
+  例子:
+
+  __查看文件类型__
+
+  ~~~
+  > file test.txt
+  test.txt: empty
+  > file *
+  test.txt:      empty
+  test.txt.link: symbolic link to test.txt
+  ~~~
+
+# 2.21 md5sum计算和校验文件的MD5值
+
+  md5sum命令用于计算和校验文件的MD5值.
+
+  语法格式
+
+  ~~~
+  md5sum [选项] [文件]
+  ~~~
+
+  | 选项     | 说明                                                 |
+  |----------|------------------------------------------------------|
+  | -b       | 二进制模式读取文件                                   |
+  | -c       | 从指定文件中读取MD5校验值，并进行校验                |
+  | -t       | 文本模式读取文件，默认                               |
+  | --quiet  | 校验文件时，若通过不输出OK                           |
+  | --status | 校验文件时，不输出任何信息，但可通过命令的返回值判断 |
+
+  例子:
+
+  __生成一个文件的MD5值__
+
+  ~~~
+  > md5sum test.txt
+  d41d8cd98f00b204e9800998ecf8427e  test.txt
+  ~~~
+
+  __校验文件MD5值是否发生改变__
+
+  ~~~
+  > md5sum test.txt > md5.log
+  > cat md5.log
+  d41d8cd98f00b204e9800998ecf8427e  test.txt
+  > md5sum -c md5.log
+  test.txt: 成功
+  > echo "update" >> test.txt
+  > md5sum -c md5.log
+  test.txt: 失败
+  md5sum: 警告：1 个校验和不匹配
+  > md5sum --status -c md5.log
+  > echo $?
+  1
+  ~~~
+
+# 2.22 chown改变文件或目录的用户和用户组
+
+  chown命令用于改变文件或目录的用户和用户组

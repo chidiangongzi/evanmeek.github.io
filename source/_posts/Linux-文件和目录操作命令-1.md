@@ -863,3 +863,168 @@ tags:
   ~~~
 
 # 2.15 rename重命名
+
+  rename通过替换字符串的方式批量修改文件名
+
+  语法格式
+
+  ~~~
+  rename from to file
+  ~~~
+
+  例子
+
+  批量修改文件名
+
+  ~~~
+  > ls
+  test_demo_0  test_demo_1  test_demo_2  test_demo_3  test_demo_4  test_demo_5
+  > rename "_demo" "" *
+  > ls
+  test_0  test_1  test_2  test_3  test_4  test_5
+  ~~~
+
+  批量修改文件扩展名
+
+  ~~~
+  > ls
+  test0.txt  test1.txt  test2.txt  test3.txt  test4.txt  test5.txt
+  > rename .txt .demo *
+  > ls
+  test0.demo  test1.demo  test2.demo  test3.demo  test4.demo  test5.demo
+  ~~~
+
+# 2.16 basename显示文件名或目录名
+
+  basename命令用于显示去除路径和文件后缀的文件名或目录名
+
+  语法格式
+
+  ~~~
+  basename [<文件或目录>] [后缀]
+  ~~~
+  
+  其中的后缀为可选
+
+  例子:
+
+  只显示文件名和后缀，不显示完整路径
+
+  ~~~
+  > mkdir -p dir1/dir2/
+  > touch dir1/dir2/test.txt
+  > basename dir1/dir2/test.txt
+  test.txt
+  ~~~
+
+  只显示文件名，不显示完整路径制定不显示某个后缀
+
+  ~~~
+  > touch dir1/dir2/test.demo.txt
+  > basename dir1/dir2/test.demo.txt .txt
+  test.demo
+  ~~~
+# 2.17 dirname显示文件或目录的路径
+
+  dirname命令用于只显示文件或目录的路径
+
+  语法格式
+
+  ~~~
+  dirname [<文件或目录>]
+  ~~~
+
+  例子:
+
+  ~~~
+  > dirname dir1/dir2/test.txt
+  dir1/dir2
+  ~~~
+
+# 2.18 chattr改变文件的扩展属性
+  charttr命令用户改变文件的扩展属性，相比chmod命令不同的是，chmod只是改变文件的读写执行权限，而更底层的权限属性控制是由charttr来改变的．
+
+  语法格式
+
+  ~~~
+  chattr [选项] [模式] [<文件或目录>]
+  ~~~
+
+  提示:`lsattr`命令可以查看文件的属性
+
+  | 选项 | 说明                                       |
+  |------|--------------------------------------------|
+  | -R   | 递归更改目录属性                           |
+  | -V   | 显示执行过程                               |
+  | mode |                                            |
+  | +    | 增加参数                                   |
+  | -    | 移除参数                                   |
+  | =    | 更新为指定参数                             |
+  | A    | 指定文件的最后访问时间不可修改             |
+  | a    | 指定文件只能添加数据，无法删除数据`!`      |
+  | !    | 指定文件不能被删除，重命名，写入或新增内容 |
+
+  例子：
+
+  给文件加锁，使其只能为只读
+
+  ~~~
+  > chattr +i test.txt
+  > lsattr test.txt
+  ----i---------e----- test.txt
+  > echo a1111 > test.txt
+  zsh: 不允许的操作: test.txt
+  > echo b2222 >> test.txt 
+  zsh: 不允许的操作: test.txt
+  ~~~
+
+  给文件解锁
+
+  ~~~
+  > charttr -i test.txt
+  > lsattr test.txt
+  --------------e----- test.txt
+  > eco 111 > test.txt
+  > cat test.txt
+  111
+  ~~~
+
+# 2.19 lsattr查看文件扩展属性
+
+  lsattr命令用于查看文件扩展属
+
+  语法格式
+
+  ~~~
+  lsattr [选项] [<文件或目录>]
+  ~~~
+
+  | 选项 | 说明                   |
+  |------|------------------------|
+  | -R   | 递归查看目录的扩展属性 |
+  | -a   | 显示所有文件的扩展属性 |
+  | -d   | 显示目录的扩展属性     |
+
+  例子:
+
+  __查看文件的扩展属性__
+
+  ~~~
+  > lsattr test.txt
+  --------------e----- test.txt
+  > chattr +i test.txt
+  > lsattr test.txt
+  ----i---------e----- test.txt
+  ~~~
+
+  __查看目录的扩展属性__
+
+  ~~~
+  > lsattr -d testDir
+  --------------e----- testDir
+  > chattr +i testDir
+  > lsattr -d testDir
+  ----i---------e----- testDir
+  ~~~
+
+# 2.20 file显示文件的类型

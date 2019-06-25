@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="2.1 pwd命令  print working diretory   查看当前路径使用pwd命令   例子:   1[evanmeek@EvanLinux ~]$ pwd   输出信息   1/home/evanmeek    选项 说明     -L 显示当前目录的逻辑路径(忽略软链接文件)   -P 显示当前目录的物理路径(若有软链接则显示源文件地址)      所谓的软链接相当于快捷方式，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-25T08:00:22.533Z">
+<meta property="og:updated_time" content="2019-06-25T11:25:29.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-文件和目录操作命令-1">
 <meta name="twitter:description" content="2.1 pwd命令  print working diretory   查看当前路径使用pwd命令   例子:   1[evanmeek@EvanLinux ~]$ pwd   输出信息   1/home/evanmeek    选项 说明     -L 显示当前目录的逻辑路径(忽略软链接文件)   -P 显示当前目录的物理路径(若有软链接则显示源文件地址)      所谓的软链接相当于快捷方式，">
@@ -473,7 +473,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-25 16:00:22" itemprop="dateModified" datetime="2019-06-25T16:00:22+08:00">2019-06-25</time>
+                <time title="修改时间：2019-06-25 19:25:29" itemprop="dateModified" datetime="2019-06-25T19:25:29+08:00">2019-06-25</time>
               
             
           </span>
@@ -1111,7 +1111,114 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; xargs -n 2 &lt; test.txt</span><br><span class="line">1 2</span><br><span class="line">3 4</span><br><span class="line">5 6</span><br><span class="line">7 8</span><br><span class="line">9 1</span><br></pre></td></tr></table></figure>
 <p>  自定义分隔符(使用-d功能)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo 123I321I809I098</span><br><span class="line">123I321I809I098</span><br><span class="line"></span><br><span class="line">&gt; echo 123I321I809I098|xargs -d I -n 2</span><br><span class="line">123 321</span><br><span class="line">890 098</span><br></pre></td></tr></table></figure></p>
 <p>  指定一个替换字符串<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 将查找出来的结果删除</span><br><span class="line"># 先将结果传给&#123;&#125;</span><br><span class="line"># 再会被删除</span><br><span class="line">&gt; find . -name &quot;*.log&quot;|xargs -i rm -rf &#123;&#125;</span><br><span class="line"># 自定义替换字符串</span><br><span class="line">&gt; find . -name &quot;*.log&quot;|xargs -I [] rm -rf []</span><br></pre></td></tr></table></figure></p>
-<h1 id="2-15-rename重命名"><a href="#2-15-rename重命名" class="headerlink" title="2.15 rename重命名"></a>2.15 rename重命名</h1>
+<h1 id="2-15-rename重命名"><a href="#2-15-rename重命名" class="headerlink" title="2.15 rename重命名"></a>2.15 rename重命名</h1><p>  rename通过替换字符串的方式批量修改文件名</p>
+<p>  语法格式</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename from to file</span><br></pre></td></tr></table></figure>
+<p>  例子</p>
+<p>  批量修改文件名</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; ls</span><br><span class="line">test_demo_0  test_demo_1  test_demo_2  test_demo_3  test_demo_4  test_demo_5</span><br><span class="line">&gt; rename &quot;_demo&quot; &quot;&quot; *</span><br><span class="line">&gt; ls</span><br><span class="line">test_0  test_1  test_2  test_3  test_4  test_5</span><br></pre></td></tr></table></figure>
+<p>  批量修改文件扩展名</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; ls</span><br><span class="line">test0.txt  test1.txt  test2.txt  test3.txt  test4.txt  test5.txt</span><br><span class="line">&gt; rename .txt .demo *</span><br><span class="line">&gt; ls</span><br><span class="line">test0.demo  test1.demo  test2.demo  test3.demo  test4.demo  test5.demo</span><br></pre></td></tr></table></figure>
+<h1 id="2-16-basename显示文件名或目录名"><a href="#2-16-basename显示文件名或目录名" class="headerlink" title="2.16 basename显示文件名或目录名"></a>2.16 basename显示文件名或目录名</h1><p>  basename命令用于显示去除路径和文件后缀的文件名或目录名</p>
+<p>  语法格式</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basename [&lt;文件或目录&gt;] [后缀]</span><br></pre></td></tr></table></figure>
+<p>  其中的后缀为可选</p>
+<p>  例子:</p>
+<p>  只显示文件名和后缀，不显示完整路径</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; mkdir -p dir1/dir2/</span><br><span class="line">&gt; touch dir1/dir2/test.txt</span><br><span class="line">&gt; basename dir1/dir2/test.txt</span><br><span class="line">test.txt</span><br></pre></td></tr></table></figure>
+<p>  只显示文件名，不显示完整路径制定不显示某个后缀</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; touch dir1/dir2/test.demo.txt</span><br><span class="line">&gt; basename dir1/dir2/test.demo.txt .txt</span><br><span class="line">test.demo</span><br></pre></td></tr></table></figure>
+<h1 id="2-17-dirname显示文件或目录的路径"><a href="#2-17-dirname显示文件或目录的路径" class="headerlink" title="2.17 dirname显示文件或目录的路径"></a>2.17 dirname显示文件或目录的路径</h1><p>  dirname命令用于只显示文件或目录的路径</p>
+<p>  语法格式</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirname [&lt;文件或目录&gt;]</span><br></pre></td></tr></table></figure>
+<p>  例子:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; dirname dir1/dir2/test.txt</span><br><span class="line">dir1/dir2</span><br></pre></td></tr></table></figure>
+<h1 id="2-18-chattr改变文件的扩展属性"><a href="#2-18-chattr改变文件的扩展属性" class="headerlink" title="2.18 chattr改变文件的扩展属性"></a>2.18 chattr改变文件的扩展属性</h1><p>  charttr命令用户改变文件的扩展属性，相比chmod命令不同的是，chmod只是改变文件的读写执行权限，而更底层的权限属性控制是由charttr来改变的．</p>
+<p>  语法格式</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr [选项] [模式] [&lt;文件或目录&gt;]</span><br></pre></td></tr></table></figure>
+<p>  提示:<code>lsattr</code>命令可以查看文件的属性</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-R</td>
+<td>递归更改目录属性</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>显示执行过程</td>
+</tr>
+<tr>
+<td>mode</td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>增加参数</td>
+</tr>
+<tr>
+<td>-</td>
+<td>移除参数</td>
+</tr>
+<tr>
+<td>=</td>
+<td>更新为指定参数</td>
+</tr>
+<tr>
+<td>A</td>
+<td>指定文件的最后访问时间不可修改</td>
+</tr>
+<tr>
+<td>a</td>
+<td>指定文件只能添加数据，无法删除数据<code>!</code></td>
+</tr>
+<tr>
+<td>!</td>
+<td>指定文件不能被删除，重命名，写入或新增内容</td>
+</tr>
+</tbody>
+</table>
+<p>  例子：</p>
+<p>  给文件加锁，使其只能为只读</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; chattr +i test.txt</span><br><span class="line">&gt; lsattr test.txt</span><br><span class="line">----i---------e----- test.txt</span><br><span class="line">&gt; echo a1111 &gt; test.txt</span><br><span class="line">zsh: 不允许的操作: test.txt</span><br><span class="line">&gt; echo b2222 &gt;&gt; test.txt </span><br><span class="line">zsh: 不允许的操作: test.txt</span><br></pre></td></tr></table></figure>
+<p>  给文件解锁</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; charttr -i test.txt</span><br><span class="line">&gt; lsattr test.txt</span><br><span class="line">--------------e----- test.txt</span><br><span class="line">&gt; eco 111 &gt; test.txt</span><br><span class="line">&gt; cat test.txt</span><br><span class="line">111</span><br></pre></td></tr></table></figure>
+<h1 id="2-19-lsattr查看文件扩展属性"><a href="#2-19-lsattr查看文件扩展属性" class="headerlink" title="2.19 lsattr查看文件扩展属性"></a>2.19 lsattr查看文件扩展属性</h1><p>  lsattr命令用于查看文件扩展属</p>
+<p>  语法格式</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsattr [选项] [&lt;文件或目录&gt;]</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-R</td>
+<td>递归查看目录的扩展属性</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>显示所有文件的扩展属性</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>显示目录的扩展属性</td>
+</tr>
+</tbody>
+</table>
+<p>  例子:</p>
+<p>  <strong>查看文件的扩展属性</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; lsattr test.txt</span><br><span class="line">--------------e----- test.txt</span><br><span class="line">&gt; chattr +i test.txt</span><br><span class="line">&gt; lsattr test.txt</span><br><span class="line">----i---------e----- test.txt</span><br></pre></td></tr></table></figure>
+<p>  <strong>查看目录的扩展属性</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; lsattr -d testDir</span><br><span class="line">--------------e----- testDir</span><br><span class="line">&gt; chattr +i testDir</span><br><span class="line">&gt; lsattr -d testDir</span><br><span class="line">----i---------e----- testDir</span><br></pre></td></tr></table></figure>
+<h1 id="2-20-file显示文件的类型"><a href="#2-20-file显示文件的类型" class="headerlink" title="2.20 file显示文件的类型"></a>2.20 file显示文件的类型</h1>
       
     </div>
 
@@ -1133,7 +1240,7 @@
   <p><span>本文标题:</span><a href="/2019/06/16/Linux-文件和目录操作命令-1/">Linux-文件和目录操作命令-1</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月16日 - 15:06</p>
-  <p><span>最后更新:</span>2019年06月25日 - 16:06</p>
+  <p><span>最后更新:</span>2019年06月25日 - 19:06</p>
   <p><span>原始链接:</span><a href="/2019/06/16/Linux-文件和目录操作命令-1/" title="Linux-文件和目录操作命令-1">https://evanmeek.github.io/2019/06/16/Linux-文件和目录操作命令-1/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/16/Linux-文件和目录操作命令-1/" aria-label="复制成功！"></i></span>
   </p>
@@ -1469,7 +1576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-pwd命令"><span class="nav-number">1.</span> <span class="nav-text">2.1 pwd命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-cd-切换目录"><span class="nav-number">2.</span> <span class="nav-text">2.2 cd 切换目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-tree以树形结构显示目录下的内容"><span class="nav-number">3.</span> <span class="nav-text">2.3 tree以树形结构显示目录下的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-4-mkdir创建目录"><span class="nav-number">4.</span> <span class="nav-text">2.4 mkdir创建目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-touch创建空文件或改变文件的时间戳属性"><span class="nav-number">5.</span> <span class="nav-text">2.5 touch创建空文件或改变文件的时间戳属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-6-ls显示目录下的内容及相关属性信息"><span class="nav-number">6.</span> <span class="nav-text">2.6 ls显示目录下的内容及相关属性信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-7-cp复制文件或目录"><span class="nav-number">7.</span> <span class="nav-text">2.7 cp复制文件或目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-8-mv移动或重命名文件"><span class="nav-number">8.</span> <span class="nav-text">2.8 mv移动或重命名文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-9-rm删除文件或目录"><span class="nav-number">9.</span> <span class="nav-text">2.9 rm删除文件或目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除时的小技巧"><span class="nav-number">9.1.</span> <span class="nav-text">删除时的小技巧</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-10-rmdir删除空目录"><span class="nav-number">10.</span> <span class="nav-text">2.10 rmdir删除空目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-11-ln硬链接与软链接"><span class="nav-number">11.</span> <span class="nav-text">2.11 ln硬链接与软链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件链接案例"><span class="nav-number">11.1.</span> <span class="nav-text">文件链接案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-12-readlink-查看符号链接文件的内容"><span class="nav-number">12.</span> <span class="nav-text">2.12 readlink 查看符号链接文件的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-13-find-查找目录下的文件"><span class="nav-number">13.</span> <span class="nav-text">2.13 find 查找目录下的文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-14-xargs将标准输入转换成命令行参数"><span class="nav-number">14.</span> <span class="nav-text">2.14 xargs将标准输入转换成命令行参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-14-2使用范例"><span class="nav-number">14.1.</span> <span class="nav-text">2.14.2使用范例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-15-rename重命名"><span class="nav-number">15.</span> <span class="nav-text">2.15 rename重命名</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-pwd命令"><span class="nav-number">1.</span> <span class="nav-text">2.1 pwd命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-cd-切换目录"><span class="nav-number">2.</span> <span class="nav-text">2.2 cd 切换目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-tree以树形结构显示目录下的内容"><span class="nav-number">3.</span> <span class="nav-text">2.3 tree以树形结构显示目录下的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-4-mkdir创建目录"><span class="nav-number">4.</span> <span class="nav-text">2.4 mkdir创建目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-touch创建空文件或改变文件的时间戳属性"><span class="nav-number">5.</span> <span class="nav-text">2.5 touch创建空文件或改变文件的时间戳属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-6-ls显示目录下的内容及相关属性信息"><span class="nav-number">6.</span> <span class="nav-text">2.6 ls显示目录下的内容及相关属性信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-7-cp复制文件或目录"><span class="nav-number">7.</span> <span class="nav-text">2.7 cp复制文件或目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-8-mv移动或重命名文件"><span class="nav-number">8.</span> <span class="nav-text">2.8 mv移动或重命名文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-9-rm删除文件或目录"><span class="nav-number">9.</span> <span class="nav-text">2.9 rm删除文件或目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除时的小技巧"><span class="nav-number">9.1.</span> <span class="nav-text">删除时的小技巧</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-10-rmdir删除空目录"><span class="nav-number">10.</span> <span class="nav-text">2.10 rmdir删除空目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-11-ln硬链接与软链接"><span class="nav-number">11.</span> <span class="nav-text">2.11 ln硬链接与软链接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件链接案例"><span class="nav-number">11.1.</span> <span class="nav-text">文件链接案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-12-readlink-查看符号链接文件的内容"><span class="nav-number">12.</span> <span class="nav-text">2.12 readlink 查看符号链接文件的内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-13-find-查找目录下的文件"><span class="nav-number">13.</span> <span class="nav-text">2.13 find 查找目录下的文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-14-xargs将标准输入转换成命令行参数"><span class="nav-number">14.</span> <span class="nav-text">2.14 xargs将标准输入转换成命令行参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-14-2使用范例"><span class="nav-number">14.1.</span> <span class="nav-text">2.14.2使用范例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-15-rename重命名"><span class="nav-number">15.</span> <span class="nav-text">2.15 rename重命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-16-basename显示文件名或目录名"><span class="nav-number">16.</span> <span class="nav-text">2.16 basename显示文件名或目录名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-17-dirname显示文件或目录的路径"><span class="nav-number">17.</span> <span class="nav-text">2.17 dirname显示文件或目录的路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-18-chattr改变文件的扩展属性"><span class="nav-number">18.</span> <span class="nav-text">2.18 chattr改变文件的扩展属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-19-lsattr查看文件扩展属性"><span class="nav-number">19.</span> <span class="nav-text">2.19 lsattr查看文件扩展属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-20-file显示文件的类型"><span class="nav-number">20.</span> <span class="nav-text">2.20 file显示文件的类型</span></a></li></ol></div>
             
 
           </div>

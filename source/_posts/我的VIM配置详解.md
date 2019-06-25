@@ -10,10 +10,6 @@ tags:
 最近看了位B站Up主的视频，决定好好配置下自己的VIM，不再直接使用SpaceVim，别人配置的东西终究是别人的，要自己配置才是最顺手的。
 <!--more-->
 
-我当时是被VIM的宏给深深迷住的，请看下方演示图
-
-![演示](我的VIM配置详解\演示.gif)
-
 我已经把我的配置文件上传到了Github上了，[点击访问](https://github.com/EvanMeek/Vanilla)
 
 基本都有写中文注释，哪里有不懂的，可以问我，[点击查看我的联系方式](https://evanmeek.github.io/%E5%85%B3%E4%BA%8E%E6%88%91/)

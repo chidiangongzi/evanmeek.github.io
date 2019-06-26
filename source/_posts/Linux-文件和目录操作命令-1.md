@@ -1100,3 +1100,70 @@ tags:
 # 2.22 chown改变文件或目录的用户和用户组
 
   chown命令用于改变文件或目录的用户和用户组
+
+  语法格式
+
+  ~~~
+  chown [选项] [用户:用户组] [<文件或目录>]
+  ~~~
+
+  | 选项 | 说明                       |
+  |------|----------------------------|
+  | -R   | 递归更改目录的用户和用户组 |
+
+  例子:
+
+  __更改文件所属的用户属性__
+
+  ~~~
+  > ls -l test.txt
+  -rw-r--r-- 1 root root 5  6月 27 00:31 test.txt
+  # 授予权限的用户必须存在
+  > chown xxx test.txt
+  chown: 无效的用户: “xxx”
+  > chown evanmeek test.txt
+  > ls -l test.txt
+  -rw-r--r-- 1 evanmeek root 5  6月 27 00:31 test.txt
+  ~~~
+
+  __更改文件所属用户组的属性__
+
+  ~~~
+  > ls -l
+  总用量 4.0K
+  -rw-r--r-- 1 evanmeek evanmeek 5  6月 27 00:34 test.txt
+  > chown .root test.txt
+  > ls -l
+  总用量 4.0K
+  -rw-r--r-- 1 evanmeek root 5  6月 27 00:34 test.txt
+  ~~~
+
+  __同时更改文件的用户和用户组属性__
+
+  ~~~
+  > chown evanmeek:evanmeek test.txt
+  > ls -l
+  总用量 4.0K
+  -rw-r--r-- 1 evanmeek evanmeek 5  6月 27 00:34 test.txt
+  ~~~
+
+  __递归更改目录下所有文件及目录的用户和用户组属性__
+
+  ~~~
+  > tree
+  .
+  ├── dir0
+  │   └── test.txt
+  ├── dir1
+  │   └── test.txt
+  └── dir2
+      └── test.txt
+
+  3 directories, 3 files
+  > chown -R root:root .
+  > ls -l
+  总用量 12K
+  drwxr-xr-x 2 root root 4.0K  6月 27 01:14 dir0
+  drwxr-xr-x 2 root root 4.0K  6月 27 01:14 dir1
+  drwxr-xr-x 2 root root 4.0K  6月 27 01:14 dir2
+  ~~~

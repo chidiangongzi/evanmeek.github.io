@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://evanmeek.github.io/2019/07/03/%E8%B6%85%E9%85%B7-%E5%AD%97%E7%AC%A6%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-Ranger/</loc>
+    
+    <lastmod>2019-07-03T01:47:46.846Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://evanmeek.github.io/2019/07/03/%E6%9C%80%E5%BF%AB-GPU%E5%8A%A0%E9%80%9F-Alacritty%E7%BB%88%E7%AB%AF/</loc>
+    
+    <lastmod>2019-07-03T01:46:22.172Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://evanmeek.github.io/2019/06/30/Linux-%E6%96%87%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%8F%8A%E5%86%85%E5%AE%B9%E7%BC%96%E8%BE%91%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4-2/</loc>
     
     <lastmod>2019-07-01T12:20:30.235Z</lastmod>
@@ -212,14 +226,14 @@
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/2019/05/06/C-%E6%8C%87%E9%92%88-%E5%9F%BA%E7%A1%8001/</loc>
+    <loc>https://evanmeek.github.io/2019/05/06/C-%E6%8C%87%E9%92%88-%E5%9F%BA%E7%A1%8002/</loc>
     
     <lastmod>2019-05-09T15:13:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/2019/05/06/C-%E6%8C%87%E9%92%88-%E5%9F%BA%E7%A1%8002/</loc>
+    <loc>https://evanmeek.github.io/2019/05/06/C-%E6%8C%87%E9%92%88-%E5%9F%BA%E7%A1%8001/</loc>
     
     <lastmod>2019-05-09T15:13:55.000Z</lastmod>
     
@@ -254,14 +268,14 @@
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/2019/05/09/%E7%BB%88%E7%AB%AF%E5%A4%9A%E7%AA%97%E5%8F%A3%E7%A5%9E%E5%99%A8%E2%80%94%E2%80%94Screen/</loc>
+    <loc>https://evanmeek.github.io/2019/04/29/%E5%A6%82%E4%BD%95%E7%94%A8hexo-github-pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2019-05-09T15:13:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/2019/04/29/%E5%A6%82%E4%BD%95%E7%94%A8hexo-github-pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://evanmeek.github.io/2019/05/09/%E7%BB%88%E7%AB%AF%E5%A4%9A%E7%AA%97%E5%8F%A3%E7%A5%9E%E5%99%A8%E2%80%94%E2%80%94Screen/</loc>
     
     <lastmod>2019-05-09T15:13:55.000Z</lastmod>
     
@@ -275,14 +289,14 @@
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/tags/index.html</loc>
+    <loc>https://evanmeek.github.io/categories/index.html</loc>
     
     <lastmod>2019-05-05T17:19:49.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/categories/index.html</loc>
+    <loc>https://evanmeek.github.io/tags/index.html</loc>
     
     <lastmod>2019-05-05T17:19:49.000Z</lastmod>
     

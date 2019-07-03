@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[超酷-字符文件管理-Ranger]]></title>
-    <url>%2F2019%2F07%2F03%2F%E8%B6%85%E9%85%B7-%E5%AD%97%E7%AC%A6%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-Ranger%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[超酷-字符文件管理-ranger]]></title>
+    <url>%2F2019%2F07%2F03%2F%E8%B6%85%E9%85%B7-%E5%AD%97%E7%AC%A6%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-ranger%2F</url>
+    <content type="text"><![CDATA[0x0 什么是ranger?ranger是一个基于文本的文件管理器，由Python编写。 0x1 为什么要选择ranger?ranger具有以下特性: vi风格的快捷键 书签 选择 标签 选项 命令历史 创建符号链接 任务视图 自定义命令 自定义快捷键按 0x2 使用ranger在终端内输入ranger以启动ranger 使用h j k l进行目录之间的进出。 0x3 配置ranger配置文件: rc.conf 基本选项与快捷键设置 commands.py 可在ranger下使用:执行的命令 rifile.conf 文件关联，控制不同文件用不同程序打开 配色方案: ranger默认自带四种配色方案:defalut jungle snow zenburn 使用:set colorscheme scheme进行切换。 自定义配色方案文件放在~/.config/ranger/colorschemes 0x4 我的ranger配置以上传至Github 点击访问 0x5 其他下载地址:点击获取 Arch系: 1&gt; pacman -S ranger]]></content>
       <categories>
         <category>折腾日记</category>
       </categories>

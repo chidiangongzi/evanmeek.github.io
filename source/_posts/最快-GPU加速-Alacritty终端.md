@@ -8,6 +8,10 @@ tags:
   - 软件折腾
 ---
 
+<!--more-->
+
+![ponysay](最快-GPU加速-Alacritty终端/ponysay.png)
+
 # 0x0 Alacritty是什么?
 
 `Alacritty`是一个终端仿真器。

@@ -7,8 +7,6 @@ tags:
   - 个人感想
 ---
 
-# <center>My College Life<center/>
-
 &emsp;About three years ago,I left my school where I stayed for seven years.I lose so many friends,__day and night accompany friend__.Of course,__including you__.
 
 &emsp;Three years after,I become a __college__ student，Maybe you guessed this __article__ is about my college life.About at 2019-9-1 start my college lift.I think I have very __excited__ at that time.
@@ -19,4 +17,4 @@ tags:
 
 &emsp;Speak the true talk.When our instructor go back to army，My eyes are wet，wet is not to say I love crying,It's because he teach for me so many __knowledge__.
 
-&emsp;At the last，I __sincerely thank my instructor，Peace!
+&emsp;At the last，I __sincerely__ thank my instructor，Peace!

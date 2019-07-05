@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MyCollegeLife]]></title>
+    <url>%2F2019%2F07%2F05%2FMyCollegeLife%2F</url>
+    <content type="text"><![CDATA[My College Life&emsp;About three years ago,I left my school where I stayed for seven years.I lose so many friends,day and night accompany friend.Of course,including you. &emsp;Three years after,I become a college student，Maybe you guessed this article is about my college life.About at 2019-9-1 start my college lift.I think I have very excited at that time. &emsp;Before school start，I participate in Military training.Remember that time ,about one hundred peoples trained in a groups together,Instructor look we are tired,then he will say:”Everyboby listen! Drop Down!”，In the twinkling of an eye one hundred peoples on the ground lie.This time nobody care isn’t dirty，just look the sky，think，THE SKY SO BEATUIFUL. &emsp;The fight of time，military training will done.This time Not only have one hundred peoples,enough seven to ten hundred peoples.We sing school song together and with in millitary training time know’s friend add WeChat Friend，Of course，me too. &emsp;Speak the true talk.When our instructor go back to army，My eyes are wet，wet is not to say I love crying,It’s because he teach for me so many knowledge. &emsp;At the last，I __sincerely thank my instructor，Peace!]]></content>
+      <categories>
+        <category>英文文章</category>
+      </categories>
+      <tags>
+        <tag>个人感想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Fraudster Shop-坑爹商店]]></title>
+    <url>%2F2019%2F07%2F05%2FFraudster-Shop-%E5%9D%91%E7%88%B9%E5%95%86%E5%BA%97%2F</url>
+    <content type="text"><![CDATA[昨晚我尝试安装了i3，Manjaro的配置，然而我一直没有配置完成，我就想重装个Manjaro-i3反正文件都在Github上，不过我的U盘不知从何时起就不见了，所以我需要买个U盘。 Chinese&nbsp;&nbsp;自从昨晚系统被我玩到暂时无法使用后，我这个内心就无法平静，一直想着一定要把i3配置好，不然过两天去乌鲁木齐连Github都上不去就惨了。 &nbsp;&nbsp;昨晚正好宿舍又没多少电了，所以空调没开就睡觉了。睡得比较早，醒得也比较早，半夜3点就醒来了，没错，就是被热醒的。时间流逝得挺快，一晃眼就到白天了，东西收拾完毕，床位打理完成后我便回家了，回家时我就想，早上下订单，京东同城的话下午应该就能到，不过就是贵了点运费，大概算下来USB3.0 16GB的U盘才45左右，不过我又想了想，选择回家买，不需要等待快递。 &nbsp;&nbsp;我在街头转了又转，转了又转，就是没有发现一个电脑店，正当我有些失落的时候，街角的一间手机店引起了我的注意，我自信，揣着钱包就进去了。“老板，你这里有没有USB3.0的U盘啊?” 我说，老板想都没想说了句,”有啊!”，说着便拿出一小沓U盘，我看了看说道:”老板，这些都不是USB3.0，你拿其他的给我看一下吧!”，我此时心里想，不用骗我了，拿一些2.0的来哄骗我是3.0的吧。老板无奈的说，你一个小时后再来吧，我这里3.0 未完待续… &nbsp; English]]></content>
+      <categories>
+        <category>英文文章</category>
+      </categories>
+      <tags>
+        <tag>日常</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[超酷-字符文件管理-ranger]]></title>
     <url>%2F2019%2F07%2F03%2F%E8%B6%85%E9%85%B7-%E5%AD%97%E7%AC%A6%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-ranger%2F</url>
     <content type="text"><![CDATA[0x0 什么是ranger?ranger是一个基于文本的文件管理器，由Python编写。 0x1 为什么要选择ranger?ranger具有以下特性: vi风格的快捷键 书签 选择 标签 选项 命令历史 创建符号链接 任务视图 自定义命令 自定义快捷键按 0x2 使用ranger在终端内输入ranger以启动ranger 使用h j k l进行目录之间的进出。 0x3 配置ranger配置文件: rc.conf 基本选项与快捷键设置 commands.py 可在ranger下使用:执行的命令 rifile.conf 文件关联，控制不同文件用不同程序打开 配色方案: ranger默认自带四种配色方案:defalut jungle snow zenburn 使用:set colorscheme scheme进行切换。 自定义配色方案文件放在~/.config/ranger/colorschemes 0x4 我的ranger配置以上传至Github 点击访问 0x5 其他下载地址:点击获取 Arch系: 1&gt; pacman -S ranger]]></content>
@@ -26,7 +48,7 @@
   <entry>
     <title><![CDATA[Linux-文件过滤及内容编辑处理命令-2]]></title>
     <url>%2F2019%2F06%2F30%2FLinux-%E6%96%87%E4%BB%B6%E8%BF%87%E6%BB%A4%E5%8F%8A%E5%86%85%E5%AE%B9%E7%BC%96%E8%BE%91%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4-2%2F</url>
-    <content type="text"><![CDATA[3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。 做运维可以让自己沟通，交际能力变得比开发人员更强。 相比开发岗位，运维的岗位更重要一些。 3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能 序号 常用功能 例子以及说明 1 查看文件内容 cat file.txt 查看文件内容，最基本的使用 2 多个文件合并为一个文件 cat f1 f2 &gt; newf 将f1和f2的内容合并到newf 3 创建编辑新文件 cat &gt; file 输入后会请求输入，快捷键Ctrl+d/c可退出 4 非交互式编辑或追加新内容 cat &gt;&gt;file&lt;&lt;EOF 输入后会请求输入，在结束时输入EOF即可退出 5 清空文件内容 cat /dev/null &gt; file 清空文件内容 语法格式 1cat [选项] [文件] 选项 说明 -n 为输出的内容加编号，从1开始 -b 与-n类似，但它忽略空白行 -s 当遇到有多行空白行，则合并为单行空白行 -v 除了LFD和TAB之外，使用^和M-引用 -T 将Tab字符显示为^I -E 在行尾显示$符号 -t 等价与-vT -A 等价于-vE 例子 使用cat命令以非交互式的方式编辑文件 方式1: 123456789&gt; cat &gt;file&lt;&lt;EOFJust a test.EOF&gt; cat fileJust a test 解释: EOF为字符标签，用于标记从何开始与从何结束，可替换为任意字符，常用做法是用EOF表示，并且字符标签必须成对出现 易错点: 结束EOF必须置前，前面不能有任意字符 方式2: 123456789&gt; cat &gt;file&lt;&lt;-EOFJust a test. EOF&gt; cat fileJust a test. 解释: 在字符标签前加上-可以使得结束标签前可放置制表符，但仅仅只可放制表符 合并多个文件为单个文件 12345678910111213&gt; cat &gt; f1f1Ctrl+d&gt; cat &gt; f2f2Ctrl+c&gt; cat f1 f2f1f2&gt; cat f1 f2 &gt; newfile&gt; cat newfilef1f2 3.2 tac 反向显示文件内容跟cat命令类似，反向输出文件内容 选项 说明 -b 在行前添加分隔标志 -r 将分隔标志视作正则表达式进行解析 -s 使用指定字符作为换行的标志 例子 123456&gt; cat file1helloworld&gt; tac file2worldhello 3.3 more 分页显示文件内容]]></content>
+    <content type="text"><![CDATA[3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。 做运维可以让自己沟通，交际能力变得比开发人员更强。 相比开发岗位，运维的岗位更重要一些。 3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能 序号 常用功能 例子以及说明 1 查看文件内容 cat file.txt 查看文件内容，最基本的使用 2 多个文件合并为一个文件 cat f1 f2 &gt; newf 将f1和f2的内容合并到newf 3 创建编辑新文件 cat &gt; file 输入后会请求输入，快捷键Ctrl+d/c可退出 4 非交互式编辑或追加新内容 cat &gt;&gt;file&lt;&lt;EOF 输入后会请求输入，在结束时输入EOF即可退出 5 清空文件内容 cat /dev/null &gt; file 清空文件内容 语法格式 1cat [选项] [文件] 选项 说明 -n 为输出的内容加编号，从1开始 -b 与-n类似，但它忽略空白行 -s 当遇到有多行空白行，则合并为单行空白行 -v 除了LFD和TAB之外，使用^和M-引用 -T 将Tab字符显示为^I -E 在行尾显示$符号 -t 等价与-vT -A 等价于-vE 例子 使用cat命令以非交互式的方式编辑文件 方式1: 123456789&gt; cat &gt;file&lt;&lt;EOFJust a test.EOF&gt; cat fileJust a test 解释: EOF为字符标签，用于标记从何开始与从何结束，可替换为任意字符，常用做法是用EOF表示，并且字符标签必须成对出现 易错点: 结束EOF必须置前，前面不能有任意字符 方式2: 123456789&gt; cat &gt;file&lt;&lt;-EOFJust a test. EOF&gt; cat fileJust a test. 解释: 在字符标签前加上-可以使得结束标签前可放置制表符，但仅仅只可放制表符 合并多个文件为单个文件 12345678910111213&gt; cat &gt; f1f1Ctrl+d&gt; cat &gt; f2f2Ctrl+c&gt; cat f1 f2f1f2&gt; cat f1 f2 &gt; newfile&gt; cat newfilef1f2 3.2 tac 反向显示文件内容跟cat命令类似，反向输出文件内容 选项 说明 -b 在行前添加分隔标志 -r 将分隔标志视作正则表达式进行解析 -s 使用指定字符作为换行的标志 例子 123456&gt; cat file1helloworld&gt; tac file2worldhello 3.3 more 分页显示文件内容more类似于cat命令，区别在于cat命令是将文件内容一次性全部]]></content>
       <categories>
         <category>Linux系列</category>
       </categories>

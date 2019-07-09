@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-03T04:02:43.143Z">
+<meta property="og:updated_time" content="2019-07-09T10:50:22.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-文件过滤及内容编辑处理命令-2">
 <meta name="twitter:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-03 12:02:43" itemprop="dateModified" datetime="2019-07-03T12:02:43+08:00">2019-07-03</time>
+                <time title="修改时间：2019-07-09 18:50:22" itemprop="dateModified" datetime="2019-07-09T18:50:22+08:00">2019-07-09</time>
               
             
           </span>
@@ -679,7 +679,133 @@
 </table>
 <p>例子</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat file1</span><br><span class="line">hello</span><br><span class="line">world</span><br><span class="line">&gt; tac file2</span><br><span class="line">world</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
-<h1 id="3-3-more-分页显示文件内容"><a href="#3-3-more-分页显示文件内容" class="headerlink" title="3.3 more 分页显示文件内容"></a>3.3 more 分页显示文件内容</h1><p><code>more</code>类似于<code>cat</code>命令，区别在于<code>cat</code>命令是将文件内容一次性全部</p>
+<h1 id="3-3-more-分页显示文件内容"><a href="#3-3-more-分页显示文件内容" class="headerlink" title="3.3 more 分页显示文件内容"></a>3.3 more 分页显示文件内容</h1><p><code>more</code>类似于<code>cat</code>命令，区别在于<code>cat</code>命令是将文件内容一次性全部显示在屏幕上，而<code>more</code>则会分页进行显示。</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more [选项] [文件]</span><br></pre></td></tr></table></figure>
+<p><code>more</code>参数选项说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-num</td>
+<td>指定屏幕显示大小为num行</td>
+</tr>
+<tr>
+<td>+num</td>
+<td>从行号num开始显示</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>把连续的多个空行显示在一行</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>不滚屏，而是清除整个自己屏幕，然后显示文件</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>不滚屏，而是从每一屏的顶部开始显示文本，每显示完一行，就清除这一行的剩余部分</td>
+</tr>
+</tbody>
+</table>
+<p><code>more</code>交互式说明</p>
+<table>
+<thead>
+<tr>
+<th>子命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h/?</td>
+<td>查看帮助</td>
+</tr>
+<tr>
+<td>空格键</td>
+<td>向下滚动一屏</td>
+</tr>
+<tr>
+<td>z</td>
+<td>向下滚动一屏</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>向下显示一行</td>
+</tr>
+<tr>
+<td>f</td>
+<td>向下滚动一屏</td>
+</tr>
+<tr>
+<td>b</td>
+<td>返回上一屏</td>
+</tr>
+<tr>
+<td>=</td>
+<td>输出当前行的行号</td>
+</tr>
+<tr>
+<td>/查找文本</td>
+<td>查找指定的文本</td>
+</tr>
+<tr>
+<td>:f</td>
+<td>输出文件名和当前行的行号</td>
+</tr>
+<tr>
+<td>v</td>
+<td>调用vi编辑器</td>
+</tr>
+<tr>
+<td>!命令</td>
+<td>调用Shell，并执行命令</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出more</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-4-less-分页显示文件内容"><a href="#3-4-less-分页显示文件内容" class="headerlink" title="3.4 less 分页显示文件内容"></a>3.4 less 分页显示文件内容</h1><p><code>less</code>类似<code>more</code>命令，<code>less</code>的功能比<code>more</code>要强大</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less [选项] [文件]</span><br></pre></td></tr></table></figure>
+<p><code>less</code>命令的参数选项及说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i</td>
+<td>搜索时忽略大小写</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>显示进度百分比</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>显示行好</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>多行空行显示为单行</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>当显示到文件结尾时自动退出，若没有此选项则需要用交互式q退出</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -702,7 +828,7 @@
   <p><span>本文标题:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/">Linux-文件过滤及内容编辑处理命令-2</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月30日 - 19:06</p>
-  <p><span>最后更新:</span>2019年07月03日 - 12:07</p>
+  <p><span>最后更新:</span>2019年07月09日 - 18:07</p>
   <p><span>原始链接:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" title="Linux-文件过滤及内容编辑处理命令-2">https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" aria-label="复制成功！"></i></span>
   </p>
@@ -867,7 +993,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1042,7 +1168,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li></ol></div>
             
 
           </div>

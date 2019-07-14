@@ -176,86 +176,176 @@ less [选项] [文件]
 |------|-------------------------------------------------------------|
 | -i   | 搜索时忽略大小写                                            |
 | -m   | 显示进度百分比                                              |
-| -N   | 显示行好                                                    |
+| -N   | 显示行号                                                    |
 | -s   | 多行空行显示为单行                                          |
 | -e   | 当显示到文件结尾时自动退出，若没有此选项则需要用交互式q退出 |
 
 `less`命令的交互式子命令及说明
-| 子命令      | 说明                  |
-|-------------|-----------------------|
-| b           | 向前翻页`!`           |
-| 空格键      | 向后翻页`!`           |
-| u           | 向前翻半页            |
-| d           | 向后翻半页            |
-| y           | 向上滚动一行          |
-| 回车键      | 向下滚动一行          |
-| ↑           | 向上滚动一行          |
-| ↓           | 向下滚动一行          |
-| [page up]   | 向前翻一页            |
-| [page down] | 向后翻一页            |
-| /           | 向下查找字符串        |
-| ?           | 向前查找字符串        |
-| n           | 向后查找已匹配的文本  |
-| N           | 向前查找已匹配的文本  |
-| v           | 进入vi编辑器          |
-| !           | 调用Shell，并执行命令 |
-| G           | 移动到最后一行        |
-| g           | 移动到第一行          |
-| h           | 移动到第一行          |
-| q           | 退出less命令          |
+
+| 子命令    | 说明         |
+|-----------|--------------|
+| b         | 向前翻一页   |
+| 空格键    | 向后翻一页   |
+| u         | 向前翻半页   |
+| d         | 向后翻半页   |
+| y         | 向上滚动一行 |
+| 回车键    | 向下滚动一行 |
+| 方向键-上 | 向上滚动一行 |
+| 方向键-下 | 向下滚动一行 |
+| Page UP   | 向上滚动一屏 |
+| Page Down | 向下滚动一屏 |
 
 例子:
 
-显示文本内容，并显示行号
+__显示文件内容时并且显示行号__
 
 ~~~
-> less -N config.ini
-1 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-2 ;;
-3 ;;          ____        __      __
-4 ;;         / __ \____  / /_  __/ /_  ____ ______
-5 ;;        / /_/ / __ \/ / / / / __ \/ __ `/ ___/
-6 ;;       / ____/ /_/ / / /_/ / /_/ / /_/ / /
-7 ;;      /_/    \____/_/\__, /_.___/\__,_/_/
-8 ;;                    /____/
-9 ;;
-10 ;; Created By Aditya Shakya @adi1090x
-11 ;;
-12 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-13
-14 ;; Global WM Settings
-15
-16 [global/wm]
-17 ; Adjust the _NET_WM_STRUT_PARTIAL top value
-18 ; Used for top aligned bars
-19 margin-bottom = 0
-20
-21 ; Adjust the _NET_WM_STRUT_PARTIAL bottom value
-22 ; Used for bottom aligned bars
-23 margin-top = 0
+> less -N 文件名
 ~~~
 
-# 3.5 head显示文件内容头部
-
-`head`命令用户显示文件内容的头部，默认为前10行
+__分页显示命令的结果__
 
 
+~~~
+> ls -l | less
+~~~
+
+# 3.5 head 显示文件内容头部
+
+`head`命令用于显示文件内容头部，默认输出行数为10行。
+
+语法格式
+
+~~~
+head [选项] [文件]
+~~~
+
+`head`命令的参数选项及说明
+
+| 选项     | 说明                                     |
+|----------|------------------------------------------|
+| -n<行数> | 指定显示的行数                           |
+| -c<字节> | 指定显示的字节数                         |
+| -q       | 显示时不包含指定的文件名作为文件头部     |
+| -v       | 显示时包含指定的文件的文件名作为文件头部 |
+
+例子:
+
+__默认显示文件的前10行__
+
+~~~
+> head /etc/passwd
+root:x:0:0::/root:/bin/bash
+nobody:x:65534:65534:Nobody:/:/sbin/nologin
+dbus:x:81:81:System Message Bus:/:/sbin/nologin
+bin:x:1:1::/:/sbin/nologin
+daemon:x:2:2::/:/sbin/nologin
+mail:x:8:12::/var/spool/mail:/sbin/nologin
+ftp:x:14:11::/srv/ftp:/sbin/nologin
+http:x:33:33::/srv/http:/sbin/nologin
+systemd-journal-remote:x:982:982:systemd Journal Remote:/:/sbin/nologin
+systemd-network:x:981:981:systemd Network Management:/:/sbin/nologin
+~~~
+__显示文件的前n行__
+
+~~~
+> head -n 2 /etc/passwd
+root:x:0:0::/root:/bin/bash
+nobody:x:65534:65534:Nobody:/:/sbin/nologin
+~~~
+
+__显示文件的前n个字节__
+
+~~~
+> head -c 4 /etc/passwd
+root
+~~~
+
+__显示多个文件__
 
 
+~~~
+> head -1 /etc/passwd /etc/profile
+==> /etc/passwd <==
+root:x:0:0::/root:/bin/bash
 
+==> /etc/profile <==
+# /etc/profile
+~~~
 
+# 3.6 tail显示文件内容尾部
 
+`tail`命令用于显示文件内容尾部，默认输出行数为10行。
 
+语法格式
 
+~~~
+tail [选项] [文件]
+~~~
 
+`tail`命令的参数选项及说明
 
+| 选项         | 说明                                       |
+|--------------|--------------------------------------------|
+| -c<字节>     | 指定显示的字节数                           |
+| -n<行数>     | 指定显示的行数                             |
+| -f           | 实时输出文件内容追加的数据                 |
+| --retry      | 不停的尝试打开文件，直到打开为止           |
+| -F           | 等同于-f--retry                            |
+| --pid=进程号 | 若进程关闭则tail的-f选项则不会继续输出内容 |
+| -s 秒数 N    | 监视文件的间隔秒数                         |
+| -q           | 显示时不包含指定的文件名作为文件头部       |
+| -v           | 显示时包含指定的文件的文件名作为文件头部   |
 
+例子:
 
+__显示文件最后10行__
 
+~~~
+> tail /etc/passwd
+git:x:973:973:git daemon user:/:/usr/bin/git-shell
+lightdm:x:620:620:Light Display Manager:/var/lib/lightdm:/sbin/nologin
+nm-openconnect:x:972:972:NetworkManager OpenConnect:/:/sbin/nologin
+nm-openvpn:x:971:971:NetworkManager OpenVPN:/:/sbin/nologin
+ntp:x:87:87:Network Time Protocol:/var/lib/ntp:/bin/false
+polkitd:x:102:102:PolicyKit daemon:/:/sbin/nologin
+usbmux:x:140:140:usbmux user:/:/sbin/nologin
+evanmeek:x:1000:1000:EvanMeek:/home/evanmeek:/usr/bin/zsh
+nvidia-persistenced:x:143:143:NVIDIA Persistence Daemon:/:/sbin/nologin
+privoxy:x:42:42:Privoxy:/:/sbin/nologin
+~~~
 
+__显示文件最后5行__
 
+_第一种写法_
 
+~~~
+> tail -n 5 /etc/passwd
+~~~
 
+_第二种写法_
 
+~~~
+> tail -5 /etc/passwd
+~~~
+
+__指定从第几行开始显示文件__
+
+~~~
+> tail -n +10 /etc/passwd
+~~~
+
+__实时监控文件的变化__
+
+监测
+~~~
+> tail -f --retry test.txt
+testwords
+~~~
+追加内容
+
+~~~
+> echo testwords >> test.txt
+~~~
 
 

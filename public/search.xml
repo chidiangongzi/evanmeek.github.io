@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Do you know Linux?]]></title>
+    <url>%2F2019%2F07%2F17%2FDo-you-know-Linux%2F</url>
+    <content type="text"><![CDATA[I have been using Linux for about a year and a half.This article let’s talk about Linux. &emsp;Linux is an operating system kernel,In addition to some experts,most Linux users are uing Linux dirtributions.The Linux dirtributions is preintegrated with the Linux operating system and various application software for users. &emsp;The Linux kernel was first released by Linus Trovars on October 5,1999.Although the Linux kernel is develpoed,it does not have the tools included in an operating system,but there is a GNU tool that can be used as a system tool for Linux,so Linux is also called GNU/Linux.Currently,Linux can be used on large computers,supercomputers,mobile phones,tables,routers,televisions,game consoleds and computers,Such as,the Android operating system is based on the Linux kernel. &emsp;You maybe ask,can Linux be used as an operating system for everyday use? I will answer you with certainty,Linux Can do it.This article was broin in Arch Linux,I can do entertainment and work on Linux. &emsp;I love Linux,forever.]]></content>
+      <categories>
+        <category>英文文章</category>
+      </categories>
+      <tags>
+        <tag>个人感想</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[What is Vim?]]></title>
     <url>%2F2019%2F07%2F14%2FWhat-is-Vim%2F</url>
     <content type="text"><![CDATA[The editor I use every day is VIM.This article introduces the hirstory of the VIM. &emsp;Bram Miller purchased hisr Amiga computer in the late 1980s,At this time,there is no editor vi on his computer. So he started with an open source vi repilica version of Stevie，developed version 1.0 of Vim.The initial goal was to completely copy the function of vi. &emsp;After that,Vim has added countless new features. As the first milestone.version 3.0 of 1944 joined the split window mode,It can edit multiple files simultanesouly in the same terminal. &emsp;At 1996 released Vim 4.0 in 1996 using the version of the GUI.1998 Vim 5.0 version added syntax highlighting.2001 Vim 6.0 version added Code floding,Plugin,Multi-anguage support ,Vertical segmentation window etc.The Vim 7.0 release was released in May 2006 added Spell check,Context-sensitice completion,Tab editing etc. &emsp;The latest version of Vim is now Vim8]]></content>

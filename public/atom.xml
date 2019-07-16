@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-07-14T12:36:29.090Z</updated>
+  <updated>2019-07-16T17:16:43.077Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Do you know Linux?</title>
+    <link href="https://evanmeek.github.io/2019/07/17/Do-you-know-Linux/"/>
+    <id>https://evanmeek.github.io/2019/07/17/Do-you-know-Linux/</id>
+    <published>2019-07-16T16:22:22.000Z</published>
+    <updated>2019-07-16T17:16:43.077Z</updated>
+    
+    <content type="html"><![CDATA[<p>I have been using Linux for about a year and a half.This article let’s talk about Linux.</p><p>&emsp;Linux is an operating system kernel,In addition to some experts,most Linux users are uing Linux dirtributions.The Linux dirtributions is <strong>preintegrated</strong> with the Linux operating system and <strong>various</strong> application software for users.</p><p>&emsp;The Linux kernel was first released by Linus Trovars on October 5,1999.Although the Linux kernel is develpoed,it does not have the tools included in an operating system,but there is a GNU tool that can be used as a system tool for Linux,so Linux is also called GNU/Linux.Currently,Linux can be used on large computers,supercomputers,mobile phones,<strong>tables</strong>,routers,<strong>televisions</strong>,<strong>game consoleds</strong> and computers,Such as,the Android operating system is based on the Linux kernel.</p><p>&emsp;You maybe ask,can Linux be used as an operating system for  everyday use? I will answer you with <strong>certainty</strong>,Linux Can do it.This article was broin in Arch Linux,I can do <strong>entertainment</strong> and work on Linux.</p><p>&emsp;I love Linux,forever.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;I have been using Linux for about a year and a half.This article let’s talk about Linux.&lt;/p&gt;
+&lt;p&gt;&amp;emsp;Linux is an operating system kernel
+      
+    
+    </summary>
+    
+      <category term="英文文章" scheme="https://evanmeek.github.io/categories/%E8%8B%B1%E6%96%87%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="个人感想" scheme="https://evanmeek.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>What is Vim?</title>
@@ -468,26 +494,6 @@
       <category term="C++" scheme="https://evanmeek.github.io/tags/C/"/>
     
       <category term="Qt5" scheme="https://evanmeek.github.io/tags/Qt5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019年的规划</title>
-    <link href="https://evanmeek.github.io/2019/06/09/2019%E5%B9%B4%E7%9A%84%E8%A7%84%E5%88%92/"/>
-    <id>https://evanmeek.github.io/2019/06/09/2019年的规划/</id>
-    <published>2019-06-09T14:23:53.000Z</published>
-    <updated>2019-07-06T09:08:22.987Z</updated>
-    
-    <content type="html"><![CDATA[<p>2019年已过半，今晚正好想整理下自己完成的2019年目标，顺便把自己2019年的目标分享在博客。</p><a id="more"></a><h1 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h1><p>《标准C++入门与编程实践》————————————————————已读完<br>《Linux系统管理完全手册》————————————————————在读<br>《Vim实用技巧》——————————————————————————————未读<br>《计算机网络教程》———————————————————————————未读<br>《Qt5编程入门》——————————————————————————————在读</p><h1 id="想学但未学"><a href="#想学但未学" class="headerlink" title="想学但未学"></a>想学但未学</h1><p>Adobe Photoshop<br>Adobe AfterEffects<br>Adobe Primiere</p><h1 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h1><p>想多拿起相机拍拍美好的世界，</p><p>想找个女朋友，</p><p>想减肥，</p><p>想写操作系统….</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2019年已过半，今晚正好想整理下自己完成的2019年目标，顺便把自己2019年的目标分享在博客。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="分享" scheme="https://evanmeek.github.io/categories/%E5%88%86%E4%BA%AB/"/>
-    
     
   </entry>
   

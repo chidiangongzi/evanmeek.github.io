@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-13T18:16:40.058Z">
+<meta property="og:updated_time" content="2019-07-19T17:40:36.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-文件过滤及内容编辑处理命令-2">
 <meta name="twitter:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-14 02:16:40" itemprop="dateModified" datetime="2019-07-14T02:16:40+08:00">2019-07-14</time>
+                <time title="修改时间：2019-07-20 01:40:36" itemprop="dateModified" datetime="2019-07-20T01:40:36+08:00">2019-07-20</time>
               
             
           </span>
@@ -965,6 +965,84 @@
 <p>监测<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; tail -f --retry test.txt</span><br><span class="line">testwords</span><br></pre></td></tr></table></figure></p>
 <p>追加内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo testwords &gt;&gt; test.txt</span><br></pre></td></tr></table></figure>
+<h1 id="3-7-tailf-跟踪日志文件"><a href="#3-7-tailf-跟踪日志文件" class="headerlink" title="3.7 tailf 跟踪日志文件"></a>3.7 tailf 跟踪日志文件</h1><p><code>tailf</code>命令日常工作中用于跟踪日志文件，它与<code>tail -f</code>命令基本相同，但唯一的区别是若文件内容无增加，则不会重复访问磁盘文件，也不会修改文件访问时间。</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tailf [选项] [文件]</span><br></pre></td></tr></table></figure>
+<p><code>tailf</code>命令的参数选项及说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n&lt;行数&gt;</td>
+<td>指定显示的行数，默认为文件最后10行</td>
+</tr>
+</tbody>
+</table>
+<p>例子：</p>
+<p><strong>跟踪日志文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; tailf</span><br></pre></td></tr></table></figure>
+<h1 id="3-8-cut-从文本中提取一段文字并输出"><a href="#3-8-cut-从文本中提取一段文字并输出" class="headerlink" title="3.8 cut 从文本中提取一段文字并输出"></a>3.8 cut 从文本中提取一段文字并输出</h1><p><code>cut</code>命令从文件的每一行剪切字节，字符或字段，并将其输出至标准输出。</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut [选项] [文件]</span><br></pre></td></tr></table></figure>
+<p><code>cut</code>命令的参数选项及说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>以字节为单位进行分割</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>取消分割多字节字符</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>以字符为单位进行分割<code>!</code></td>
+</tr>
+<tr>
+<td>-d</td>
+<td>自定义分隔符，默认以tab为分隔符<code>!</code></td>
+</tr>
+<tr>
+<td>-f</td>
+<td>与选项-d一起使用，指定显示哪个区域</td>
+</tr>
+<tr>
+<td>N</td>
+<td>第N个字节、字符或字段<code>!</code></td>
+</tr>
+<tr>
+<td>N-</td>
+<td>从第N个字节、字符或字段开始直至行尾</td>
+</tr>
+<tr>
+<td>N-M</td>
+<td>从第N到第M个字节、字符或字段</td>
+</tr>
+<tr>
+<td>-M</td>
+<td>从第一到第M个字节、字符或字段</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<p><strong>以字节为分隔符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt</span><br><span class="line">Hello World</span><br><span class="line"># 截取第5个字节，并输出</span><br><span class="line">&gt; cut -b 5 test.txt</span><br><span class="line">o</span><br><span class="line"># 截取第5个字节之前的所有字符(包括第5个)，并输出</span><br><span class="line">&gt; cut -b -5 test.txt</span><br><span class="line">Hello</span><br><span class="line"># 截取第5个字节之后的所有字符，并输出</span><br><span class="line">&gt; cut -b 5- test.txt</span><br><span class="line">o World</span><br><span class="line"># 截取第5个字节和第10个字节，并输出</span><br><span class="line">&gt; cut -b 5,10 test.txt</span><br><span class="line">ol</span><br><span class="line"># 截取第1个字节到第5个字节，并输出</span><br><span class="line">&gt; cut -b 1-5 test.txt</span><br><span class="line">Hello</span><br></pre></td></tr></table></figure>
+<p><strong>以字符为分隔符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt</span><br><span class="line">Hello World</span><br><span class="line">你好世界</span><br><span class="line"># 截取第1到第6个字符，并输出</span><br><span class="line">&gt; cut -b 1-6 test.txt</span><br><span class="line">Hello</span><br><span class="line">你好</span><br></pre></td></tr></table></figure>
+<p><strong>自定义分隔符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat /etc/passwd | head -n 5</span><br><span class="line">root:x:0:0::/root:/bin/bash</span><br><span class="line">nobody:x:65534:65534:Nobody:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System Message Bus:/:/sbin/nologin</span><br><span class="line">bin:x:1:1::/:/sbin/nologin</span><br><span class="line">daemon:x:2:2::/:/sbin/nologin</span><br><span class="line"># 自定义分隔符为`:`，并且之输出文件前5行(:为分隔符，-f 1为指定显示第1个区域</span><br><span class="line">&gt; cut -d : -f 1 /etc/passwd | head -n 5</span><br><span class="line">root</span><br><span class="line">nobody</span><br><span class="line">dbus</span><br><span class="line">bin</span><br><span class="line">daemon</span><br><span class="line"># 指定显示区域为1,6-8</span><br><span class="line">&gt; cut -d : -f 1,6-8 /etc/passwd | head -n +5</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -987,7 +1065,7 @@
   <p><span>本文标题:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/">Linux-文件过滤及内容编辑处理命令-2</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月30日 - 19:06</p>
-  <p><span>最后更新:</span>2019年07月14日 - 02:07</p>
+  <p><span>最后更新:</span>2019年07月20日 - 01:07</p>
   <p><span>原始链接:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" title="Linux-文件过滤及内容编辑处理命令-2">https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" aria-label="复制成功！"></i></span>
   </p>
@@ -1331,7 +1409,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7-tailf-跟踪日志文件"><span class="nav-number">8.</span> <span class="nav-text">3.7 tailf 跟踪日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-cut-从文本中提取一段文字并输出"><span class="nav-number">9.</span> <span class="nav-text">3.8 cut 从文本中提取一段文字并输出</span></a></li></ol></div>
             
 
           </div>

@@ -451,3 +451,135 @@ daemon
 # 指定显示区域为1,6-8
 > cut -d : -f 1,6-8 /etc/passwd | head -n +5
 ~~~
+
+# 3.9 split 分割文件
+
+`split`命令可以将文件进行分割，支持根据行数或文件大小进行分割。
+
+语法格式
+
+~~~
+split [选项] [输入文件] [输出文件名[前缀]]
+~~~
+
+_输出文件的格式会加上前缀，例如`PREFIXaa,PREFIXab`_
+
+`split`命令的参数选项及说明
+
+| 选项 | 说明                        |
+|------|-----------------------------|
+| -b   | 指定分割后文件的最大字节数  |
+| -l   | 指定分割后文件的最大行数`!` |
+| -a   | 指定后缀长度，默认为2位字母 |
+| -d   | 使用数字后缀                |
+
+例子:
+
+__按行分割文件，以及指定后缀形式__
+
+~~~
+# wc 命令可以查看文件的行数
+> wc -l /etc/passwd
+31 /etc/passwd
+# 按行进行分割，每10行分割为一个新文件，文件前缀为split_
+> split -l 10 /etc/passwd split_
+> wc -l split_*
+10 split_aa
+10 split_ab
+10 split_ac
+ 1 split_ad
+31 总用量
+# 参数-a指定分割文件的前缀长度，这里设置的是1
+> split -l 10 -a 1 /etc/passwd split2_
+> wc -l split2_*
+10 split2_a
+10 split2_b
+10 split2_c
+ 1 split2_d
+31 总用量
+# 参数-d指定文件使用数字后缀
+> split -l 10 -d -a 1 /etc/passwd split_
+> wc -l split_*
+10 split_0
+10 split_1
+10 split_2
+ 1 split_3
+31 总用量<Paste>
+~~~
+
+__按文件大小分割文件__
+
+~~~
+# 准备测试文件
+> cp /sbin/lvm .
+> ls -l
+总用量 2.3M
+-r-xr-xr-x 1 evanmeek evanmeek 2.3M  7月 22 21:23 lvm
+# 按文件字节进行分割，每500K字节分割为一个文件，以数字作为文件后缀
+> split -b 500K -d lvm lvm_split_
+> ls -l
+总用量 4.5M
+-r-xr-xr-x 1 evanmeek evanmeek 2.3M  7月 22 21:23 lvm
+-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_00
+-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_01
+-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_02
+-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_03
+-rw-r--r-- 1 evanmeek evanmeek 254K  7月 22 21:25 lvm_split_04
+~~~
+
+# 3.10 paste 合并文件
+
+`paste`命令能将文件按照行与行进行合并，中间使用tab隔开
+
+语法格式
+~~~
+paste [选项] [文件]
+~~~
+
+`paste`命令的参数选项及说明
+
+| 选项 | 说明                           |
+|------|--------------------------------|
+| -d   | 指定合并的分隔符，默认是Tab`!` |
+| -s   | 每个文件占用一行               |
+
+例子:
+
+__合并文件__
+
+~~~
+> more t1 t2
+::::::::::::::
+t1
+::::::::::::::
+test1
+test1
+test1
+::::::::::::::
+t2
+::::::::::::::
+test2
+test2
+test2
+# t1与t2合并，将内容写入t3
+> paste t1 t2 > t3
+> cat t3
+test1	test2
+test1	test2
+test1	test2
+# 合并时，自定义分隔符
+> paste -d - t1 t2 > t3
+> cat t3
+test1-test2
+test1-test2
+test1-test2
+~~~
+
+__文件内容合并成一行__
+
+~~~
+> paste -s t1 t2 > t3
+> cat t3
+test1	test1	test1
+test2	test2	test2
+~~~

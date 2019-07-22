@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-19T17:44:38.100Z">
+<meta property="og:updated_time" content="2019-07-22T14:36:42.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-文件过滤及内容编辑处理命令-2">
 <meta name="twitter:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-20 01:44:38" itemprop="dateModified" datetime="2019-07-20T01:44:38+08:00">2019-07-20</time>
+                <time title="修改时间：2019-07-22 22:36:42" itemprop="dateModified" datetime="2019-07-22T22:36:42+08:00">2019-07-22</time>
               
             
           </span>
@@ -1043,6 +1043,68 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt</span><br><span class="line">Hello World</span><br><span class="line">你好世界</span><br><span class="line"># 截取第1到第6个字符，并输出</span><br><span class="line">&gt; cut -b 1-6 test.txt</span><br><span class="line">Hello</span><br><span class="line">你好</span><br></pre></td></tr></table></figure>
 <p><strong>自定义分隔符</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat /etc/passwd | head -n 5</span><br><span class="line">root:x:0:0::/root:/bin/bash</span><br><span class="line">nobody:x:65534:65534:Nobody:/:/sbin/nologin</span><br><span class="line">dbus:x:81:81:System Message Bus:/:/sbin/nologin</span><br><span class="line">bin:x:1:1::/:/sbin/nologin</span><br><span class="line">daemon:x:2:2::/:/sbin/nologin</span><br><span class="line"># 自定义分隔符为`:`，并且之输出文件前5行(:为分隔符，-f 1为指定显示第1个区域</span><br><span class="line">&gt; cut -d : -f 1 /etc/passwd | head -n 5</span><br><span class="line">root</span><br><span class="line">nobody</span><br><span class="line">dbus</span><br><span class="line">bin</span><br><span class="line">daemon</span><br><span class="line"># 指定显示区域为1,6-8</span><br><span class="line">&gt; cut -d : -f 1,6-8 /etc/passwd | head -n +5</span><br></pre></td></tr></table></figure>
+<h1 id="3-9-split-分割文件"><a href="#3-9-split-分割文件" class="headerlink" title="3.9 split 分割文件"></a>3.9 split 分割文件</h1><p><code>split</code>命令可以将文件进行分割，支持根据行数或文件大小进行分割。</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split [选项] [输入文件] [输出文件名[前缀]]</span><br></pre></td></tr></table></figure>
+<p><em>输出文件的格式会加上前缀，例如<code>PREFIXaa,PREFIXab</code></em></p>
+<p><code>split</code>命令的参数选项及说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>指定分割后文件的最大字节数</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>指定分割后文件的最大行数<code>!</code></td>
+</tr>
+<tr>
+<td>-a</td>
+<td>指定后缀长度，默认为2位字母</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>使用数字后缀</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<p><strong>按行分割文件，以及指定后缀形式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># wc 命令可以查看文件的行数</span><br><span class="line">&gt; wc -l /etc/passwd</span><br><span class="line">31 /etc/passwd</span><br><span class="line"># 按行进行分割，每10行分割为一个新文件，文件前缀为split_</span><br><span class="line">&gt; split -l 10 /etc/passwd split_</span><br><span class="line">&gt; wc -l split_*</span><br><span class="line">10 split_aa</span><br><span class="line">10 split_ab</span><br><span class="line">10 split_ac</span><br><span class="line"> 1 split_ad</span><br><span class="line">31 总用量</span><br><span class="line"># 参数-a指定分割文件的前缀长度，这里设置的是1</span><br><span class="line">&gt; split -l 10 -a 1 /etc/passwd split2_</span><br><span class="line">&gt; wc -l split2_*</span><br><span class="line">10 split2_a</span><br><span class="line">10 split2_b</span><br><span class="line">10 split2_c</span><br><span class="line"> 1 split2_d</span><br><span class="line">31 总用量</span><br><span class="line"># 参数-d指定文件使用数字后缀</span><br><span class="line">&gt; split -l 10 -d -a 1 /etc/passwd split_</span><br><span class="line">&gt; wc -l split_*</span><br><span class="line">10 split_0</span><br><span class="line">10 split_1</span><br><span class="line">10 split_2</span><br><span class="line"> 1 split_3</span><br><span class="line">31 总用量&lt;Paste&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>按文件大小分割文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 准备测试文件</span><br><span class="line">&gt; cp /sbin/lvm .</span><br><span class="line">&gt; ls -l</span><br><span class="line">总用量 2.3M</span><br><span class="line">-r-xr-xr-x 1 evanmeek evanmeek 2.3M  7月 22 21:23 lvm</span><br><span class="line"># 按文件字节进行分割，每500K字节分割为一个文件，以数字作为文件后缀</span><br><span class="line">&gt; split -b 500K -d lvm lvm_split_</span><br><span class="line">&gt; ls -l</span><br><span class="line">总用量 4.5M</span><br><span class="line">-r-xr-xr-x 1 evanmeek evanmeek 2.3M  7月 22 21:23 lvm</span><br><span class="line">-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_00</span><br><span class="line">-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_01</span><br><span class="line">-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_02</span><br><span class="line">-rw-r--r-- 1 evanmeek evanmeek 500K  7月 22 21:25 lvm_split_03</span><br><span class="line">-rw-r--r-- 1 evanmeek evanmeek 254K  7月 22 21:25 lvm_split_04</span><br></pre></td></tr></table></figure>
+<h1 id="3-10-paste-合并文件"><a href="#3-10-paste-合并文件" class="headerlink" title="3.10 paste 合并文件"></a>3.10 paste 合并文件</h1><p><code>paste</code>命令能将文件按照行与行进行合并，中间使用tab隔开</p>
+<p>语法格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste [选项] [文件]</span><br></pre></td></tr></table></figure></p>
+<p><code>paste</code>命令的参数选项及说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>指定合并的分隔符，默认是Tab<code>!</code></td>
+</tr>
+<tr>
+<td>-s</td>
+<td>每个文件占用一行</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<p><strong>合并文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt; more t1 t2</span><br><span class="line">::::::::::::::</span><br><span class="line">t1</span><br><span class="line">::::::::::::::</span><br><span class="line">test1</span><br><span class="line">test1</span><br><span class="line">test1</span><br><span class="line">::::::::::::::</span><br><span class="line">t2</span><br><span class="line">::::::::::::::</span><br><span class="line">test2</span><br><span class="line">test2</span><br><span class="line">test2</span><br><span class="line"># t1与t2合并，将内容写入t3</span><br><span class="line">&gt; paste t1 t2 &gt; t3</span><br><span class="line">&gt; cat t3</span><br><span class="line">test1	test2</span><br><span class="line">test1	test2</span><br><span class="line">test1	test2</span><br><span class="line"># 合并时，自定义分隔符</span><br><span class="line">&gt; paste -d - t1 t2 &gt; t3</span><br><span class="line">&gt; cat t3</span><br><span class="line">test1-test2</span><br><span class="line">test1-test2</span><br><span class="line">test1-test2</span><br></pre></td></tr></table></figure>
+<p><strong>文件内容合并成一行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; paste -s t1 t2 &gt; t3</span><br><span class="line">&gt; cat t3</span><br><span class="line">test1	test1	test1</span><br><span class="line">test2	test2	test2</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1065,7 +1127,7 @@
   <p><span>本文标题:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/">Linux-文件过滤及内容编辑处理命令-2</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月30日 - 19:06</p>
-  <p><span>最后更新:</span>2019年07月20日 - 01:07</p>
+  <p><span>最后更新:</span>2019年07月22日 - 22:07</p>
   <p><span>原始链接:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" title="Linux-文件过滤及内容编辑处理命令-2">https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" aria-label="复制成功！"></i></span>
   </p>
@@ -1409,7 +1471,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7-tailf-跟踪日志文件"><span class="nav-number">8.</span> <span class="nav-text">3.7 tailf 跟踪日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-cut-从文本中提取一段文字并输出"><span class="nav-number">9.</span> <span class="nav-text">3.8 cut 从文本中提取一段文字并输出</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7-tailf-跟踪日志文件"><span class="nav-number">8.</span> <span class="nav-text">3.7 tailf 跟踪日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-cut-从文本中提取一段文字并输出"><span class="nav-number">9.</span> <span class="nav-text">3.8 cut 从文本中提取一段文字并输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-9-split-分割文件"><span class="nav-number">10.</span> <span class="nav-text">3.9 split 分割文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-10-paste-合并文件"><span class="nav-number">11.</span> <span class="nav-text">3.10 paste 合并文件</span></a></li></ol></div>
             
 
           </div>

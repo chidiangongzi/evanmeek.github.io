@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-07-20T15:40:02.410Z</updated>
+  <updated>2019-07-24T15:09:40.001Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FuShou-Mountain-Day-Trip</title>
+    <link href="https://evanmeek.github.io/2019/07/23/FuShou-Mountain-Day-Trip/"/>
+    <id>https://evanmeek.github.io/2019/07/23/FuShou-Mountain-Day-Trip/</id>
+    <published>2019-07-23T14:16:13.000Z</published>
+    <updated>2019-07-24T15:09:40.001Z</updated>
+    
+    <content type="html"><![CDATA[<p>Today I gone to the FuShou mountain,So this article is about it.</p><a id="more"></a><p>&emsp;It’s sunny,But I <strong>arrived</strong><code>到达</code> at my <strong>destination</strong><code>目的地</code> at <strong>noon</strong><code>正午</code>.There were manay people.After a long <strong>queue</strong><code>排队</code>,I finally got the <strong>ticket</strong><code>门票</code>.Then I got on the <strong>interval bus</strong><code>区间车</code> again.</p><p>&emsp;It was a <strong>bumpy journey to the foot</strong><code>一路颠簸</code> of Fushou Mountain.The first thing I saw was a <strong>snack area</strong><code>小食区</code> supported by a <strong>pile</strong><code>支撑</code> of read <strong>tents</strong><code>帐篷</code>.Then when  I entered the snack area,the air was filled with <strong>grabbing food</strong><code>手抓饭</code>,<strong>thin-skinned steamed buns</strong><code>薄皮包子</code>,the <strong>aroma</strong><code>香气</code> of <strong>barbecue kebabs</strong><code>烤肉串</code> and the <strong>sweet</strong><code>香甜的</code> <strong>Cavas</strong><code>卡瓦斯</code>,Ice cream <strong>attracted</strong><code>吸引</code> me.I <strong>couldn’t resist</strong><code>无法抵御</code> the <strong>temptation</strong><code>美食</code> of delicious food, so I ate a lot of delicious food in Xinjiang.</p><p>&emsp;After <strong>full stomach</strong><code>饱腹</code>,I began to climb the mountain. The sun was very sunny. Before I reached the <strong>glass trestle</strong><code>玻璃栈道</code>,my skin was red.</p><p>&emsp;Glass planks up to 300M,built of steel and glass.People have a head and look through the glass to see the ground.Although I dare not look down from the highrise, I can’t fell scared on the glass path. Maybe I trust safety of these projects.</p><p>&emsp;Happy time is always short,and soon,we will go home by car…</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Today I gone to the FuShou mountain,So this article is about it.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="英文文章" scheme="https://evanmeek.github.io/categories/%E8%8B%B1%E6%96%87%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="个人感想" scheme="https://evanmeek.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>My-Monitor</title>
@@ -463,30 +485,6 @@
     
     
       <category term="fcitx5" scheme="https://evanmeek.github.io/tags/fcitx5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Learn-Qt5-Qt模块简介</title>
-    <link href="https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt%E6%A8%A1%E5%9D%97%E7%AE%80%E4%BB%8B/"/>
-    <id>https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt模块简介/</id>
-    <published>2019-06-12T12:30:42.000Z</published>
-    <updated>2019-07-06T09:08:22.993Z</updated>
-    
-    <content type="html"><![CDATA[<p>Qt5分为两个大的模块，分别是<code>Qt Essentials</code>以及<code>Qt Add-Ons</code>以及一些额外的模块和工具．</p><a id="more"></a><h1 id="Qt-Essentials"><a href="#Qt-Essentials" class="headerlink" title="Qt Essentials"></a>Qt Essentials</h1><p><code>Qt Essentials</code>是Qt的基础，它可以在所有平台上运行，下面列出了Qt Essentials模块的组件．</p><table><thead><tr><th style="text-align:center">模块</th><th style="text-align:center">简述</th></tr></thead><tbody><tr><td style="text-align:center">Qt Core</td><td style="text-align:center">其他非图形类模块所使用的核心,</td></tr><tr><td style="text-align:center">Qt GUI</td><td style="text-align:center">图形界面组件的基类，包括了OpenGL.</td></tr><tr><td style="text-align:center">Qt Multimedia</td><td style="text-align:center">音频，视频，广播和摄像头相关功能.</td></tr><tr><td style="text-align:center">Qt Network</td><td style="text-align:center">提供跨平台的网络能力．</td></tr><tr><td style="text-align:center">Qt Qml</td><td style="text-align:center">提供QML使用的C++API.</td></tr><tr><td style="text-align:center">Qt Quick</td><td style="text-align:center">允许在Qt/C++程序中嵌入 Qt Quick</td></tr><tr><td style="text-align:center">Qt SQL</td><td style="text-align:center">允许使用SQL访问数据库</td></tr><tr><td style="text-align:center">Qt Test</td><td style="text-align:center">提供Qt程序的单元测试能力｜</td></tr><tr><td style="text-align:center">Qt Webkit</td><td style="text-align:center">基于WebKit2的实现以及一套全新的QML API</td></tr></tbody></table><h1 id="Qt-Add-Ons"><a href="#Qt-Add-Ons" class="headerlink" title="Qt Add-Ons"></a>Qt Add-Ons</h1><p><code>Qt Add-Ons</code>是Qt的扩展模块，建立在基础模块之上，在能运行Qt的平台之上可以酌情引人．</p><table><thead><tr><th style="text-align:center">模块</th><th style="text-align:center">简述</th></tr></thead><tbody><tr><td style="text-align:center">Qt 3D</td><td style="text-align:center">提供声明式语法，在Qt程序中可以简单地嵌入3D图像．｜</td></tr><tr><td style="text-align:center">Qt Bluetooth</td><td style="text-align:center">提供用于访问蓝牙无线设备的C++和QML API.</td></tr><tr><td style="text-align:center">Qt Contacts</td><td style="text-align:center">用于访问地址薄或联系人数据库的C++和QML API.</td></tr><tr><td style="text-align:center">Qt D-Bus</td><td style="text-align:center">Unix平台独有的类库，用于使用D-Bus协议进与进程间进行交互</td></tr><tr><td style="text-align:center">Qt Graphical Effects</td><td style="text-align:center">提供一系列用于实现图像特效的类</td></tr><tr><td style="text-align:center">Qt Image Formats</td><td style="text-align:center">支持图片格式的一系列插件</td></tr><tr><td style="text-align:center">Qt JS Backend</td><td style="text-align:center">为V8 JavaScript引擎的移植，仅供QtQML模块内部使用</td></tr><tr><td style="text-align:center">Qt Location</td><td style="text-align:center">方便在Qt应用程序中使用OpenGL，保留于Qt4</td></tr><tr><td style="text-align:center">Qt Organize</td><td style="text-align:center">使用QML和C++API访问组织事件｜</td></tr><tr><td style="text-align:center">Qt Print Support</td><td style="text-align:center">提供对打印功能的支持｜</td></tr><tr><td style="text-align:center">Qt Publish and Subscribe</td><td style="text-align:center">为应用程序提供对项目值的读取，导航，订阅等功能.</td></tr><tr><td style="text-align:center">Qt Quick 1</td><td style="text-align:center">从Qt4移植而来的Qt Declarative模块，用于提供与Qt4兼容</td></tr><tr><td style="text-align:center">Qt Script</td><td style="text-align:center">提供脚本化机制，为了与Qt5兼容</td></tr><tr><td style="text-align:center">Qt Script Tools</td><td style="text-align:center">为了使用Qt Script模块的应用程序提供的额外的组件</td></tr><tr><td style="text-align:center">Qt Sensors</td><td style="text-align:center">提供访问各类传感器的QML和C++接口.</td></tr><tr><td style="text-align:center">Qt Service Framework</td><td style="text-align:center">提供客户端发现其他设备的服务.</td></tr><tr><td style="text-align:center">Qt SVF</td><td style="text-align:center">提供渲染和创建SVG文件的功能．</td></tr><tr><td style="text-align:center">Qt System Info</td><td style="text-align:center">提供一套API，用于发现系统相关的信息.</td></tr><tr><td style="text-align:center">Qt Tools</td><td style="text-align:center">提供了Qt开发的方便工具,例如Qt CLucene,Qt Designer,Qt Help以及Qt UI Tools.</td></tr><tr><td style="text-align:center">Qt Versit</td><td style="text-align:center">提供了对Versit API的支持．</td></tr><tr><td style="text-align:center">Qt Wayland</td><td style="text-align:center">仅用于Linux平台，用户替代QWS</td></tr><tr><td style="text-align:center">Qt WebKit</td><td style="text-align:center">从Qt4 一直来的基于WebKit1和QWidget的API</td></tr><tr><td style="text-align:center">Qt Widgets</td><td style="text-align:center">使用C++扩展的Qt Gui模块，提供了一些界面组建，比如按钮，单选框</td></tr><tr><td style="text-align:center">Qt XML</td><td style="text-align:center">SAX和DOM的C++实现．此模块已凉凉，更换为QXmlStreamReader/Writer</td></tr><tr><td style="text-align:center">Qt XML Patterns</td><td style="text-align:center">提供对XPath,XQuery,XSLT和XML Schema验证的支持．</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Qt5分为两个大的模块，分别是&lt;code&gt;Qt Essentials&lt;/code&gt;以及&lt;code&gt;Qt Add-Ons&lt;/code&gt;以及一些额外的模块和工具．&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学习笔记" scheme="https://evanmeek.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Qt" scheme="https://evanmeek.github.io/tags/Qt/"/>
-    
-      <category term="C_++" scheme="https://evanmeek.github.io/tags/C/"/>
     
   </entry>
   

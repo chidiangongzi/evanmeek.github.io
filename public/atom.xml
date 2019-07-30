@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-07-26T14:29:10.451Z</updated>
+  <updated>2019-07-30T07:10:03.207Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rust-理解所有权</title>
+    <link href="https://evanmeek.github.io/2019/07/30/Rust-%E7%90%86%E8%A7%A3%E6%89%80%E6%9C%89%E6%9D%83/"/>
+    <id>https://evanmeek.github.io/2019/07/30/Rust-理解所有权/</id>
+    <published>2019-07-29T19:11:46.000Z</published>
+    <updated>2019-07-30T07:10:03.207Z</updated>
+    
+    <content type="html"><![CDATA[<p>根据Rust中文学习了些Rust的知识，所以记录下Rust中很重要的特性之一:所有权<br><a id="more"></a></p><h1 id="认识所有权"><a href="#认识所有权" class="headerlink" title="认识所有权"></a>认识所有权</h1><p>所有权是Rust最独特的功能，使得Rust不需要GC即可保证内存安全.</p><p>本篇文章介绍所有权及其相关功能：借用、slice，以及Rust如何在内存中布局数据</p><h1 id="什么是所有权"><a href="#什么是所有权" class="headerlink" title="什么是所有权"></a>什么是所有权</h1><p>所有权（ownership)是Rust的核心特性之一，其最大的特点是解决了目前大部分编程语言对内存管理方式的缺陷，例如:一些语言通过GC(垃圾回收机制)进行管理内存，在程序运行时不断的寻找无用的内存，但这种方式会使得程序的效率降低。另一种方式则是内存的分配和释放由程序员进行管理，所以经常会出现遗漏或设计缺陷，从而使得程序问题不断。而Rust的所有权特性则恰好解决了以上两个常见的问题。</p><p>在理解所有权之前，让我们先了解一个常用的数据结构:Stack Heap.</p><h2 id="栈-Stack-与-堆-Heap"><a href="#栈-Stack-与-堆-Heap" class="headerlink" title="栈(Stack) 与 堆(Heap)"></a>栈(Stack) 与 堆(Heap)</h2><blockquote><p>程序是由<strong>算法</strong>和<strong>数据</strong>组成的，<code>栈堆</code>这种数据结构则是一种处理数据的算法，而在所有权的概念中，数据是存在栈上还是堆上很大的影响了程序的行为。</p></blockquote><p><code>栈</code>的结构是一种后进先出的方式处理数据的，生活中的羽毛球例子可以清晰的描述这一关系:当我们将羽毛球放入羽毛球桶时，想要拿走时，总是拿走的最后一个放入的羽毛球，我们不能拿走最后一个放入之前的羽毛球。我们把放入羽毛球(增加数据)叫做<strong>入栈</strong>，拿出羽毛球(移出数据)叫做<strong>出栈</strong>。</p><p><strong>‘栈’的优点是，速度快。这主要是因为如果要获取数据则总是从栈顶直接获取，而不需要寻找某个特定的位置需要读取数据。第二个原因是:栈中数据所占内存大小都已固定也可知。</strong></p><p><code>堆</code>的结构是一种随机的方式处理数据的，生活中的例子每天吃饭可以清晰的描述这一关系:一日三餐，我们总是会想要吃什么，世界上有那么多美食，此时我们就需要选择想要的菜品才能进食，并且在要选择菜品时，我们还必须考虑是否有足够的金钱付款，而在我们选择菜品时是根据菜名通过服务员才能让厨房处理，最终上菜。我们把为菜品付款称作在<strong>堆上分配内存</strong>，而菜名称作<strong>指针</strong>，我们需要通过通过指针访问在堆上分配的内存.</p><p><strong><code>堆</code>的优点是，不受限于只能获取最后一个存入的数据，因为数据都是成堆摆布的，如果需要访问需要通过指针</strong>。</p><p><code>堆</code>对数据的操作速度没有<code>栈</code>快，因为<code>堆</code>需要通过指针才能访问数据.</p><p>若数据大部分存在<code>堆</code>上，则有可能出现一些重复数据，为了清除这些无用的数据，确保内存空间不会被耗尽。这些问题正是所有权系统需要处理的。想必读者们也应该知道，所有权的存在就是为了管理堆数据的，当你理解了所有权后，将在编码时不用总考虑栈和堆了。</p><h1 id="所有权规则"><a href="#所有权规则" class="headerlink" title="所有权规则"></a>所有权规则</h1><ul><li><p>Rust中，每一个值都有一个称为__所有者(owner)的变量。</p></li><li><p>值只能有一个所有者。</p></li><li><p>当所有者离开作用域，这个值则会被遗弃。</p></li></ul><h1 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h1><p>让我们看第一个关于所有权的例子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 在这里使用s无效，s尚未生命</span><br><span class="line">&#123;</span><br><span class="line">    let s = &quot;hello&quot;; // 从此处起，s 有效</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">// 在这里使用s无效，因为作用域已结束</span><br></pre></td></tr></table></figure><p>这个例子中，当<code>s</code>进入作用域后，直到它离开作用域为止，它一直是有效的。</p><h1 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a><code>String</code>类型</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;根据Rust中文学习了些Rust的知识，所以记录下Rust中很重要的特性之一:所有权&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://evanmeek.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Rust" scheme="https://evanmeek.github.io/tags/Rust/"/>
+    
+  </entry>
   
   <entry>
     <title>Emacs is sexy!</title>
@@ -457,31 +479,6 @@
     <summary type="html">
     
       &lt;p&gt;本篇文章为Linux系列的第1章 Linux命令行简介 1.2小节的外部展示。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Linux系列" scheme="https://evanmeek.github.io/categories/Linux%E7%B3%BB%E5%88%97/"/>
-    
-    
-      <category term="Linux" scheme="https://evanmeek.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux-Linux命令行简介-0</title>
-    <link href="https://evanmeek.github.io/2019/06/15/Linux-Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%80%E4%BB%8B-0/"/>
-    <id>https://evanmeek.github.io/2019/06/15/Linux-Linux命令行简介-0/</id>
-    <published>2019-06-15T08:35:38.000Z</published>
-    <updated>2019-07-24T18:37:33.974Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-1-Linux命令行概述"><a href="#1-1-Linux命令行概述" class="headerlink" title="1.1 Linux命令行概述"></a>1.1 Linux命令行概述</h1><h2 id="1-1-1-Linux命令行的作用与意义"><a href="#1-1-1-Linux命令行的作用与意义" class="headerlink" title="1.1.1 Linux命令行的作用与意义"></a>1.1.1 Linux命令行的作用与意义</h2><p>  Linux命令行相比图形界面操作的优点:</p><ul><li><p>快速</p></li><li><p>批量</p></li><li><p>自动化</p></li><li><p>智能化管理</p></li></ul><h2 id="1-1-2-Linux命令行介绍"><a href="#1-1-2-Linux命令行介绍" class="headerlink" title="1.1.2 Linux命令行介绍"></a>1.1.2 Linux命令行介绍</h2><p>  大多数互联网企业在使用Linux不会安装图形界面，而是才用文本模式（命令行）的方式进行使用，如图:</p><p>  <img src="/2019/06/15/Linux-Linux命令行简介-0/1.1.2-0" alt="命令行图"></p><h2 id="1-1-3-Linux命令行的开启及退出"><a href="#1-1-3-Linux命令行的开启及退出" class="headerlink" title="1.1.3 Linux命令行的开启及退出"></a>1.1.3 Linux命令行的开启及退出</h2><p>  主机开机时，Linux将会进行初始化等各种操作，最终将进入命令行，想使用必须先登录。</p>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user login:_</span><br><span class="line">password:_</span><br></pre></td></tr></table></figure><p>  等待你输入用户名密码，密码输入时是不会显示的。</p><p>  使用<code>exit</code>,<code>logout</code>或者<code>Ctrl+d</code>快捷键可退出登录，若退出则需要重新登录才会被允许使用Shell命令。</p><h2 id="1-1-4-Linux命令行提示符介绍"><a href="#1-1-4-Linux命令行提示符介绍" class="headerlink" title="1.1.4 Linux命令行提示符介绍"></a>1.1.4 Linux命令行提示符介绍</h2><p>  Linux命令提示符分为两种，分别是:</p><ul><li><code>$</code>普通用户</li><li><p><code>#</code>超级管理员(root)</p><p>例子:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$:_</span><br><span class="line">[root@EvanLinux ~]#:_</span><br></pre></td></tr></table></figure><p>其中@前面的为当前登录的<code>用户名(username)</code>,@后面的为<code>主机名(hostname)</code>，主机名后面的<code>~</code>为路径，代表了<code>home目录</code>，而<code>$</code>或<code>#</code>分别代表了用户的是超级管理员还是普通用户。</p><blockquote><p>超级管理员从此以后本系列都以<code>root</code>代表。</p></blockquote><p>root与普通用户的区别：</p></li><li><p>root</p><blockquote><p>拥有管理整个系统的权限。</p></blockquote></li><li><p>普通用户</p><blockquote><p>权限较少，通常只有查看系统文件的权限，以及管理自身<code>home</code>目录下所有文件的权限。</p></blockquote><p>查看当前登录的用户名:使用<code>whoami</code>查询<br>查看主机名:使用<code>hostname</code>查询</p><p>额外技巧: Linux命令提示符由<code>PS1</code>环境变量控制，通过修改<code>PS1</code>环境变量，可以让提示符发生变化，例子如下:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[evanmeek@EvanLinux ~]$ set|grep PS1</span><br><span class="line">PS1='[\u@\h \W]\$'</span><br></pre></td></tr></table></figure></li></ul><p>  <code>PS1</code>有特殊的变量可供选择，我们可以设置全局配置文件<code>/etc/bashrc</code>或/etc/profile`进行按需配置。</p><h2 id="1-1-5-Linux命令行常用快捷键"><a href="#1-1-5-Linux命令行常用快捷键" class="headerlink" title="1.1.5 Linux命令行常用快捷键"></a>1.1.5 Linux命令行常用快捷键</h2><p>  企业工作中，管理Linux通常使用远程连接工具连接到Linux，常见的工具有: <code>SecureCRT</code>和<code>XShell</code>,以下快捷键可在此两款软件中使用。</p><p>  记住常用的快捷键有利于提高效率，常用快捷键由<code>!</code>标注</p><table><thead><tr><th>快捷键</th><th>功能说明(<code>!</code>为常用)</th></tr></thead><tbody><tr><td>最有用的快捷键</td><td></td></tr><tr><td>tab</td><td>命令或路径的补全键，Linux最有用的快捷键<code>!</code></td></tr><tr><td>移动光标快捷键</td><td></td></tr><tr><td>Ctrl+a</td><td>移动光标至行首<code>!</code></td></tr><tr><td>Ctrl+e</td><td>移动光标至行尾<code>!</code></td></tr><tr><td>Ctrl+f</td><td>光标向右移动一个字符(等价与方向键右键)</td></tr><tr><td>Ctrl+b</td><td>光标向左移动一个字符(同上)</td></tr><tr><td>剪切、粘贴、清楚快捷键</td><td></td></tr><tr><td>Ctrl+Insert</td><td>复制命令行内容<code>!</code></td></tr><tr><td>Shift+Insert</td><td>粘贴命令行内容<code>!</code></td></tr><tr><td>Ctrl+k</td><td>剪切(删除)光标处至行尾的字符<code>!</code></td></tr><tr><td>Ctrl+u</td><td>剪切(删除)光标处至行首的字符<code>!</code></td></tr><tr><td>Ctrl+w</td><td>剪切(删除)光标前一个单词<code>!</code></td></tr><tr><td>Ctrl+y</td><td>粘贴上面三个剪切(删除)的字符</td></tr><tr><td>Ctrl+c</td><td>终止终端正在执行的任务或删除整行字符<code>!</code></td></tr><tr><td>Ctrl+h</td><td>删除光标前一个字符(等同于Backspace)<code>!</code></td></tr><tr><td>重复执行命令快捷键</td><td></td></tr><tr><td>Ctrl+d</td><td>退出当前Shell命令行<code>!</code></td></tr><tr><td>Ctrl+r</td><td>搜索命令历史记录<code>!</code></td></tr><tr><td>Ctrl+g</td><td>退出搜索命令历史记录</td></tr><tr><td>控制快捷键</td></tr><tr><td>Ctrl+l</td><td>清屏(等同于clear命令)<code>!</code></td></tr><tr><td>Ctrl+s</td><td>锁定终端，使之无法输入</td></tr><tr><td>Ctrl+q</td><td>解锁锁定终端</td></tr><tr><td>Ctrl+z</td><td>暂停执行终端运行中的任务<code>!</code></td></tr><tr><td>!开头的快捷键命令</td></tr><tr><td>!!</td><td>执行上一条命令</td></tr><tr><td>!pw</td><td>执行最近一次以pw开头的命令<code>!</code></td></tr><tr><td>!pw:p</td><td>打印输出最近以pwd开头的命令，不执行</td></tr><tr><td>!num</td><td>执行历史命令列表的第num(数字)条命令<code>!</code></td></tr><tr><td>!$</td><td>上一条命令的最后一个参数，等同于<code>Esc+.</code></td></tr><tr><td>ESC相关</td></tr><tr><td>Esc+.</td><td>获取上一条命令的最后部分<code>!</code></td></tr><tr><td>Esc+b</td><td>移动到当前单词的开头</td></tr><tr><td>Esc+f</td><td>移动到当前单词的结尾</td></tr></tbody></table><h1 id="1-2-在Linux命令行下查看命令帮助"><a href="#1-2-在Linux命令行下查看命令帮助" class="headerlink" title="1.2 在Linux命令行下查看命令帮助"></a>1.2 在Linux命令行下查看命令帮助</h1><p>  man命令是Linux很重要的一个命令，它可以帮助我们查看命令的使用方法和一些信息。</p><p>  由于篇幅较大，请点击链接单独查看本章附录man命令。</p><p>  <a href="/2019/06/15/Linux-Linux命令行简介-man命令/">点击访问</a></p><h1 id="1-3-Linux关机、重启、注销命令"><a href="#1-3-Linux关机、重启、注销命令" class="headerlink" title="1.3 Linux关机、重启、注销命令"></a>1.3 Linux关机、重启、注销命令</h1><p>  关机或重启命令:<code>shutdown</code></p><table><thead><tr><th>参数选项</th><th>说明</th></tr></thead><tbody><tr><td>-r</td><td>重启机器</td></tr><tr><td>-P</td><td>关闭机器电源(默认)</td></tr><tr><td>-H</td><td>暂停机器，CPU停止工作但不断电</td></tr><tr><td>-h</td><td>等效-P，除非使用了-H</td></tr><tr><td>-k</td><td>只发送关机提示,不做任何操作</td></tr><tr><td>-c</td><td>取消关机</td></tr></tbody></table><p>  例子:</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 立即关机</span><br><span class="line">[evanmeek@EvanLinux ~]$ shutdown -h now</span><br><span class="line"># 立即重启 </span><br><span class="line">[evanmeek@EvanLinux ~]$ shutdonw -r now</span><br><span class="line"># 5分钟后关机</span><br><span class="line">[evanmeek@EvanLinux ~]$ shutdown -h +5</span><br><span class="line"># 1分钟后重启</span><br><span class="line">[evanmeek@EvanLinux ~]$ shutdown -r +1</span><br></pre></td></tr></table></figure><p>  重启或关机命令:<code>halt</code>/<code>poweroff</code>/<code>reboot</code></p><p>  <code>halt</code>和<code>poweroff</code>都是<code>reboot</code>的链接而已。</p><p>  <code>reboot</code>和<code>shutdown</code>都是<code>systemctl</code>的链接</p><p><strong>本章完，如果觉得我的笔记整理的好，可以给我个打赏，你的一块钱是对我最大的鼓励!</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;1-1-Linux命令行概述&quot;&gt;&lt;a href=&quot;#1-1-Linux命令行概述&quot; class=&quot;headerlink&quot; title=&quot;1.1 Linux命令行概述&quot;&gt;&lt;/a&gt;1.1 Linux命令行概述&lt;/h1&gt;&lt;h2 id=&quot;1-1-1-Linux命令行的作用
-      
     
     </summary>
     

@@ -4,13 +4,12 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
   
-    <title>Do you know Linux? | 我不会编程的博客</title>
+    <title>Rust-理解所有权 | 我不会编程的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="EvanMeek">
     
-    <meta name="description" content="I have been using Linux for about a year and a half.This article let’s talk about Linux.
-&amp;emsp;Linux is an operating system kernel,In addition to some">
+    <meta name="description" content="根据Rust中文学习了些Rust的知识，所以记录下Rust中很重要的特性之一:所有权">
     
     
     
@@ -70,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/07/17/Do-you-know-Linux/" title="Do you know Linux?" itemprop="url">Do you know Linux?</a>
+      <a href="/2019/07/30/Rust-理解所有权/" title="Rust-理解所有权" itemprop="url">Rust-理解所有权</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://evanmeek.github.io" title="EvanMeek">EvanMeek</a>
     </p>
   <p class="article-time">
-    <time datetime="2019-07-16T16:22:22.000Z" itemprop="datePublished">2019-07-17</time>
-    更新日期:<time datetime="2019-07-24T18:37:33.997Z" itemprop="dateModified">2019-07-25</time>
+    <time datetime="2019-07-29T19:11:46.000Z" itemprop="datePublished">2019-07-30</time>
+    更新日期:<time datetime="2019-07-30T07:10:03.207Z" itemprop="dateModified">2019-07-30</time>
     
   </p>
 </header>
@@ -87,34 +86,54 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#认识所有权"><span class="toc-number">1.</span> <span class="toc-text">认识所有权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是所有权"><span class="toc-number">2.</span> <span class="toc-text">什么是所有权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#栈-Stack-与-堆-Heap"><span class="toc-number">2.1.</span> <span class="toc-text">栈(Stack) 与 堆(Heap)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#所有权规则"><span class="toc-number">3.</span> <span class="toc-text">所有权规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#变量作用域"><span class="toc-number">4.</span> <span class="toc-text">变量作用域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String类型"><span class="toc-number">5.</span> <span class="toc-text">String类型</span></a></li></ol>
 		</div>
 		
-		<p>I have been using Linux for about a year and a half.This article let’s talk about Linux.</p>
-<p>&emsp;Linux is an operating system kernel,In addition to some experts,most Linux users are uing Linux dirtributions.The Linux dirtributions is <strong>preintegrated</strong> with the Linux operating system and <strong>various</strong> application software for users.</p>
-<p>&emsp;The Linux kernel was first released by Linus Trovars on October 5,1999.Although the Linux kernel is develpoed,it does not have the tools included in an operating system,but there is a GNU tool that can be used as a system tool for Linux,so Linux is also called GNU/Linux.Currently,Linux can be used on large computers,supercomputers,mobile phones,<strong>tables</strong>,routers,<strong>televisions</strong>,<strong>game consoleds</strong> and computers,Such as,the Android operating system is based on the Linux kernel.</p>
-<p>&emsp;You maybe ask,can Linux be used as an operating system for  everyday use? I will answer you with <strong>certainty</strong>,Linux Can do it.This article was broin in Arch Linux,I can do <strong>entertainment</strong> and work on Linux.</p>
-<p>&emsp;I love Linux,forever.</p>
-  
+		<p>根据Rust中文学习了些Rust的知识，所以记录下Rust中很重要的特性之一:所有权<br><a id="more"></a></p>
+<h1 id="认识所有权"><a href="#认识所有权" class="headerlink" title="认识所有权"></a>认识所有权</h1><p>所有权是Rust最独特的功能，使得Rust不需要GC即可保证内存安全.</p>
+<p>本篇文章介绍所有权及其相关功能：借用、slice，以及Rust如何在内存中布局数据</p>
+<h1 id="什么是所有权"><a href="#什么是所有权" class="headerlink" title="什么是所有权"></a>什么是所有权</h1><p>所有权（ownership)是Rust的核心特性之一，其最大的特点是解决了目前大部分编程语言对内存管理方式的缺陷，例如:一些语言通过GC(垃圾回收机制)进行管理内存，在程序运行时不断的寻找无用的内存，但这种方式会使得程序的效率降低。另一种方式则是内存的分配和释放由程序员进行管理，所以经常会出现遗漏或设计缺陷，从而使得程序问题不断。而Rust的所有权特性则恰好解决了以上两个常见的问题。</p>
+<p>在理解所有权之前，让我们先了解一个常用的数据结构:Stack Heap.</p>
+<h2 id="栈-Stack-与-堆-Heap"><a href="#栈-Stack-与-堆-Heap" class="headerlink" title="栈(Stack) 与 堆(Heap)"></a>栈(Stack) 与 堆(Heap)</h2><blockquote>
+<p>程序是由<strong>算法</strong>和<strong>数据</strong>组成的，<code>栈堆</code>这种数据结构则是一种处理数据的算法，而在所有权的概念中，数据是存在栈上还是堆上很大的影响了程序的行为。</p>
+</blockquote>
+<p><code>栈</code>的结构是一种后进先出的方式处理数据的，生活中的羽毛球例子可以清晰的描述这一关系:当我们将羽毛球放入羽毛球桶时，想要拿走时，总是拿走的最后一个放入的羽毛球，我们不能拿走最后一个放入之前的羽毛球。我们把放入羽毛球(增加数据)叫做<strong>入栈</strong>，拿出羽毛球(移出数据)叫做<strong>出栈</strong>。</p>
+<p><strong>‘栈’的优点是，速度快。这主要是因为如果要获取数据则总是从栈顶直接获取，而不需要寻找某个特定的位置需要读取数据。第二个原因是:栈中数据所占内存大小都已固定也可知。</strong></p>
+<p><code>堆</code>的结构是一种随机的方式处理数据的，生活中的例子每天吃饭可以清晰的描述这一关系:一日三餐，我们总是会想要吃什么，世界上有那么多美食，此时我们就需要选择想要的菜品才能进食，并且在要选择菜品时，我们还必须考虑是否有足够的金钱付款，而在我们选择菜品时是根据菜名通过服务员才能让厨房处理，最终上菜。我们把为菜品付款称作在<strong>堆上分配内存</strong>，而菜名称作<strong>指针</strong>，我们需要通过通过指针访问在堆上分配的内存.</p>
+<p><strong><code>堆</code>的优点是，不受限于只能获取最后一个存入的数据，因为数据都是成堆摆布的，如果需要访问需要通过指针</strong>。</p>
+<p><code>堆</code>对数据的操作速度没有<code>栈</code>快，因为<code>堆</code>需要通过指针才能访问数据.</p>
+<p>若数据大部分存在<code>堆</code>上，则有可能出现一些重复数据，为了清除这些无用的数据，确保内存空间不会被耗尽。这些问题正是所有权系统需要处理的。想必读者们也应该知道，所有权的存在就是为了管理堆数据的，当你理解了所有权后，将在编码时不用总考虑栈和堆了。</p>
+<h1 id="所有权规则"><a href="#所有权规则" class="headerlink" title="所有权规则"></a>所有权规则</h1><ul>
+<li><p>Rust中，每一个值都有一个称为__所有者(owner)的变量。</p>
+</li>
+<li><p>值只能有一个所有者。</p>
+</li>
+<li><p>当所有者离开作用域，这个值则会被遗弃。</p>
+</li>
+</ul>
+<h1 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h1><p>让我们看第一个关于所有权的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 在这里使用s无效，s尚未生命</span><br><span class="line">&#123;</span><br><span class="line">    let s = &quot;hello&quot;; // 从此处起，s 有效</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">// 在这里使用s无效，因为作用域已结束</span><br></pre></td></tr></table></figure>
+<p>这个例子中，当<code>s</code>进入作用域后，直到它离开作用域为止，它一直是有效的。</p>
+<h1 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a><code>String</code>类型</h1>  
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/个人感想/">个人感想</a>
+  <span></span> <a href="/tags/Rust/">Rust</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/英文文章/">英文文章</a>
+  <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="https://evanmeek.github.io/2019/07/17/Do-you-know-Linux/" data-title="Do you know Linux? | 我不会编程的博客" data-tsina class="share clearfix">
+  <div data-url="https://evanmeek.github.io/2019/07/30/Rust-理解所有权/" data-title="Rust-理解所有权 | 我不会编程的博客" data-tsina class="share clearfix">
   </div>
 
 </div>
@@ -123,19 +142,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
- <a href="/2019/07/20/Serimu-Lake-Day-Trip/" title="Serimu Lake Day Trip">
-  <strong>PREVIOUS:</strong><br>
-  <span>
-  Serimu Lake Day Trip</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2019/07/14/What-is-Vim/" title="What is Vim?">
+<a href="/2019/07/26/Emacs-is-sexy/" title="Emacs is sexy!">
  <strong>NEXT:</strong><br> 
- <span>What is Vim?
+ <span>Emacs is sexy!
 </span>
 </a>
 </div>

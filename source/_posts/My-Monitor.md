@@ -20,3 +20,4 @@ I had been trying to write an article about the monitor a few days ago, and tood
 &emsp;Gradually,I fell in love with the monitor.From the first time I sent a photo to her,to the first time I sent a video to her,I knew that I had __fallen__ in love with her.
 
 &emsp;I like the monitor's voice,her attitude when talking,her eyes,some of her little jokes,some of her small shortcomins,like all of her.Now that I have __identified__ everything. I will say to her __personally__ when I return to Guangzhou,"I love you,my monitor."
+

@@ -70,10 +70,10 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Extensions
+# Extensios
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: pacman
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

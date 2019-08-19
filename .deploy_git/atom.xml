@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-08-19T18:43:26.910Z</updated>
+  <updated>2019-08-19T18:50:00.622Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -21,19 +21,13 @@
     <link href="https://evanmeek.github.io/2019/08/20/Mac%E4%B8%8B%E5%AE%89%E8%A3%85Rust/"/>
     <id>https://evanmeek.github.io/2019/08/20/Mac下安装Rust/</id>
     <published>2019-08-19T18:30:40.000Z</published>
-    <updated>2019-08-19T18:43:26.910Z</updated>
+    <updated>2019-08-19T18:50:00.622Z</updated>
     
-    <content type="html"><![CDATA[<p>本篇文章记录了我是如何在Mac下安装rust的过程.</p><p>&lt;!!–more–&gt;</p><p>首先在你Shell的配置文件内加入下面两行:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static</span><br><span class="line">export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup</span><br></pre></td></tr></table></figure><p>然后打开终端，输入:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://sh.rustup.rs -sSf | sh</span><br></pre></td></tr></table></figure><p>中间稍微等待一下，选择安装的方式即可。</p><p>安装好后记得执行:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $HOME/.cargo/env</span><br></pre></td></tr></table></figure><p>最后再编辑$HOME/.cargo/config文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[registry]</span><br><span class="line">index = &quot;https://mirrors.ustc.edu.cn/crates.io-index/&quot;</span><br><span class="line">[source.crates-io]</span><br><span class="line">registry = &quot;https://github.com/rust-lang/crates.io-index&quot;</span><br><span class="line">replace-with = &apos;ustc&apos;</span><br><span class="line">[source.ustc]</span><br><span class="line">registry = &quot;https://mirrors.ustc.edu.cn/crates.io-index/&quot;</span><br></pre></td></tr></table></figure><p>就大功告成啦，赶快写一个HelloWorld吧!</p>]]></content>
+    <content type="html"><![CDATA[<p>本篇文章记录了我是如何在Mac下安装rust的过程.</p><a id="more"></a><p>首先在你Shell的配置文件内加入下面两行:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static</span><br><span class="line">export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup</span><br></pre></td></tr></table></figure><p>然后打开终端，输入:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://sh.rustup.rs -sSf | sh</span><br></pre></td></tr></table></figure><p>中间稍微等待一下，选择安装的方式即可。</p><p>安装好后记得执行:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $HOME/.cargo/env</span><br></pre></td></tr></table></figure><p>最后再编辑$HOME/.cargo/config文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[registry]</span><br><span class="line">index = &quot;https://mirrors.ustc.edu.cn/crates.io-index/&quot;</span><br><span class="line">[source.crates-io]</span><br><span class="line">registry = &quot;https://github.com/rust-lang/crates.io-index&quot;</span><br><span class="line">replace-with = &apos;ustc&apos;</span><br><span class="line">[source.ustc]</span><br><span class="line">registry = &quot;https://mirrors.ustc.edu.cn/crates.io-index/&quot;</span><br></pre></td></tr></table></figure><p>就大功告成啦，赶快写一个HelloWorld吧!</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;本篇文章记录了我是如何在Mac下安装rust的过程.&lt;/p&gt;
-&lt;p&gt;&amp;lt;!!–more–&amp;gt;&lt;/p&gt;
-&lt;p&gt;首先在你Shell的配置文件内加入下面两行:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
-      
+      &lt;p&gt;本篇文章记录了我是如何在Mac下安装rust的过程.&lt;/p&gt;
     
     </summary>
     

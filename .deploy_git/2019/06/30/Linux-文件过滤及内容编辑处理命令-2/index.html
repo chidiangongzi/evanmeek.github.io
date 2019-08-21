@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T04:58:16.427Z">
+<meta property="og:updated_time" content="2019-08-21T10:26:10.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-文件过滤及内容编辑处理命令-2">
 <meta name="twitter:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-16 12:58:16" itemprop="dateModified" datetime="2019-08-16T12:58:16+08:00">2019-08-16</time>
+                <time title="修改时间：2019-08-21 18:26:10" itemprop="dateModified" datetime="2019-08-21T18:26:10+08:00">2019-08-21</time>
               
             
           </span>
@@ -1185,6 +1185,73 @@
 <p>例子:</p>
 <p><strong>合并文本</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ more t1.txt t2.txt</span><br><span class="line">::::::::::::::</span><br><span class="line">t1.txt</span><br><span class="line">::::::::::::::</span><br><span class="line">张三 21岁</span><br><span class="line">李四 23岁</span><br><span class="line">王五 17岁</span><br><span class="line">赵六 15岁</span><br><span class="line"></span><br><span class="line">::::::::::::::</span><br><span class="line">t2.txt</span><br><span class="line">::::::::::::::</span><br><span class="line">张三 男</span><br><span class="line">李四 女</span><br><span class="line">王五 男</span><br><span class="line">赵六 女</span><br><span class="line"># 将t1和t2进行合并</span><br><span class="line">$ join t1.txt t2.txt &gt; t3.txt</span><br><span class="line">$ cat t3.txt</span><br><span class="line">张三 21岁 男</span><br><span class="line">李四 23岁 女</span><br><span class="line">王五 17岁 男</span><br><span class="line">赵六 15岁 女</span><br></pre></td></tr></table></figure>
+<h1 id="3-13-uniq-去除重复行"><a href="#3-13-uniq-去除重复行" class="headerlink" title="3.13 uniq 去除重复行"></a>3.13 uniq 去除重复行</h1><p><code>uniq</code>命令可以输出或忽略文件中的重复行。在工作中，我们常用的场景是使用sort命令对文件排序，然后使用<code>uniq</code>命令去重并计数。</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uniq [选项] [文件或标准输入]</span><br></pre></td></tr></table></figure>
+<p>选项说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>去除重复行，并且计算每行出现的次数</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>只显示重复的行</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>只显示唯一的行</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<p><strong>去重测试案例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt</span><br><span class="line">重复重复重复</span><br><span class="line">重复重复重复</span><br><span class="line">重复重复重复</span><br><span class="line">重复重复重复</span><br><span class="line">重复重复重复</span><br><span class="line">&gt; uniq -c test.txt</span><br><span class="line">5 重复重复重复</span><br></pre></td></tr></table></figure>
+<p><strong>结合sort排序后去重</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat test.txt</span><br><span class="line">10000</span><br><span class="line">10000</span><br><span class="line">2</span><br><span class="line">10000</span><br><span class="line">10000</span><br><span class="line">2</span><br><span class="line">10000</span><br><span class="line">&gt; uniq -c test.txt</span><br><span class="line">2 10000</span><br><span class="line">1 2</span><br><span class="line">2 10000</span><br><span class="line">1 2</span><br><span class="line">1 10000</span><br><span class="line"># 在这里我们发现，uniq只能去除相邻重复的行，所以我们就使用sort排序后再进行去重复</span><br><span class="line">&gt; sort -n test.txt | uniq -c</span><br><span class="line">2 2</span><br><span class="line">5 10000</span><br></pre></td></tr></table></figure>
+<h1 id="3-14-wc-统计文件的行数、单词数或字节数"><a href="#3-14-wc-统计文件的行数、单词数或字节数" class="headerlink" title="3.14 wc 统计文件的行数、单词数或字节数"></a>3.14 wc 统计文件的行数、单词数或字节数</h1><p><code>wc</code>命令用于统计文件的行数、单词数和字节数。</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc [选项] [文件]</span><br></pre></td></tr></table></figure>
+<p>选项说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>统计字节数</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>统计行数<code>!</code></td>
+</tr>
+<tr>
+<td>-m</td>
+<td>统计字符数</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>统计单词数</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>输出最长行的长度<code>!</code></td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<p><strong>查看文件的字节数、字数、行数</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; wc /etc/profile</span><br><span class="line">9      30     189 /etc/profile</span><br><span class="line"></span><br><span class="line"># 依次排列过去是 行数 - 单词数 - 字节数</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -1207,7 +1274,7 @@
   <p><span>本文标题:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/">Linux-文件过滤及内容编辑处理命令-2</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月30日 - 19:06</p>
-  <p><span>最后更新:</span>2019年08月16日 - 12:08</p>
+  <p><span>最后更新:</span>2019年08月21日 - 18:08</p>
   <p><span>原始链接:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" title="Linux-文件过滤及内容编辑处理命令-2">https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" aria-label="复制成功！"></i></span>
   </p>
@@ -1557,7 +1624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7-tailf-跟踪日志文件"><span class="nav-number">8.</span> <span class="nav-text">3.7 tailf 跟踪日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-cut-从文本中提取一段文字并输出"><span class="nav-number">9.</span> <span class="nav-text">3.8 cut 从文本中提取一段文字并输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-9-split-分割文件"><span class="nav-number">10.</span> <span class="nav-text">3.9 split 分割文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-10-paste-合并文件"><span class="nav-number">11.</span> <span class="nav-text">3.10 paste 合并文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-11-sort-文本排序"><span class="nav-number">12.</span> <span class="nav-text">3.11 sort 文本排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-12-join-按两个文件的相同字段合并"><span class="nav-number">13.</span> <span class="nav-text">3.12 join 按两个文件的相同字段合并</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7-tailf-跟踪日志文件"><span class="nav-number">8.</span> <span class="nav-text">3.7 tailf 跟踪日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-cut-从文本中提取一段文字并输出"><span class="nav-number">9.</span> <span class="nav-text">3.8 cut 从文本中提取一段文字并输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-9-split-分割文件"><span class="nav-number">10.</span> <span class="nav-text">3.9 split 分割文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-10-paste-合并文件"><span class="nav-number">11.</span> <span class="nav-text">3.10 paste 合并文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-11-sort-文本排序"><span class="nav-number">12.</span> <span class="nav-text">3.11 sort 文本排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-12-join-按两个文件的相同字段合并"><span class="nav-number">13.</span> <span class="nav-text">3.12 join 按两个文件的相同字段合并</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-13-uniq-去除重复行"><span class="nav-number">14.</span> <span class="nav-text">3.13 uniq 去除重复行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-14-wc-统计文件的行数、单词数或字节数"><span class="nav-number">15.</span> <span class="nav-text">3.14 wc 统计文件的行数、单词数或字节数</span></a></li></ol></div>
             
 
           </div>

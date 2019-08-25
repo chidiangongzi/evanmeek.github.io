@@ -878,3 +878,126 @@ dos2unix [文件]
 ~~~
 > dos2unix dosfile.txt
 ~~~
+
+# 3.17 diff 比较两个文件的不同
+
+`diff`命令可以逐行比较纯文本文件的内容，并输出文件的差异。
+
+语法格式
+
+~~~
+diff [选项] [文件1] [文件2]
+~~~
+
+选项说明
+
+| 选项 | 说明                           |
+|------|--------------------------------|
+| -y   | 以并列的方式显示文件的异同之处 |
+| -W   | 在使用-y参数时，指定显示宽度   |
+| -c   | 使用上下文的输出格式           |
+| -u   | 使用统一格式输出               |
+
+例子:
+
+__比较两个文本文件__
+
+~~~
+evanmeek@EvanMeekdeMBP  ~/TestDir  cat test1.txt
+1
+2
+3
+4
+5
+6
+evanmeek@EvanMeekdeMBP  ~/TestDir  cat test2.txt
+4
+5
+6
+7
+8
+9
+evanmeek@EvanMeekdeMBP  ~/TestDir  diff test1.txt test2.txt
+# 代表文件2对比文件1删除了第一行到第三行
+1,3d0
+< 1
+< 2
+< 3
+# 代表文件1的第6行下增加了文件2的第4行和第5行
+6a4,6
+> 7
+> 8
+> 9
+~~~
+
+__并排格式输出__
+
+~~~
+✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -y test1.txt test2.txt
+1                                                             <
+2                                                             <
+3                                                             <
+4                                                               4
+5                                                               5
+6                                                               6
+                                                            > 7
+                                                            > 8
+                                                            > 9
+~~~
+
+__并排格式输出时指定宽度__
+
+~~~
+✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -y -W 30 test1.txt test2.txt
+1             <
+2             <
+3             <
+4               4
+5               5
+6               6
+              > 7
+              > 8
+              > 9
+~~~
+
+__上下文输出格式__
+
+~~~
+✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -c test1.txt test2.txt
+*** test1.txt   2019-08-25 16:39:32.000000000 +0800
+--- test2.txt   2019-08-25 16:40:32.000000000 +0800
+***************
+*** 1,6 ****
+- 1
+- 2
+- 3
+  4
+  5
+  6
+--- 1,6 ----
+  4
+  5
+  6
++ 7
++ 8
++ 9
+~~~
+
+__统一标准输出格式__
+
+~~~
+✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -u test1.txt test2.txt
+--- test1.txt   2019-08-25 16:39:32.000000000 +0800
++++ test2.txt   2019-08-25 16:40:32.000000000 +0800
+@@ -1,6 +1,6 @@
+-1
+-2
+-3
+ 4
+ 5
+ 6
++7
++8
++9
+~~~
+hello 

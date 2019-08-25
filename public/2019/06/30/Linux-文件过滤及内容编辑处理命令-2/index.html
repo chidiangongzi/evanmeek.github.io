@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T15:24:27.583Z">
+<meta property="og:updated_time" content="2019-08-25T09:17:00.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-文件过滤及内容编辑处理命令-2">
 <meta name="twitter:description" content="3.0 做Linux运维的多个好处 做运维可以认识更多人，同时也被更多人认识。  做运维可以让自己沟通，交际能力变得比开发人员更强。  相比开发岗位，运维的岗位更重要一些。   3.1 cat 合并文件或查看文件内容concatenate cat命令5大常用功能    序号 常用功能 例子以及说明     1 查看文件内容 cat file.txt 查看文件内容，最基本的使用   2 多个文件合并">
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-22 23:24:27" itemprop="dateModified" datetime="2019-08-22T23:24:27+08:00">2019-08-22</time>
+                <time title="修改时间：2019-08-25 17:17:00" itemprop="dateModified" datetime="2019-08-25T17:17:00+08:00">2019-08-25</time>
               
             
           </span>
@@ -1289,6 +1289,48 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dos2unix [文件]</span><br></pre></td></tr></table></figure>
 <p>例子:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; dos2unix dosfile.txt</span><br></pre></td></tr></table></figure>
+<h1 id="3-17-diff-比较两个文件的不同"><a href="#3-17-diff-比较两个文件的不同" class="headerlink" title="3.17 diff 比较两个文件的不同"></a>3.17 diff 比较两个文件的不同</h1><p><code>diff</code>命令可以逐行比较纯文本文件的内容，并输出文件的差异。</p>
+<p>语法格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff [选项] [文件1] [文件2]</span><br></pre></td></tr></table></figure>
+<p>选项说明</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-y</td>
+<td>以并列的方式显示文件的异同之处</td>
+</tr>
+<tr>
+<td>-W</td>
+<td>在使用-y参数时，指定显示宽度</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>使用上下文的输出格式</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>使用统一格式输出</td>
+</tr>
+</tbody>
+</table>
+<p>例子:</p>
+<p><strong>比较两个文本文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">evanmeek@EvanMeekdeMBP  ~/TestDir  cat test1.txt</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">evanmeek@EvanMeekdeMBP  ~/TestDir  cat test2.txt</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">evanmeek@EvanMeekdeMBP  ~/TestDir  diff test1.txt test2.txt</span><br><span class="line"># 代表文件2对比文件1删除了第一行到第三行</span><br><span class="line">1,3d0</span><br><span class="line">&lt; 1</span><br><span class="line">&lt; 2</span><br><span class="line">&lt; 3</span><br><span class="line"># 代表文件1的第6行下增加了文件2的第4行和第5行</span><br><span class="line">6a4,6</span><br><span class="line">&gt; 7</span><br><span class="line">&gt; 8</span><br><span class="line">&gt; 9</span><br></pre></td></tr></table></figure>
+<p><strong>并排格式输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -y test1.txt test2.txt</span><br><span class="line">1                                                             &lt;</span><br><span class="line">2                                                             &lt;</span><br><span class="line">3                                                             &lt;</span><br><span class="line">4                                                               4</span><br><span class="line">5                                                               5</span><br><span class="line">6                                                               6</span><br><span class="line">                                                            &gt; 7</span><br><span class="line">                                                            &gt; 8</span><br><span class="line">                                                            &gt; 9</span><br></pre></td></tr></table></figure>
+<p><strong>并排格式输出时指定宽度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -y -W 30 test1.txt test2.txt</span><br><span class="line">1             &lt;</span><br><span class="line">2             &lt;</span><br><span class="line">3             &lt;</span><br><span class="line">4               4</span><br><span class="line">5               5</span><br><span class="line">6               6</span><br><span class="line">              &gt; 7</span><br><span class="line">              &gt; 8</span><br><span class="line">              &gt; 9</span><br></pre></td></tr></table></figure>
+<p><strong>上下文输出格式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -c test1.txt test2.txt</span><br><span class="line">*** test1.txt   2019-08-25 16:39:32.000000000 +0800</span><br><span class="line">--- test2.txt   2019-08-25 16:40:32.000000000 +0800</span><br><span class="line">***************</span><br><span class="line">*** 1,6 ****</span><br><span class="line">- 1</span><br><span class="line">- 2</span><br><span class="line">- 3</span><br><span class="line">  4</span><br><span class="line">  5</span><br><span class="line">  6</span><br><span class="line">--- 1,6 ----</span><br><span class="line">  4</span><br><span class="line">  5</span><br><span class="line">  6</span><br><span class="line">+ 7</span><br><span class="line">+ 8</span><br><span class="line">+ 9</span><br></pre></td></tr></table></figure>
+<p><strong>统一标准输出格式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">✘ evanmeek@EvanMeekdeMBP  ~/TestDir  diff -u test1.txt test2.txt</span><br><span class="line">--- test1.txt   2019-08-25 16:39:32.000000000 +0800</span><br><span class="line">+++ test2.txt   2019-08-25 16:40:32.000000000 +0800</span><br><span class="line">@@ -1,6 +1,6 @@</span><br><span class="line">-1</span><br><span class="line">-2</span><br><span class="line">-3</span><br><span class="line"> 4</span><br><span class="line"> 5</span><br><span class="line"> 6</span><br><span class="line">+7</span><br><span class="line">+8</span><br><span class="line">+9</span><br></pre></td></tr></table></figure>
+<p>hello </p>
 
       
     </div>
@@ -1311,7 +1353,7 @@
   <p><span>本文标题:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/">Linux-文件过滤及内容编辑处理命令-2</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年06月30日 - 19:06</p>
-  <p><span>最后更新:</span>2019年08月22日 - 23:08</p>
+  <p><span>最后更新:</span>2019年08月25日 - 17:08</p>
   <p><span>原始链接:</span><a href="/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" title="Linux-文件过滤及内容编辑处理命令-2">https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/30/Linux-文件过滤及内容编辑处理命令-2/" aria-label="复制成功！"></i></span>
   </p>
@@ -1661,7 +1703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7-tailf-跟踪日志文件"><span class="nav-number">8.</span> <span class="nav-text">3.7 tailf 跟踪日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-cut-从文本中提取一段文字并输出"><span class="nav-number">9.</span> <span class="nav-text">3.8 cut 从文本中提取一段文字并输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-9-split-分割文件"><span class="nav-number">10.</span> <span class="nav-text">3.9 split 分割文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-10-paste-合并文件"><span class="nav-number">11.</span> <span class="nav-text">3.10 paste 合并文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-11-sort-文本排序"><span class="nav-number">12.</span> <span class="nav-text">3.11 sort 文本排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-12-join-按两个文件的相同字段合并"><span class="nav-number">13.</span> <span class="nav-text">3.12 join 按两个文件的相同字段合并</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-13-uniq-去除重复行"><span class="nav-number">14.</span> <span class="nav-text">3.13 uniq 去除重复行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-14-wc-统计文件的行数、单词数或字节数"><span class="nav-number">15.</span> <span class="nav-text">3.14 wc 统计文件的行数、单词数或字节数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-15-iconv-转换文件的编码格式"><span class="nav-number">16.</span> <span class="nav-text">3.15 iconv 转换文件的编码格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-16-dos2unix-将DOS格式文件转换成UNIX格式"><span class="nav-number">17.</span> <span class="nav-text">3.16 dos2unix 将DOS格式文件转换成UNIX格式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-做Linux运维的多个好处"><span class="nav-number">1.</span> <span class="nav-text">3.0 做Linux运维的多个好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-1-cat-合并文件或查看文件内容"><span class="nav-number">2.</span> <span class="nav-text">3.1 cat 合并文件或查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-2-tac-反向显示文件内容"><span class="nav-number">3.</span> <span class="nav-text">3.2 tac 反向显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-3-more-分页显示文件内容"><span class="nav-number">4.</span> <span class="nav-text">3.3 more 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-less-分页显示文件内容"><span class="nav-number">5.</span> <span class="nav-text">3.4 less 分页显示文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-head-显示文件内容头部"><span class="nav-number">6.</span> <span class="nav-text">3.5 head 显示文件内容头部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-6-tail显示文件内容尾部"><span class="nav-number">7.</span> <span class="nav-text">3.6 tail显示文件内容尾部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-7-tailf-跟踪日志文件"><span class="nav-number">8.</span> <span class="nav-text">3.7 tailf 跟踪日志文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-cut-从文本中提取一段文字并输出"><span class="nav-number">9.</span> <span class="nav-text">3.8 cut 从文本中提取一段文字并输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-9-split-分割文件"><span class="nav-number">10.</span> <span class="nav-text">3.9 split 分割文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-10-paste-合并文件"><span class="nav-number">11.</span> <span class="nav-text">3.10 paste 合并文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-11-sort-文本排序"><span class="nav-number">12.</span> <span class="nav-text">3.11 sort 文本排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-12-join-按两个文件的相同字段合并"><span class="nav-number">13.</span> <span class="nav-text">3.12 join 按两个文件的相同字段合并</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-13-uniq-去除重复行"><span class="nav-number">14.</span> <span class="nav-text">3.13 uniq 去除重复行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-14-wc-统计文件的行数、单词数或字节数"><span class="nav-number">15.</span> <span class="nav-text">3.14 wc 统计文件的行数、单词数或字节数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-15-iconv-转换文件的编码格式"><span class="nav-number">16.</span> <span class="nav-text">3.15 iconv 转换文件的编码格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-16-dos2unix-将DOS格式文件转换成UNIX格式"><span class="nav-number">17.</span> <span class="nav-text">3.16 dos2unix 将DOS格式文件转换成UNIX格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-17-diff-比较两个文件的不同"><span class="nav-number">18.</span> <span class="nav-text">3.17 diff 比较两个文件的不同</span></a></li></ol></div>
             
 
           </div>

@@ -163,8 +163,6 @@ menu:
   categories: /categories/ || th
   archives: /archives/ || archive
   Linux: /Linux || linux
-  Qt5: /Qt5 || qt5
-  EnglishArticle: /英文文章/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat

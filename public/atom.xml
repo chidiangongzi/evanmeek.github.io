@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-08-28T19:03:18.958Z</updated>
+  <updated>2019-08-29T08:37:48.346Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Python-02]Python初探</title>
+    <link href="https://evanmeek.github.io/2019/08/29/Python-01-Python%E5%88%9D%E6%8E%A2/"/>
+    <id>https://evanmeek.github.io/2019/08/29/Python-01-Python初探/</id>
+    <published>2019-08-29T03:52:56.000Z</published>
+    <updated>2019-08-29T08:37:48.346Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python系列第二章笔记，查看Python系列所有文章，请点击<a href="https://evanmeek.github.io/Python/">💿</a></p><a id="more"></a><h1 id="Mac安装Python环境"><a href="#Mac安装Python环境" class="headerlink" title="Mac安装Python环境"></a>Mac安装Python环境</h1><p>由于我目前的设备只有一台Mac Book，所以我就只记录Mac安装Python的过程。</p><p>最新的Mac OS X以及集成了Python 2，打开终端(Terminal)输入:<code>python</code>检查是否已安装</p><p><img src="/2019/08/29/Python-01-Python初探/Python-02-Python初探/python2运行.png" alt="Python2运行"></p><p>安装Python3可以在这个页面进行下载:<a href="https://www.python.org/downloads/" target="_blank" rel="noopener">💿Python下载页面</a></p><h1 id="python不是内部或外部命令的解决方法"><a href="#python不是内部或外部命令的解决方法" class="headerlink" title="python不是内部或外部命令的解决方法"></a>python不是内部或外部命令的解决方法</h1><p>由于这个问题只有Windows才会出现，所以遇到问题的话，去看下原文吧<a href="http://c.biancheng.net/view/4171.html" target="_blank" rel="noopener">💿点我看原文解决方案</a></p><h1 id="第一个Python程序"><a href="#第一个Python程序" class="headerlink" title="第一个Python程序"></a>第一个Python程序</h1><p>打开终端，输入<code>python3</code>命令，进入交互式解释器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;hello,world!&quot;)</span><br></pre></td></tr></table></figure><p>即可输出包括在双引号之间的字符</p><p>注意点:</p><ul><li><p>小括号与双引号必须在英文半角状态下输入</p></li><li><p>print必须全部为小写</p></li></ul><blockquote><p>文本编辑器编写并执行Python程序</p></blockquote><p>可以使用Vim编辑器编写Python源代码，然后终端中执行</p><p>注意点:</p><ul><li>不要使用Word或Windows的记事本程序编写Python源码，因为这两款软件会为源代码添加隐藏符号，而这些符号不被Python所解释，程序将会报错。</li></ul><h1 id="Python交互式解释器及用法"><a href="#Python交互式解释器及用法" class="headerlink" title="Python交互式解释器及用法"></a>Python交互式解释器及用法</h1><p>交互式解释器是为了让开发者快速学习、则是Python的功能。</p><p>在终端内执行<code>python</code>命令即可打开</p><p><img src="/2019/08/29/Python-01-Python初探/Python-02-Python初探/python3运行.png" alt="python3运行"></p><p>其中<code>&gt;&gt;&gt;</code>提示符，我们写的命令都是能被python解释器所执行的Python命令，如果输入的内容没有定义，那么解释器将会报错。</p><h1 id="IDE-集成开发环境-是什么"><a href="#IDE-集成开发环境-是什么" class="headerlink" title="IDE(集成开发环境)是什么"></a>IDE(集成开发环境)是什么</h1><p><code>IDE(Intergreated Development Environment)</code>,用来辅助开发者开发的应用软件。</p><p>集成开发环境是一些列开发工具的组合套装，例如我们编写Python程序，不仅需要解释器，而且还需要一些辅助工具，例如:语言编辑器、自动构建工具、除错器。</p><h1 id="Python-IDE有哪些，哪款适合初学者？"><a href="#Python-IDE有哪些，哪款适合初学者？" class="headerlink" title="Python IDE有哪些，哪款适合初学者？"></a>Python IDE有哪些，哪款适合初学者？</h1><p>首先说明，合适自己的才是最好的。</p><blockquote><p>PyCharm</p></blockquote><p>由JetBrains公司开发的Python开发工具</p><p>优点:</p><ul><li><p>跨平台</p></li><li><p>支持语法高粱、项目代码管理、智能提示、自动完成、调试、单元测试、版本控制等</p></li><li><p>支持Django Web开发框架</p></li><li><p>社区版本免费</p></li></ul><p>缺点:</p><ul><li><p>软件较大，比较重</p></li><li><p>专业版，收费</p></li></ul><blockquote><p>Microsoft Visual Studio</p></blockquote><p>由微软开发用于进行C#和.NET等应用的开发工具，简称VS。</p><p>要让VS支持Python，需要安装<code>PTVS</code>插件。</p><p>优点:</p><ul><li><p>PTVS插件开源</p></li><li><p>支持编辑、浏览、智能感知、混合Python/C++调试、Django</p></li></ul><p>缺点:</p><ul><li><p>不跨平台，只支持Windows</p></li><li><p>软件较大，比较重</p></li><li><p>非学生收费</p></li></ul><h1 id="Python-IDLE使用方法详解"><a href="#Python-IDLE使用方法详解" class="headerlink" title="Python IDLE使用方法详解"></a>Python IDLE使用方法详解</h1><p>由于本人不使用IDLE作为我的Python开发工具，所以这里就不提了。</p><p>想了解的，看原文<a href="http://c.biancheng.net/view/4221.html" target="_blank" rel="noopener">💿点击查看原文</a></p><h1 id="Python注释-多行注释和单行注释"><a href="#Python注释-多行注释和单行注释" class="headerlink" title="Python注释(多行注释和单行注释)"></a>Python注释(多行注释和单行注释)</h1><p>注释是写给人看的，是用来用自然语言解释代码给开发者看的。</p><p>注释不被解释器所执行。</p><p>Python允许在任何地方差人注释和字符串，除了在标志符和字符串之间。</p><p>Python中有三种注释分别是:</p><blockquote><p>单行注释</p></blockquote><p>语法格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 注释内容</span><br></pre></td></tr></table></figure></p><p>单行注释所在位置可以是代码的上一行，可以是当前行的末尾。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python系列第二章笔记，查看Python系列所有文章，请点击&lt;a href=&quot;https://evanmeek.github.io/Python/&quot;&gt;💿&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="https://evanmeek.github.io/categories/Python/"/>
+    
+    
+      <category term="Python系列" scheme="https://evanmeek.github.io/tags/Python%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Python-01]Python初探</title>
+    <link href="https://evanmeek.github.io/2019/08/29/Python-02-Python%E5%88%9D%E6%8E%A2/"/>
+    <id>https://evanmeek.github.io/2019/08/29/Python-02-Python初探/</id>
+    <published>2019-08-29T03:52:56.000Z</published>
+    <updated>2019-08-29T03:57:26.734Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python系列第二章笔记，查看Python系列所有文章，请点击<a href="https://evanmeek.github.io/Python/">💿</a></p><a id="more"></a><h1 id="Mac安装Python环境"><a href="#Mac安装Python环境" class="headerlink" title="Mac安装Python环境"></a>Mac安装Python环境</h1><p>由于我目前的设备只有一台Mac Book，所以我就只记录Mac安装Python的过程。</p><p>最新的Mac OS X以及集成了Python 2，打开终端(Terminal)输入:<code>python</code>检查是否已安装</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python系列第二章笔记，查看Python系列所有文章，请点击&lt;a href=&quot;https://evanmeek.github.io/Python/&quot;&gt;💿&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="https://evanmeek.github.io/categories/Python/"/>
+    
+    
+      <category term="Python系列" scheme="https://evanmeek.github.io/tags/Python%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>[Python-01]Python教程基础</title>
@@ -416,55 +460,6 @@
     
     
       <category term="个人感想" scheme="https://evanmeek.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fraudster Shop-坑爹商店</title>
-    <link href="https://evanmeek.github.io/2019/07/05/Fraudster-Shop-%E5%9D%91%E7%88%B9%E5%95%86%E5%BA%97/"/>
-    <id>https://evanmeek.github.io/2019/07/05/Fraudster-Shop-坑爹商店/</id>
-    <published>2019-07-05T08:44:41.000Z</published>
-    <updated>2019-08-16T04:58:16.422Z</updated>
-    
-    <content type="html"><![CDATA[<p>  昨晚我尝试安装了i3，Manjaro的配置，然而我一直没有配置完成，我就想重装个Manjaro-i3反正文件都在Github上，不过我的U盘不知从何时起就不见了，所以我需要买个U盘。<br><a id="more"></a></p><hr><h1 id="Chinese"><a href="#Chinese" class="headerlink" title="Chinese"></a>Chinese</h1><p>&emsp;自从昨晚系统被我玩到暂时无法使用后，我这个内心就无法平静，一直想着一定要把i3配置好，不然过两天去乌鲁木齐连Github都上不去就惨了。</p><p>&emsp;昨晚正好宿舍又没多少电了，所以空调没开就睡觉了。睡得比较早，醒得也比较早，半夜3点就醒来了，没错，就是被热醒的。时间流逝得挺快，一晃眼就到白天了，东西收拾完毕，床位打理完成后我便回家了，回家时我就想，早上下订单，京东同城的话下午应该就能到，不过就是贵了点运费，大概算下来USB3.0 16GB的U盘才45左右，不过我又想了想，选择回家买，不需要等待快递。</p><p>&emsp;我在街头转了又转，转了又转，就是没有发现一个电脑店，正当我有些失落的时候，街角的一间手机店引起了我的注意，我自信的，揣着钱包就进去了。“老板，你这里有没有USB3.0的U盘啊?” 我说，老板想都没想说了句,”有啊!”，说着便拿出一小沓U盘，我看了看说道:”老板，这些都不是USB3.0，你拿其他的给我看一下吧!”，我此时心里想，不用骗我了，拿一些2.0的来哄骗我是3.0的吧。老板无奈的说，”你一个小时后再来吧，我这里3.0的U盘卖完了。”，虽然老板说是卖完了，但我大概能知道他根本没有进过USB3.0的货，一直靠着用3.0的价格贩卖2.0的U盘。</p><p>&emsp;后来我又找了很多家手机店和电脑店，他们居然都没有USB3.0，并且他们卖的都是USB2.0，更让我吃惊的是，他们全部统一地将USB2.0的U盘卖70-80RMB左右。其中我尝试跟他们讲价，就算是2.0U盘我暂时买个4G的USB2.0还可以装我的i3，我出价30，这是我的最高价了…然后卖家给我说不能卖，最低55，掉价这么快，80直接掉到55，最终没谈成，因为我已经很不想买USB2.0了，更不可能花那么多钱买一个过时的产物。</p><p>&emsp;说了这么多，其实就是想让大家以后不要再去实体店买这种电子产品了，当然可能有一些实体店还是正常的价格的，但据我的真实体验，实体店普遍就是要坑小白的，并且就算你指明要USB3.0他还是会拿给你USB2.0看，尝试诱骗你。</p><p>&emsp;京东晚上7点下的单，第二天9点就可以取件了，真香。强烈推荐一线城市想买这种小物件直接京东买吧，甚至还有同城送，上午买下午就到，不过要多付点运费。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  昨晚我尝试安装了i3，Manjaro的配置，然而我一直没有配置完成，我就想重装个Manjaro-i3反正文件都在Github上，不过我的U盘不知从何时起就不见了，所以我需要买个U盘。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="英文文章" scheme="https://evanmeek.github.io/categories/%E8%8B%B1%E6%96%87%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="日常" scheme="https://evanmeek.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>超酷-字符文件管理-ranger</title>
-    <link href="https://evanmeek.github.io/2019/07/03/%E8%B6%85%E9%85%B7-%E5%AD%97%E7%AC%A6%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-ranger/"/>
-    <id>https://evanmeek.github.io/2019/07/03/超酷-字符文件管理-ranger/</id>
-    <published>2019-07-03T01:47:24.000Z</published>
-    <updated>2019-08-16T04:58:16.472Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><p><img src="/2019/07/03/超酷-字符文件管理-ranger/ranger-pre.png" alt="ranger"></p><h1 id="0x0-什么是ranger"><a href="#0x0-什么是ranger" class="headerlink" title="0x0 什么是ranger?"></a>0x0 什么是ranger?</h1><p><code>ranger</code>是一个基于文本的文件管理器，由Python编写。</p><h1 id="0x1-为什么要选择ranger"><a href="#0x1-为什么要选择ranger" class="headerlink" title="0x1 为什么要选择ranger?"></a>0x1 为什么要选择ranger?</h1><p><code>ranger</code>具有以下特性:</p><ul><li><p>vi风格的快捷键</p></li><li><p>书签</p></li><li><p>选择</p></li><li><p>标签</p></li><li><p>选项</p></li><li><p>命令历史</p></li><li><p>创建符号链接</p></li><li><p>任务视图</p></li><li><p>自定义命令</p></li><li><p>自定义快捷键按</p></li></ul><h1 id="0x2-使用ranger"><a href="#0x2-使用ranger" class="headerlink" title="0x2 使用ranger"></a>0x2 使用ranger</h1><p>在终端内输入<code>ranger</code>以启动ranger</p><p>使用<code>h j k l</code>进行目录之间的进出。</p><h1 id="0x3-配置ranger"><a href="#0x3-配置ranger" class="headerlink" title="0x3 配置ranger"></a>0x3 配置ranger</h1><p>配置文件:</p><ul><li><p>rc.conf 基本选项与快捷键设置</p></li><li><p>commands.py 可在ranger下使用<code>:</code>执行的命令</p></li><li><p>rifile.conf 文件关联，控制不同文件用不同程序打开</p></li></ul><p>配色方案:</p><p><code>ranger</code>默认自带四种配色方案:<code>defalut</code> <code>jungle</code> <code>snow</code> <code>zenburn</code></p><p>使用<code>:set colorscheme scheme</code>进行切换。</p><p>自定义配色方案文件放在<code>~/.config/ranger/colorschemes</code></p><h1 id="0x4-我的ranger配置"><a href="#0x4-我的ranger配置" class="headerlink" title="0x4 我的ranger配置"></a>0x4 我的ranger配置</h1><p>以上传至Github</p><p><a href="https://github.com/EvanMeek/Vanilla/tree/master/ranger" target="_blank" rel="noopener">点击访问</a></p><h1 id="0x5-其他"><a href="#0x5-其他" class="headerlink" title="0x5 其他"></a>0x5 其他</h1><p>下载地址:<a href="https://github.com/ranger/ranger/releases" target="_blank" rel="noopener">点击获取</a></p><p>Arch系:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; pacman -S ranger</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;&lt;img src=&quot;/2019/07/03/超酷-字符文件管理-ranger/ranger-pre.png&quot; alt=&quot;ranger&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;0x0-什么是ranger&quot;&gt;&lt;a href=&quot;#0x0-什么是ranger
-      
-    
-    </summary>
-    
-      <category term="折腾日记" scheme="https://evanmeek.github.io/categories/%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/"/>
-    
-    
-      <category term="Linux" scheme="https://evanmeek.github.io/tags/Linux/"/>
     
   </entry>
   

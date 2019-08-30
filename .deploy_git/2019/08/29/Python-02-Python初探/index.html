@@ -99,15 +99,18 @@
   <meta name="description" content="Python系列第二章笔记，查看Python系列所有文章，请点击💿">
 <meta name="keywords" content="Python系列">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Python-01]Python初探">
+<meta property="og:title" content="[Python-02]Python初探">
 <meta property="og:url" content="https://evanmeek.github.io/2019/08/29/Python-02-Python初探/index.html">
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="Python系列第二章笔记，查看Python系列所有文章，请点击💿">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-29T03:57:26.734Z">
+<meta property="og:image" content="https://evanmeek.github.io/2019/08/29/Python-02-Python初探/python2运行.png">
+<meta property="og:image" content="https://evanmeek.github.io/2019/08/29/Python-02-Python初探/python3运行.png">
+<meta property="og:updated_time" content="2019-08-29T17:50:26.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Python-01]Python初探">
+<meta name="twitter:title" content="[Python-02]Python初探">
 <meta name="twitter:description" content="Python系列第二章笔记，查看Python系列所有文章，请点击💿">
+<meta name="twitter:image" content="https://evanmeek.github.io/2019/08/29/Python-02-Python初探/python2运行.png">
 
 
 
@@ -127,7 +130,7 @@
   };
 </script>
 
-  <title>[Python-01]Python初探 | 我不会编程的博客</title>
+  <title>[Python-02]Python初探 | 我不会编程的博客</title>
   
 
 
@@ -430,7 +433,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[Python-01]Python初探
+          <h1 class="post-title" itemprop="name headline">[Python-02]Python初探
 
               
             
@@ -456,12 +459,24 @@
                 
               
 
-              <time title="创建时间：2019-08-29 11:52:56 / 修改时间：11:57:26" itemprop="dateCreated datePublished" datetime="2019-08-29T11:52:56+08:00">2019-08-29</time>
+              <time title="创建时间：2019-08-29 11:52:56" itemprop="dateCreated datePublished" datetime="2019-08-29T11:52:56+08:00">2019-08-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-30 01:50:26" itemprop="dateModified" datetime="2019-08-30T01:50:26+08:00">2019-08-30</time>
               
             
           </span>
@@ -493,7 +508,7 @@
 
           
           
-            <span id="/2019/08/29/Python-02-Python初探/" class="leancloud_visitors" data-flag-title="[Python-01]Python初探">
+            <span id="/2019/08/29/Python-02-Python初探/" class="leancloud_visitors" data-flag-title="[Python-02]Python初探">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -528,6 +543,88 @@
 <a id="more"></a>
 <h1 id="Mac安装Python环境"><a href="#Mac安装Python环境" class="headerlink" title="Mac安装Python环境"></a>Mac安装Python环境</h1><p>由于我目前的设备只有一台Mac Book，所以我就只记录Mac安装Python的过程。</p>
 <p>最新的Mac OS X以及集成了Python 2，打开终端(Terminal)输入:<code>python</code>检查是否已安装</p>
+<p><img src="/2019/08/29/Python-02-Python初探/python2运行.png" alt="Python2运行"></p>
+<p>安装Python3可以在这个页面进行下载:<a href="https://www.python.org/downloads/" target="_blank" rel="noopener">💿Python下载页面</a></p>
+<h1 id="python不是内部或外部命令的解决方法"><a href="#python不是内部或外部命令的解决方法" class="headerlink" title="python不是内部或外部命令的解决方法"></a>python不是内部或外部命令的解决方法</h1><p>由于这个问题只有Windows才会出现，所以遇到问题的话，去看下原文吧<a href="http://c.biancheng.net/view/4171.html" target="_blank" rel="noopener">💿点我看原文解决方案</a></p>
+<h1 id="第一个Python程序"><a href="#第一个Python程序" class="headerlink" title="第一个Python程序"></a>第一个Python程序</h1><p>打开终端，输入<code>python3</code>命令，进入交互式解释器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;hello,world!&quot;)</span><br></pre></td></tr></table></figure>
+<p>即可输出包括在双引号之间的字符</p>
+<p>注意点:</p>
+<ul>
+<li><p>小括号与双引号必须在英文半角状态下输入</p>
+</li>
+<li><p>print必须全部为小写</p>
+</li>
+</ul>
+<blockquote>
+<p>文本编辑器编写并执行Python程序</p>
+</blockquote>
+<p>可以使用Vim编辑器编写Python源代码，然后终端中执行</p>
+<p>注意点:</p>
+<ul>
+<li>不要使用Word或Windows的记事本程序编写Python源码，因为这两款软件会为源代码添加隐藏符号，而这些符号不被Python所解释，程序将会报错。</li>
+</ul>
+<h1 id="Python交互式解释器及用法"><a href="#Python交互式解释器及用法" class="headerlink" title="Python交互式解释器及用法"></a>Python交互式解释器及用法</h1><p>交互式解释器是为了让开发者快速学习、则是Python的功能。</p>
+<p>在终端内执行<code>python</code>命令即可打开</p>
+<p><img src="/2019/08/29/Python-02-Python初探/python3运行.png" alt="python3运行"></p>
+<p>其中<code>&gt;&gt;&gt;</code>提示符，我们写的命令都是能被python解释器所执行的Python命令，如果输入的内容没有定义，那么解释器将会报错。</p>
+<h1 id="IDE-集成开发环境-是什么"><a href="#IDE-集成开发环境-是什么" class="headerlink" title="IDE(集成开发环境)是什么"></a>IDE(集成开发环境)是什么</h1><p><code>IDE(Intergreated Development Environment)</code>,用来辅助开发者开发的应用软件。</p>
+<p>集成开发环境是一些列开发工具的组合套装，例如我们编写Python程序，不仅需要解释器，而且还需要一些辅助工具，例如:语言编辑器、自动构建工具、除错器。</p>
+<h1 id="Python-IDE有哪些，哪款适合初学者？"><a href="#Python-IDE有哪些，哪款适合初学者？" class="headerlink" title="Python IDE有哪些，哪款适合初学者？"></a>Python IDE有哪些，哪款适合初学者？</h1><p>首先说明，合适自己的才是最好的。</p>
+<blockquote>
+<p>PyCharm</p>
+</blockquote>
+<p>由JetBrains公司开发的Python开发工具</p>
+<p>优点:</p>
+<ul>
+<li><p>跨平台</p>
+</li>
+<li><p>支持语法高粱、项目代码管理、智能提示、自动完成、调试、单元测试、版本控制等</p>
+</li>
+<li><p>支持Django Web开发框架</p>
+</li>
+<li><p>社区版本免费</p>
+</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li><p>软件较大，比较重</p>
+</li>
+<li><p>专业版，收费</p>
+</li>
+</ul>
+<blockquote>
+<p>Microsoft Visual Studio</p>
+</blockquote>
+<p>由微软开发用于进行C#和.NET等应用的开发工具，简称VS。</p>
+<p>要让VS支持Python，需要安装<code>PTVS</code>插件。</p>
+<p>优点:</p>
+<ul>
+<li><p>PTVS插件开源</p>
+</li>
+<li><p>支持编辑、浏览、智能感知、混合Python/C++调试、Django</p>
+</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li><p>不跨平台，只支持Windows</p>
+</li>
+<li><p>软件较大，比较重</p>
+</li>
+<li><p>非学生收费</p>
+</li>
+</ul>
+<h1 id="Python-IDLE使用方法详解"><a href="#Python-IDLE使用方法详解" class="headerlink" title="Python IDLE使用方法详解"></a>Python IDLE使用方法详解</h1><p>由于本人不使用IDLE作为我的Python开发工具，所以这里就不提了。</p>
+<p>想了解的，看原文<a href="http://c.biancheng.net/view/4221.html" target="_blank" rel="noopener">💿点击查看原文</a></p>
+<h1 id="Python注释-多行注释和单行注释"><a href="#Python注释-多行注释和单行注释" class="headerlink" title="Python注释(多行注释和单行注释)"></a>Python注释(多行注释和单行注释)</h1><p>注释是写给人看的，是用来用自然语言解释代码给开发者看的。</p>
+<p>注释不被解释器所执行。</p>
+<p>Python允许在任何地方差人注释和字符串，除了在标志符和字符串之间。</p>
+<p>Python中有三种注释分别是:</p>
+<blockquote>
+<p>单行注释</p>
+</blockquote>
+<p>语法格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 注释内容</span><br></pre></td></tr></table></figure></p>
+<p>单行注释所在位置可以是代码的上一行，可以是当前行的末尾。</p>
 
       
     </div>
@@ -547,11 +644,11 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2019/08/29/Python-02-Python初探/">[Python-01]Python初探</a></p>
+  <p><span>本文标题:</span><a href="/2019/08/29/Python-02-Python初探/">[Python-02]Python初探</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年08月29日 - 11:08</p>
-  <p><span>最后更新:</span>2019年08月29日 - 11:08</p>
-  <p><span>原始链接:</span><a href="/2019/08/29/Python-02-Python初探/" title="[Python-01]Python初探">https://evanmeek.github.io/2019/08/29/Python-02-Python初探/</a>
+  <p><span>最后更新:</span>2019年08月30日 - 01:08</p>
+  <p><span>原始链接:</span><a href="/2019/08/29/Python-02-Python初探/" title="[Python-02]Python初探">https://evanmeek.github.io/2019/08/29/Python-02-Python初探/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/08/29/Python-02-Python初探/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://choosealicense.com/licenses/mit/" target="_blank" title="MIT License Copyright (c) [2019] [EvanMeek]">MIT License Copyright (c) [2019] [EvanMeek]</a> 转载请保留原文链接及作者。</p>  
@@ -643,10 +740,6 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/29/Python-01-Python初探/" rel="prev" title="[Python-02]Python初探">
-                [Python-02]Python初探 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
       
@@ -715,7 +808,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -904,7 +997,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac安装Python环境"><span class="nav-number">1.</span> <span class="nav-text">Mac安装Python环境</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac安装Python环境"><span class="nav-number">1.</span> <span class="nav-text">Mac安装Python环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python不是内部或外部命令的解决方法"><span class="nav-number">2.</span> <span class="nav-text">python不是内部或外部命令的解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Python程序"><span class="nav-number">3.</span> <span class="nav-text">第一个Python程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python交互式解释器及用法"><span class="nav-number">4.</span> <span class="nav-text">Python交互式解释器及用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE-集成开发环境-是什么"><span class="nav-number">5.</span> <span class="nav-text">IDE(集成开发环境)是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-IDE有哪些，哪款适合初学者？"><span class="nav-number">6.</span> <span class="nav-text">Python IDE有哪些，哪款适合初学者？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-IDLE使用方法详解"><span class="nav-number">7.</span> <span class="nav-text">Python IDLE使用方法详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python注释-多行注释和单行注释"><span class="nav-number">8.</span> <span class="nav-text">Python注释(多行注释和单行注释)</span></a></li></ol></div>
             
 
           </div>

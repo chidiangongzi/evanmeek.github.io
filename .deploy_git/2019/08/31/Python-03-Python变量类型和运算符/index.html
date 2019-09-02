@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="LIFE IS FANTASTIC!">
+  <meta name="description" content="Python系列第三章笔记，查看Python系列所有文章，请点击💿">
+<meta name="keywords" content="Python系列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Python-03]Python变量类型和运算符">
 <meta property="og:url" content="https://evanmeek.github.io/2019/08/31/Python-03-Python变量类型和运算符/index.html">
 <meta property="og:site_name" content="我不会编程的博客">
-<meta property="og:description" content="LIFE IS FANTASTIC!">
+<meta property="og:description" content="Python系列第三章笔记，查看Python系列所有文章，请点击💿">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-31T07:03:13.514Z">
+<meta property="og:updated_time" content="2019-09-02T06:21:09.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Python-03]Python变量类型和运算符">
-<meta name="twitter:description" content="LIFE IS FANTASTIC!">
+<meta name="twitter:description" content="Python系列第三章笔记，查看Python系列所有文章，请点击💿">
 
 
 
@@ -459,8 +460,42 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-02 14:21:09" itemprop="dateModified" datetime="2019-09-02T14:21:09+08:00">2019-09-02</time>
+              
+            
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -501,7 +536,80 @@
       
 
       
-        
+        <p>Python系列第三章笔记，查看Python系列所有文章，请点击<a href="https://evanmeek.github.io/Python/">💿</a><br><a id="more"></a></p>
+<p><strong>本章重点:Python变量数据类型、运算符。</strong></p>
+<p>Python是弱类型语言。</p>
+<p>弱类型含义:</p>
+<ul>
+<li><p>所有变量无需声明即可使用。</p>
+</li>
+<li><p>变量的数据类型随时可变。</p>
+</li>
+</ul>
+<h1 id="Python变量及其使用"><a href="#Python变量及其使用" class="headerlink" title="Python变量及其使用"></a>Python变量及其使用</h1><p>变量:</p>
+<ul>
+<li><p>数据可发生无数次变化。</p>
+</li>
+<li><p>数据类型可发生变化。</p>
+</li>
+</ul>
+<p>常量: 一旦保存数据，则不可修改。</p>
+<p>赋值运算符: <code>=</code></p>
+<p><strong>type()作用:</strong>查看变量的数据类型</p>
+<h1 id="Pyuthon数值类型（整型、浮点型和复数）及其用法"><a href="#Pyuthon数值类型（整型、浮点型和复数）及其用法" class="headerlink" title="Pyuthon数值类型（整型、浮点型和复数）及其用法"></a>Pyuthon数值类型（整型、浮点型和复数）及其用法</h1><p>Python中的数值类型都是不可变的。</p>
+<p>有些人可能会问，不是不可变么，为什么我定义的int类型变量的值仍然可以变化，那是因为底层实现将新的值存放到新的一块内存中，然后将修改变量指针的指向。</p>
+<blockquote>
+<p>Python整型</p>
+</blockquote>
+<p>整型是用来表示没有小数部分的数，整数包括：正整数、0、负整数</p>
+<p>Python整型的四种表示形式：</p>
+<ul>
+<li><p>十进制(0-9)</p>
+</li>
+<li><p>二进制(0-1)</p>
+</li>
+<li><p>八进制(0-7)</p>
+</li>
+<li><p>十六进制(0-9-A-F/a-f)</p>
+</li>
+</ul>
+<blockquote>
+<p>Python浮点型</p>
+</blockquote>
+<p>浮点型是用来保存带小数的数值，浮点数包括:十进制形式、科学计数形式。</p>
+<p>十进制形式的写法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float_dex = 1.100111</span><br></pre></td></tr></table></figure>
+<p>科学计数形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">float2 = 2e3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Python复数</p>
+</blockquote>
+<p>我跳过了本节，如果读者想看，可以点击进行访问<a href="http://c.biancheng.net/view/2173.html" target="_blank" rel="noopener">💿Python复数</a></p>
+<h1 id="Python字符串详解-包含长字符串和原始字符串"><a href="#Python字符串详解-包含长字符串和原始字符串" class="headerlink" title="Python字符串详解(包含长字符串和原始字符串)"></a>Python字符串详解(包含长字符串和原始字符串)</h1><p>Python字符串必须使用引号括起来，可以是单引号也可以是双引号，但必须成对。</p>
+<p>如果字符串内仍然包含引号，可以使用以下两种方法解决:</p>
+<p><strong>用另一种成对的引号包括起来</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 = &quot;I&apos;m EvanMeek.&quot;</span><br><span class="line"></span><br><span class="line">str2 = &apos;Evan:&quot;Hello World.&quot;&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>用转义字符进行转义</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1 = &apos;I\&apos;m EvanMeek&apos;</span><br></pre></td></tr></table></figure>
+<p>转义字符还可以用来转义换行符，应用场景通常是:</p>
+<p><strong>字符串过长，转义换行符，使其不换行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;mac mac macmac mac macmac mac mac \</span><br><span class="line">mac mac macmac mac mac&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Python长字符串</p>
+</blockquote>
+<p>长字符串常用场景是:</p>
+<p><strong>定义大段文本内容为字符串时</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str1 = &apos;&apos;&apos; &quot;Fuck you ! Bitch!&quot;,said he.</span><br><span class="line">&quot;Mother fuck!&quot;,said she.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Python原始字符串</p>
+</blockquote>
+<p>在Windows下,路径是使用反斜杠作为路径区分的，如果需要将反斜杠转义，那必须再加一个反斜杠，这样非常麻烦，就可以使用下面的案例来解决:</p>
+<p><strong>转义反斜杠写路径</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path = &apos;C:\\User\\Admin\\Desktop&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>使用原始字符串写反斜杠</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path = r&apos;C:\User\Admin\Desktop&apos;</span><br></pre></td></tr></table></figure>
+<p>注意: 原始字符串中的引号同样需要使用<code>\</code>进行转义</p>
+<h1 id="Python-bytes类型及用法"><a href="#Python-bytes类型及用法" class="headerlink" title="Python bytes类型及用法"></a>Python bytes类型及用法</h1>
       
     </div>
 
@@ -523,7 +631,7 @@
   <p><span>本文标题:</span><a href="/2019/08/31/Python-03-Python变量类型和运算符/">[Python-03]Python变量类型和运算符</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年08月31日 - 15:08</p>
-  <p><span>最后更新:</span>2019年08月31日 - 15:08</p>
+  <p><span>最后更新:</span>2019年09月02日 - 14:09</p>
   <p><span>原始链接:</span><a href="/2019/08/31/Python-03-Python变量类型和运算符/" title="[Python-03]Python变量类型和运算符">https://evanmeek.github.io/2019/08/31/Python-03-Python变量类型和运算符/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/08/31/Python-03-Python变量类型和运算符/" aria-label="复制成功！"></i></span>
   </p>
@@ -591,6 +699,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Python系列/" rel="tag"># Python系列</a>
+          
+        </div>
+      
 
       
       
@@ -651,8 +765,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -847,6 +970,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python变量及其使用"><span class="nav-number">1.</span> <span class="nav-text">Python变量及其使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pyuthon数值类型（整型、浮点型和复数）及其用法"><span class="nav-number">2.</span> <span class="nav-text">Pyuthon数值类型（整型、浮点型和复数）及其用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python字符串详解-包含长字符串和原始字符串"><span class="nav-number">3.</span> <span class="nav-text">Python字符串详解(包含长字符串和原始字符串)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-bytes类型及用法"><span class="nav-number">4.</span> <span class="nav-text">Python bytes类型及用法</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

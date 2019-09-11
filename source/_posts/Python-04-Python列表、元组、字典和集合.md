@@ -317,3 +317,105 @@ print(test_list1)
 10
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 ~~~
+
+## Pyhton list列表删除元素(3种方法)
+
+> del删除
+
+__del语句在Python中可以删除变量、列表的元素__
+
+~~~
+test_list = list(range(1, 11))
+print(test_list)
+del test_list[1::2]
+print(test_list)
+~~~
+
+输出结果:
+
+~~~
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[1, 3, 5, 7, 9]
+~~~
+
+> 根据元素值进行删除
+
+可以使用remove()方法来删除列表元素。
+
+删除第一个被查找到的元素。
+
+__注意:remove()方法不是根据索引来删除元素的，而是查找元素本身，再进行删除，所以如果找不到元素，则会报错__
+
+例子:
+
+~~~
+test_list = ['test', 30, 'test2', 10, 30]
+test_list.remove('test')
+test_list.remove(30)
+print(test_list)
+~~~
+
+输出结果:
+
+~~~
+['test2', 10, 30]
+~~~
+
+> 删除列表所有元素
+
+使用clear()方法可以删除列表的所有元素。
+
+例子:
+
+~~~
+test_list = ['test', 30, 'test2', 10, 30]
+test_list.clear()
+print(test_list)
+~~~
+
+输出结果:
+
+~~~
+[]
+~~~
+
+# Python list列表修改元素
+
+修改列表元素，可以通过列表索引获取元素进行赋值。
+
+~~~
+testlist = list(range(1,10))
+print(testlist)
+testlist[len(testlist)-1] = 100
+print(testlist)
+~~~
+
+输出结果:
+
+~~~
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 2, 3, 4, 5, 6, 7, 8, 100]
+
+[Process exited 0]
+~~~
+
+使用slice语法对列表部分进行赋值。
+
+slice语法，不要求新赋值的元素个数与原来的元素个数相等。也就是说使用slice剩余法既可以为列表增加元素，也可以为列表删除元素。
+
+~~~
+b_list = list(range(1,5))
+print(b_list)
+
+b_list[1:3] = ['a','b']
+print(b_list)
+~~~
+
+输出结果:
+
+~~~
+[1, 2, 3, 4]
+[1, 'a', 'b', 4]
+~~~
+
+# Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略

@@ -419,3 +419,162 @@ print(b_list)
 ~~~
 
 # Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略
+
+Pyhton为list提供了一些常用的方法。
+
+我们使用dir(list)方法可以看到列表包含的所有方法。
+
+```
+print(dir(list))
+```
+
+输出结果:
+
+```
+  6 _', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__',
+  5 '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setat
+  4 tr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'c
+  3 lear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse'
+  2 , 'sort']
+```
+
+**注意，方法名包含双下划线的不推荐使用** 
+
+## count()方法
+
+count()方法用于统计列表中某个元素出现的次数
+
+语法格式
+
+`listname.count(obj)` 
+
+listname:列表名称
+
+obj:表示判断是否存在的元素
+
+例子:
+
+```
+a_list = [2]*5
+print(a_list)
+print("2出现%d次" % a_list.count(2))
+```
+
+```
+[2, 2, 2, 2, 2]
+2出现5次
+```
+
+## index()用法
+
+index()方法用于定位某元素在列表的索引位置，如果该元素没有出现，则会引发ValueError错误。 
+
+语法格式:
+
+`listname.index(obj,start,end)`
+
+index()方法可以传入start,end参数，用于指定在列表的某范围内搜索元素
+
+例子:
+
+```
+test_list = list(range(1,10))
+print(test_list)
+print(test_list.index(9))
+```
+
+输出结果:
+
+```
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+8
+```
+## pop用法
+
+pop()方法会溢出列表中指定索引处的元素，如果没有传入参数，则会移除列表中最后一个元素。
+
+语法格式:
+
+`listname.pop(index)` 
+
+例子:
+
+```
+test_list = list(range(1,10))
+print(test_list)
+# 默认移除最后一个元素
+test_list.pop()
+print(test_list)
+# 移除第一次元素
+print(test_list.pop(0))
+print(test_list)
+```
+
+输出结果:
+
+```
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 2, 3, 4, 5, 6, 7, 8]
+1
+[2, 3, 4, 5, 6, 7, 8]
+```
+
+## reverse()方法
+
+reverse()方法会将列表中所有元素反向存放。
+
+语法格式;
+
+`listname.reverse()`
+
+例子:
+
+```
+test_list = list(range(1,11))
+print(test_list)
+test_list.reverse()
+print(test_list)
+```
+
+输出结果:
+
+```
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+```
+
+## sort()用法
+
+sort()方法用于对列表元素进行排序。
+
+语法格式:
+
+`listname.sort(key=None,reserse=Fale)`
+
+- key参数用于指定从每个元素中提取一个用于比较的键。
+
+- reverse参数用于设置是否需要逆序，默认为False也就是从小打到排序，否则反之。
+
+例子:
+
+```
+a_list = [123,213,1,325,1,51,213,5132,4156]
+print(a_list)
+# 对列表进行排序
+a_list.sort()
+print(a_list)
+# 逆序排序
+a_list.sort(reverse=True)
+print(a_list)
+```
+
+输出结果:
+
+```
+[123, 213, 1, 325, 1, 51, 213, 5132, 4156]
+[1, 1, 51, 123, 213, 213, 325, 4156, 5132]
+[5132, 4156, 325, 213, 213, 123, 51, 1, 1]
+```
+
+# Python range()快速初始化数字列表

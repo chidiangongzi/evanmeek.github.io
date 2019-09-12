@@ -105,7 +105,7 @@
 <meta property="og:description" content="什么是序列，Python序列详解（包括序列类型和常用操作）序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。 常见的序列有: 字符串、列表、元组、集合和字典。 这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。 序列索引索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python序列内置函数.png">
-<meta property="og:updated_time" content="2019-09-11T03:28:32.524Z">
+<meta property="og:updated_time" content="2019-09-12T07:16:04.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Python-04]Python列表、元组、字典和集合">
 <meta name="twitter:description" content="什么是序列，Python序列详解（包括序列类型和常用操作）序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。 常见的序列有: 字符串、列表、元组、集合和字典。 这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。 序列索引索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问">
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-11 11:28:32" itemprop="dateModified" datetime="2019-09-11T11:28:32+08:00">2019-09-11</time>
+                <time title="修改时间：2019-09-12 15:16:04" itemprop="dateModified" datetime="2019-09-12T15:16:04+08:00">2019-09-12</time>
               
             
           </span>
@@ -672,7 +672,56 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">b_list = list(range(1,5))</span><br><span class="line">print(b_list)</span><br><span class="line"></span><br><span class="line">b_list[1:3] = [&apos;a&apos;,&apos;b&apos;]</span><br><span class="line">print(b_list)</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 4]</span><br><span class="line">[1, &apos;a&apos;, &apos;b&apos;, 4]</span><br></pre></td></tr></table></figure>
-<h1 id="Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略"><a href="#Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略" class="headerlink" title="Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略"></a>Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略</h1>
+<h1 id="Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略"><a href="#Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略" class="headerlink" title="Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略"></a>Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略</h1><p>Pyhton为list提供了一些常用的方法。</p>
+<p>我们使用dir(list)方法可以看到列表包含的所有方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(dir(list))</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">6 _&apos;, &apos;__iter__&apos;, &apos;__le__&apos;, &apos;__len__&apos;, &apos;__lt__&apos;, &apos;__mul__&apos;, &apos;__ne__&apos;, &apos;__new__&apos;,</span><br><span class="line">5 &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__reversed__&apos;, &apos;__rmul__&apos;, &apos;__setat</span><br><span class="line">4 tr__&apos;, &apos;__setitem__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__subclasshook__&apos;, &apos;append&apos;, &apos;c</span><br><span class="line">3 lear&apos;, &apos;copy&apos;, &apos;count&apos;, &apos;extend&apos;, &apos;index&apos;, &apos;insert&apos;, &apos;pop&apos;, &apos;remove&apos;, &apos;reverse&apos;</span><br><span class="line">2 , &apos;sort&apos;]</span><br></pre></td></tr></table></figure>
+<p><strong>注意，方法名包含双下划线的不推荐使用</strong> </p>
+<h2 id="count-方法"><a href="#count-方法" class="headerlink" title="count()方法"></a>count()方法</h2><p>count()方法用于统计列表中某个元素出现的次数</p>
+<p>语法格式</p>
+<p><code>listname.count(obj)</code> </p>
+<p>listname:列表名称</p>
+<p>obj:表示判断是否存在的元素</p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a_list = [2]*5</span><br><span class="line">print(a_list)</span><br><span class="line">print(&quot;2出现%d次&quot; % a_list.count(2))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[2, 2, 2, 2, 2]</span><br><span class="line">2出现5次</span><br></pre></td></tr></table></figure>
+<h2 id="index-用法"><a href="#index-用法" class="headerlink" title="index()用法"></a>index()用法</h2><p>index()方法用于定位某元素在列表的索引位置，如果该元素没有出现，则会引发ValueError错误。 </p>
+<p>语法格式:</p>
+<p><code>listname.index(obj,start,end)</code></p>
+<p>index()方法可以传入start,end参数，用于指定在列表的某范围内搜索元素</p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test_list = list(range(1,10))</span><br><span class="line">print(test_list)</span><br><span class="line">print(test_list.index(9))</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+<h2 id="pop用法"><a href="#pop用法" class="headerlink" title="pop用法"></a>pop用法</h2><p>pop()方法会溢出列表中指定索引处的元素，如果没有传入参数，则会移除列表中最后一个元素。</p>
+<p>语法格式:</p>
+<p><code>listname.pop(index)</code> </p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">test_list = list(range(1,10))</span><br><span class="line">print(test_list)</span><br><span class="line"># 默认移除最后一个元素</span><br><span class="line">test_list.pop()</span><br><span class="line">print(test_list)</span><br><span class="line"># 移除第一次元素</span><br><span class="line">print(test_list.pop(0))</span><br><span class="line">print(test_list)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">[1, 2, 3, 4, 5, 6, 7, 8]</span><br><span class="line">1</span><br><span class="line">[2, 3, 4, 5, 6, 7, 8]</span><br></pre></td></tr></table></figure>
+<h2 id="reverse-方法"><a href="#reverse-方法" class="headerlink" title="reverse()方法"></a>reverse()方法</h2><p>reverse()方法会将列表中所有元素反向存放。</p>
+<p>语法格式;</p>
+<p><code>listname.reverse()</code></p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test_list = list(range(1,11))</span><br><span class="line">print(test_list)</span><br><span class="line">test_list.reverse()</span><br><span class="line">print(test_list)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line">[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]</span><br></pre></td></tr></table></figure>
+<h2 id="sort-用法"><a href="#sort-用法" class="headerlink" title="sort()用法"></a>sort()用法</h2><p>sort()方法用于对列表元素进行排序。</p>
+<p>语法格式:</p>
+<p><code>listname.sort(key=None,reserse=Fale)</code></p>
+<ul>
+<li><p>key参数用于指定从每个元素中提取一个用于比较的键。</p>
+</li>
+<li><p>reverse参数用于设置是否需要逆序，默认为False也就是从小打到排序，否则反之。</p>
+</li>
+</ul>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a_list = [123,213,1,325,1,51,213,5132,4156]</span><br><span class="line">print(a_list)</span><br><span class="line"># 对列表进行排序</span><br><span class="line">a_list.sort()</span><br><span class="line">print(a_list)</span><br><span class="line"># 逆序排序</span><br><span class="line">a_list.sort(reverse=True)</span><br><span class="line">print(a_list)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[123, 213, 1, 325, 1, 51, 213, 5132, 4156]</span><br><span class="line">[1, 1, 51, 123, 213, 213, 325, 4156, 5132]</span><br><span class="line">[5132, 4156, 325, 213, 213, 123, 51, 1, 1]</span><br></pre></td></tr></table></figure>
+<h1 id="Python-range-快速初始化数字列表"><a href="#Python-range-快速初始化数字列表" class="headerlink" title="Python range()快速初始化数字列表"></a>Python range()快速初始化数字列表</h1>
       
     </div>
 
@@ -694,7 +743,7 @@
   <p><span>本文标题:</span><a href="/2019/09/08/Python-04-Python列表、元组、字典和集合/">[Python-04]Python列表、元组、字典和集合</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年09月08日 - 15:09</p>
-  <p><span>最后更新:</span>2019年09月11日 - 11:09</p>
+  <p><span>最后更新:</span>2019年09月12日 - 15:09</p>
   <p><span>原始链接:</span><a href="/2019/09/08/Python-04-Python列表、元组、字典和集合/" title="[Python-04]Python列表、元组、字典和集合">https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/" aria-label="复制成功！"></i></span>
   </p>
@@ -1044,7 +1093,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是序列，Python序列详解（包括序列类型和常用操作）"><span class="nav-number">1.</span> <span class="nav-text">什么是序列，Python序列详解（包括序列类型和常用操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列索引"><span class="nav-number">1.1.</span> <span class="nav-text">序列索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列切片"><span class="nav-number">1.2.</span> <span class="nav-text">序列切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相加"><span class="nav-number">1.3.</span> <span class="nav-text">序列相加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相乘"><span class="nav-number">1.4.</span> <span class="nav-text">序列相乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查元素是否包含在序列中"><span class="nav-number">1.5.</span> <span class="nav-text">检查元素是否包含在序列中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和序列相关的内置函数"><span class="nav-number">1.6.</span> <span class="nav-text">和序列相关的内置函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表详解"><span class="nav-number">2.</span> <span class="nav-text">Python list列表详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建列表"><span class="nav-number">2.1.</span> <span class="nav-text">Python创建列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问列表元素"><span class="nav-number">2.2.</span> <span class="nav-text">访问列表元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除列表"><span class="nav-number">2.3.</span> <span class="nav-text">删除列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表添加元素的3种方法"><span class="nav-number">3.</span> <span class="nav-text">Python list列表添加元素的3种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-append-方法添加元素"><span class="nav-number">3.1.</span> <span class="nav-text">Python append()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-extend-方法添加元素"><span class="nav-number">3.2.</span> <span class="nav-text">Python extend()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-insert-方法插入元素"><span class="nav-number">3.3.</span> <span class="nav-text">Python insert()方法插入元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyhton-list列表删除元素-3种方法"><span class="nav-number">3.4.</span> <span class="nav-text">Pyhton list列表删除元素(3种方法)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表修改元素"><span class="nav-number">4.</span> <span class="nav-text">Python list列表修改元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略"><span class="nav-number">5.</span> <span class="nav-text">Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是序列，Python序列详解（包括序列类型和常用操作）"><span class="nav-number">1.</span> <span class="nav-text">什么是序列，Python序列详解（包括序列类型和常用操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列索引"><span class="nav-number">1.1.</span> <span class="nav-text">序列索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列切片"><span class="nav-number">1.2.</span> <span class="nav-text">序列切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相加"><span class="nav-number">1.3.</span> <span class="nav-text">序列相加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相乘"><span class="nav-number">1.4.</span> <span class="nav-text">序列相乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查元素是否包含在序列中"><span class="nav-number">1.5.</span> <span class="nav-text">检查元素是否包含在序列中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和序列相关的内置函数"><span class="nav-number">1.6.</span> <span class="nav-text">和序列相关的内置函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表详解"><span class="nav-number">2.</span> <span class="nav-text">Python list列表详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建列表"><span class="nav-number">2.1.</span> <span class="nav-text">Python创建列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问列表元素"><span class="nav-number">2.2.</span> <span class="nav-text">访问列表元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除列表"><span class="nav-number">2.3.</span> <span class="nav-text">删除列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表添加元素的3种方法"><span class="nav-number">3.</span> <span class="nav-text">Python list列表添加元素的3种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-append-方法添加元素"><span class="nav-number">3.1.</span> <span class="nav-text">Python append()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-extend-方法添加元素"><span class="nav-number">3.2.</span> <span class="nav-text">Python extend()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-insert-方法插入元素"><span class="nav-number">3.3.</span> <span class="nav-text">Python insert()方法插入元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyhton-list列表删除元素-3种方法"><span class="nav-number">3.4.</span> <span class="nav-text">Pyhton list列表删除元素(3种方法)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表修改元素"><span class="nav-number">4.</span> <span class="nav-text">Python list列表修改元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略"><span class="nav-number">5.</span> <span class="nav-text">Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#count-方法"><span class="nav-number">5.1.</span> <span class="nav-text">count()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-用法"><span class="nav-number">5.2.</span> <span class="nav-text">index()用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop用法"><span class="nav-number">5.3.</span> <span class="nav-text">pop用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse-方法"><span class="nav-number">5.4.</span> <span class="nav-text">reverse()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort-用法"><span class="nav-number">5.5.</span> <span class="nav-text">sort()用法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-range-快速初始化数字列表"><span class="nav-number">6.</span> <span class="nav-text">Python range()快速初始化数字列表</span></a></li></ol></div>
             
 
           </div>

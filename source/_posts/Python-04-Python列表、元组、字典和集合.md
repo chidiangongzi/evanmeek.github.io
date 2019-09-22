@@ -825,4 +825,302 @@ print(scores)
 
 dict()函数常用创建字典方法
 
+![dict()函数创建字典](./Python-04-Python列表、元组、字典和集合/dict()函数创建字典.png)
 
+## Pyton访问字典
+
+dict()通过元素的键进行访问值，不能像列表或元组通过下标或切片的形式来访问。
+
+例子:
+
+```
+test_dict = (['姓名','LTy'],['性别',True])
+test_dict = dict(test_dict)
+print(type(test_dict))
+print(test_dict['姓名'])
+print(test_dict.get("性别"))
+```
+
+## Python删除字典
+
+如需手动删除，可以使用del语句。
+
+# Pythton dict字典基本操作(包括添加、修改、删除键值对)
+
+本小节对字典实现常见的操作:
+
+- 向字典中添加新的键值对
+
+- 修改字典中的键值对
+
+- 从字典中删除指定的键值对
+
+- 判断字典中是否存在指定的键值对
+
+--------
+
+### Python字典添加键值对
+
+为字典中添加新的键值对只需要为不存在的`key`赋值。
+
+语法格式:
+
+`dict[key]= value` 
+
+`dict`表示字典名称,`key`代表新建键值对的键,`value`代表新建键值对的值
+
+例子:
+
+```
+test_dict = (['姓名','LTy'],['性别',True])
+test_dict = dict(test_dict)
+test_dict['班级'] = 502
+print(test_dict.get("班级"))
+```
+
+输出结果:
+
+`502` 
+
+### Python字典修改键值对
+
+这里的修改是指:修改键值对的值。
+
+**Python中如果新添加的键值对的键存在，那么则会覆盖原本的键值对的值** 
+
+例子:
+
+```
+test_dict = (['姓名','LTy'],['性别',True])
+test_dict = dict(test_dict)
+test_dict['班级'] = 502
+print(test_dict.get("班级"))
+test_dict['班级'] = 999
+print(test_dict.get("班级"))
+```
+
+输出结果:
+
+```
+502
+999
+```
+
+### Python字典删除键值对
+
+如果要删除字典中的键值对，则可以使用`del`语句，指定要删除的键值对的键。
+
+例子:
+
+```
+test_dict = (['姓名','LTy'],['性别',True])
+test_dict = dict(test_dict)
+test_dict['班级'] = 502
+print(test_dict.get("班级"))
+del test_dict['班级']
+print(test_dict.get("班级"))
+```
+
+输出结果:
+
+```
+502
+None
+```
+
+### 判断字典中是否存在指定键值对
+
+如果需要判断字典是否存在指定键值对的键，可以使用`in`或`not in`运算符。
+
+**注意:这里的`in`或`not in`运算符都是基于`key`来判断字典中某个键值对是否存在的.** 
+
+例子:
+
+```
+test_dict = (['姓名','LTy'],['性别',True])
+test_dict = dict(test_dict)
+del test_dict['姓名']
+print(test_dict.get("姓名"))
+print('姓名' in test_dict)
+```
+
+输出结果:
+
+```
+None
+False
+```
+
+# Python dict字典方法完全攻略(全)
+
+想查看`dict`该类包包含哪些方法，可以使用`dir()`方法进行查看。
+
+--------
+
+## Python keys(),values()和items()方法
+
+这三个方法可以获取字典中特定的数据.
+
+`keys()`方法用于返回字典中的所有键;
+
+`values()`用于返回字典中所有键对应的值;
+
+`items()`用于返回字典中所有的键值对;
+
+例子:
+
+```
+test_dict = {'语文','数学','英语'}
+test_dict = dict.fromkeys(test_dict,100)
+print(test_dict.keys())
+print(test_dict.values())
+print(test_dict.items())
+```
+
+输出结果:
+
+```
+dict_keys(['英语', '语文', '数学'])
+dict_values([100, 100, 100])
+dict_items([('英语', 100), ('语文', 100), ('数学', 100)])
+```
+
+**注意:`Python2.x`中，上面提到的方法的返回值是列表类型。但在`Python3.x`中，以上方法返回的类型不是序列类型。** 
+
+## Python copy()方法
+
+`copy()`方法用于返回一个具有相同键值对的新字典:
+
+例子:
+
+```
+test_dict = {'语文','数学','英语'}
+test_dict = dict.fromkeys(test_dict,100)
+test_dict2 = test_dict.copy()
+print(test_dict,"\n",test_dict2)
+```
+
+输出结果:
+
+```
+{'英语': 100, '语文': 100, '数学': 100}
+{'英语': 100, '语文': 100, '数学': 100}
+```
+
+**注意Python的copy()方法涉及到`深拷贝`与`浅拷贝`的关系，当字典A拷贝键值对给字典B后，那么拷贝的数据(字典B内)将会在字典A对键值对进行修改时发生变化，而字典A添加新的键值对，字典B不收影响。** 
+
+## Python update()方法
+
+updae()方法可以使用一个字典所包含的键值对来更新已有的字典。
+
+如果被更新的字典中已存在对应的键值对，那么原键值对值将会被覆盖，否则将会被添加。
+
+例子:
+
+```
+test_dict = {'语文','数学','英语'}
+test_dict = dict.fromkeys(test_dict,100)
+test_dict2 = test_dict.copy()
+print(type(test_dict))
+test_dict['语文']=100
+test_dict2['物理']=200
+test_dict2.update(test_dict)
+print(test_dict,"\n",test_dict2)
+print(test_dict,"\n",test_dict2)
+```
+
+输出结果:
+
+```
+<class 'dict'>
+{'英语': 100, '数学': 100, '语文': 100}
+{'英语': 100, '数学': 100, '语文': 100, '物理': 200}
+{'英语': 100, '数学': 100, '语文': 100}
+{'英语': 100, '数学': 100, '语文': 100, '物理': 200}
+```
+
+## Python pop方法
+
+pop()方法可以获取指定key的value，并删除。
+
+例子:
+
+```
+test_dict = {'语文','数学','英语'}
+test_dict = dict.fromkeys(test_dict,100)
+print(test_dict.pop('语文'))
+```
+
+输出结果:
+
+```
+100
+{'英语': 100, '数学': 100}
+```
+
+## Python popitem()方法
+
+popitem()方法用于弹出字典中最后一个键值对(这里的最后一个其实是随机的，因为字典是无序序列，所以并不能说的某个键值对的位置取向).
+
+例子:
+
+```
+test_dict = {'语文','数学','英语'}
+test_dict = dict.fromkeys(test_dict,100)
+print(test_dict.popitem())
+print(test_dict)
+```
+
+输出结果:
+
+```
+('数学', 100)
+{'英语': 100, '语文': 100}
+```
+
+## Python setdefault()方法
+
+setdefault()方法用于根据key来获取value，但有两种场景，第一种是，如果获取的键值对的key存在字典中，则会直接获取改键值对的value，不存在则会为该key先将value设置为默认的value，然后再返回该key对应的value。
+
+
+**特点:setdefault方法总能返回指定key对应的value;**
+
+例子:
+
+```
+test_dict = {'语文','数学','英语'}
+test_dict = dict.fromkeys(test_dict,100)
+# 要设置的键值对的key不存在.
+test_dict.setdefault('物理',120)
+print(test_dict)
+# 要设置的键值对的key存在.
+test_dict.setdefault('语文',200)
+print(test_dict)
+```
+
+输出结果:
+
+```
+{'数学': 100, '英语': 100, '语文': 100, '物理': 120}
+{'数学': 100, '英语': 100, '语文': 100, '物理': 120}
+```
+
+# Python使用字典格式化字符串
+
+我们知道，在格式化字符串时，如果格式化字符串模板中包含多个变量时，则后面月必须按顺序加上相同个数的变量，如果变量过多，则会十分麻烦，Python提供了用字典格式化字符串的方式来解决。
+
+例子:
+
+```
+student = '姓名:%(name)s\t班级:%(class)d\t综合成绩:%(score)f'
+student_info = {'name':'LTy','class':604,'score':99.5}
+print(student % student_info)
+```
+
+输出结果:
+
+```
+姓名:LTy        班级:604        综合成绩:99.500000
+```
+
+<++>

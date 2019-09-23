@@ -105,8 +105,10 @@
 <meta property="og:description" content="什么是序列，Python序列详解（包括序列类型和常用操作）序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。 常见的序列有: 字符串、列表、元组、集合和字典。 这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。 序列索引索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python序列内置函数.png">
-<meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python-04-Python列表、元组、字典和集合/dict(">
-<meta property="og:updated_time" content="2019-09-22T07:59:47.281Z">
+<meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/dict(">
+<meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python集合示意图.png">
+<meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python集合运算.png">
+<meta property="og:updated_time" content="2019-09-23T10:06:11.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Python-04]Python列表、元组、字典和集合">
 <meta name="twitter:description" content="什么是序列，Python序列详解（包括序列类型和常用操作）序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。 常见的序列有: 字符串、列表、元组、集合和字典。 这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。 序列索引索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问">
@@ -476,7 +478,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-22 15:59:47" itemprop="dateModified" datetime="2019-09-22T15:59:47+08:00">2019-09-22</time>
+                <time title="修改时间：2019-09-23 18:06:11" itemprop="dateModified" datetime="2019-09-23T18:06:11+08:00">2019-09-23</time>
               
             
           </span>
@@ -842,7 +844,7 @@
 <p>输出结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;语文&apos;: 100, &apos;英语&apos;: 100, &apos;数学&apos;: 100&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="通过dict-映射函数创建字典"><a href="#通过dict-映射函数创建字典" class="headerlink" title="通过dict()映射函数创建字典"></a>通过dict()映射函数创建字典</h3><p>dict()函数常用创建字典方法</p>
-<p><img src="/2019/09/08/Python-04-Python列表、元组、字典和集合/./Python-04-Python列表、元组、字典和集合/dict(" alt="dict()函数创建字典">函数创建字典.png)</p>
+<p><img src="/2019/09/08/Python-04-Python列表、元组、字典和集合/dict(" alt="dict()函数创建字典">函数创建字典.png)</p>
 <h2 id="Pyton访问字典"><a href="#Pyton访问字典" class="headerlink" title="Pyton访问字典"></a>Pyton访问字典</h2><p>dict()通过元素的键进行访问值，不能像列表或元组通过下标或切片的形式来访问。</p>
 <p>例子:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test_dict = ([&apos;姓名&apos;,&apos;LTy&apos;],[&apos;性别&apos;,True])</span><br><span class="line">test_dict = dict(test_dict)</span><br><span class="line">print(type(test_dict))</span><br><span class="line">print(test_dict[&apos;姓名&apos;])</span><br><span class="line">print(test_dict.get(&quot;性别&quot;))</span><br></pre></td></tr></table></figure>
@@ -858,8 +860,7 @@
 <li><p>判断字典中是否存在指定的键值对</p>
 </li>
 </ul>
-<hr>
-<h3 id="Python字典添加键值对"><a href="#Python字典添加键值对" class="headerlink" title="Python字典添加键值对"></a>Python字典添加键值对</h3><p>为字典中添加新的键值对只需要为不存在的<code>key</code>赋值。</p>
+<h2 id="Python字典添加键值对"><a href="#Python字典添加键值对" class="headerlink" title="Python字典添加键值对"></a>Python字典添加键值对</h2><p>为字典中添加新的键值对只需要为不存在的<code>key</code>赋值。</p>
 <p>语法格式:</p>
 <p><code>dict[key]= value</code> </p>
 <p><code>dict</code>表示字典名称,<code>key</code>代表新建键值对的键,<code>value</code>代表新建键值对的值</p>
@@ -867,25 +868,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test_dict = ([&apos;姓名&apos;,&apos;LTy&apos;],[&apos;性别&apos;,True])</span><br><span class="line">test_dict = dict(test_dict)</span><br><span class="line">test_dict[&apos;班级&apos;] = 502</span><br><span class="line">print(test_dict.get(&quot;班级&quot;))</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
 <p><code>502</code> </p>
-<h3 id="Python字典修改键值对"><a href="#Python字典修改键值对" class="headerlink" title="Python字典修改键值对"></a>Python字典修改键值对</h3><p>这里的修改是指:修改键值对的值。</p>
+<h2 id="Python字典修改键值对"><a href="#Python字典修改键值对" class="headerlink" title="Python字典修改键值对"></a>Python字典修改键值对</h2><p>这里的修改是指:修改键值对的值。</p>
 <p><strong>Python中如果新添加的键值对的键存在，那么则会覆盖原本的键值对的值</strong> </p>
 <p>例子:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test_dict = ([&apos;姓名&apos;,&apos;LTy&apos;],[&apos;性别&apos;,True])</span><br><span class="line">test_dict = dict(test_dict)</span><br><span class="line">test_dict[&apos;班级&apos;] = 502</span><br><span class="line">print(test_dict.get(&quot;班级&quot;))</span><br><span class="line">test_dict[&apos;班级&apos;] = 999</span><br><span class="line">print(test_dict.get(&quot;班级&quot;))</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">502</span><br><span class="line">999</span><br></pre></td></tr></table></figure>
-<h3 id="Python字典删除键值对"><a href="#Python字典删除键值对" class="headerlink" title="Python字典删除键值对"></a>Python字典删除键值对</h3><p>如果要删除字典中的键值对，则可以使用<code>del</code>语句，指定要删除的键值对的键。</p>
+<h2 id="Python字典删除键值对"><a href="#Python字典删除键值对" class="headerlink" title="Python字典删除键值对"></a>Python字典删除键值对</h2><p>如果要删除字典中的键值对，则可以使用<code>del</code>语句，指定要删除的键值对的键。</p>
 <p>例子:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test_dict = ([&apos;姓名&apos;,&apos;LTy&apos;],[&apos;性别&apos;,True])</span><br><span class="line">test_dict = dict(test_dict)</span><br><span class="line">test_dict[&apos;班级&apos;] = 502</span><br><span class="line">print(test_dict.get(&quot;班级&quot;))</span><br><span class="line">del test_dict[&apos;班级&apos;]</span><br><span class="line">print(test_dict.get(&quot;班级&quot;))</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">502</span><br><span class="line">None</span><br></pre></td></tr></table></figure>
-<h3 id="判断字典中是否存在指定键值对"><a href="#判断字典中是否存在指定键值对" class="headerlink" title="判断字典中是否存在指定键值对"></a>判断字典中是否存在指定键值对</h3><p>如果需要判断字典是否存在指定键值对的键，可以使用<code>in</code>或<code>not in</code>运算符。</p>
+<h2 id="判断字典中是否存在指定键值对"><a href="#判断字典中是否存在指定键值对" class="headerlink" title="判断字典中是否存在指定键值对"></a>判断字典中是否存在指定键值对</h2><p>如果需要判断字典是否存在指定键值对的键，可以使用<code>in</code>或<code>not in</code>运算符。</p>
 <p><strong>注意:这里的<code>in</code>或<code>not in</code>运算符都是基于<code>key</code>来判断字典中某个键值对是否存在的.</strong> </p>
 <p>例子:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test_dict = ([&apos;姓名&apos;,&apos;LTy&apos;],[&apos;性别&apos;,True])</span><br><span class="line">test_dict = dict(test_dict)</span><br><span class="line">del test_dict[&apos;姓名&apos;]</span><br><span class="line">print(test_dict.get(&quot;姓名&quot;))</span><br><span class="line">print(&apos;姓名&apos; in test_dict)</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
 <h1 id="Python-dict字典方法完全攻略-全"><a href="#Python-dict字典方法完全攻略-全" class="headerlink" title="Python dict字典方法完全攻略(全)"></a>Python dict字典方法完全攻略(全)</h1><p>想查看<code>dict</code>该类包包含哪些方法，可以使用<code>dir()</code>方法进行查看。</p>
-<hr>
 <h2 id="Python-keys-values-和items-方法"><a href="#Python-keys-values-和items-方法" class="headerlink" title="Python keys(),values()和items()方法"></a>Python keys(),values()和items()方法</h2><p>这三个方法可以获取字典中特定的数据.</p>
 <p><code>keys()</code>方法用于返回字典中的所有键;</p>
 <p><code>values()</code>用于返回字典中所有键对应的值;</p>
@@ -923,7 +923,183 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">test_dict = &#123;&apos;语文&apos;,&apos;数学&apos;,&apos;英语&apos;&#125;</span><br><span class="line">test_dict = dict.fromkeys(test_dict,100)</span><br><span class="line"># 要设置的键值对的key不存在.</span><br><span class="line">test_dict.setdefault(&apos;物理&apos;,120)</span><br><span class="line">print(test_dict)</span><br><span class="line"># 要设置的键值对的key存在.</span><br><span class="line">test_dict.setdefault(&apos;语文&apos;,200)</span><br><span class="line">print(test_dict)</span><br></pre></td></tr></table></figure>
 <p>输出结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;数学&apos;: 100, &apos;英语&apos;: 100, &apos;语文&apos;: 100, &apos;物理&apos;: 120&#125;</span><br><span class="line">&#123;&apos;数学&apos;: 100, &apos;英语&apos;: 100, &apos;语文&apos;: 100, &apos;物理&apos;: 120&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Python使用字典格式化字符串"><a href="#Python使用字典格式化字符串" class="headerlink" title="Python使用字典格式化字符串"></a>Python使用字典格式化字符串</h1><p>&lt;++&gt;</p>
+<h1 id="Python使用字典格式化字符串"><a href="#Python使用字典格式化字符串" class="headerlink" title="Python使用字典格式化字符串"></a>Python使用字典格式化字符串</h1><p>我们知道，在格式化字符串时，如果格式化字符串模板中包含多个变量时，则后面月必须按顺序加上相同个数的变量，如果变量过多，则会十分麻烦，Python提供了用字典格式化字符串的方式来解决。</p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">student = &apos;姓名:%(name)s\t班级:%(class)d\t综合成绩:%(score)f&apos;</span><br><span class="line">student_info = &#123;&apos;name&apos;:&apos;LTy&apos;,&apos;class&apos;:604,&apos;score&apos;:99.5&#125;</span><br><span class="line">print(student % student_info)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">姓名:LTy        班级:604        综合成绩:99.500000</span><br></pre></td></tr></table></figure>
+<h1 id="Python-set集合详解"><a href="#Python-set集合详解" class="headerlink" title="Python set集合详解"></a>Python set集合详解</h1><p>set集合的特点:</p>
+<ul>
+<li><p>数据唯一性(必须保证集合中每种数据元素是唯一的)</p>
+</li>
+<li><p>数据不可变(只允许存储不可变的数据类型，例如列表、字典、集合则是不允许存储在集合中的)</p>
+</li>
+<li><p>集合是无序的，所以每次输出元素时，排序顺序可能都不同。</p>
+</li>
+</ul>
+<h2 id="Python创建set集合"><a href="#Python创建set集合" class="headerlink" title="Python创建set集合"></a>Python创建set集合</h2><p>有两种创建<code>set</code>集合的方法，分别是使用{}创建和使用set()函数将列表、元组等数据类型转化为集合。</p>
+<h3 id="使用-创建"><a href="#使用-创建" class="headerlink" title="使用{}创建"></a>使用{}创建</h3><p>语法格式:</p>
+<p><code>setname = {element1,element2...elementn}</code></p>
+<p>setname代表集合的名称。</p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_set = &#123;1,2,3,4&#125;</span><br><span class="line">print(test_set)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;1, 2, 3, 4&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用set-函数创建集合"><a href="#使用set-函数创建集合" class="headerlink" title="使用set()函数创建集合"></a>使用set()函数创建集合</h3><p>set()函数为Python的内置函数，其可以将字符串、列表、元组以及range对象等可迭代的对象转换成集合。</p>
+<p>语法格式:</p>
+<p><code>setname = set(iteration)</code> </p>
+<p>iteration就表示可迭代的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">set1 = set(&quot;I Love China&quot;)</span><br><span class="line">set2 = set(list(range(1,6)))</span><br><span class="line">set3 = set(tuple(range(1,6)))</span><br><span class="line">set4 = set(range(1,6))</span><br><span class="line">print(set1)</span><br><span class="line">print(set2)</span><br><span class="line">print(set3)</span><br><span class="line">print(set4)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 从输出结果看，字符串被打乱了</span><br><span class="line">&#123;&apos;a&apos;, &apos;L&apos;, &apos;h&apos;, &apos; &apos;, &apos;C&apos;, &apos;e&apos;, &apos;n&apos;, &apos;i&apos;, &apos;I&apos;, &apos;v&apos;, &apos;o&apos;&#125;</span><br><span class="line">&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">&#123;1, 2, 3, 4, 5&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意:如果想要创建空集合，必须使用<code>set()</code>函数实现，因为如果只给一对<code>{}</code>，Python解释器会将其视为一个空字典。</strong></p>
+<h2 id="Python访问set集合元素"><a href="#Python访问set集合元素" class="headerlink" title="Python访问set集合元素"></a>Python访问set集合元素</h2><p>由于<code>set</code>集合是无序的，所以无法通过下标索引进行访问，但是我们可通过遍历<code>set</code>集合访问元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 = set(&quot;I Love China&quot;)</span><br><span class="line"></span><br><span class="line">for ele in set1:</span><br><span class="line">    print(ele,end=&apos;&apos;)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oCenaL Ihvi</span><br></pre></td></tr></table></figure>
+<h2 id="Python删除set集合"><a href="#Python删除set集合" class="headerlink" title="Python删除set集合"></a>Python删除set集合</h2><p>想要手动删除<code>set</code>集合可以使用<code>del()</code>方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 = set(&quot;I Love China&quot;)</span><br><span class="line">print(set1)</span><br><span class="line">del(set1)</span><br><span class="line">print(set1)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;a&apos;, &apos;i&apos;, &apos;e&apos;, &apos; &apos;, &apos;L&apos;, &apos;C&apos;, &apos;o&apos;, &apos;h&apos;, &apos;I&apos;, &apos;n&apos;, &apos;v&apos;&#125;</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 4, in &lt;module&gt;</span><br><span class="line">  │ print(set1)</span><br><span class="line">NameError: name &apos;set1&apos; is not defined</span><br></pre></td></tr></table></figure>
+<h1 id="Python-set集合基本操作-添加、删除、交集、并集、差集"><a href="#Python-set集合基本操作-添加、删除、交集、并集、差集" class="headerlink" title="Python set集合基本操作(添加、删除、交集、并集、差集)"></a>Python set集合基本操作(添加、删除、交集、并集、差集)</h1><p><code>set</code>集合最常用的场景是添加、删除元素以及在多个集合之间做交集、并集、差集等运算。 </p>
+<h2 id="向set集合中添加元素"><a href="#向set集合中添加元素" class="headerlink" title="向set集合中添加元素"></a>向set集合中添加元素</h2><p>Python为<code>set</code>集合提供了<code>add()</code>方法，其可以向<code>set</code>集合添加元素。</p>
+<p>语法格式:</p>
+<p><code>setname.add(element)</code> </p>
+<p>setname表示要添加元素的集合，element代表添加的元素。</p>
+<p><strong>注意:element不可为可变数据类型</strong> </p>
+<h2 id="从set集合中删除元素"><a href="#从set集合中删除元素" class="headerlink" title="从set集合中删除元素"></a>从set集合中删除元素</h2><p>想要从集合中删除某个元素可以使用<code>remove()</code>方法</p>
+<p>语法格式:</p>
+<p><code>setname.remove(element)</code> </p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;1,2,3,4&#125;</span><br><span class="line">print(set1)</span><br><span class="line">set1.remove(1)</span><br><span class="line">print(set1)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;1, 2, 3, 4&#125;</span><br><span class="line">&#123;2, 3, 4&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意:如果要删除的元素已经被删除，再次删除则会引发<code>KeyError</code>错误</strong></p>
+<p>如果想要在删除失败时不抛出异常，我们可以使用<code>discard()</code>方法。</p>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">set1 = &#123;1,2,3,4&#125;</span><br><span class="line">print(set1)</span><br><span class="line">set1.remove(1)</span><br><span class="line">print(set1)</span><br><span class="line">set1.discard(1)</span><br><span class="line">print(set1)</span><br><span class="line">set1.remove(1)</span><br><span class="line">print(set1)</span><br></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;1, 2, 3, 4&#125;</span><br><span class="line">&#123;2, 3, 4&#125;</span><br><span class="line">&#123;2, 3, 4&#125;</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 7, in &lt;module&gt;</span><br><span class="line">  │ set1.remove(1)</span><br><span class="line">KeyError: 1</span><br></pre></td></tr></table></figure>
+<p><code>discard()</code>方法与<code>remove()</code>方法的唯一区别在于:<strong>删除失败时是否抛出异常</strong> o</p>
+<h2 id="Python-set集合做交集、并集、差集运算"><a href="#Python-set集合做交集、并集、差集运算" class="headerlink" title="Python set集合做交集、并集、差集运算"></a>Python set集合做交集、并集、差集运算</h2><p><code>set</code>集合最常用的操作也就是进行交集、并集、差集以及对称差集运算了，首先看这张图:</p>
+<p><img src="/2019/09/08/Python-04-Python列表、元组、字典和集合/Python集合示意图.png" alt="集合示意图"> </p>
+<p>图中有两个集合，分别是:</p>
+<ul>
+<li><p><code>set1={1,2,3}</code></p>
+</li>
+<li><p><code>set2={3,4,5}</code></p>
+</li>
+</ul>
+<p>下面的表格展示了不同的运算，得到的不同的结果。</p>
+<p><img src="/2019/09/08/Python-04-Python列表、元组、字典和集合/Python集合运算.png" alt="集合运算图"> </p>
+<h1 id="Python-set集合方法详解-全"><a href="#Python-set集合方法详解-全" class="headerlink" title="Python set集合方法详解(全)"></a>Python set集合方法详解(全)</h1><p>如果想要看<code>set</code>集合所有的方法，可以使用<code>dir(set)</code>进行查看。</p>
+<p>Python set方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>语法格式</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add()</td>
+<td>set1.add()</td>
+<td>向set1集合中添加非可变元素</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>set1.clear()</td>
+<td>清空set1集合中所有的元素</td>
+</tr>
+<tr>
+<td>copy()</td>
+<td>set2=set1.copy()</td>
+<td>拷贝set1集合中的元素给set2</td>
+</tr>
+<tr>
+<td>difference()</td>
+<td>set3=set1.difference(set2)</td>
+<td>将set1中有而set2中没有的元素给set3</td>
+</tr>
+<tr>
+<td>difference_update()</td>
+<td>set1.difference_update(set2)</td>
+<td>从set1中删除与set2相同的元素</td>
+</tr>
+<tr>
+<td>discard()</td>
+<td>set1.discard(element)</td>
+<td>删除set1中的element元素</td>
+</tr>
+<tr>
+<td>intersection()</td>
+<td>set3=set1.intersection(set2)</td>
+<td>取set1和set2的交集赋值给set3</td>
+</tr>
+<tr>
+<td>intersection_update()</td>
+<td>set1.intersection_update(set2)</td>
+<td>取set1和set2的交集并且将值赋值给set1(更新set1的值为set1与set2的交集)</td>
+</tr>
+<tr>
+<td>isdisjoint()</td>
+<td>set1.isdisjoint(set2)</td>
+<td>判断set1和set2是否没有交集，有交集返回False;没有则返回True</td>
+</tr>
+<tr>
+<td>issubset()</td>
+<td>set1.issubset(set2)</td>
+<td>判断set1是否是set2的子集</td>
+</tr>
+<tr>
+<td>issuperset()</td>
+<td>set1.issuperset(set2)</td>
+<td>判断set2是否是set1的子集</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td>a = set1.pop()</td>
+<td>取出set1中一个元素并赋值给a</td>
+</tr>
+<tr>
+<td>remove()</td>
+<td>set1.remove(element)</td>
+<td>移除set1中的element元素</td>
+</tr>
+<tr>
+<td>symmetric_difference()</td>
+<td>set3=set1.symmetric_difference(set2)</td>
+<td>取set1和set2中互不相同的元素给set3</td>
+</tr>
+<tr>
+<td>symmetric_difference_update()</td>
+<td>set1.symmetric_difference_update(set2)</td>
+<td>取set1和set2中互不相同的元素并更新set1的值</td>
+</tr>
+<tr>
+<td>union()</td>
+<td>set3=set1.union(set2)</td>
+<td>取set1和set2的并集，赋值给set3</td>
+</tr>
+<tr>
+<td>update()</td>
+<td>set1.update(element)</td>
+<td>添加列表或集合中的元素到set1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Python-frozenset-set集合的不可变版本"><a href="#Python-frozenset-set集合的不可变版本" class="headerlink" title="Python frozenset(set集合的不可变版本)"></a>Python frozenset(set集合的不可变版本)</h1><p>前面我们所学习的<code>set</code>集合是可变的，而frozenset则是<code>set</code>集合的不可变版本，它不具备<code>set</code>集合的所有能改变集合本身的方法。</p>
+<p>frozenset的主要使用场景:</p>
+<ul>
+<li><p>当集合元素不需要改变的时候，使用frozenset替代set将会更加安全。</p>
+</li>
+<li><p>当某些API需要不可变对象作为参数时，必须用到frozenset替代set。</p>
+</li>
+</ul>
+<h1 id="深入底层了解Python字典和集合、一眼看穿他们的本质"><a href="#深入底层了解Python字典和集合、一眼看穿他们的本质" class="headerlink" title="深入底层了解Python字典和集合、一眼看穿他们的本质"></a>深入底层了解Python字典和集合、一眼看穿他们的本质</h1><p>本小节涉及到未知的知识，推荐去原文看**<a href="http://c.biancheng.net/view/5302.html" target="_blank" rel="noopener">查看原文</a> </p>
+<h1 id="Python深拷贝和浅拷贝详解"><a href="#Python深拷贝和浅拷贝详解" class="headerlink" title="Python深拷贝和浅拷贝详解"></a>Python深拷贝和浅拷贝详解</h1><p>本小节涉及到未知的知识，推荐去原文看<a href="http://c.biancheng.net/view/5358.html" target="_blank" rel="noopener">查看原文</a> </p>
 
       
     </div>
@@ -946,7 +1122,7 @@
   <p><span>本文标题:</span><a href="/2019/09/08/Python-04-Python列表、元组、字典和集合/">[Python-04]Python列表、元组、字典和集合</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年09月08日 - 15:09</p>
-  <p><span>最后更新:</span>2019年09月22日 - 15:09</p>
+  <p><span>最后更新:</span>2019年09月23日 - 18:09</p>
   <p><span>原始链接:</span><a href="/2019/09/08/Python-04-Python列表、元组、字典和集合/" title="[Python-04]Python列表、元组、字典和集合">https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/" aria-label="复制成功！"></i></span>
   </p>
@@ -1296,7 +1472,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是序列，Python序列详解（包括序列类型和常用操作）"><span class="nav-number">1.</span> <span class="nav-text">什么是序列，Python序列详解（包括序列类型和常用操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列索引"><span class="nav-number">1.1.</span> <span class="nav-text">序列索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列切片"><span class="nav-number">1.2.</span> <span class="nav-text">序列切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相加"><span class="nav-number">1.3.</span> <span class="nav-text">序列相加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相乘"><span class="nav-number">1.4.</span> <span class="nav-text">序列相乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查元素是否包含在序列中"><span class="nav-number">1.5.</span> <span class="nav-text">检查元素是否包含在序列中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和序列相关的内置函数"><span class="nav-number">1.6.</span> <span class="nav-text">和序列相关的内置函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表详解"><span class="nav-number">2.</span> <span class="nav-text">Python list列表详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建列表"><span class="nav-number">2.1.</span> <span class="nav-text">Python创建列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问列表元素"><span class="nav-number">2.2.</span> <span class="nav-text">访问列表元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除列表"><span class="nav-number">2.3.</span> <span class="nav-text">删除列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表添加元素的3种方法"><span class="nav-number">3.</span> <span class="nav-text">Python list列表添加元素的3种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-append-方法添加元素"><span class="nav-number">3.1.</span> <span class="nav-text">Python append()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-extend-方法添加元素"><span class="nav-number">3.2.</span> <span class="nav-text">Python extend()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-insert-方法插入元素"><span class="nav-number">3.3.</span> <span class="nav-text">Python insert()方法插入元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyhton-list列表删除元素-3种方法"><span class="nav-number">3.4.</span> <span class="nav-text">Pyhton list列表删除元素(3种方法)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表修改元素"><span class="nav-number">4.</span> <span class="nav-text">Python list列表修改元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略"><span class="nav-number">5.</span> <span class="nav-text">Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#count-方法"><span class="nav-number">5.1.</span> <span class="nav-text">count()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-用法"><span class="nav-number">5.2.</span> <span class="nav-text">index()用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop用法"><span class="nav-number">5.3.</span> <span class="nav-text">pop用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse-方法"><span class="nav-number">5.4.</span> <span class="nav-text">reverse()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort-用法"><span class="nav-number">5.5.</span> <span class="nav-text">sort()用法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-range-快速初始化数字列表"><span class="nav-number">6.</span> <span class="nav-text">Python range()快速初始化数字列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-tuple元组详解"><span class="nav-number">7.</span> <span class="nav-text">Python tuple元组详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建元组"><span class="nav-number">7.1.</span> <span class="nav-text">Python创建元组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符直接创建元组"><span class="nav-number">7.1.1.</span> <span class="nav-text">= 运算符直接创建元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用tuple-函数创建元组"><span class="nav-number">7.1.2.</span> <span class="nav-text">使用tuple()函数创建元组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python访问元组元素"><span class="nav-number">7.2.</span> <span class="nav-text">Python访问元组元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python修改元组元素"><span class="nav-number">7.3.</span> <span class="nav-text">Python修改元组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重新赋值"><span class="nav-number">7.3.1.</span> <span class="nav-text">重新赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接多个元组"><span class="nav-number">7.3.2.</span> <span class="nav-text">连接多个元组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python删除元组"><span class="nav-number">7.4.</span> <span class="nav-text">Python删除元组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python元组和列表的区别"><span class="nav-number">8.</span> <span class="nav-text">Python元组和列表的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python列表和元组的底层实现"><span class="nav-number">9.</span> <span class="nav-text">Python列表和元组的底层实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-dict字典"><span class="nav-number">10.</span> <span class="nav-text">Python dict字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建字典"><span class="nav-number">10.1.</span> <span class="nav-text">Python创建字典</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#花括号语法创建字典"><span class="nav-number">10.1.1.</span> <span class="nav-text">花括号语法创建字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过fromkey-方法创建字典"><span class="nav-number">10.1.2.</span> <span class="nav-text">通过fromkey()方法创建字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过dict-映射函数创建字典"><span class="nav-number">10.1.3.</span> <span class="nav-text">通过dict()映射函数创建字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyton访问字典"><span class="nav-number">10.2.</span> <span class="nav-text">Pyton访问字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python删除字典"><span class="nav-number">10.3.</span> <span class="nav-text">Python删除字典</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pythton-dict字典基本操作-包括添加、修改、删除键值对"><span class="nav-number">11.</span> <span class="nav-text">Pythton dict字典基本操作(包括添加、修改、删除键值对)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python字典添加键值对"><span class="nav-number">11.0.1.</span> <span class="nav-text">Python字典添加键值对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python字典修改键值对"><span class="nav-number">11.0.2.</span> <span class="nav-text">Python字典修改键值对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python字典删除键值对"><span class="nav-number">11.0.3.</span> <span class="nav-text">Python字典删除键值对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断字典中是否存在指定键值对"><span class="nav-number">11.0.4.</span> <span class="nav-text">判断字典中是否存在指定键值对</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-dict字典方法完全攻略-全"><span class="nav-number">12.</span> <span class="nav-text">Python dict字典方法完全攻略(全)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-keys-values-和items-方法"><span class="nav-number">12.1.</span> <span class="nav-text">Python keys(),values()和items()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-copy-方法"><span class="nav-number">12.2.</span> <span class="nav-text">Python copy()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-update-方法"><span class="nav-number">12.3.</span> <span class="nav-text">Python update()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-pop方法"><span class="nav-number">12.4.</span> <span class="nav-text">Python pop方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-popitem-方法"><span class="nav-number">12.5.</span> <span class="nav-text">Python popitem()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-setdefault-方法"><span class="nav-number">12.6.</span> <span class="nav-text">Python setdefault()方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python使用字典格式化字符串"><span class="nav-number">13.</span> <span class="nav-text">Python使用字典格式化字符串</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是序列，Python序列详解（包括序列类型和常用操作）"><span class="nav-number">1.</span> <span class="nav-text">什么是序列，Python序列详解（包括序列类型和常用操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列索引"><span class="nav-number">1.1.</span> <span class="nav-text">序列索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列切片"><span class="nav-number">1.2.</span> <span class="nav-text">序列切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相加"><span class="nav-number">1.3.</span> <span class="nav-text">序列相加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列相乘"><span class="nav-number">1.4.</span> <span class="nav-text">序列相乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查元素是否包含在序列中"><span class="nav-number">1.5.</span> <span class="nav-text">检查元素是否包含在序列中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和序列相关的内置函数"><span class="nav-number">1.6.</span> <span class="nav-text">和序列相关的内置函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表详解"><span class="nav-number">2.</span> <span class="nav-text">Python list列表详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建列表"><span class="nav-number">2.1.</span> <span class="nav-text">Python创建列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问列表元素"><span class="nav-number">2.2.</span> <span class="nav-text">访问列表元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除列表"><span class="nav-number">2.3.</span> <span class="nav-text">删除列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表添加元素的3种方法"><span class="nav-number">3.</span> <span class="nav-text">Python list列表添加元素的3种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-append-方法添加元素"><span class="nav-number">3.1.</span> <span class="nav-text">Python append()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-extend-方法添加元素"><span class="nav-number">3.2.</span> <span class="nav-text">Python extend()方法添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-insert-方法插入元素"><span class="nav-number">3.3.</span> <span class="nav-text">Python insert()方法插入元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyhton-list列表删除元素-3种方法"><span class="nav-number">3.4.</span> <span class="nav-text">Pyhton list列表删除元素(3种方法)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-list列表修改元素"><span class="nav-number">4.</span> <span class="nav-text">Python list列表修改元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pyhthon-list常用方法-count、index、pop、reverse和sort-快速攻略"><span class="nav-number">5.</span> <span class="nav-text">Pyhthon list常用方法(count、index、pop、reverse和sort)快速攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#count-方法"><span class="nav-number">5.1.</span> <span class="nav-text">count()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-用法"><span class="nav-number">5.2.</span> <span class="nav-text">index()用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop用法"><span class="nav-number">5.3.</span> <span class="nav-text">pop用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse-方法"><span class="nav-number">5.4.</span> <span class="nav-text">reverse()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort-用法"><span class="nav-number">5.5.</span> <span class="nav-text">sort()用法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-range-快速初始化数字列表"><span class="nav-number">6.</span> <span class="nav-text">Python range()快速初始化数字列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-tuple元组详解"><span class="nav-number">7.</span> <span class="nav-text">Python tuple元组详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建元组"><span class="nav-number">7.1.</span> <span class="nav-text">Python创建元组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符直接创建元组"><span class="nav-number">7.1.1.</span> <span class="nav-text">= 运算符直接创建元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用tuple-函数创建元组"><span class="nav-number">7.1.2.</span> <span class="nav-text">使用tuple()函数创建元组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python访问元组元素"><span class="nav-number">7.2.</span> <span class="nav-text">Python访问元组元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python修改元组元素"><span class="nav-number">7.3.</span> <span class="nav-text">Python修改元组元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重新赋值"><span class="nav-number">7.3.1.</span> <span class="nav-text">重新赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接多个元组"><span class="nav-number">7.3.2.</span> <span class="nav-text">连接多个元组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python删除元组"><span class="nav-number">7.4.</span> <span class="nav-text">Python删除元组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python元组和列表的区别"><span class="nav-number">8.</span> <span class="nav-text">Python元组和列表的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python列表和元组的底层实现"><span class="nav-number">9.</span> <span class="nav-text">Python列表和元组的底层实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-dict字典"><span class="nav-number">10.</span> <span class="nav-text">Python dict字典</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建字典"><span class="nav-number">10.1.</span> <span class="nav-text">Python创建字典</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#花括号语法创建字典"><span class="nav-number">10.1.1.</span> <span class="nav-text">花括号语法创建字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过fromkey-方法创建字典"><span class="nav-number">10.1.2.</span> <span class="nav-text">通过fromkey()方法创建字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过dict-映射函数创建字典"><span class="nav-number">10.1.3.</span> <span class="nav-text">通过dict()映射函数创建字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyton访问字典"><span class="nav-number">10.2.</span> <span class="nav-text">Pyton访问字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python删除字典"><span class="nav-number">10.3.</span> <span class="nav-text">Python删除字典</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pythton-dict字典基本操作-包括添加、修改、删除键值对"><span class="nav-number">11.</span> <span class="nav-text">Pythton dict字典基本操作(包括添加、修改、删除键值对)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python字典添加键值对"><span class="nav-number">11.1.</span> <span class="nav-text">Python字典添加键值对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python字典修改键值对"><span class="nav-number">11.2.</span> <span class="nav-text">Python字典修改键值对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python字典删除键值对"><span class="nav-number">11.3.</span> <span class="nav-text">Python字典删除键值对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断字典中是否存在指定键值对"><span class="nav-number">11.4.</span> <span class="nav-text">判断字典中是否存在指定键值对</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-dict字典方法完全攻略-全"><span class="nav-number">12.</span> <span class="nav-text">Python dict字典方法完全攻略(全)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-keys-values-和items-方法"><span class="nav-number">12.1.</span> <span class="nav-text">Python keys(),values()和items()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-copy-方法"><span class="nav-number">12.2.</span> <span class="nav-text">Python copy()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-update-方法"><span class="nav-number">12.3.</span> <span class="nav-text">Python update()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-pop方法"><span class="nav-number">12.4.</span> <span class="nav-text">Python pop方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-popitem-方法"><span class="nav-number">12.5.</span> <span class="nav-text">Python popitem()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-setdefault-方法"><span class="nav-number">12.6.</span> <span class="nav-text">Python setdefault()方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python使用字典格式化字符串"><span class="nav-number">13.</span> <span class="nav-text">Python使用字典格式化字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-set集合详解"><span class="nav-number">14.</span> <span class="nav-text">Python set集合详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python创建set集合"><span class="nav-number">14.1.</span> <span class="nav-text">Python创建set集合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-创建"><span class="nav-number">14.1.1.</span> <span class="nav-text">使用{}创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用set-函数创建集合"><span class="nav-number">14.1.2.</span> <span class="nav-text">使用set()函数创建集合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python访问set集合元素"><span class="nav-number">14.2.</span> <span class="nav-text">Python访问set集合元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python删除set集合"><span class="nav-number">14.3.</span> <span class="nav-text">Python删除set集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-set集合基本操作-添加、删除、交集、并集、差集"><span class="nav-number">15.</span> <span class="nav-text">Python set集合基本操作(添加、删除、交集、并集、差集)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#向set集合中添加元素"><span class="nav-number">15.1.</span> <span class="nav-text">向set集合中添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从set集合中删除元素"><span class="nav-number">15.2.</span> <span class="nav-text">从set集合中删除元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-set集合做交集、并集、差集运算"><span class="nav-number">15.3.</span> <span class="nav-text">Python set集合做交集、并集、差集运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-set集合方法详解-全"><span class="nav-number">16.</span> <span class="nav-text">Python set集合方法详解(全)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-frozenset-set集合的不可变版本"><span class="nav-number">17.</span> <span class="nav-text">Python frozenset(set集合的不可变版本)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入底层了解Python字典和集合、一眼看穿他们的本质"><span class="nav-number">18.</span> <span class="nav-text">深入底层了解Python字典和集合、一眼看穿他们的本质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python深拷贝和浅拷贝详解"><span class="nav-number">19.</span> <span class="nav-text">Python深拷贝和浅拷贝详解</span></a></li></ol></div>
             
 
           </div>

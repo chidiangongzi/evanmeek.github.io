@@ -251,12 +251,3 @@ Python关键字是Python内置的单词，其被赋予特殊的意义。
 Python具有内置函数，可由开发者直接调用。
 
 有关内置函数的用法和解释可由访问[💿Python内置函数]进行查看.
-
-| xxx  | xx    |
-|------|-------|
-| dasd | asdsd |
-
-| xxx        | xxxxxxxxx |
-|------------|-----------|
-| asldjaskjd | asdsadsa  |
-| asdsad     | asdsd     |

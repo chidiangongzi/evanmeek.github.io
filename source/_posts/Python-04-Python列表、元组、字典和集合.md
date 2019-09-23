@@ -825,7 +825,7 @@ print(scores)
 
 dict()函数常用创建字典方法
 
-![dict()函数创建字典](./Python-04-Python列表、元组、字典和集合/dict()函数创建字典.png)
+![dict()函数创建字典](Python-04-Python列表、元组、字典和集合/dict()函数创建字典.png)
 
 ## Pyton访问字典
 
@@ -857,9 +857,7 @@ print(test_dict.get("性别"))
 
 - 判断字典中是否存在指定的键值对
 
---------
-
-### Python字典添加键值对
+## Python字典添加键值对
 
 为字典中添加新的键值对只需要为不存在的`key`赋值。
 
@@ -882,7 +880,7 @@ print(test_dict.get("班级"))
 
 `502` 
 
-### Python字典修改键值对
+## Python字典修改键值对
 
 这里的修改是指:修改键值对的值。
 
@@ -906,7 +904,7 @@ print(test_dict.get("班级"))
 999
 ```
 
-### Python字典删除键值对
+## Python字典删除键值对
 
 如果要删除字典中的键值对，则可以使用`del`语句，指定要删除的键值对的键。
 
@@ -928,7 +926,7 @@ print(test_dict.get("班级"))
 None
 ```
 
-### 判断字典中是否存在指定键值对
+## 判断字典中是否存在指定键值对
 
 如果需要判断字典是否存在指定键值对的键，可以使用`in`或`not in`运算符。
 
@@ -954,8 +952,6 @@ False
 # Python dict字典方法完全攻略(全)
 
 想查看`dict`该类包包含哪些方法，可以使用`dir()`方法进行查看。
-
---------
 
 ## Python keys(),values()和items()方法
 
@@ -1123,4 +1119,242 @@ print(student % student_info)
 姓名:LTy        班级:604        综合成绩:99.500000
 ```
 
-<++>
+# Python set集合详解
+
+set集合的特点:
+
+- 数据唯一性(必须保证集合中每种数据元素是唯一的)
+
+- 数据不可变(只允许存储不可变的数据类型，例如列表、字典、集合则是不允许存储在集合中的)
+
+- 集合是无序的，所以每次输出元素时，排序顺序可能都不同。
+
+## Python创建set集合
+
+有两种创建`set`集合的方法，分别是使用{}创建和使用set()函数将列表、元组等数据类型转化为集合。
+
+### 使用{}创建
+
+语法格式:
+
+`setname = {element1,element2...elementn}`
+
+setname代表集合的名称。
+
+例子:
+
+```
+test_set = {1,2,3,4}
+print(test_set)
+```
+
+输出结果:
+
+```
+{1, 2, 3, 4}
+```
+
+### 使用set()函数创建集合
+
+set()函数为Python的内置函数，其可以将字符串、列表、元组以及range对象等可迭代的对象转换成集合。
+
+语法格式:
+
+`setname = set(iteration)` 
+
+iteration就表示可迭代的对象。
+
+```
+set1 = set("I Love China")
+set2 = set(list(range(1,6)))
+set3 = set(tuple(range(1,6)))
+set4 = set(range(1,6))
+print(set1)
+print(set2)
+print(set3)
+print(set4)
+```
+
+输出结果:
+
+```
+# 从输出结果看，字符串被打乱了
+{'a', 'L', 'h', ' ', 'C', 'e', 'n', 'i', 'I', 'v', 'o'}
+{1, 2, 3, 4, 5}
+{1, 2, 3, 4, 5}
+{1, 2, 3, 4, 5}
+```
+
+**注意:如果想要创建空集合，必须使用`set()`函数实现，因为如果只给一对`{}`，Python解释器会将其视为一个空字典。**
+
+## Python访问set集合元素
+
+由于`set`集合是无序的，所以无法通过下标索引进行访问，但是我们可通过遍历`set`集合访问元素。
+
+```
+set1 = set("I Love China")
+
+for ele in set1:
+    print(ele,end='')
+```
+
+输出结果:
+
+```
+oCenaL Ihvi
+```
+
+## Python删除set集合
+
+想要手动删除`set`集合可以使用`del()`方法。
+
+```
+set1 = set("I Love China")
+print(set1)
+del(set1)
+print(set1)
+```
+
+输出结果:
+
+```
+{'a', 'i', 'e', ' ', 'L', 'C', 'o', 'h', 'I', 'n', 'v'}
+Traceback (most recent call last):
+  File "test.py", line 4, in <module>
+  │ print(set1)
+NameError: name 'set1' is not defined
+```
+
+# Python set集合基本操作(添加、删除、交集、并集、差集)
+
+`set`集合最常用的场景是添加、删除元素以及在多个集合之间做交集、并集、差集等运算。 
+
+## 向set集合中添加元素
+
+Python为`set`集合提供了`add()`方法，其可以向`set`集合添加元素。
+
+语法格式:
+
+`setname.add(element)` 
+
+setname表示要添加元素的集合，element代表添加的元素。
+
+**注意:element不可为可变数据类型** 
+
+## 从set集合中删除元素
+
+想要从集合中删除某个元素可以使用`remove()`方法
+
+语法格式:
+
+`setname.remove(element)` 
+
+例子:
+
+```
+set1 = {1,2,3,4}
+print(set1)
+set1.remove(1)
+print(set1)
+```
+
+输出结果:
+
+```
+{1, 2, 3, 4}
+{2, 3, 4}
+```
+
+**注意:如果要删除的元素已经被删除，再次删除则会引发`KeyError`错误**
+
+如果想要在删除失败时不抛出异常，我们可以使用`discard()`方法。
+
+例子:
+
+```
+set1 = {1,2,3,4}
+print(set1)
+set1.remove(1)
+print(set1)
+set1.discard(1)
+print(set1)
+set1.remove(1)
+print(set1)
+
+```
+
+输出结果:
+
+```
+{1, 2, 3, 4}
+{2, 3, 4}
+{2, 3, 4}
+Traceback (most recent call last):
+  File "test.py", line 7, in <module>
+  │ set1.remove(1)
+KeyError: 1
+```
+
+`discard()`方法与`remove()`方法的唯一区别在于:**删除失败时是否抛出异常** o
+
+## Python set集合做交集、并集、差集运算
+
+`set`集合最常用的操作也就是进行交集、并集、差集以及对称差集运算了，首先看这张图:
+
+![集合示意图](Python-04-Python列表、元组、字典和集合/Python集合示意图.png) 
+
+图中有两个集合，分别是:
+
+- `set1={1,2,3}`
+
+- `set2={3,4,5}`
+
+下面的表格展示了不同的运算，得到的不同的结果。
+
+![集合运算图](Python-04-Python列表、元组、字典和集合/Python集合运算.png) 
+
+# Python set集合方法详解(全)
+
+如果想要看`set`集合所有的方法，可以使用`dir(set)`进行查看。
+
+Python set方法
+
+| 方法名                        | 语法格式                               | 功能                                                                 |
+|-------------------------------|----------------------------------------|----------------------------------------------------------------------|
+| add()                         | set1.add()                             | 向set1集合中添加非可变元素                                           |
+| clear()                       | set1.clear()                           | 清空set1集合中所有的元素                                             |
+| copy()                        | set2=set1.copy()                       | 拷贝set1集合中的元素给set2                                           |
+| difference()                  | set3=set1.difference(set2)             | 将set1中有而set2中没有的元素给set3                                   |
+| difference_update()           | set1.difference_update(set2)           | 从set1中删除与set2相同的元素                                         |
+| discard()                     | set1.discard(element)                  | 删除set1中的element元素                                              |
+| intersection()                | set3=set1.intersection(set2)           | 取set1和set2的交集赋值给set3                                         |
+| intersection_update()         | set1.intersection_update(set2)         | 取set1和set2的交集并且将值赋值给set1(更新set1的值为set1与set2的交集) |
+| isdisjoint()                  | set1.isdisjoint(set2)                  | 判断set1和set2是否没有交集，有交集返回False;没有则返回True           |
+| issubset()                    | set1.issubset(set2)                    | 判断set1是否是set2的子集                                             |
+| issuperset()                  | set1.issuperset(set2)                  | 判断set2是否是set1的子集                                             |
+| pop()                         | a = set1.pop()                         | 取出set1中一个元素并赋值给a                                          |
+| remove()                      | set1.remove(element)                   | 移除set1中的element元素                                              |
+| symmetric_difference()        | set3=set1.symmetric_difference(set2)   | 取set1和set2中互不相同的元素给set3                                   |
+| symmetric_difference_update() | set1.symmetric_difference_update(set2) | 取set1和set2中互不相同的元素并更新set1的值                           |
+| union()                       | set3=set1.union(set2)                  | 取set1和set2的并集，赋值给set3                                       |
+| update()                      | set1.update(element)                   | 添加列表或集合中的元素到set1                                         |
+
+# Python frozenset(set集合的不可变版本)
+
+前面我们所学习的`set`集合是可变的，而frozenset则是`set`集合的不可变版本，它不具备`set`集合的所有能改变集合本身的方法。
+
+frozenset的主要使用场景:
+
+- 当集合元素不需要改变的时候，使用frozenset替代set将会更加安全。
+
+- 当某些API需要不可变对象作为参数时，必须用到frozenset替代set。
+
+
+# 深入底层了解Python字典和集合、一眼看穿他们的本质
+
+本小节涉及到未知的知识，推荐去原文看**[查看原文](http://c.biancheng.net/view/5302.html) 
+
+# Python深拷贝和浅拷贝详解
+
+本小节涉及到未知的知识，推荐去原文看[查看原文](http://c.biancheng.net/view/5358.html) 
+

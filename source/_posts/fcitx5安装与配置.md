@@ -1,5 +1,5 @@
 ---
-title: fctix5安装与配置
+title: fcitx5安装与配置
 copyright: true
 date: 2019-06-14 02:11:41
 categories: 折腾日记
@@ -7,7 +7,7 @@ tags:
   - fcitx5
 ---
 
-某天下午，我在Telegram群组里受人安利Fcitx5,今晚正好有空，所以就安装了个试试，还挺好的。
+某天下午，我在Telegram群组里受人安利Fcitx5,今晚正好有空，所以就安装了个试试，还挺好的。(抱歉，文章标题一直写错了..直到这篇博客被人看到提醒我才发现..)
 
 <!--more-->
 

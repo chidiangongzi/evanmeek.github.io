@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-09-23T10:06:11.098Z</updated>
+  <updated>2019-09-23T11:37:01.992Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自我反省</title>
+    <link href="https://evanmeek.github.io/2019/09/23/%E8%87%AA%E6%88%91%E5%8F%8D%E7%9C%81/"/>
+    <id>https://evanmeek.github.io/2019/09/23/自我反省/</id>
+    <published>2019-09-23T11:02:17.000Z</published>
+    <updated>2019-09-23T11:37:01.992Z</updated>
+    
+    <content type="html"><![CDATA[<p>自我反省，回想一下开学以来自己都做了些什么?</p><a id="more"></a><p>&emsp;&emsp;还在暑假时，我就十分期待开学，因为暑假一个人有些无聊。不是说hack不够快乐，而是我更想偶尔跟朋友一起娱乐。现在开学也有20天了，我却发现我开学时的计划已经被我忘得干干净净了。所以我得总结一下，自开学以来，李天宇都干了些什么?</p><p>&emsp;&emsp;由于在上学期竞选了社团技术部的部长，所以我不得不处于刚开学就忙得不可开交的状态。说实话，我并不擅长管理，而社团部门部长这一任职对我来说压力挺大的，我得每天留意微信，遗漏掉任何一条消息，都可能失去大量的信息。正是因为我每天微信消息很多，所以我越来越讨厌那些发长语音的人(除了我女朋友)，如果长语音能清晰地表达出意思还好，但往往很多人都是在嗯…啊…昂…徘徊，花费近1min的时间去听那个信息量两三句话的语音，简直让我每次听完都想立刻瞬间移动到对方面前，大喊几声:”你到底想说什么?你发语音能不能别发那么长段的!”，不过得益于网络的发展，我并不需要瞬间移动过去，我偶尔会把这两句话通过微信以网络传输的方式发送至对方。事情往往没有想得那么简单，因为我发完那两句话之后，对方可能又是一个长语音过来，解释他刚刚说的。讲了这一个小例子，读者们可能意识到，我是想表达:因为很多人是这么做的，所以我在使用微信时是十分低效的。每次想到这里，我就回想起在irc内通过邮件列表互相交流的时光是多么的美好。</p><p>&emsp;&emsp;我几乎每天都会在图书馆待上一阵子，正如此时，我就在图书馆敲打着蝶式键盘写着这一句。每天在图书馆的时间，我都用来学习Python了，因为我在暑假时在B站发现一位up主，他使用Vim完成日常的写代码、写文章、记笔记的事情，并且在看过他演示后，我便被他所提到的Vim彻底吸引了，因为实在太高效了。那时我每天就研究关于Linux某些软件的配置，例如:<code>i3wm</code>,<code>ranger</code>,<code>neovim</code>，其中我渐渐觉得Python几乎出现在我所接触到的软件的任何地方，可能是由于其第三方库丰富以及语法简单、优雅，程序可移植性高的缘故，由Python开发的开源软件，大多数都可以很轻松的使用Python扩展你想要添加的新功能。其中<code>ranger</code>我就想着为其提供一些新功能，所以我便开始学习Python，图书馆的日子基本都是学习Python这门语言了。</p><p>&emsp;&emsp;前面介绍了我生活的一些七七八八的东西，搞的我脑子很乱，我发现我还是不怎么会写作，下次得好好看下如何写作了，这篇文章暂时先写到这里，等我什么时候(咕咕咕) 有新想法了再继续吧!</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自我反省，回想一下开学以来自己都做了些什么?&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="个人感想" scheme="https://evanmeek.github.io/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
+    
+    
+      <category term="个人感想" scheme="https://evanmeek.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>[Python-04]Python列表、元组、字典和集合</title>
@@ -431,28 +453,6 @@
     <summary type="html">
     
       &lt;p&gt;The article is the next article of “MyCuteSister”.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="英文文章" scheme="https://evanmeek.github.io/categories/%E8%8B%B1%E6%96%87%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="个人感想" scheme="https://evanmeek.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyCuteSister-0</title>
-    <link href="https://evanmeek.github.io/2019/07/09/MyCuteSister-0/"/>
-    <id>https://evanmeek.github.io/2019/07/09/MyCuteSister-0/</id>
-    <published>2019-07-08T16:55:53.000Z</published>
-    <updated>2019-08-29T17:50:26.154Z</updated>
-    
-    <content type="html"><![CDATA[<p>Last article is so bad,so this article i want is not bad.</p><a id="more"></a><p>&emsp;I have a young sister,she is so cute and pretty.Now I will introduce her.Ok let’s do it.</p><p>She have a black long hair,and clear and shinning eyes.When she lie on soft reading books，I always think she so beatuiful and cute.At this point,I will ask her,what book are reading? then she always say cartoon book,At this point,I say,Why you read cartoon book? She say,because i like it.</p><p>Let’s talk about she’s not good,also many children’s problems.It picky eaters,such as,she <strong>dislike eggplant</strong>，I tell her do not picky eaters,she say ok.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Last article is so bad,so this article i want is not bad.&lt;/p&gt;
     
     </summary>
     

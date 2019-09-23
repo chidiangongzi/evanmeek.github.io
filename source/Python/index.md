@@ -11,13 +11,13 @@ date: 2019-08-28 14:21:35
 
 # 目录
 
-> [第一章----Python教程基础]()
+> [第一章----Python教程基础](https://evanmeek.github.io/2019/08/29/Python-01-Python%E6%95%99%E7%A8%8B%E5%9F%BA%E7%A1%80/)
 
-> [第二章----Python初探]()
+> [第二章----Python初探](https://evanmeek.github.io/2019/08/29/Python-02-Python%E5%88%9D%E6%8E%A2/)
 
-> [第三章----变量类型和运算符]()
+> [第三章----变量类型和运算符](https://evanmeek.github.io/2019/08/31/Python-03-Python%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/)
 
-> [第四章----列表、元组、字典和集合]()
+> [第四章----列表、元组、字典和集合](https://evanmeek.github.io/2019/09/08/Python-04-Python%E5%88%97%E8%A1%A8%E3%80%81%E5%85%83%E7%BB%84%E3%80%81%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88/)
 
 > [第五章----Python字符串常用方法]()
 

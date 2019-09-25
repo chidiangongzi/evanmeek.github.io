@@ -7,6 +7,10 @@ tags:
  - Python系列
 ---
 
+Python系列第四章笔记，查看Python系列所有文章，请点击[💿](http://c.biancheng.net/python/list_tuple_dict/)
+
+<!--more-->
+
 # 什么是序列，Python序列详解（包括序列类型和常用操作）
 
 序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。

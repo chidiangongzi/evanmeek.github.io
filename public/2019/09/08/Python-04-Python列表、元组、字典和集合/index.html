@@ -96,22 +96,22 @@
 
 
 
-  <meta name="description" content="什么是序列，Python序列详解（包括序列类型和常用操作）序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。 常见的序列有: 字符串、列表、元组、集合和字典。 这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。 序列索引索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问">
+  <meta name="description" content="Python系列第四章笔记，查看Python系列所有文章，请点击💿">
 <meta name="keywords" content="Python系列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Python-04]Python列表、元组、字典和集合">
 <meta property="og:url" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/index.html">
 <meta property="og:site_name" content="我不会编程的博客">
-<meta property="og:description" content="什么是序列，Python序列详解（包括序列类型和常用操作）序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。 常见的序列有: 字符串、列表、元组、集合和字典。 这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。 序列索引索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问">
+<meta property="og:description" content="Python系列第四章笔记，查看Python系列所有文章，请点击💿">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python序列内置函数.png">
 <meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/dict(">
 <meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python集合示意图.png">
 <meta property="og:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python集合运算.png">
-<meta property="og:updated_time" content="2019-09-23T10:06:11.098Z">
+<meta property="og:updated_time" content="2019-09-25T05:51:17.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Python-04]Python列表、元组、字典和集合">
-<meta name="twitter:description" content="什么是序列，Python序列详解（包括序列类型和常用操作）序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。 常见的序列有: 字符串、列表、元组、集合和字典。 这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。 序列索引索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问">
+<meta name="twitter:description" content="Python系列第四章笔记，查看Python系列所有文章，请点击💿">
 <meta name="twitter:image" content="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/Python序列内置函数.png">
 
 
@@ -478,7 +478,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-23 18:06:11" itemprop="dateModified" datetime="2019-09-23T18:06:11+08:00">2019-09-23</time>
+                <time title="修改时间：2019-09-25 13:51:17" itemprop="dateModified" datetime="2019-09-25T13:51:17+08:00">2019-09-25</time>
               
             
           </span>
@@ -541,7 +541,9 @@
       
 
       
-        <h1 id="什么是序列，Python序列详解（包括序列类型和常用操作）"><a href="#什么是序列，Python序列详解（包括序列类型和常用操作）" class="headerlink" title="什么是序列，Python序列详解（包括序列类型和常用操作）"></a>什么是序列，Python序列详解（包括序列类型和常用操作）</h1><p>序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。</p>
+        <p>Python系列第四章笔记，查看Python系列所有文章，请点击<a href="http://c.biancheng.net/python/list_tuple_dict/" target="_blank" rel="noopener">💿</a></p>
+<a id="more"></a>
+<h1 id="什么是序列，Python序列详解（包括序列类型和常用操作）"><a href="#什么是序列，Python序列详解（包括序列类型和常用操作）" class="headerlink" title="什么是序列，Python序列详解（包括序列类型和常用操作）"></a>什么是序列，Python序列详解（包括序列类型和常用操作）</h1><p>序列：一块可存放多个且连续的内存空间，并且这些值有顺序，可通过索引进行访问。</p>
 <p>常见的序列有: 字符串、列表、元组、集合和字典。</p>
 <p>这些常见的序列，除了集合和字典不支持索引、切片、相加和相乘的操作，其余的都可以。</p>
 <h2 id="序列索引"><a href="#序列索引" class="headerlink" title="序列索引"></a>序列索引</h2><p>索引就是一个序列中每个元素的编号。第一个元素的索引是0，也就是说想要访问某个序列的第一个元素，那么它的索引就是0，而想要访问最后一个元素，那么它的索引就是序列长度-1</p>
@@ -1122,7 +1124,7 @@
   <p><span>本文标题:</span><a href="/2019/09/08/Python-04-Python列表、元组、字典和集合/">[Python-04]Python列表、元组、字典和集合</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年09月08日 - 15:09</p>
-  <p><span>最后更新:</span>2019年09月23日 - 18:09</p>
+  <p><span>最后更新:</span>2019年09月25日 - 13:09</p>
   <p><span>原始链接:</span><a href="/2019/09/08/Python-04-Python列表、元组、字典和集合/" title="[Python-04]Python列表、元组、字典和集合">https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/09/08/Python-04-Python列表、元组、字典和集合/" aria-label="复制成功！"></i></span>
   </p>
@@ -1287,7 +1289,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

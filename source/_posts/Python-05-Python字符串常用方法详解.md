@@ -338,3 +338,459 @@ print(string.ljust(15,'*'),string2)
 
 ```
 HelloWorld***** 你好世界
+```
+
+## Python rjust()方法
+
+rjust()方法与ljust()方法类似，唯一不同的是rjust()方法是向字符串左侧填充字符以右对齐的目的。语法格式:
+
+`str.rjust(width,fillchar)` 
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.rjust(15,'*'))
+```
+
+输出结果:
+
+```
+*****HelloWorld
+```
+
+## Python center()方法
+
+center()方法与rjust()、ljust()方法类似，其作用是在字符串两边填充字符以进行居中对齐。语法格式:
+
+`str.center(width,fillchar)` 
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.center(20,'*'))
+```
+
+输出结果:
+
+`*****HelloWorld*****` 
+
+# Python startswith()和endswith()方法
+
+startswith()方法与endswith()方法都是用来检索指定字符串是否为字符串源的开头或结尾。
+
+## startswith()方法
+
+startswith()方法用于检索指定字符串是否为字符串源的开头。如果是返回True，否则反之。语法格式:
+
+`str.startswith(sub,start,end)` 
+
+- str: 字符串源
+
+- sub: 指定的字符串（子串)
+
+- start: 指定开始检索的索引位置，可选参数，默认为开头。
+
+- end: 指定结束检索的索引位置，可选参数，默认为字符串源结尾。
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.startswith("He",2))
+print(string.startswith("Wo",5))
+```
+
+输出结果:
+
+```
+False
+True
+```
+
+## endswith()方法
+
+endswith()方法用于检索字符串是否以指定字符串结尾
+
+语法格式:
+
+`str.endswith(sub,start,end)` 
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.endswith('ld'))
+print(string.endswith('rl',0,len(string)-1))
+```
+
+输出结果:
+
+```
+True
+True
+```
+
+# Pyhton大小写转换(3种)函数及用法
+
+Python提供了三种函数，方便用于转换字符串大小写，分别是title(),lower(),upper().
+
+## title()方法
+
+title()方法用于将字符串的字符转换为大写，其他字符转换为小写，并返回。
+
+**若不需要进行转换，则会直接返回** 
+
+语法格式:
+
+`str.title()` 
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.title())
+```
+
+输出结果:
+
+```
+Helloworld
+```
+
+## lower()方法
+
+lower()方法用于将字符串中大写的字符转换为小写字符，并返回。
+
+语法格式:
+
+`str.lower()` 
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.lower())
+```
+
+输出结果:`helloworld` 
+
+## upper()方法
+
+upper()方法用于将字符串中小写的字符转换为大写字符，并返回。
+
+语法格式:
+
+`str.upper()` 
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.upper())
+```
+
+输出结果:
+
+`HELLOWORLD` 
+
+# Python去除字符串中空格
+
+Python提供了三种方法，用于去除字符串中的特殊符号或指定字符，例如**换行符(\n)，回车符(\r)，制表符(\t)**，它们分别是strip(),ltrip(),rtrip().
+
+## strip()方法
+
+strip()用于去除字符串前后(左右侧)的特殊符号或指定字符。
+
+语法格式:
+
+`str.strip(char)` 
+
+- str: 字符串源
+
+- char: 指定删除的字符，可选参数，默认为空格、换行符、回车符、制表符
+
+例子:
+
+```
+string = "\r   排山倒海\t\n\r"
+print(repr(string))
+print(repr(string.strip()))
+print(repr(string.strip('\r')))
+```
+
+输出结果:
+
+```
+'\r   排山倒海\t\n\r'
+'排山倒海'
+'   排山倒海\t\n'
+```
+
+## lstrip()方法
+
+lstrip方法用于去除字符串前(左侧)的特殊符号或指定字符。
+
+语法格式:
+
+`str.lstrip(char)` 
+
+例子:
+
+```
+string = "\t\n\r排山倒海"
+print(repr(string))
+print(repr(string.lstrip()))
+```
+
+输出结果:
+
+```
+'\t\n\r排山倒海'
+'排山倒海'
+```
+
+## rstrip()方法
+
+rstrip()方法与lstrip()方法以及strip()方法很类似，只不过其作用是去除字符串后(右侧)的特殊符号或指定字符。
+
+语法格式:
+
+`str.rstrip(char)` 
+
+例子:
+
+```
+string = "排山倒海\t\n\r"
+print(repr(string))
+print(repr(string.rstrip()))
+```
+
+输出结果:
+
+```
+'排山倒海\t\n\r'
+'排山倒海'
+```
+
+# Python format()方法格式化输出方法详解
+
+语法格式:
+
+`str.format(args)` 
+
+- str: 字符串源
+
+- args: 参数列表，使用逗号进行分割
+
+format()方法的重点在于搞清楚str显示样式的格式。在差UN感觉爱你显示样式模板时，需要使用`{}`和`:`来指定占位符，其完整的语法格式为:
+
+`{[index][:[[fill] align] [sign] [#] [width] [.precision] [type]]}` 
+
+**注意,语法格式中的`[]`括起来的都是可选参数** 
+
+参数含义如下:
+
+- index : 指定后面设置的格式要作用到args中第n个数据，数据的索引值从0开始，默认值为args中数据的先后顺序自动分配排列。
+
+- fill : 指定空白处填充的字符。注意，当填充字符为逗号`,`切作用于整数或浮点数时，该整数(或浮点数)会以逗号分隔的形式输出，例如(1000会输出1,000)。
+
+- align : 指定数据的对齐方式
+
+align 参数及含义
+
+| align | 含义                                                                  |
+|-------|-----------------------------------------------------------------------|
+| <     | 数据左对齐                                                            |
+| >     | 数据右对齐                                                            |
+| =     | 数据右对齐，同时将符号放置在填充内容的最左侧，该选项只对 数据类型有效 |
+| ^     | 数据居中，此选项续和width参数一起使用                                 |
+
+- sign : 指定有无符号数
+
+| sign | 含义                                                 |
+|------|------------------------------------------------------|
+| +    | 正数加正号，负数加负号                               |
+| -    | 正数不加正好，负数加负号                             |
+| 空格 | 正数前加空格，负数前加负号                           |
+| #    | 对于二、八、十六进制数，使用此参数，会显示对应的前缀 |
+
+- width : 指定输出数据时所占的宽度。
+
+- .precision : 指定保留的小数位数。
+
+- type : 指定输出数据的具体类型
+
+| type类型值 | 含义                                           |
+|------------|------------------------------------------------|
+| s          | 对字符串类型格式化                             |
+| d          | 十进制整数                                     |
+| c          | 将十进制整数自动转换成对应的 Unicode字符       |
+| e或者E     | 转换成科计数法后，再格式化输出                 |
+| g或G       | 自动在e和f中切换                               |
+| b          | 将十进制数自动转换成二进制表示，再格式化       |
+| o          | 将十进制数自动转换成八进制表示，再格式化       |
+| x或X       | 将十进制数自动转换成十六进制表示，再格式化     |
+| f或F       | 转换为浮点数(默认小数点后保留6位),再格式化输出 |
+| %          | 显示百分比(默认显示小数点后6位)                |
+
+例子:
+
+```
+string = "姓名:{:>5s}\n工资:{:>10.2F}\n"
+print(string.format("张三",1001.223))
+```
+
+输出结果:
+
+```
+
+姓名:   张三
+工资:   1001.22
+```
+
+例子2:
+
+```
+# 货币形式显示
+print("$:{:,d}".format(1000009922399))
+
+# 科学计数法显示
+print("科学计数法:{:e}".format(1000.123))
+
+# 十六进制显示
+print("1016的十六进制:{:x}".format(1016))
+
+# 百分比形式显示
+print("百分比显示:{:.0%}".format(0.99))
+```
+
+输出结果:
+
+```
+$:1,000,009,922,399
+科学计数法:1.000123e+03
+1016的十六进制:3f8
+百分比显示:99%
+```
+
+# Python encode()和decode()方法: 字符串编码转换
+
+前言: 世界最早的字符编码时ASCII编码，它最多表示256个符号，每个符号占用1个字节，随着技术的发展，多国的文字都需要进行编码，所以出现了很多种编码格式，例如UTF-8也就是最通用的编码格式，Python3.x默认也是使用UTF-8编码格式。
+
+Python中有两种常用的字符串类型: `str`与`bytes`类型，`str`用来表示Unicode字符,`bytes`用来表示二进制数据。
+
+所以我们就需要使用`encode()`和`decode()`方法进行转换。
+
+## Phthon encode()方法
+
+encode()方法是str提供的功法，其作用是将str类型转换成bytes类型，这个操作也被称为编码。
+
+语法格式如下:
+
+`str.encode([encode="utf-8"],[errors="strict"])` 
+
+- encoding : 指定在编码时采用的字符编码，默认采用utf-8。当只有这个参数时，可以省略`=`直接写`str.encode("UTF-8")`
+
+- errors : 指定错误处理方式，默认为strict，其可选项有:
+
+| errors            | 含义                   |
+|-------------------|------------------------|
+| strict            | 遇到非法字符就抛出异常 |
+| ignore            | 忽略非法字符           |
+| replace           | 用`?`替代非法字符      |
+| xmlcharrefreplace | 使用xml的字符引用      |
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.encode())
+```
+
+输出结果:
+
+`b'HelloWorld'` 
+
+## Python decode()方法
+
+decode()可以将bytes类型的二进制数据转换成str类型，这个过程被称为解码
+
+语法格式:
+
+`bytes.decode([encoding="utf-8"],[errors="strict"])` 
+
+例子:
+
+```
+string = "HelloWorld"
+print(string.encode())
+print(bytes.decode(string.encode()))
+```
+
+输出结果:
+
+```
+b'HelloWorld'
+HelloWorld
+```
+
+**注意:解码时必须使用与编码时相同的编码格式，否则将会抛出异常** 
+
+# Python dir()和help()帮助函数
+
+Python提供了两个函数，用于帮助程序员查询文档，掌握这两个函数则可以查看所有函数(方法)的用法及功能.
+
+**dir()** 列出指定类或模块包含的全部内容，包括函数、方法、类、变量etc.
+
+**help()** 查看某个函数或方法的帮助文档。
+
+例子:
+
+查看字符串能调用的全部内容
+
+```
+print(dir(str))
+```
+
+输出结果:
+
+```
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '_
+_eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs
+__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__'
+, '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__',
+'__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__'
+, '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'e
+ncode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isal
+num', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', '
+isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lo
+wer', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust',
+ 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip',
+ 'swapcase', 'title', 'translate', 'upper', 'zfill']
+```
+
+**注意:其中以`_`结尾的方法为私有方法，不希望被外界直接调用。** 
+
+
+**help()** 
+
+想要查看某个方法或函数的帮助文档，就使用help()函数
+
+`print(help(str.format))` 
+
+输出结果:
+
+```
+Help on method_descriptor:
+
+format(...)
+    S.format(*args, **kwargs) -> str
+
+    Return a formatted version of S, using substitutions from args and kwargs.
+    The substitutions are identified by braces ('{' and '}').
+(END)
+```
+
+

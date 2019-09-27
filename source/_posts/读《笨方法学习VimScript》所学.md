@@ -207,4 +207,55 @@ Leaders是Vim中让用户自定义的特殊键位，其作用主要是作为映�
 
 # Abbreviations
 
-我表示很想继续写，但是我还有其他事...这个得等到晚上再写了...等下开始学习Haskell了
+`Abbreviations`是Vim中一个灵活且强大的特性，其主要用于`insert replace command` 模式
+
+书里说了，只讲`insert` 模式下的`abbreviations`，简单的说`abbreviations` 就是一个缩写替换，可以自定义一些缩写，当你在`insert` 模式下键入这些缩写就会被替换成事先定义好的值。
+
+`insert` 模式的`abbreviations` 命令是:`iabbrev` 例如:`:ibbrev name8 EvanMeek` ，执行这条命令当我们在插入模式下键入`name8` 并按下空格，Vim的`abbreviations` 特性就会将其替换为我们定义好的`EvanMeek` 。
+
+## Keyword Characters
+
+`Keyword Characters`是`abbreviations` 的一个概念，Vim中有一个`keyword范围列表` 想要查看这个返回列表可以执行命令:`:set iskeyword?` ，你将会看类似`iskeyword=@,48-57,_,192-255` 的结果，这里简单介绍一下，这是一个格式，这个格式包含了如下几种:
+
+- 48-57 其实是ASCII值在48-57之间的字符，也就是数字(0-9)
+
+- 192-255 是ASCII值，代表了一些特殊的ASCII字符
+
+- @ 代表除了小写字母ASCII字母以外的字母
+
+- `_` 以及下划线
+
+为什么说`Keyword Characters`是`Abbreviations` 的概念，因为: 当在插入模式下键入缩写后的后一个字符不包含在`iskeyword` 列表中则会将定义好的全拼替换掉缩写，例如我们敲<space>就不在`iskeyword` 列表中，所以可以替换。
+
+下面举个`abbreviations` 特性的常用例子吧:
+
+```
+:iabbrev em7 email:the_lty_mail@foxmail.com
+```
+
+重载配置文件后，当我们在插入模式下键入em7然后再键入一个非`iskeyword` 列表中的字符，将会替换为`email:the_lty_mail@foxmail.com`。
+
+## 为什么不用Mappings?
+
+其实书上的例子已经很好的解释这个问题了。
+
+首先用mappings做一个替换:`:inoremap lol ILoveLOL`，然后你进入`insert` 模式，键入`你玩不玩lol?` ，此时`lol` 将会被替换为`ILoveLOL` ，让我们用`abbreviations` 特性再做相同的操作。
+
+执行命令:
+
+```
+:iunmap lol
+:iabbrev lol ILoveLOL
+```
+
+现在再试试，你就懂了。
+
+## 练习
+
+为我常用的字符串添加`abbreviations` 特性与配置中。
+
+```
+:iabbrev info email:the_lty_mail@foxmail.com    name:EvanMeek    WebSize:https://evanmeek.github.io
+```
+
+

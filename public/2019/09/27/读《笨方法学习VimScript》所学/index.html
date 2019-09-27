@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="身为一名每天使用Vim超过5小时的人来说，十分有必要学习一下VimScript，正好看到这本书作为入门很合适。这篇文章则是记录我读完此册子所学。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-27T12:41:26.354Z">
+<meta property="og:updated_time" content="2019-09-27T17:20:01.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读《笨方法学习VimScript》所学">
 <meta name="twitter:description" content="身为一名每天使用Vim超过5小时的人来说，十分有必要学习一下VimScript，正好看到这本书作为入门很合适。这篇文章则是记录我读完此册子所学。">
@@ -456,12 +456,24 @@
                 
               
 
-              <time title="创建时间：2019-09-27 18:26:16 / 修改时间：20:41:26" itemprop="dateCreated datePublished" datetime="2019-09-27T18:26:16+08:00">2019-09-27</time>
+              <time title="创建时间：2019-09-27 18:26:16" itemprop="dateCreated datePublished" datetime="2019-09-27T18:26:16+08:00">2019-09-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-28 01:20:01" itemprop="dateModified" datetime="2019-09-28T01:20:01+08:00">2019-09-28</time>
               
             
           </span>
@@ -604,7 +616,31 @@
 <p><code>:nnoremap &lt;Leader&gt;fl :r !figlet</code> </p>
 <p>这样当我按下<code>&lt;Leader&gt;+f+l</code> 这个键盘映射后将会自动帮我输入我映射的值，然后等到我输入一些内容，按下回车后就会将figlet的执行结果插入到当前文本中。</p>
 <p><strong>myvimrc的帮助文档:</strong> 文档中说，<code>$MYVIMRC</code> 是一个环境变量，这个环境变量指向的是<code>vimrc</code> 文件，这个文件用于VIM启动时的初始化。并且这个环境变量如果没有被设置或使用VIMINIT则会从5个地方开始查找，分别是<code>1. 环境变量$VIMINIT 2.用户vimrc文件 3.环境变量$EXINIT 4.用户exrc文件 5. 默认的vimrc文件(位于$VIMRUNTIME/defaults.vim)</code> </p>
-<h1 id="Abbreviations"><a href="#Abbreviations" class="headerlink" title="Abbreviations"></a>Abbreviations</h1><p>我表示很想继续写，但是我还有其他事…这个得等到晚上再写了…等下开始学习Haskell了</p>
+<h1 id="Abbreviations"><a href="#Abbreviations" class="headerlink" title="Abbreviations"></a>Abbreviations</h1><p><code>Abbreviations</code>是Vim中一个灵活且强大的特性，其主要用于<code>insert replace command</code> 模式</p>
+<p>书里说了，只讲<code>insert</code> 模式下的<code>abbreviations</code>，简单的说<code>abbreviations</code> 就是一个缩写替换，可以自定义一些缩写，当你在<code>insert</code> 模式下键入这些缩写就会被替换成事先定义好的值。</p>
+<p><code>insert</code> 模式的<code>abbreviations</code> 命令是:<code>iabbrev</code> 例如:<code>:ibbrev name8 EvanMeek</code> ，执行这条命令当我们在插入模式下键入<code>name8</code> 并按下空格，Vim的<code>abbreviations</code> 特性就会将其替换为我们定义好的<code>EvanMeek</code> 。</p>
+<h2 id="Keyword-Characters"><a href="#Keyword-Characters" class="headerlink" title="Keyword Characters"></a>Keyword Characters</h2><p><code>Keyword Characters</code>是<code>abbreviations</code> 的一个概念，Vim中有一个<code>keyword范围列表</code> 想要查看这个返回列表可以执行命令:<code>:set iskeyword?</code> ，你将会看类似<code>iskeyword=@,48-57,_,192-255</code> 的结果，这里简单介绍一下，这是一个格式，这个格式包含了如下几种:</p>
+<ul>
+<li><p>48-57 其实是ASCII值在48-57之间的字符，也就是数字(0-9)</p>
+</li>
+<li><p>192-255 是ASCII值，代表了一些特殊的ASCII字符</p>
+</li>
+<li><p>@ 代表除了小写字母ASCII字母以外的字母</p>
+</li>
+<li><p><code>_</code> 以及下划线</p>
+</li>
+</ul>
+<p>为什么说<code>Keyword Characters</code>是<code>Abbreviations</code> 的概念，因为: 当在插入模式下键入缩写后的后一个字符不包含在<code>iskeyword</code> 列表中则会将定义好的全拼替换掉缩写，例如我们敲<space>就不在<code>iskeyword</code> 列表中，所以可以替换。</space></p>
+<p>下面举个<code>abbreviations</code> 特性的常用例子吧:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:iabbrev em7 email:the_lty_mail@foxmail.com</span><br></pre></td></tr></table></figure>
+<p>重载配置文件后，当我们在插入模式下键入em7然后再键入一个非<code>iskeyword</code> 列表中的字符，将会替换为<code>email:the_lty_mail@foxmail.com</code>。</p>
+<h2 id="为什么不用Mappings"><a href="#为什么不用Mappings" class="headerlink" title="为什么不用Mappings?"></a>为什么不用Mappings?</h2><p>其实书上的例子已经很好的解释这个问题了。</p>
+<p>首先用mappings做一个替换:<code>:inoremap lol ILoveLOL</code>，然后你进入<code>insert</code> 模式，键入<code>你玩不玩lol?</code> ，此时<code>lol</code> 将会被替换为<code>ILoveLOL</code> ，让我们用<code>abbreviations</code> 特性再做相同的操作。</p>
+<p>执行命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:iunmap lol</span><br><span class="line">:iabbrev lol ILoveLOL</span><br></pre></td></tr></table></figure>
+<p>现在再试试，你就懂了。</p>
+<h2 id="练习-6"><a href="#练习-6" class="headerlink" title="练习"></a>练习</h2><p>为我常用的字符串添加<code>abbreviations</code> 特性与配置中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:iabbrev info email:the_lty_mail@foxmail.com    name:EvanMeek    WebSize:https://evanmeek.github.io</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -627,7 +663,7 @@
   <p><span>本文标题:</span><a href="/2019/09/27/读《笨方法学习VimScript》所学/">读《笨方法学习VimScript》所学</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年09月27日 - 18:09</p>
-  <p><span>最后更新:</span>2019年09月27日 - 20:09</p>
+  <p><span>最后更新:</span>2019年09月28日 - 01:09</p>
   <p><span>原始链接:</span><a href="/2019/09/27/读《笨方法学习VimScript》所学/" title="读《笨方法学习VimScript》所学">https://evanmeek.github.io/2019/09/27/读《笨方法学习VimScript》所学/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/09/27/读《笨方法学习VimScript》所学/" aria-label="复制成功！"></i></span>
   </p>
@@ -981,7 +1017,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么选择这本书"><span class="nav-number">1.</span> <span class="nav-text">为什么选择这本书?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">3.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Vimrc文件"><span class="nav-number">3.1.</span> <span class="nav-text">创建Vimrc文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印信息"><span class="nav-number">4.</span> <span class="nav-text">打印信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">4.1.</span> <span class="nav-text">注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置选项"><span class="nav-number">5.</span> <span class="nav-text">设置选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔选项"><span class="nav-number">5.1.</span> <span class="nav-text">布尔选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值选项"><span class="nav-number">5.2.</span> <span class="nav-text">键值选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次性设置多个选项"><span class="nav-number">5.3.</span> <span class="nav-text">一次性设置多个选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.4.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本映射"><span class="nav-number">6.</span> <span class="nav-text">基本映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">6.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式映射"><span class="nav-number">7.</span> <span class="nav-text">模式映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-2"><span class="nav-number">7.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#精确映射"><span class="nav-number">8.</span> <span class="nav-text">精确映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-3"><span class="nav-number">8.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Leaders"><span class="nav-number">9.</span> <span class="nav-text">Leaders</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-Leader"><span class="nav-number">9.1.</span> <span class="nav-text">Local Leader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-4"><span class="nav-number">9.2.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑你的Vimrc文件"><span class="nav-number">10.</span> <span class="nav-text">编辑你的Vimrc文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑映射"><span class="nav-number">10.1.</span> <span class="nav-text">编辑映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重读映射配置"><span class="nav-number">10.2.</span> <span class="nav-text">重读映射配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-5"><span class="nav-number">10.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Abbreviations"><span class="nav-number">11.</span> <span class="nav-text">Abbreviations</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么选择这本书"><span class="nav-number">1.</span> <span class="nav-text">为什么选择这本书?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">3.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Vimrc文件"><span class="nav-number">3.1.</span> <span class="nav-text">创建Vimrc文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印信息"><span class="nav-number">4.</span> <span class="nav-text">打印信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">4.1.</span> <span class="nav-text">注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置选项"><span class="nav-number">5.</span> <span class="nav-text">设置选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔选项"><span class="nav-number">5.1.</span> <span class="nav-text">布尔选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值选项"><span class="nav-number">5.2.</span> <span class="nav-text">键值选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次性设置多个选项"><span class="nav-number">5.3.</span> <span class="nav-text">一次性设置多个选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.4.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本映射"><span class="nav-number">6.</span> <span class="nav-text">基本映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">6.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式映射"><span class="nav-number">7.</span> <span class="nav-text">模式映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-2"><span class="nav-number">7.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#精确映射"><span class="nav-number">8.</span> <span class="nav-text">精确映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-3"><span class="nav-number">8.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Leaders"><span class="nav-number">9.</span> <span class="nav-text">Leaders</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-Leader"><span class="nav-number">9.1.</span> <span class="nav-text">Local Leader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-4"><span class="nav-number">9.2.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑你的Vimrc文件"><span class="nav-number">10.</span> <span class="nav-text">编辑你的Vimrc文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑映射"><span class="nav-number">10.1.</span> <span class="nav-text">编辑映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重读映射配置"><span class="nav-number">10.2.</span> <span class="nav-text">重读映射配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-5"><span class="nav-number">10.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Abbreviations"><span class="nav-number">11.</span> <span class="nav-text">Abbreviations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keyword-Characters"><span class="nav-number">11.1.</span> <span class="nav-text">Keyword Characters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么不用Mappings"><span class="nav-number">11.2.</span> <span class="nav-text">为什么不用Mappings?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-6"><span class="nav-number">11.3.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></div>
             
 
           </div>

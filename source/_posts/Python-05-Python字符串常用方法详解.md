@@ -1,4 +1,5 @@
----title: '[Python-05]Python字符串常用方法详解'
+---
+title: '[Python-05]Python字符串常用方法详解'
 copyright: true
 date: 2019-09-23 19:40:09
 categories: Python

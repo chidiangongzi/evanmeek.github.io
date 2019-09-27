@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://evanmeek.github.io/2019/09/26/Python-05-Python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</loc>
+    <loc>https://evanmeek.github.io/2019/09/27/%E8%AF%BB%E3%80%8A%E7%AC%A8%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0VimScript%E3%80%8B%E6%89%80%E5%AD%A6/</loc>
     
-    <lastmod>2019-09-26T13:18:05.312Z</lastmod>
+    <lastmod>2019-09-27T12:41:26.354Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://evanmeek.github.io/2019/09/26/%E5%8A%9F%E8%83%BD%E5%BC%BA%E5%A4%A7-%E5%9F%BA%E4%BA%8EGPU%E5%8A%A0%E9%80%9F-Kitty%E7%BB%88%E7%AB%AF/</loc>
+    
+    <lastmod>2019-09-27T10:21:50.848Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://evanmeek.github.io/2019/09/23/Python-05-Python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</loc>
+    
+    <lastmod>2019-09-26T16:04:48.878Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://evanmeek.github.io/2019/09/26/%E8%B6%A3%E5%AD%A6Haskell-01/</loc>
+    
+    <lastmod>2019-09-26T15:46:32.880Z</lastmod>
     
   </url>
   
@@ -58,14 +79,14 @@
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/categories/index.html</loc>
+    <loc>https://evanmeek.github.io/tags/index.html</loc>
     
     <lastmod>2019-08-29T17:50:26.189Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/tags/index.html</loc>
+    <loc>https://evanmeek.github.io/categories/index.html</loc>
     
     <lastmod>2019-08-29T17:50:26.189Z</lastmod>
     

@@ -19,7 +19,7 @@ date: 2019-08-28 14:21:35
 
 > [第四章----列表、元组、字典和集合](https://evanmeek.github.io/2019/09/08/Python-04-Python%E5%88%97%E8%A1%A8%E3%80%81%E5%85%83%E7%BB%84%E3%80%81%E5%AD%97%E5%85%B8%E5%92%8C%E9%9B%86%E5%90%88/)
 
-> [第五章----Python字符串常用方法]()
+> [第五章----Python字符串常用方法](https://evanmeek.github.io/2019/09/23/Python-05-Python字符串常用方法详解/)
 
 > [第六章----Python流程控制]()
 

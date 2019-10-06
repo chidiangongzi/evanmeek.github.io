@@ -258,4 +258,58 @@ Leaders是Vim中让用户自定义的特殊键位，其作用主要是作为映�
 :iabbrev info email:the_lty_mail@foxmail.com    name:EvanMeek    WebSize:https://evanmeek.github.io
 ```
 
+# 更多的Mappings
 
+前面用到了很多多字符的mappings但是我们一直没有提到mappings的连续性。
+
+首先运行如下命令:`:nonoremap jk dd` 
+
+当我们处于 normal模式时，快速键入`jk`  Vim则会执行我们映射的 `dd` 命令，当前行被删除了。
+
+现在再试试按`jk`，但是在按下`j` 后等待一会儿，再按下`k` ，我们会发现，Vim不会执行我们所映射的那个命令。这是因为，当我们设置的多字符`mappings`在键入时，如果没有快速连贯的输入，那么Vim就不会识别。
+
+## 一个更为复杂的Mapping
+
+书中是在normal模式下将单词用`""`包住。
+
+运行命令:`nonoremap <LEADER>" viw<ESC>a"<ESC>hbi"<ESC>lel` 
+
+现在解释一下:
+
+- `viw` 高亮选中单词
+
+- `<ESC>` 退出visual模式，此时光标会在单词的最后一个字符上
+
+- `a` 移动光标至当前位置后并进入`insert` 模式
+
+- `"` 插入一个`"` 
+
+- `<ESC>` 退出insert模式，进入normal模式
+
+- `h` 光标左移
+
+- `b` 移动光标至单词头部
+
+- `i` 进入insert模式
+
+- `"` 键入一个`"` 
+
+- `<ESC>` 返回到normal模式
+
+- `l` 光标右移，置于单词头部
+
+- `e` 移动光标至单词尾部
+
+- `l` 光标右移，置于第一个添加的引号上
+
+需要注意的是:这里是使用`nonoremap` 映射的，而非`nmap` 映射，所以尽管映射的字符已经被映射，Vim也只会讲其中的字符按默认功能执行。
+
+## 练习
+
+创建一个mappings，使用单引号而不是双引号。
+
+`:nonoremap <LEADER>' viw<ESC>a'<ESC>hbi'<ESC>lel` 
+
+试用`vnoremap` 添加mappings，使其能够用引号将高亮选中的文本包裹。
+test
+`:vnoremap <LEADER>' '` 

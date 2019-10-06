@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://evanmeek.github.io/2019/09/28/Python-06-Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
+    
+    <lastmod>2019-10-06T13:39:27.511Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://evanmeek.github.io/2019/09/27/%E8%AF%BB%E3%80%8A%E7%AC%A8%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0VimScript%E3%80%8B%E6%89%80%E5%AD%A6/</loc>
+    
+    <lastmod>2019-10-05T16:14:34.526Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://evanmeek.github.io/Python/index.html</loc>
     
     <lastmod>2019-09-28T06:56:50.857Z</lastmod>
@@ -9,23 +23,9 @@
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/2019/09/28/Python-06-Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
-    
-    <lastmod>2019-09-28T06:53:35.154Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://evanmeek.github.io/2019/09/23/Python-05-Python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</loc>
     
     <lastmod>2019-09-28T06:15:14.456Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://evanmeek.github.io/2019/09/27/%E8%AF%BB%E3%80%8A%E7%AC%A8%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0VimScript%E3%80%8B%E6%89%80%E5%AD%A6/</loc>
-    
-    <lastmod>2019-09-27T17:20:01.177Z</lastmod>
     
   </url>
   

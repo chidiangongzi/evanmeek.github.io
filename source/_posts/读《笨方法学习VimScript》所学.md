@@ -310,6 +310,187 @@ Leaders是Vim中让用户自定义的特殊键位，其作用主要是作为映�
 
 `:nonoremap <LEADER>' viw<ESC>a'<ESC>hbi'<ESC>lel` 
 
-试用`vnoremap` 添加mappings，使其能够用引号将高亮选中的文本包裹。
-test
-`:vnoremap <LEADER>' '` 
+# 本地缓冲区的选项和映射
+
+如题所示，本章会讲到本地缓冲区，我们将会对本地缓冲区与全局缓冲区做对比。
+
+为了演示，请打开两个文件，例如`file1` 和`file2`，然后输入一些字符。
+
+## 映射
+
+首先，我们打开 `file1` ，然后执行命令:
+
+```
+:nnoremap <LEADER>d dd
+:nnoremap <BUFFER> <LEADER>x dd
+```
+
+现在我们再打开`file2` ，然后使用刚刚映射的快捷键，你会发现第一个映射的快捷键可以使用，但是第二个则不行，现在我们再打开`file1` ，却发现两个快捷键都可以被使用。
+
+好了，现在解释一下这是为什么。首先，我们看到两个映射不同的地方除了映射键以外，第二个映射还多了个`<buffer>` ，这代表了我们当前映射的快捷键只有在当前**缓冲区** 起作用，而当我们切换到另外一个缓冲器，那么自然映射不起作用了。
+
+## 本地Leader
+
+本地Leader的作用是: 更精确的定义映射。
+
+有时我们在使用一些对特殊缓冲区起作用的插件时，为了防止与全局Leader映射起冲突，所以就需要使用本地Leader，也就是`<localleader>` 。
+
+## 设置
+
+前面几个章节我们都是使用`set` 命令进行设置VIM的，但是为了让我们的设置更加精准，在不同特殊缓冲区具有不同的设置时，我们就应该使用本地设置`setlocal` 命令进行设置，下面来看几个例子:
+
+仍然是操作`file1` 和`file2` ，首先，我们打开`file1` 键入命令:`:setlocl wrap` 然后在打开`file2` 键入命令:`:setlocal nowrap` ，然后为两个文件键入长长的一段字符。
+
+你会发现`file1` 是具有自动折行的，而`file2` 却不具备。
+
+**注意:不是所有命令都可以设置setlocl的，如果需要查看命令是否可以设置为`setlock` 那么可以通过命令执行:Help命令查看命令的帮助文档** 
+
+## 覆盖
+
+这一小节其实不需要做什么演示，一句话就可以概括:`本地缓冲区命令要比全局缓冲区优先级高，如果本地缓冲区命令与全局缓冲去起了冲突，那么Vim将会忽略全局缓冲区的命令` 
+
+## 练习
+
+阅读`:help local-options` 
+
+> 写完了两章，结果被Nvim的交换文件给重置了，心态崩了
+
+# 自动命令
+
+自动命令与映射一样重要。
+
+自动命令可以让Vim自动执行某些命令，这些命令会在某些事件触发时执行。
+
+下面看一个例子:
+
+`:autocmd BufNewFile * :write` 
+
+输入这条命令，然后使用`:edit` 命令新建一个缓冲区，你会发现会缓冲区会被自动写入进文件了。
+
+下面我们就来解释一下。
+
+## 自动命令结构
+
+先讲一下自动命令结构，你就可以很清晰的了解自动命令为什么能做到监听事件了。
+
+`:autocmd BufNewFile * :write` 
+
+- BufNewFile 代表要监听的“事件”
+
+- * 代表事件过滤的“模式（pattern）”
+
+- :write 代表要执行的命令。
+
+这条命令的实际上做的事是:
+
+1. 当Vim监听到`BufNewFile` 这个事件后,
+
+2. 对所有类型的文件，因为过滤模式是`*` ,
+
+3. 执行`:write` 命令。
+
+另一个栗子:
+
+`:autocmd BufNewFile *.txt :write` 
+
+这个例子是将事件过滤模式改为了`*.txt` ，代表只有新建缓冲区的文件类型为`txt` 才会触发这个自动命令。
+
+## 多个事件
+
+一个自动命令可以绑定多个事件，多个事件之间由逗号分隔开。
+
+例如:
+
+`:autocmd BufWritePre,BufRead *.html :normal gg=G` 
+
+这个自动命令将会在文件类型为`html` 的缓冲区写入文件时或者读入文件类型为`html` 类型的文件至缓冲区时进行文本缩进处理。
+
+## FileType事件
+
+`FileType`可以让Vim在设置一个缓冲区的`filetype` 时触发。
+
+见名知意，`filetype` 也就是文件类型的意思。
+
+例如我们要对JavaScript与Python映射快速添加注释的快捷键，但由于两门编程语言的注释语法不同，所以我们就可以根据`FileType`  的值设置不同的文件，定义不同的映射。
+
+```
+:autocmd FileType javascript nnoremap <buffer> <localleader>c I//<ESC>
+:autocmd FileType python nnoremap <buffer> <localleader>c I#<ESC>
+```
+
+# 本地缓冲区缩写
+
+本章很简单，只是将缩写添加一个范围限制。
+
+首先，我们执行命令:`:iabbrev <buffer> --- Hello` 
+
+再进入插入模式，键入`Hello --- World` 
+
+我们发现，`---` 被替换为了`Hello` ，这没什么新鲜的，但是当我们打开另一个缓冲区，将会发现这个缩写不起作用了，因为这个缩写是`local iabbrev` 
+
+# 自动命令组
+
+前面几章，我们学习了自动命令，但其实他在某些场景下仍然有些问题。
+
+例如，先执行命令:`:autocmd BufWrite * :echom "Writing buffer"` 
+
+然后使用`:write` 命令将当前缓冲区写入文件，然后执行`:messages` 命令查看消息日志。你当然会看见`Writing buffer` 在消息列表中。
+
+然后重复上面的操作，我们将会看到`Writing buffer` 在消息列表出现了两次，如果我们再执行上面的自动命令`:autocmd BufWrite * :echom "Writing buffer"` ，然后再重复刚刚的操作，你将会看到`Writing buffer` 出现了4次.
+
+这样是有问题的，因为自动命令被重复设置了，因为Vim不知道你是想替换前面设置的自动命令。
+
+## 这会有什么问题?
+
+直接说吧，这样会影响Vim的启动速度，因为你的命令通常都是写在`~/.vimrc` 下，但是每次启动`Vim` 时，都会加载`vimrc` ，而这些重复的自动命令将会大大降低Vim的启动速度。
+
+你可以执行下面的命令，模拟延迟情况。 
+
+`:autocmd BufWrite * :sleep 200m` 
+
+如果还不够，你可以多执行几次。
+
+**键入:** `:autocmd!` 以取消所有的自动命令。
+
+## 把自动命令放到组中(Grouping Autocommands)
+
+上面的问题，可以通过将自动命令放入一个组内解决。
+
+例如:
+
+```
+augroup testGroup
+  autocmd BUfWrite * :echom "Write ONE"
+  autocmd BUfWrite * :echom "Write TWO"
+augroup END
+```
+中间的两行缩进可以省略。
+
+现在试试将缓冲区写入文件，然后查看消息列表。然后再执行如下命令:
+
+```
+augroup testGroup
+  autocmd BUfWrite * :echom "Write THREE"
+augroup END
+```
+
+现在再将缓冲区写入文件，然后查看消息列表，于是，操蛋的事就发生了。。。
+
+## 清楚自动命令组
+
+你以为定义相同的自动命令组将会自动替换，但其实不是。。。
+
+为了解决这个问题，所以你最好这么做:
+
+```
+:augroup testGroup
+:autocmd!
+:autocmd BUfWrite * :echom "Write FOUR"
+:augroup END
+```
+
+请注意,autocmd!，这将会把当前组内的自动命令都先清空，然后再定义新的自动命令。
+
+你现在可以试试还会不会有:`Write ONE TWO ... ` 等信息
+
+# Operator-Pending映射

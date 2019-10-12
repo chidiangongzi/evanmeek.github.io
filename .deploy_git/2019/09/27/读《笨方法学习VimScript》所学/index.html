@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="身为一名每天使用Vim超过5小时的人来说，十分有必要学习一下VimScript，正好看到这本书作为入门很合适。这篇文章则是记录我读完此册子所学。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-05T16:14:34.526Z">
+<meta property="og:updated_time" content="2019-10-12T03:59:25.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读《笨方法学习VimScript》所学">
 <meta name="twitter:description" content="身为一名每天使用Vim超过5小时的人来说，十分有必要学习一下VimScript，正好看到这本书作为入门很合适。这篇文章则是记录我读完此册子所学。">
@@ -473,7 +473,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-10-06 00:14:34" itemprop="dateModified" datetime="2019-10-06T00:14:34+08:00">2019-10-06</time>
+                <time title="修改时间：2019-10-12 11:59:25" itemprop="dateModified" datetime="2019-10-12T11:59:25+08:00">2019-10-12</time>
               
             
           </span>
@@ -679,8 +679,88 @@
 <p>需要注意的是:这里是使用<code>nonoremap</code> 映射的，而非<code>nmap</code> 映射，所以尽管映射的字符已经被映射，Vim也只会讲其中的字符按默认功能执行。</p>
 <h2 id="练习-7"><a href="#练习-7" class="headerlink" title="练习"></a>练习</h2><p>创建一个mappings，使用单引号而不是双引号。</p>
 <p><code>:nonoremap &lt;LEADER&gt;&#39; viw&lt;ESC&gt;a&#39;&lt;ESC&gt;hbi&#39;&lt;ESC&gt;lel</code> </p>
-<p>试用<code>vnoremap</code> 添加mappings，使其能够用引号将高亮选中的文本包裹。<br>test<br><code>:vnoremap &lt;LEADER&gt;&#39; &#39;</code> </p>
-
+<h1 id="本地缓冲区的选项和映射"><a href="#本地缓冲区的选项和映射" class="headerlink" title="本地缓冲区的选项和映射"></a>本地缓冲区的选项和映射</h1><p>如题所示，本章会讲到本地缓冲区，我们将会对本地缓冲区与全局缓冲区做对比。</p>
+<p>为了演示，请打开两个文件，例如<code>file1</code> 和<code>file2</code>，然后输入一些字符。</p>
+<h2 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h2><p>首先，我们打开 <code>file1</code> ，然后执行命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:nnoremap &lt;LEADER&gt;d dd</span><br><span class="line">:nnoremap &lt;BUFFER&gt; &lt;LEADER&gt;x dd</span><br></pre></td></tr></table></figure>
+<p>现在我们再打开<code>file2</code> ，然后使用刚刚映射的快捷键，你会发现第一个映射的快捷键可以使用，但是第二个则不行，现在我们再打开<code>file1</code> ，却发现两个快捷键都可以被使用。</p>
+<p>好了，现在解释一下这是为什么。首先，我们看到两个映射不同的地方除了映射键以外，第二个映射还多了个<code>&lt;buffer&gt;</code> ，这代表了我们当前映射的快捷键只有在当前<strong>缓冲区</strong> 起作用，而当我们切换到另外一个缓冲器，那么自然映射不起作用了。</p>
+<h2 id="本地Leader"><a href="#本地Leader" class="headerlink" title="本地Leader"></a>本地Leader</h2><p>本地Leader的作用是: 更精确的定义映射。</p>
+<p>有时我们在使用一些对特殊缓冲区起作用的插件时，为了防止与全局Leader映射起冲突，所以就需要使用本地Leader，也就是<code>&lt;localleader&gt;</code> 。</p>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>前面几个章节我们都是使用<code>set</code> 命令进行设置VIM的，但是为了让我们的设置更加精准，在不同特殊缓冲区具有不同的设置时，我们就应该使用本地设置<code>setlocal</code> 命令进行设置，下面来看几个例子:</p>
+<p>仍然是操作<code>file1</code> 和<code>file2</code> ，首先，我们打开<code>file1</code> 键入命令:<code>:setlocl wrap</code> 然后在打开<code>file2</code> 键入命令:<code>:setlocal nowrap</code> ，然后为两个文件键入长长的一段字符。</p>
+<p>你会发现<code>file1</code> 是具有自动折行的，而<code>file2</code> 却不具备。</p>
+<p><strong>注意:不是所有命令都可以设置setlocl的，如果需要查看命令是否可以设置为<code>setlock</code> 那么可以通过命令执行:Help命令查看命令的帮助文档</strong> </p>
+<h2 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h2><p>这一小节其实不需要做什么演示，一句话就可以概括:<code>本地缓冲区命令要比全局缓冲区优先级高，如果本地缓冲区命令与全局缓冲去起了冲突，那么Vim将会忽略全局缓冲区的命令</code> </p>
+<h2 id="练习-8"><a href="#练习-8" class="headerlink" title="练习"></a>练习</h2><p>阅读<code>:help local-options</code> </p>
+<blockquote>
+<p>写完了两章，结果被Nvim的交换文件给重置了，心态崩了</p>
+</blockquote>
+<h1 id="自动命令"><a href="#自动命令" class="headerlink" title="自动命令"></a>自动命令</h1><p>自动命令与映射一样重要。</p>
+<p>自动命令可以让Vim自动执行某些命令，这些命令会在某些事件触发时执行。</p>
+<p>下面看一个例子:</p>
+<p><code>:autocmd BufNewFile * :write</code> </p>
+<p>输入这条命令，然后使用<code>:edit</code> 命令新建一个缓冲区，你会发现会缓冲区会被自动写入进文件了。</p>
+<p>下面我们就来解释一下。</p>
+<h2 id="自动命令结构"><a href="#自动命令结构" class="headerlink" title="自动命令结构"></a>自动命令结构</h2><p>先讲一下自动命令结构，你就可以很清晰的了解自动命令为什么能做到监听事件了。</p>
+<p><code>:autocmd BufNewFile * :write</code> </p>
+<ul>
+<li><p>BufNewFile 代表要监听的“事件”</p>
+</li>
+<li><ul>
+<li>代表事件过滤的“模式（pattern）”</li>
+</ul>
+</li>
+<li><p>:write 代表要执行的命令。</p>
+</li>
+</ul>
+<p>这条命令的实际上做的事是:</p>
+<ol>
+<li><p>当Vim监听到<code>BufNewFile</code> 这个事件后,</p>
+</li>
+<li><p>对所有类型的文件，因为过滤模式是<code>*</code> ,</p>
+</li>
+<li><p>执行<code>:write</code> 命令。</p>
+</li>
+</ol>
+<p>另一个栗子:</p>
+<p><code>:autocmd BufNewFile *.txt :write</code> </p>
+<p>这个例子是将事件过滤模式改为了<code>*.txt</code> ，代表只有新建缓冲区的文件类型为<code>txt</code> 才会触发这个自动命令。</p>
+<h2 id="多个事件"><a href="#多个事件" class="headerlink" title="多个事件"></a>多个事件</h2><p>一个自动命令可以绑定多个事件，多个事件之间由逗号分隔开。</p>
+<p>例如:</p>
+<p><code>:autocmd BufWritePre,BufRead *.html :normal gg=G</code> </p>
+<p>这个自动命令将会在文件类型为<code>html</code> 的缓冲区写入文件时或者读入文件类型为<code>html</code> 类型的文件至缓冲区时进行文本缩进处理。</p>
+<h2 id="FileType事件"><a href="#FileType事件" class="headerlink" title="FileType事件"></a>FileType事件</h2><p><code>FileType</code>可以让Vim在设置一个缓冲区的<code>filetype</code> 时触发。</p>
+<p>见名知意，<code>filetype</code> 也就是文件类型的意思。</p>
+<p>例如我们要对JavaScript与Python映射快速添加注释的快捷键，但由于两门编程语言的注释语法不同，所以我们就可以根据<code>FileType</code>  的值设置不同的文件，定义不同的映射。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:autocmd FileType javascript nnoremap &lt;buffer&gt; &lt;localleader&gt;c I//&lt;ESC&gt;</span><br><span class="line">:autocmd FileType python nnoremap &lt;buffer&gt; &lt;localleader&gt;c I#&lt;ESC&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="本地缓冲区缩写"><a href="#本地缓冲区缩写" class="headerlink" title="本地缓冲区缩写"></a>本地缓冲区缩写</h1><p>本章很简单，只是将缩写添加一个范围限制。</p>
+<p>首先，我们执行命令:<code>:iabbrev &lt;buffer&gt; --- Hello</code> </p>
+<p>再进入插入模式，键入<code>Hello --- World</code> </p>
+<p>我们发现，<code>---</code> 被替换为了<code>Hello</code> ，这没什么新鲜的，但是当我们打开另一个缓冲区，将会发现这个缩写不起作用了，因为这个缩写是<code>local iabbrev</code> </p>
+<h1 id="自动命令组"><a href="#自动命令组" class="headerlink" title="自动命令组"></a>自动命令组</h1><p>前面几章，我们学习了自动命令，但其实他在某些场景下仍然有些问题。</p>
+<p>例如，先执行命令:<code>:autocmd BufWrite * :echom &quot;Writing buffer&quot;</code> </p>
+<p>然后使用<code>:write</code> 命令将当前缓冲区写入文件，然后执行<code>:messages</code> 命令查看消息日志。你当然会看见<code>Writing buffer</code> 在消息列表中。</p>
+<p>然后重复上面的操作，我们将会看到<code>Writing buffer</code> 在消息列表出现了两次，如果我们再执行上面的自动命令<code>:autocmd BufWrite * :echom &quot;Writing buffer&quot;</code> ，然后再重复刚刚的操作，你将会看到<code>Writing buffer</code> 出现了4次.</p>
+<p>这样是有问题的，因为自动命令被重复设置了，因为Vim不知道你是想替换前面设置的自动命令。</p>
+<h2 id="这会有什么问题"><a href="#这会有什么问题" class="headerlink" title="这会有什么问题?"></a>这会有什么问题?</h2><p>直接说吧，这样会影响Vim的启动速度，因为你的命令通常都是写在<code>~/.vimrc</code> 下，但是每次启动<code>Vim</code> 时，都会加载<code>vimrc</code> ，而这些重复的自动命令将会大大降低Vim的启动速度。</p>
+<p>你可以执行下面的命令，模拟延迟情况。 </p>
+<p><code>:autocmd BufWrite * :sleep 200m</code> </p>
+<p>如果还不够，你可以多执行几次。</p>
+<p><strong>键入:</strong> <code>:autocmd!</code> 以取消所有的自动命令。</p>
+<h2 id="把自动命令放到组中-Grouping-Autocommands"><a href="#把自动命令放到组中-Grouping-Autocommands" class="headerlink" title="把自动命令放到组中(Grouping Autocommands)"></a>把自动命令放到组中(Grouping Autocommands)</h2><p>上面的问题，可以通过将自动命令放入一个组内解决。</p>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">augroup testGroup</span><br><span class="line">  autocmd BUfWrite * :echom &quot;Write ONE&quot;</span><br><span class="line">  autocmd BUfWrite * :echom &quot;Write TWO&quot;</span><br><span class="line">augroup END</span><br></pre></td></tr></table></figure>
+<p>中间的两行缩进可以省略。</p>
+<p>现在试试将缓冲区写入文件，然后查看消息列表。然后再执行如下命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">augroup testGroup</span><br><span class="line">  autocmd BUfWrite * :echom &quot;Write THREE&quot;</span><br><span class="line">augroup END</span><br></pre></td></tr></table></figure>
+<p>现在再将缓冲区写入文件，然后查看消息列表，于是，操蛋的事就发生了。。。</p>
+<h2 id="清楚自动命令组"><a href="#清楚自动命令组" class="headerlink" title="清楚自动命令组"></a>清楚自动命令组</h2><p>你以为定义相同的自动命令组将会自动替换，但其实不是。。。</p>
+<p>为了解决这个问题，所以你最好这么做:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:augroup testGroup</span><br><span class="line">:autocmd!</span><br><span class="line">:autocmd BUfWrite * :echom &quot;Write FOUR&quot;</span><br><span class="line">:augroup END</span><br></pre></td></tr></table></figure>
+<p>请注意,autocmd!，这将会把当前组内的自动命令都先清空，然后再定义新的自动命令。</p>
+<p>你现在可以试试还会不会有:<code>Write ONE TWO ...</code> 等信息</p>
+<h1 id="Operator-Pending映射"><a href="#Operator-Pending映射" class="headerlink" title="Operator-Pending映射"></a>Operator-Pending映射</h1>
       
     </div>
 
@@ -702,7 +782,7 @@
   <p><span>本文标题:</span><a href="/2019/09/27/读《笨方法学习VimScript》所学/">读《笨方法学习VimScript》所学</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年09月27日 - 18:09</p>
-  <p><span>最后更新:</span>2019年10月06日 - 00:10</p>
+  <p><span>最后更新:</span>2019年10月12日 - 11:10</p>
   <p><span>原始链接:</span><a href="/2019/09/27/读《笨方法学习VimScript》所学/" title="读《笨方法学习VimScript》所学">https://evanmeek.github.io/2019/09/27/读《笨方法学习VimScript》所学/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/09/27/读《笨方法学习VimScript》所学/" aria-label="复制成功！"></i></span>
   </p>
@@ -867,7 +947,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -906,7 +986,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -985,7 +1067,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">31</span>
+                      
+                    
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1060,7 +1144,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么选择这本书"><span class="nav-number">1.</span> <span class="nav-text">为什么选择这本书?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">3.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Vimrc文件"><span class="nav-number">3.1.</span> <span class="nav-text">创建Vimrc文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印信息"><span class="nav-number">4.</span> <span class="nav-text">打印信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">4.1.</span> <span class="nav-text">注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置选项"><span class="nav-number">5.</span> <span class="nav-text">设置选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔选项"><span class="nav-number">5.1.</span> <span class="nav-text">布尔选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值选项"><span class="nav-number">5.2.</span> <span class="nav-text">键值选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次性设置多个选项"><span class="nav-number">5.3.</span> <span class="nav-text">一次性设置多个选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.4.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本映射"><span class="nav-number">6.</span> <span class="nav-text">基本映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">6.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式映射"><span class="nav-number">7.</span> <span class="nav-text">模式映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-2"><span class="nav-number">7.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#精确映射"><span class="nav-number">8.</span> <span class="nav-text">精确映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-3"><span class="nav-number">8.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Leaders"><span class="nav-number">9.</span> <span class="nav-text">Leaders</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-Leader"><span class="nav-number">9.1.</span> <span class="nav-text">Local Leader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-4"><span class="nav-number">9.2.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑你的Vimrc文件"><span class="nav-number">10.</span> <span class="nav-text">编辑你的Vimrc文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑映射"><span class="nav-number">10.1.</span> <span class="nav-text">编辑映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重读映射配置"><span class="nav-number">10.2.</span> <span class="nav-text">重读映射配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-5"><span class="nav-number">10.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Abbreviations"><span class="nav-number">11.</span> <span class="nav-text">Abbreviations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keyword-Characters"><span class="nav-number">11.1.</span> <span class="nav-text">Keyword Characters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么不用Mappings"><span class="nav-number">11.2.</span> <span class="nav-text">为什么不用Mappings?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-6"><span class="nav-number">11.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多的Mappings"><span class="nav-number">12.</span> <span class="nav-text">更多的Mappings</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个更为复杂的Mapping"><span class="nav-number">12.1.</span> <span class="nav-text">一个更为复杂的Mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-7"><span class="nav-number">12.2.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么选择这本书"><span class="nav-number">1.</span> <span class="nav-text">为什么选择这本书?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">3.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Vimrc文件"><span class="nav-number">3.1.</span> <span class="nav-text">创建Vimrc文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打印信息"><span class="nav-number">4.</span> <span class="nav-text">打印信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">4.1.</span> <span class="nav-text">注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置选项"><span class="nav-number">5.</span> <span class="nav-text">设置选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔选项"><span class="nav-number">5.1.</span> <span class="nav-text">布尔选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值选项"><span class="nav-number">5.2.</span> <span class="nav-text">键值选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次性设置多个选项"><span class="nav-number">5.3.</span> <span class="nav-text">一次性设置多个选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">5.4.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本映射"><span class="nav-number">6.</span> <span class="nav-text">基本映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">6.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式映射"><span class="nav-number">7.</span> <span class="nav-text">模式映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-2"><span class="nav-number">7.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#精确映射"><span class="nav-number">8.</span> <span class="nav-text">精确映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-3"><span class="nav-number">8.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Leaders"><span class="nav-number">9.</span> <span class="nav-text">Leaders</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Local-Leader"><span class="nav-number">9.1.</span> <span class="nav-text">Local Leader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-4"><span class="nav-number">9.2.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑你的Vimrc文件"><span class="nav-number">10.</span> <span class="nav-text">编辑你的Vimrc文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑映射"><span class="nav-number">10.1.</span> <span class="nav-text">编辑映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重读映射配置"><span class="nav-number">10.2.</span> <span class="nav-text">重读映射配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-5"><span class="nav-number">10.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Abbreviations"><span class="nav-number">11.</span> <span class="nav-text">Abbreviations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keyword-Characters"><span class="nav-number">11.1.</span> <span class="nav-text">Keyword Characters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么不用Mappings"><span class="nav-number">11.2.</span> <span class="nav-text">为什么不用Mappings?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-6"><span class="nav-number">11.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多的Mappings"><span class="nav-number">12.</span> <span class="nav-text">更多的Mappings</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一个更为复杂的Mapping"><span class="nav-number">12.1.</span> <span class="nav-text">一个更为复杂的Mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-7"><span class="nav-number">12.2.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地缓冲区的选项和映射"><span class="nav-number">13.</span> <span class="nav-text">本地缓冲区的选项和映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#映射"><span class="nav-number">13.1.</span> <span class="nav-text">映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地Leader"><span class="nav-number">13.2.</span> <span class="nav-text">本地Leader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置"><span class="nav-number">13.3.</span> <span class="nav-text">设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖"><span class="nav-number">13.4.</span> <span class="nav-text">覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-8"><span class="nav-number">13.5.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动命令"><span class="nav-number">14.</span> <span class="nav-text">自动命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动命令结构"><span class="nav-number">14.1.</span> <span class="nav-text">自动命令结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个事件"><span class="nav-number">14.2.</span> <span class="nav-text">多个事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileType事件"><span class="nav-number">14.3.</span> <span class="nav-text">FileType事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地缓冲区缩写"><span class="nav-number">15.</span> <span class="nav-text">本地缓冲区缩写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动命令组"><span class="nav-number">16.</span> <span class="nav-text">自动命令组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#这会有什么问题"><span class="nav-number">16.1.</span> <span class="nav-text">这会有什么问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把自动命令放到组中-Grouping-Autocommands"><span class="nav-number">16.2.</span> <span class="nav-text">把自动命令放到组中(Grouping Autocommands)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清楚自动命令组"><span class="nav-number">16.3.</span> <span class="nav-text">清楚自动命令组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Operator-Pending映射"><span class="nav-number">17.</span> <span class="nav-text">Operator-Pending映射</span></a></li></ol></div>
             
 
           </div>

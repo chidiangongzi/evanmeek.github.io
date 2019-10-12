@@ -21,7 +21,7 @@ date: 2019-08-28 14:21:35
 
 > [第五章----Python字符串常用方法](https://evanmeek.github.io/2019/09/23/Python-05-Python字符串常用方法详解/)
 
-> [第六章----Python流程控制]()
+> [第六章----Python流程控制](https://evanmeek.github.io/2019/09/28/Python-06-Python流程控制/)
 
 > [第七章----函数和lambda表达式]()
 

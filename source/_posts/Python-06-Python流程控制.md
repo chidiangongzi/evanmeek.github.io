@@ -7,6 +7,10 @@ tags:
   - Python系列
 ---
 
+Python系列第六章笔记，查看Python系列所有文章，请点击[💿](http://c.biancheng.net/python/str_method/)
+
+<!--more-->
+
 Python中的流程结构也就是选择语句，选择语句又分为3种语法形式，分别是if、if else、if elif else。
 
 if 语句语法格式:
@@ -886,7 +890,4 @@ for i in range(SIZE):
         print("%02d" % array[i][j],end = "")
     print("")
 ```
-
-
-
 

@@ -417,5 +417,157 @@ print(multi_return())
 
 # Python函数递归
 
-当一个函数体内调用自身，就被称为`函数递归` 
+当一个函数体内调用自身，就被称为`函数递归` 。
+
+我们可以使用函数递归来模式循环，但这种循环不需要使用循环控制。
+
+下面我们做一个数学题: `f(0)=1,f(1)=4,f(n+2)=2*f(n+1)+f(n)`，其中n是大于0的整数，求f(10)的值。我们将会使用循环和递归两种不同的方式来求当f(10)的值。
+
+递归例子:
+
+```
+def fn(n):
+    if n==0:
+        return 1
+    elif n==1:
+        return 4
+    else :
+        return 2 * fn(n-1)+fn(n-2)
+
+print(fn(10))
+```
+
+可以看到，我们在函数体内调用了自身，这样当我们执行到调用自身时，那么这就是递归，而对于来`fn(10)`说，也等于式子`2*fn(9)+fn(8)` ，而其中`fn(9)` 又等于`2*fn(8)+fn(7)` ，以此类推，最终当计算到`fn(2)` 等于`2*fn(1)+fn(0)` 时，那么就会开始返回，这个递归也就具有了结束的时候，最终得到fn(10)的值。
+
+**注意:递归类似于循环，必须在某个时刻函数的返回值是确定的，也就是不再调用自身，否则递归将会变成无穷递归，也就是死循环。** 
+
+# Python变量作用于(全局变量和局部变量)
+
+变量有作用的范围，这个范围被称为`作用域`。
+**
+**作用域是值，代码能够访问该变量的区域，如果超出该区域将不可访问。**
+
+变量的范围分为两种`局部变量` 和`全局变量` 。
+
+## Python局部变量
+
+**局部变量是指在函数内部定义并使用的变量，它只在函数内部有效** 。
+
+例如:
+
+```
+def text():
+    demo = "HelloWorld"
+    print(demo)
+text()
+
+# 获取局部变量demo
+print(demo)
+```
+
+输出结果:
+
+```
+HelloWorld
+Traceback (most recent call last):
+  File "test.py", line 7, in <module>
+    print(demo)
+NameError: name 'demo' is not defined
+
+[Process exited 1]
+```
+
+可以看到程序报错了，那是因为后面的print(demo)语句访问了在当前作用于不存在的变量，所以就会报错。
+
+局部变量:每个函数执行时，系统都会为该函数分配一块`临时内存空间` ，所有局部变量都被保存在这块空间内。而当函数执行完后，系统将会将这块内存空间释放，从而局部变量也就失效了，因此当我们再次访问以为存在的局部变量时，解释器就会抛出错误NameError，因为根本不存在。
+
+## Python全局变量
+
+全局变量与局部变量相反，全局变量是指**能够作用于函数内外的变量，也就是说全局变量可以在任何地方使用。** 
+
+定义全局变量有两种方法:
+
+1. 在函数体外定义变量，一定是全局变量:
+
+```
+demo = "HelloWorld"
+
+def text():
+    print(demo)
+text()
+
+print(demo)
+```
+
+输出结果:
+
+```
+HelloWorld
+HelloWorld
+
+[Process exited 0]
+```
+
+2. 在函数体内定义全局变量。即使用`global` 关键字对变量进行修饰后，该变量就会变成为全局变量。
+
+```
+def text():
+    global demo
+    demo = "HelloWorld"
+    print(demo)
+text()
+
+print(demo)
+```
+
+输出结果:
+
+```
+HelloWorld
+HelloWorld
+
+[Process exited 0]
+```
+
+**注意:在使用global修饰变量时不可以直接给变量赋值。** 
+
+## 获取指定作用于范围中的变量
+
+Python提供了三个函数用于访问指定作用于中的变量。
+
+我们可以把变量与值理解为一个个字典，把key理解为变量名或变量的内存地址，把值理解为value。
+
+而下面这三个方法就可以访问某个作用于下的所有字典。
+
+- globals() 该函数返回全局范围内所有变量组成的变量字典。
+
+- locals() 该函数返回当前作用域范围下所有变量组成的变量字典。
+
+- vars(object) 获取object所在作用域范围下所有变量组成的变量字典，若不给参数，则与`locals()` 无区别。
+
+例子:
+
+```
+def global_test():
+  global name
+  global name2
+  global name3
+  name = "Evan"
+  name2 = "Chen"
+  name3 = "Li"
+
+global_test()
+
+print("全局作用于下所有变量字典:",globals())
+print("指定访问全局作用域下key为name2的变量字典:",globals()['name2'])
+
+
+def local_test():
+    age=age1=age2=age3= 20
+    print("age:",age)
+    print("age作用域下所有变量字典:",locals())
+    print("指定访问当前作用于下key为age的变量字典:",locals()['age'])
+local_test()
+```
+
 

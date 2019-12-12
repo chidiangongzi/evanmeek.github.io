@@ -96,19 +96,20 @@
 
 
 
-  <meta name="description" content="Qt5分为两个大的模块，分别是Qt Essentials以及Qt Add-Ons以及一些额外的模块和工具．">
-<meta name="keywords" content="Qt,C_++">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Learn-Qt5-Qt模块简介">
-<meta property="og:url" content="https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt模块简介/index.html">
+  <meta name="description" content="前言此系列用于记录我使用Doom Emacs所遇到的所有坑，以及所有知识点。 菜单这里的菜单是指DoomEmacs中按下SPC所展示的功能列表。我将会一一探索，将每一个功能用个人的理解写出来。  由于我也是从零开始使用Emacs和Doom Emacs，并且英语也不咋地，所以可能会有很多问题，请大家谅解，如有疑问可以去About关于页面找到我的联系方式或发起issue，非常感谢!  模块">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DoomEmacs">
+<meta property="og:url" content="https://evanmeek.github.io/DoomEmacs/index.html">
 <meta property="og:site_name" content="我不会编程的博客">
-<meta property="og:description" content="Qt5分为两个大的模块，分别是Qt Essentials以及Qt Add-Ons以及一些额外的模块和工具．">
+<meta property="og:description" content="前言此系列用于记录我使用Doom Emacs所遇到的所有坑，以及所有知识点。 菜单这里的菜单是指DoomEmacs中按下SPC所展示的功能列表。我将会一一探索，将每一个功能用个人的理解写出来。  由于我也是从零开始使用Emacs和Doom Emacs，并且英语也不咋地，所以可能会有很多问题，请大家谅解，如有疑问可以去About关于页面找到我的联系方式或发起issue，非常感谢!  模块">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-29T17:50:26.166Z">
+<meta property="og:updated_time" content="2019-11-05T08:14:38.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Learn-Qt5-Qt模块简介">
-<meta name="twitter:description" content="Qt5分为两个大的模块，分别是Qt Essentials以及Qt Add-Ons以及一些额外的模块和工具．">
+<meta name="twitter:title" content="DoomEmacs">
+<meta name="twitter:description" content="前言此系列用于记录我使用Doom Emacs所遇到的所有坑，以及所有知识点。 菜单这里的菜单是指DoomEmacs中按下SPC所展示的功能列表。我将会一一探索，将每一个功能用个人的理解写出来。  由于我也是从零开始使用Emacs和Doom Emacs，并且英语也不咋地，所以可能会有很多问题，请大家谅解，如有疑问可以去About关于页面找到我的联系方式或发起issue，非常感谢!  模块">
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="我不会编程的博客" type="application/atom+xml">
@@ -117,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt模块简介/">
+  <link rel="canonical" href="https://evanmeek.github.io/DoomEmacs/">
 
 
 
@@ -127,7 +128,7 @@
   };
 </script>
 
-  <title>Learn-Qt5-Qt模块简介 | 我不会编程的博客</title>
+  <title>DoomEmacs | 我不会编程的博客</title>
   
 
 
@@ -393,444 +394,84 @@
           
             
 
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt模块简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="EvanMeek">
-      <meta itemprop="description" content="LIFE IS FANTASTIC!">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/27056033?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我不会编程的博客">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Learn-Qt5-Qt模块简介
+<h1 class="post-title" itemprop="name headline">DoomEmacs
 
-              
-            
-          </h1>
-        
+</h1>
 
-        <div class="post-meta">
-          <span class="post-time">
+<div class="post-meta">
+  
+  
 
-            
-            
-            
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
 
-              
-                
-              
-
-              <time title="创建时间：2019-06-12 20:30:42" itemprop="dateCreated datePublished" datetime="2019-06-12T20:30:42+08:00">2019-06-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-30 01:50:26" itemprop="dateModified" datetime="2019-08-30T01:50:26+08:00">2019-08-30</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-            <span id="/2019/06/12/Learn-Qt5-Qt模块简介/" class="leancloud_visitors" data-flag-title="Learn-Qt5-Qt模块简介">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>Qt5分为两个大的模块，分别是<code>Qt Essentials</code>以及<code>Qt Add-Ons</code>以及一些额外的模块和工具．</p>
-<a id="more"></a>
-<h1 id="Qt-Essentials"><a href="#Qt-Essentials" class="headerlink" title="Qt Essentials"></a>Qt Essentials</h1><p><code>Qt Essentials</code>是Qt的基础，它可以在所有平台上运行，下面列出了Qt Essentials模块的组件．</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">模块</th>
-<th style="text-align:center">简述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Qt Core</td>
-<td style="text-align:center">其他非图形类模块所使用的核心,</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt GUI</td>
-<td style="text-align:center">图形界面组件的基类，包括了OpenGL.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Multimedia</td>
-<td style="text-align:center">音频，视频，广播和摄像头相关功能.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Network</td>
-<td style="text-align:center">提供跨平台的网络能力．</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Qml</td>
-<td style="text-align:center">提供QML使用的C++API.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Quick</td>
-<td style="text-align:center">允许在Qt/C++程序中嵌入 Qt Quick</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt SQL</td>
-<td style="text-align:center">允许使用SQL访问数据库</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Test</td>
-<td style="text-align:center">提供Qt程序的单元测试能力｜</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Webkit</td>
-<td style="text-align:center">基于WebKit2的实现以及一套全新的QML API</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Qt-Add-Ons"><a href="#Qt-Add-Ons" class="headerlink" title="Qt Add-Ons"></a>Qt Add-Ons</h1><p><code>Qt Add-Ons</code>是Qt的扩展模块，建立在基础模块之上，在能运行Qt的平台之上可以酌情引人．</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">模块</th>
-<th style="text-align:center">简述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Qt 3D</td>
-<td style="text-align:center">提供声明式语法，在Qt程序中可以简单地嵌入3D图像．｜</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Bluetooth</td>
-<td style="text-align:center">提供用于访问蓝牙无线设备的C++和QML API.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Contacts</td>
-<td style="text-align:center">用于访问地址薄或联系人数据库的C++和QML API.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt D-Bus</td>
-<td style="text-align:center">Unix平台独有的类库，用于使用D-Bus协议进与进程间进行交互</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Graphical Effects</td>
-<td style="text-align:center">提供一系列用于实现图像特效的类</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Image Formats</td>
-<td style="text-align:center">支持图片格式的一系列插件</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt JS Backend</td>
-<td style="text-align:center">为V8 JavaScript引擎的移植，仅供QtQML模块内部使用</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Location</td>
-<td style="text-align:center">方便在Qt应用程序中使用OpenGL，保留于Qt4</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Organize</td>
-<td style="text-align:center">使用QML和C++API访问组织事件｜</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Print Support</td>
-<td style="text-align:center">提供对打印功能的支持｜</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Publish and Subscribe</td>
-<td style="text-align:center">为应用程序提供对项目值的读取，导航，订阅等功能.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Quick 1</td>
-<td style="text-align:center">从Qt4移植而来的Qt Declarative模块，用于提供与Qt4兼容</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Script</td>
-<td style="text-align:center">提供脚本化机制，为了与Qt5兼容</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Script Tools</td>
-<td style="text-align:center">为了使用Qt Script模块的应用程序提供的额外的组件</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Sensors</td>
-<td style="text-align:center">提供访问各类传感器的QML和C++接口.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Service Framework</td>
-<td style="text-align:center">提供客户端发现其他设备的服务.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt SVF</td>
-<td style="text-align:center">提供渲染和创建SVG文件的功能．</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt System Info</td>
-<td style="text-align:center">提供一套API，用于发现系统相关的信息.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Tools</td>
-<td style="text-align:center">提供了Qt开发的方便工具,例如Qt CLucene,Qt Designer,Qt Help以及Qt UI Tools.</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Versit</td>
-<td style="text-align:center">提供了对Versit API的支持．</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Wayland</td>
-<td style="text-align:center">仅用于Linux平台，用户替代QWS</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt WebKit</td>
-<td style="text-align:center">从Qt4 一直来的基于WebKit1和QWidget的API</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt Widgets</td>
-<td style="text-align:center">使用C++扩展的Qt Gui模块，提供了一些界面组建，比如按钮，单选框</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt XML</td>
-<td style="text-align:center">SAX和DOM的C++实现．此模块已凉凉，更换为QXmlStreamReader/Writer</td>
-</tr>
-<tr>
-<td style="text-align:center">Qt XML Patterns</td>
-<td style="text-align:center">提供对XPath,XQuery,XSLT和XML Schema验证的支持．</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-    <div>
-    
-        
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2019/06/12/Learn-Qt5-Qt模块简介/">Learn-Qt5-Qt模块简介</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
-  <p><span>发布时间:</span>2019年06月12日 - 20:06</p>
-  <p><span>最后更新:</span>2019年08月30日 - 01:08</p>
-  <p><span>原始链接:</span><a href="/2019/06/12/Learn-Qt5-Qt模块简介/" title="Learn-Qt5-Qt模块简介">https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt模块简介/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/06/12/Learn-Qt5-Qt模块简介/" aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://choosealicense.com/licenses/mit/" target="_blank" title="MIT License Copyright (c) [2019] [EvanMeek]">MIT License Copyright (c) [2019] [EvanMeek]</a> 转载请保留原文链接及作者。</p>  
 </div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    clipboard.on('success', $(function(){
-      $(".fa-clipboard").click(function(){
-        swal({   
-          title: "",   
-          text: '复制成功',   
-          html: false,
-          timer: 500,   
-          showConfirmButton: false
-        });
-      });
-    }));  
-</script>
 
+</header>
 
-    
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>此系列用于记录我使用<code>Doom Emacs</code>所遇到的所有坑，以及所有知识点。</p>
+<h1 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h1><p>这里的<code>菜单</code>是指<code>DoomEmacs</code>中按下<code>SPC</code>所展示的功能列表。我将会一一探索，将每一个<br>功能用个人的理解写出来。</p>
+<blockquote>
+<p>由于我也是从零开始使用Emacs和Doom Emacs，并且英语也不咋地，所以可能会有很多问<br>题，请大家谅解，如有疑问可以去About关于页面找到我的联系方式或发起issue，非常感<br>谢!</p>
+</blockquote>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1>
+        
+      </div>
+      
+      
+      
     </div>
     
 
-    
-      
-    
-    
-      <div>
-        <div id="reward-container">
-  <div>如果可以的话，可以请我喝一杯咖啡。</div>
-  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
+
 
     
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/wechatPay.png" alt="EvanMeek 微信支付">
-        <p>微信支付</p>
-      </div>
     
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/aliPay.png" alt="EvanMeek 支付宝">
-        <p>支付宝</p>
-      </div>
     
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Qt/" rel="tag"># Qt</a>
-          
-            <a href="/tags/C/" rel="tag"># C_++</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/06/11/Learn-Qt5-自定义信号槽/" rel="next" title="Learn-Qt5-自定义信号槽">
-                <i class="fa fa-chevron-left"></i> Learn-Qt5-自定义信号槽
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/14/fcitx5安装与配置/" rel="prev" title="fcitx5安装与配置">
-                fcitx5安装与配置 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
   </div>
 
 
@@ -1082,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Qt-Essentials"><span class="nav-number">1.</span> <span class="nav-text">Qt Essentials</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Qt-Add-Ons"><span class="nav-number">2.</span> <span class="nav-text">Qt Add-Ons</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#菜单"><span class="nav-number"></span> <span class="nav-text">菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-number"></span> <span class="nav-text">模块</span></a></li></div>
             
 
           </div>
@@ -1572,37 +1213,38 @@
   
   <script>
     
-    function addCount(Counter) {
+    function showTime(Counter) {
+      var entries = [];
       var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
 
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
         .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-              })
-          } else {
-            
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
-                .done(function() {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(1);
-                })
-                .fail(function() {
-                  console.log('Failed to create');
-                });
-            
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
           }
         })
         .fail(function ({ responseJSON }) {
@@ -1627,7 +1269,9 @@
             });
           };
           
-            addCount(Counter);
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
           
         });
     });

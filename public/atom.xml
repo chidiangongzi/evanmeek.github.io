@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://evanmeek.github.io/"/>
-  <updated>2019-10-18T14:41:58.722Z</updated>
+  <updated>2019-12-21T08:46:26.808Z</updated>
   <id>https://evanmeek.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《GNU Emacs Lisp编程入门》读书笔记</title>
+    <link href="https://evanmeek.github.io/2019/12/21/%E3%80%8AGNU-Emacs-Lisp%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://evanmeek.github.io/2019/12/21/《GNU-Emacs-Lisp编程入门》读书笔记/</id>
+    <published>2019-12-21T08:17:25.000Z</published>
+    <updated>2019-12-21T08:46:26.808Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="第一章-列表处理"><a href="#第一章-列表处理" class="headerlink" title="第一章 列表处理"></a>第一章 列表处理</h1><p>列表是Lisp的基础。</p><h2 id="1-1-Lisp列表"><a href="#1-1-Lisp列表" class="headerlink" title="1.1 Lisp列表"></a>1.1 Lisp列表</h2><p>简单的Lisp列表书写形式:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;(rose violet daisy buttercup) ;; =&gt; (rose violet daisy buttercup)</span><br></pre></td></tr></table></figure><p>这个简单的列表中的四个元素时四种不同花的名称。<strong>元素之间用空格隔开，并且被括号包住。</strong></p><p>另有一种在elisp中常用到的写法:</p><p><code>` emacs-lisp(+ 2 2) ;; =&gt; 4</code>**</p><p>这种写法是Lisp的一个特性————<strong>数据和代码都用相同的方式表示</strong>。</p><p><strong>列表还允许嵌套列表，也就是说列表的元素也可以是列表</strong>。</p><h3 id="1-11-Lisp原子"><a href="#1-11-Lisp原子" class="headerlink" title="1.11 Lisp原子"></a>1.11 Lisp原子</h3><p>原子意味着”不可再分”。例如刚刚列表内的’+’以及’2’或者是’rose’等等，这些都是原子。</p><p>而列表却不是原子，因为<strong>列表是由CAR和CDR与CONS构成的</strong>。</p><p>技术上说，Lisp的列表有三种组合方式:</p><ul><li>括号和括号中由空格分隔的原子</li><li>括号和括号中的其他列表</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;第一章-列表处理&quot;&gt;&lt;a href=&quot;#第一章-列表处理&quot; class=&quot;headerlink&quot; title=&quot;第一章 列表处理&quot;&gt;&lt;/a&gt;第一章 列表处理&lt;/h1&gt;&lt;p&gt;列表是Lisp的基础。&lt;/p&gt;
+&lt;h2 id=&quot;1-1-Lisp列表&quot;&gt;&lt;a href=&quot;#
+      
+    
+    </summary>
+    
+      <category term="Lisp" scheme="https://evanmeek.github.io/categories/Lisp/"/>
+    
+    
+      <category term="EmacsLisp" scheme="https://evanmeek.github.io/tags/EmacsLisp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-文本处理三剑客-3</title>
+    <link href="https://evanmeek.github.io/2019/12/12/Linux-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E4%B8%89%E5%89%91%E5%AE%A2-3/"/>
+    <id>https://evanmeek.github.io/2019/12/12/Linux-文本处理三剑客-3/</id>
+    <published>2019-12-12T09:07:28.000Z</published>
+    <updated>2019-12-12T09:36:32.943Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="4-1-grep-文本过滤工具"><a href="#4-1-grep-文本过滤工具" class="headerlink" title="4.1 grep: 文本过滤工具"></a>4.1 grep: 文本过滤工具</h1><h2 id="命令详解"><a href="#命令详解" class="headerlink" title="命令详解"></a>命令详解</h2><p>功能说明</p><p>grep命令可以从文本文件或管道数据流中筛选匹配的行或数据，还可以配合正则表达式一起<br>使用。</p><p>语法格式</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [参数] [匹配模式] [需要查找的文件]</span><br></pre></td></tr></table></figure><p>选项说明</p><table><thead><tr><th>参数选项</th><th>解释说明</th></tr></thead><tbody><tr><td>-v</td><td>排除某行</td></tr><tr><td>-n</td><td>显示匹配行及行号</td></tr><tr><td>-i</td><td>不区分大小写</td></tr><tr><td>-c</td><td>统计匹配行数</td></tr><tr><td>-E</td><td>使用egrep命令替代grep</td></tr><tr><td>–color=auto</td><td>为grep过滤后匹配的字符串添加颜色</td></tr><tr><td>-w</td><td>只匹配过滤的单词</td></tr><tr><td>-o</td><td>只输出匹配的内容</td></tr></tbody></table><h2 id="使用范例"><a href="#使用范例" class="headerlink" title="使用范例"></a>使用范例</h2><ol><li>基础范例</li></ol><p>使用grep过滤不包括evanmeek字符串的行(-v参数实践)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜   cat test.txt </span><br><span class="line">China</span><br><span class="line">Japan</span><br><span class="line">root</span><br><span class="line">EvanMeek</span><br><span class="line">MyBlog</span><br><span class="line">evanmeek</span><br><span class="line"></span><br><span class="line">➜   grep -v "evanmeek" test.txt</span><br><span class="line">China</span><br><span class="line">Japan</span><br><span class="line">root</span><br><span class="line">EvanMeek</span><br><span class="line">MyBlog</span><br></pre></td></tr></table></figure><p><em>提示:</em> grep命令-v参数正如刚刚输出所示，会将过滤参数后的内容。</p><p>使用grep过滤包括evanmeek字符串的行，并显示其所在行行号(-n实践)</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 文本内容相同，我们使用下面这条命令，看看会发生什么</span><br><span class="line">➜   grep -n "evanmeek" test.txt </span><br><span class="line"><span class="meta">#</span> 我们得到了test.txt中包含evanmeek的行且行号。</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 我们也可以使用.匹配任意内容，相当于看test.txt文件内容加上行号</span><br><span class="line">➜   grep -n "." test.txt </span><br><span class="line">1:China</span><br><span class="line">2:Japan</span><br><span class="line">3:root</span><br><span class="line">4:EvanMeek</span><br><span class="line">5:MyBlog</span><br><span class="line">6:evanmeek</span><br><span class="line">6:evanmeek</span><br></pre></td></tr></table></figure><p>不区分大小写参数实践</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> grep在过滤时可以选择忽略区分大小写，默认是区分的</span><br><span class="line"><span class="meta">#</span> 文件内容相同,使用-i参数忽略大小写，-n参数选择要筛选的内容并有行号</span><br><span class="line">➜   grep -i -n "evanmeek" test.txt</span><br><span class="line">4:EvanMeek</span><br><span class="line">6:evanmeek</span><br></pre></td></tr></table></figure><p>计算匹配的字符串的数量(-c参数实践)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;4-1-grep-文本过滤工具&quot;&gt;&lt;a href=&quot;#4-1-grep-文本过滤工具&quot; class=&quot;headerlink&quot; title=&quot;4.1 grep: 文本过滤工具&quot;&gt;&lt;/a&gt;4.1 grep: 文本过滤工具&lt;/h1&gt;&lt;h2 id=&quot;命令详解&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+      <category term="Linux系列" scheme="https://evanmeek.github.io/categories/Linux%E7%B3%BB%E5%88%97/"/>
+    
+    
+      <category term="Linux" scheme="https://evanmeek.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>[Python-07]Python函数和Lambda表达式</title>
@@ -406,50 +457,6 @@
     
     
       <category term="转载" scheme="https://evanmeek.github.io/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FuShou-Mountain-Day-Trip</title>
-    <link href="https://evanmeek.github.io/2019/07/23/FuShou-Mountain-Day-Trip/"/>
-    <id>https://evanmeek.github.io/2019/07/23/FuShou-Mountain-Day-Trip/</id>
-    <published>2019-07-23T14:16:13.000Z</published>
-    <updated>2019-08-29T17:50:26.159Z</updated>
-    
-    <content type="html"><![CDATA[<p>Today I gone to the FuShou mountain,So this article is about it.</p><a id="more"></a><p>&emsp;It’s sunny,But I <strong>arrived</strong><code>到达</code> at my <strong>destination</strong><code>目的地</code> at <strong>noon</strong><code>正午</code>.There were manay people.After a long <strong>queue</strong><code>排队</code>,I finally got the <strong>ticket</strong><code>门票</code>.Then I got on the <strong>interval bus</strong><code>区间车</code> again.</p><p>&emsp;It was a <strong>bumpy journey to the foot</strong><code>一路颠簸</code> of Fushou Mountain.The first thing I saw was a <strong>snack area</strong><code>小食区</code> supported by a <strong>pile</strong><code>支撑</code> of read <strong>tents</strong><code>帐篷</code>.Then when  I entered the snack area,the air was filled with <strong>grabbing food</strong><code>手抓饭</code>,<strong>thin-skinned steamed buns</strong><code>薄皮包子</code>,the <strong>aroma</strong><code>香气</code> of <strong>barbecue kebabs</strong><code>烤肉串</code> and the <strong>sweet</strong><code>香甜的</code> <strong>Cavas</strong><code>卡瓦斯</code>,Ice cream <strong>attracted</strong><code>吸引</code> me.I <strong>couldn’t resist</strong><code>无法抵御</code> the <strong>temptation</strong><code>美食</code> of delicious food, so I ate a lot of delicious food in Xinjiang.</p><p>&emsp;After <strong>full stomach</strong><code>饱腹</code>,I began to climb the mountain. The sun was very sunny. Before I reached the <strong>glass trestle</strong><code>玻璃栈道</code>,my skin was red.</p><p>&emsp;Glass planks up to 300M,built of steel and glass.People have a head and look through the glass to see the ground.Although I dare not look down from the highrise, I can’t fell scared on the glass path. Maybe I trust safety of these projects.</p><p>&emsp;Happy time is always short,and soon,we will go home by car…</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Today I gone to the FuShou mountain,So this article is about it.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="英文文章" scheme="https://evanmeek.github.io/categories/%E8%8B%B1%E6%96%87%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="个人感想" scheme="https://evanmeek.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>My-Monitor</title>
-    <link href="https://evanmeek.github.io/2019/07/20/My-Monitor/"/>
-    <id>https://evanmeek.github.io/2019/07/20/My-Monitor/</id>
-    <published>2019-07-20T14:10:55.000Z</published>
-    <updated>2019-08-29T17:50:26.155Z</updated>
-    
-    <content type="html"><![CDATA[<p>I had been trying to write an article about the monitor a few days ago, and tooday i finally <strong>realized</strong>.</p><a id="more"></a><p>&emsp;I <strong>met</strong> the monitor in 2015,When we were both <strong>junior three students</strong>.,Because I <strong>dropped out</strong> of junior high school, I had <strong>little contact</strong> with her in the <strong>previous</strong> few years.<strong>Probably</strong> since I went to college.I have <strong>occasional</strong> contact with the monitor <strong>who was about to face</strong> the college <strong>entrance examination</strong> talked to me a lot about my school and her views. I also expressed my point of view, and we <strong>exchanged</strong> our thoughts about life.</p><p>&emsp;More and more, I feel that the monitor is more and more interesting. Many of her views are <strong>similar</strong> to mine.We sometimes talk for a long time and forget the time.But our <strong>relationship</strong> is still a friend.</p><p>&emsp;<strong>Towards the end of my freshman year</strong>,my <strong>relationship</strong> with the monitor changed <strong>dramatically</strong>,Which is why I wrote an article about the monitor.On a very normal day,the monitory <strong>suddenly</strong> came to me and said that she wanted to come to my university,because my university is a <strong>higher ranking</strong> university in Guangdong.Kind of me,<strong>carefully</strong> answered some questions for her, and said that I really want to talk with the monitor of a university,I talk with the monitor more and more.We talk a lot to each other,whether it’s about life,learning or even the future.</p><p>&emsp;Gradually,I fell in love with the monitor.From the first time I sent a photo to her,to the first time I sent a video to her,I knew that I had <strong>fallen</strong> in love with her.</p><p>&emsp;I like the monitor’s voice,her attitude when talking,her eyes,some of her little jokes,some of her small shortcomins,like all of her.Now that I have <strong>identified</strong> everything. I will say to her <strong>personally</strong> when I return to Guangzhou,”I love you,my monitor.”</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I had been trying to write an article about the monitor a few days ago, and tooday i finally &lt;strong&gt;realized&lt;/strong&gt;.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="英文文章" scheme="https://evanmeek.github.io/categories/%E8%8B%B1%E6%96%87%E6%96%87%E7%AB%A0/"/>
-    
-    
-      <category term="个人感想" scheme="https://evanmeek.github.io/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3/"/>
     
   </entry>
   

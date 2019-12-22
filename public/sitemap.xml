@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://evanmeek.github.io/2019/12/21/%E3%80%8AGNU-Emacs-Lisp%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-12-21T08:46:26.808Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://evanmeek.github.io/2019/12/12/Linux-%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E4%B8%89%E5%89%91%E5%AE%A2-3/</loc>
+    
+    <lastmod>2019-12-12T09:36:32.943Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://evanmeek.github.io/DoomEmacs/index.html</loc>
     
     <lastmod>2019-11-05T08:14:38.754Z</lastmod>
@@ -128,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/tags/index.html</loc>
+    <loc>https://evanmeek.github.io/categories/index.html</loc>
     
     <lastmod>2019-08-29T17:50:26.189Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://evanmeek.github.io/categories/index.html</loc>
+    <loc>https://evanmeek.github.io/tags/index.html</loc>
     
     <lastmod>2019-08-29T17:50:26.189Z</lastmod>
     

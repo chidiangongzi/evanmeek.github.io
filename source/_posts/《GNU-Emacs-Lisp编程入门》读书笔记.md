@@ -429,9 +429,91 @@ count ;;输出
 计算机没有人类那么聪明，所以大家在写代码时要分清楚这两个的不同。
 
 ``` emacs-lisp
-(buffer-name)
+(buffer-name) ;; => "《GNU-Emacs-Lisp编程入门》读书笔记.md"
+(buffer-file-name) ;; =>"/home/evanmeek/Documents/Blog/source/_posts/《GNU-Emacs-Lisp编程入门》读书笔记.md"
+```
+**表达式`(buffer-name)`用于获取当前buffer的名称而`(buffer-file-name)`用于获取当前buffer所对应文件的完整路径**，还要说明一点，并不是所有的buffer都有所对应的文件，例如`\*scratch\*`buffer就没有所对应的文件。
+
+## 获得缓冲区 ##
+
+如果想获得缓冲区本身，那么可以使用`current-buffer`。
+
+``` emacs-lisp
+(buffer-name) ;; => "《GNU-Emacs-Lisp编程入门》读书笔记.md"
+(current-buffer) ;; => #<buffer 《GNU-Emacs-Lisp编程入门》读书笔记.md>
+```
+我们发现这两个函数的返回值挺相似的，但实际上他们却完全不同，`buffer-name`获取到的只是一个名称罢了，而`current-buffer`函数获取到的是一个名称所指向的对象或实体。举个生活上的例子:你对小明说:"小明，帮我拿个苹果"，然后小明就拿给了你"苹"和"果"字，显然这不是你真正想要的，你想要的是叫苹果的那个实体，可以吃的，有维生素的水果。经过这个例子，希望大家都能理解。 
+
+## 切换缓冲区 ##
+
+先介绍一个函数————`other-buffer`，这个函数用于发挥最近常打开过的buffer对象。例如最近常在`\*scratch\*`与`test.el`之间切换buffer，那么当前buffer为`\*scratch\*`时调用`(other-buffer)`时将会返回`test.el`的buffer对象。
+
+再介绍一个函数————`switch-to-buffer`，这个函数接收一个`Buffer`对象的参量，可以切换当前buffer为`Buffer`参量。
+
+``` emacs-lisp
+(buffer-name) ;; => "《GNU-Emacs-Lisp编程入门》读书笔记.md"
+(other-buffer) ;; => #<buffer *Backtrace*>
+;; 根据最近最常打开过的buffer对象切换buffer
+(switch-to-buffer (other-buffer))
+(buffer-name) ;; => "*Backtrace*"
+```
+如果想要回到上一个buffer可以键入键序列`C-x b RET`，RET是回车。
+
+前面几次提到`调用(call)`这个概念，实际上Lisp解释器对一个列表的首元素为一个函数进行处理时，就是在调用那个函数。
+
+## 缓冲区大小和位点的定位 ##
+
+先为大家介绍下四个函数:
+  * `(point)`  
+  ;; 获取当前光标在当前buffer的位点。
+  * `(buffer-size)`
+  ;; 获取当前buffer的字符数(包括空格)
+  * `(point-min)`
+  ;; 获取当前光标中位点的最小可能值。默认是1,除非设置了变窄,毕竟默认是从第一个字符开始
+  * `(point-max)`
+  ;; 获取当前光标中位点的最大可能值。默认是最后一个字符的point,除非设置了增宽。
+  
+``` emacs-lisp
+;; 获取当前buffer的字符数(包括空格)
+(buffer-size) ;; => 10636
+;; 获取当前光标在当前buffer的位点。
+(point) ;; => 10525
+;; 获取当前光标中位点的最小可能值。默认是1,除非设置了变窄,毕竟默认是从第一个字符开始
+(point-min) ;; => 1
+
+;; 获取当前光标中位点的最大可能值。默认是最后一个字符的point,除非设置了增宽。
+(point-max) ;; => 10670
 ```
 
+## 练习 ##
+
+找一个文件，对它进行操作，将光标移动到缓冲区的中间部分。找出它的缓冲区名、文件名、长度、和你在文件中的位置。
+
+* 缓冲区名
+
+``` emacs-lisp
+(buffer-name) ;; => "《GNU-Emacs-Lisp编程入门》读书笔记.md"
+```
+
+* 文件名
+
+``` emacs-lisp
+(buffer-file-name) ;; => "/home/evanmeek/Documents/Blog/source/_posts/《GNU-Emacs-Lisp编程入门》读书笔记.md"
+```
+
+* 长度
+
+``` emacs-lisp
+(buffer-size) ;; => 11005
+```
+
+* 在文件中的位置
+
+``` emacs-lisp
+(point) ;; => 11033
+```
+
+ 
 
 
  

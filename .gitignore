@@ -1,6 +1,7 @@
-package.json
-node_modules
-themes
-_config.yml
-yarn.lock
-package-lock.json
+!package.json
+!node_modules
+!themes
+!_config.yml
+!yarn.lock
+!package-lock.json
+!source

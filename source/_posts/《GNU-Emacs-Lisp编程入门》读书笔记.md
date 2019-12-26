@@ -428,8 +428,7 @@ count ;;输出
 
 计算机没有人类那么聪明，所以大家在写代码时要分清楚这两个的不同。
 
-``` emacs-lisp
-(buffer-name) ;; => "《GNU-Emacs-Lisp编程入门》读书笔记.md"
+``` emacs-lisp (buffer-name) ;; => "《GNU-Emacs-Lisp编程入门》读书笔记.md"
 (buffer-file-name) ;; =>"/home/evanmeek/Documents/Blog/source/_posts/《GNU-Emacs-Lisp编程入门》读书笔记.md"
 ```
 **表达式`(buffer-name)`用于获取当前buffer的名称而`(buffer-file-name)`用于获取当前buffer所对应文件的完整路径**，还要说明一点，并不是所有的buffer都有所对应的文件，例如`\*scratch\*`buffer就没有所对应的文件。
@@ -518,3 +517,5 @@ count ;;输出
 
  
 
+
+# 第三章 如何编写函数定义 #

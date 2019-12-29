@@ -741,6 +741,77 @@ count ;;输出
 
 例如测试参量可能被绑定在函数定义的参量上:
 
-xxx
+``` emacs-lisp
+(defun type-of-animal (animal-name)
+  "根据animal-name打印信息到回显区
+如果animal-name是符号'fierce则返回'tiger"
+  (if (equal animal-name 'fierce)
+      (message "It's a tiger")))
+(type-of-animal 'fierce) ;; => "It’s a tiger"
+```
+
+**type-of-animal函数详解**
+
+首先`type-of-animal`是包含了两个特殊表模板，分别是`defun`和`if`。`type-of-animal`是函数名，紧跟着函数名的是函数参量列表，然后跟着的是函数的文档。最后函数的主体内是一个if函数，if函数的的一个参量是一个列表，这个列表的首元素的符号是一个函数`equal`，在Lisp中，`equal`函数用于比较参量一和参量二是否相等，如果相等则输出`if`函数的第二个参量，也是一个列表，这个列表的首元素是符号且是函数`message`，将`It's a tiger`打印至回显区。
+
+## if-then-else表达式 ##
+
+
+其实`if-then-else`表达式就是在`if`特殊表之上加了一个参量，其他没什么不同，新增的参量是当参量一的值为nil时，对参量三求值。
+
+它的函数模板可以写成这样:
+
+``` emacs-lisp
+(if true-or-false-test
+    action-to-carry-out-if-the-test-returns-true
+  action-to-carry-out-if-the-test-returns-false)
+```
+
+例如:
+
+``` emacs-lisp
+(if (> 4 5)
+  (message "5 大于 4!")
+(message "4 小于 5")) ;; => "4 小于 5"
+```
+
+通过这个例子，我们发现当`if`函数的第一参量值为nil时就会对第三参量求值。并且第三参量的缩进也要少于第二参量。
+
+那我们现在将`type-of-animal`函数改造成:
+
+```emacs-lisp
+(defun type-of-animal (animal-name) ;second version
+  "根据animal-name打印信息到回显区
+如果animal-name是符号'fierce则输出'It's tiger!否则输出Tt not fierce"
+  (if (equal animal-name 'fierce)
+      (message "It's tiger")
+    (message "It not fierce")))
+(type-of-animal 'fierce) ;; =>"It’s tiger"
+(type-of-animal 'notfierce)  ;; => "It not fierce"
+```
+
+## Lisp中的真与假 ##
+
+
+
+
+Lisp中所有除了nil的都是真，nil也就是我们常说的假，nil有多种意思，一种就是nil代表假，另一种则是代表空列表，但往往都把空列表写成`()`，而当Lisp解释器对表达式求值时，只要值不是nil或空列表那么都是真，不管得到的值为一个数字或字符串或列表，它都代表真。
+
+``` emacs-lisp
+(if nil
+    'true
+  'false) ;; => false
+(if t
+    'true
+  'false) ;; => true
+```
+
+真也有另外一种表示方式，在表达式求值后没什么可返回时就会返回`t`，例如:
+
+``` emacs-lisp
+(> 5 4) ;; => t
+```
+
+## save-excursion函数 ##
 
 

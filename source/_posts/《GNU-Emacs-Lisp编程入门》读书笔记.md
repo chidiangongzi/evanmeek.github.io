@@ -814,4 +814,137 @@ Lisp中所有除了nil的都是真，nil也就是我们常说的假，nil有多�
 
 ## save-excursion函数 ##
 
+各位还记得什么是位点(point)，什么是标记(mark)吗?
+
+Emacs是一个文本编辑器，主要还是与文本打交道，那么`save-excursion函数`就是与文本打交道的一个经典函数。
+
+先让我们来回顾一下位点与标记:
+
+* 位点(point)：及当前buffer中光标所在字符位置，例如当光标置于buffer的开头，那么point应该是1，若置于buffer的末尾，那么point就是当前buffer的字符数了。
+
+* 标记(mark)：标记是buffer的另外一个位置，其中一个就是位点。在buffer中可以自定义很多标记，这样可以方便我们跳转至某个位点。设置标记的函数是`(set-mark-command)`，它绑定了一个键序列`C-SPC`，如果此时想要快速跳转至某个标记点，就可以使用命令`(exehange-point-and-mark`快速回到标记处，它绑定了一个键序列`C-x C-x`，并且还会将当初的位点设置一个标记，方便来回跳转。
+
+**位点与标记之间的缓冲区叫做现域(region)**，有很多条命令是专用于操作现域的，例如:`center-region|count-lines-region|kill-region|print-region`
+
+前面将了很多关于位点与标记的知识，下面正式介绍`save-excursion`函数，这个函数的作用主要是将位点和标记的当前位置保存，然后当其他会影响位点或标记的函数执行完后，再将标记的位点复原。 
+
+`save-excursion`函数模板:
+
+``` emacs-lisp
+(save-excursion
+  body...)
+```
+**注意，`save-excursion`函数的函数体允许有多条表达式，但是只返回最后一条表达式的值。**
+
+
+
+
+
+## 回顾 ##
+
+这一章学的东西还是挺多的，下面我就把书中的所有文字一字不差的抄下来。
+
+先说几个提到但是没有过多解释的函数:
+
+* eval-last-sexp
+对光标所处的位点前的最后一个符号表达式求值。如果这个函数激活时没有参量，那么将返回值输出在回显区，否则将打印在当前缓冲区中。
+
+* defun
+定义函数。这个特殊表最多可有五个部分：函数名、传送给函数的参量的模板、文档、一个可选的交互函数声明以及函数体。
+
+* interactiv
+向解释器声明这个函数可以被交互的使用，并且这个特殊表还可以用一个字符串，分成单个或多个部分，依次传送信息至这个函数的参量。 
+
+* let
+声明在`let`表达式主体中使用的变量列表并且给它们赋初始值，初始值要么是nil，要么是一个指定的值，然后对`let`表达式主体的其他表达式求值并返回最后一个表达式的值。
+
+* save-excursion
+对这个函数主体求值前，记录位点和标记的值以及当前缓冲区。求值后恢复位点和标记。
+
+* if
+对函数的第一个参量求值，如果值为真，则对第二个参量求值，否则对第三个参量求值。
+
+* equal、eq
+测试两个对象的结构或内容是否相等用equal，测试两个对象是否完全相当用eq
+
+* < > <= >=
+用于判断第一个参量的值是否大于/小于/大于或等于/小于或等于第二个参量的值，如果是则返回真，否则返回nil
+
+* message
+用于往回显区内打印消息
+
+* setq set
+setq 用于将第一个参量的值绑定到第二个参量的值，而第一个参量的值由`setq`自动加上引用。
+set 用于将第一个参量的值绑定到第二个参量的值，但是不会自动为第一个参量加上引用。
+
+* buffer-name
+这个函数用于获取一个缓冲区的名字
+
+* buffer-file-name
+这个函数用于获取缓冲区所对饮的名字
+
+* current-buffer
+这个函数用于获取当前缓冲区的buffer对象
+
+* other-buffer
+返回最近选择过的缓冲区
+
+* switch-to-buffer
+选择一个缓冲区
+
+* set-buffer
+设置当前缓冲区为某一个缓冲区
+
+* buffer-size
+返回当前缓冲区的字符数
+
+* point
+返回当前光标所对应缓冲区的位置
+
+* point-min
+返回当前缓冲区最小的字符数
+
+* point-max
+返回当前缓冲区最大的字符数
+
+
+
+
+
+## 练习 ##
+
+* 编写一个非交互的函数，这个函数将其第一个参量(是一个数)的值翻倍。然后使这个函数成为一个交互函数
+
+非交互:
+
+``` emacs-lisp
+(defun double(number)
+  "使number翻倍"
+  (setq number (* number 2)))
+
+(double 10) ;; => 20
+```
+
+交互式:
+
+``` emacs-lisp
+(defun double(number)
+  "使number翻倍"
+  (interactive "n请输入要翻倍的数字: ")
+  (setq number (* number 2))
+  (message "翻倍后:%d" number))
+```
+
+* 编写一个函数，测试`fill-column`的当前值是否大于传送给函数参量的值，如果是则打印适当的信息
+
+``` emacs-lisp
+(defun is-bigger-to-fill-column (number)
+  "判断number是否比fill-column大"
+  (if (> number fill-column)
+      (message "%d比fill-column要大" number)
+    (message "%d比fill-column要小" number)))
+
+(is-bigger-to-fill-column 79) ;; => "79比fill-column要小"
+(is-bigger-to-fill-column 81) ;; => "81比fill-column要大"
+```
 

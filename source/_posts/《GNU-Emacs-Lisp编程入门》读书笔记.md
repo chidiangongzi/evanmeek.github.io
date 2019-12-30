@@ -1129,3 +1129,64 @@ START and END specify the portion of the current buffer to be copied."
 
 `read-buffer`函数可以通过buffer名称读取buffer中的字符串并返回。其第一个参量是用于提示用户的友好信息，并且特意指出这个提示信息必须是由冒号和空格结尾且被双引号包围的字符串。第二个参量用于也就是返回值，它的默认值为列表
 
+
+
+
+## 回顾 ##
+
+惯例抄书
+
+* describe-function\describe-variable
+打印一个函数或一个变量的文档。通常将其绑定到`C-h f`和`C-h v`
+
+* find-tag
+找到存放某个函数或变量的源代码的文件，并切换到这个缓冲区，将位点(光标)置于相应函数或这变量的开始处。习惯上将其绑定到`M--`。
+
+* save-excursion
+保存位点和标记的位置，并在对`save-excursion`参量求值之后恢复这些值。它也保存当前缓冲区并返回到该缓冲区。
+
+* push-mark
+在指定位置设置一个标记，并在标记环中记录原来标记的值。标记是缓冲区中的一个位置，即使由一些文本被从缓冲区删除或者增加到缓冲区，标记仍将保持它的相对位置。
+
+* goto-char
+将位点设置为由参量指定的位置。参量值可以是一个数，也可以是一个标记，甚至可以是一个返回一个位置数字的表达式(point-min)
+
+* insert-buffer-substring
+将来自一个缓冲区（这是被作为一个参量而传递给函数的）的文本域拷贝到当前缓冲区
+
+* mark-whole-buffer
+将整个缓冲区标记为一个域。一般将这个函数绑定到`C-x h`。
+
+* set-buffer
+将Emacs的注意力转移到另一个缓冲区，但是不该便显示的窗口。 
+
+* get-buffer-create\get-buffer
+寻找一个已指定名字的缓冲区，或当指定名字的缓冲区不存在时就创建它。如果指定名称的缓冲区不存在，get-buffer函数就返回nil。
+
+## 练习  ##
+
+* 编写自己的`simplified-end-of-buffer`函数定义，然后测试它是否能工作。
+
+``` emacs-lisp
+(defun simple-end-of-buffer()
+  "移动光标至buffer结束处"
+  (interactive)
+  (push-mark)
+  (goto-char (point-max)))
+```
+
+* 用if和get-buffer编写一个函数，这个函数要打印一个说明某个缓冲区是否存在的消息 
+
+``` emacs-lisp
+(defun is-exist-buffer (buffer-or-name)
+  "判断buffer-or-name是否为一个已存在的buffer"
+  (if (bufferp (get-buffer buffer-or-name))
+      (message "%s存在!" buffer-or-name)
+    (message "此缓冲区不存在!")))
+    
+(is-exist-buffer "test.el") ;; => "test.el存在!"
+```
+
+* 用find-tag找到copy-to-buffer函数的源代码
+
+不会...

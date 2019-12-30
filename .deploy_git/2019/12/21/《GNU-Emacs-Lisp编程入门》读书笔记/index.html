@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="借了本Elisp的书，不厚，200多页，大概一周就能看完吧!">
+  <meta name="description" content="借了本Elisp的书，不厚，200多页，大概一周(两周)就能看完吧!">
 <meta name="keywords" content="EmacsLisp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《GNU Emacs Lisp编程入门》读书笔记">
 <meta property="og:url" content="https://evanmeek.github.io/2019/12/21/《GNU-Emacs-Lisp编程入门》读书笔记/index.html">
 <meta property="og:site_name" content="我不会编程的博客">
-<meta property="og:description" content="借了本Elisp的书，不厚，200多页，大概一周就能看完吧!">
+<meta property="og:description" content="借了本Elisp的书，不厚，200多页，大概一周(两周)就能看完吧!">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-25T08:38:12.678Z">
+<meta property="og:updated_time" content="2019-12-28T18:20:09.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《GNU Emacs Lisp编程入门》读书笔记">
-<meta name="twitter:description" content="借了本Elisp的书，不厚，200多页，大概一周就能看完吧!">
+<meta name="twitter:description" content="借了本Elisp的书，不厚，200多页，大概一周(两周)就能看完吧!">
 
 
 
@@ -473,7 +473,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 16:38:12" itemprop="dateModified" datetime="2019-12-25T16:38:12+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-29 02:20:09" itemprop="dateModified" datetime="2019-12-29T02:20:09+08:00">2019-12-29</time>
               
             
           </span>
@@ -536,7 +536,7 @@
       
 
       
-        <p>借了本Elisp的书，不厚，200多页，大概一周就能看完吧!</p>
+        <p>借了本Elisp的书，不厚，200多页，大概一周(两周)就能看完吧!</p>
 <a id="more"></a>
 <h1 id="第一章-列表处理"><a href="#第一章-列表处理" class="headerlink" title="第一章 列表处理"></a>第一章 列表处理</h1><p>列表是Lisp的基础。</p>
 <h2 id="Lisp列表"><a href="#Lisp列表" class="headerlink" title="Lisp列表"></a>Lisp列表</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>简单的Lisp列表书写形式:</p>
@@ -706,7 +706,7 @@
 <h2 id="缓冲区名"><a href="#缓冲区名" class="headerlink" title="缓冲区名"></a>缓冲区名</h2><p>讲了两个函数，分别是<code>(buffer-name)</code>以及<code>(buffer-file-name)</code>。</p>
 <p>首先得清楚buffer和文件的概念，buffer的中文翻译叫做缓冲区，它其实是将文件中的内容拷贝到Emacs中，所以在我们修改buffer时，文件并不会改动，只有当我们进行保存修改时才会。而文件是保存在磁盘上的信息，人们常常在修改buffer时说成”我在修改xx文件”，这严格意义上讲是错误的，但人们都知道其实我只是在修改buffer，而不是那个文件，只不过说成文件罢了，所以各位小伙伴不要误解。</p>
 <p>计算机没有人类那么聪明，所以大家在写代码时要分清楚这两个的不同。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(buffer-name) ;; =&gt; &quot;《GNU-Emacs-Lisp编程入门》读书笔记.md&quot;</span><br><span class="line">(buffer-file-name) ;; =&gt;&quot;/home/evanmeek/Documents/Blog/source/_posts/《GNU-Emacs-Lisp编程入门》读书笔记.md&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>(buffer-name) ;; </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(buffer-file-name) ;; =&gt;&quot;/home/evanmeek/Documents/Blog/source/_posts/《GNU-Emacs-Lisp编程入门》读书笔记.md&quot;</span><br></pre></td></tr></table></figure>
 <p><strong>表达式<code>(buffer-name)</code>用于获取当前buffer的名称而<code>(buffer-file-name)</code>用于获取当前buffer所对应文件的完整路径</strong>，还要说明一点，并不是所有的buffer都有所对应的文件，例如<code>\*scratch\*</code>buffer就没有所对应的文件。</p>
 <h2 id="获得缓冲区"><a href="#获得缓冲区" class="headerlink" title="获得缓冲区"></a>获得缓冲区</h2><p>如果想获得缓冲区本身，那么可以使用<code>current-buffer</code>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(buffer-name) ;; =&gt; &quot;《GNU-Emacs-Lisp编程入门》读书笔记.md&quot;</span><br><span class="line">(current-buffer) ;; =&gt; #&lt;buffer 《GNU-Emacs-Lisp编程入门》读书笔记.md&gt;</span><br></pre></td></tr></table></figure>
@@ -741,7 +741,107 @@
 <li>在文件中的位置</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(point) ;; =&gt; 11033</span><br></pre></td></tr></table></figure>
-
+<h1 id="第三章-如何编写函数定义"><a href="#第三章-如何编写函数定义" class="headerlink" title="第三章 如何编写函数定义"></a>第三章 如何编写函数定义</h1><p>本章内容较多，不止于函数定义，还介绍了一些常用的函数。</p>
+<h2 id="defun-特殊表"><a href="#defun-特殊表" class="headerlink" title="defun 特殊表"></a>defun 特殊表</h2><p><code>defun</code>不以通常的方式对它的参量求值，因为它是特殊表。</p>
+<p>这节将简单描述函数定义的过程。</p>
+<p>一个函数定义在<code>defun</code>之后最多可有5个部分:</p>
+<ul>
+<li>符号名，这个符号指向了这个函数的定义。</li>
+<li>一个列表，包含了要传给函数的参量。若没有任何参量要传递，那么可以写空列表。</li>
+<li>这个函数的文档，由双引号括住，此选项为可选。</li>
+<li>使当前函数成为一个交互式函数的列表，此选项为可选。交互式函数将会在后的小节讲到。</li>
+<li>函数的主题，也就是一系列的命令。<br>下面是一个包含了五个部分的函数模板:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun funciton-name (arguments...)</span><br><span class="line">  &quot;optional-documentation&quot;</span><br><span class="line">  (interactive argument-passing-info) ;; optional</span><br><span class="line">  body...)</span><br></pre></td></tr></table></figure>
+<p>我们通过这个模板写一个简单的函数吧，这个函数的功能呢是让其参量乘以7。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defun multiply-by-seven (number)</span><br><span class="line">  &quot;使number(参量)乘以7&quot;</span><br><span class="line">  (* number 7))</span><br></pre></td></tr></table></figure>
+<p>这个函数的函数名就是<code>multiply-by-seven</code>，而函数名后面的列表也就是函数的参量，当我们调用函数时，传递给函数的参量的值就会被绑定到这个<code>number</code>上。并且<code>number</code>也可以为其他的名称，这取决于写代码的人，你可以改为<code>multiplicand</code>，这可能更符合函数定义的意思。并且这里的<code>number</code>的范围是仅在函数定义内才有效的，如果我们在函数定义外对<code>number</code>求值，可能会返回个错误信息。所以说，参量列表内的参量名可以是任意的，只要不与参量列表内的其他参量相同即可。这就比如：你班上的外号叫李大头，那么在这个班里的李大头代表的人就是你，而如果是在学校中，也有人的名字叫李大头，这时这个李大头就不代表你了。</p>
+<p>跟随参量列表后的叫做函数文档，它的作用是当我们或任何人使用<code>C-h f</code>并键入函数名时所查看的函数帮助文档中的文本。这里还要注意一点，有些函数例如<code>apropos</code>在查看函数文档时会只显示文档的第一行，所以我们要在第一行就尽量写清楚这个函数的作用。通过<code>C-h f</code>查看函数文档将会弹出一个<code>\*Help\*</code>Buffer。</p>
+<p>而这个例子的第三行就是函数的主体(往往比例子里多很多**，它是一个列表，功能是将<code>number</code>乘以7。</p>
+<p>函数定义好了，但我们不要直接尝试调用，我先告诉你们调用的方式吧，<strong>把函数名作为一个列表的首元素，其余的作为参量</strong>最后eval即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(multiply-by-seven 7)</span><br></pre></td></tr></table></figure></p>
+<p>但可千万不要急着求值，因为肯定会报错。这主要是因为你只是写好了函数定义，并没有把函数定义给安装上。</p>
+<h2 id="安装函数定义"><a href="#安装函数定义" class="headerlink" title="安装函数定义"></a>安装函数定义</h2><p>将光标移动到我们写好的函数定义之后，eval一下即可安装好函数。安装完成后的函数就被包含在Emacs之中了，直到退出Emacs之前。如果已经尝试安装函数定义的童鞋应该已经发现了，在我们eval函数定义后，会在回显区显示函数名，这就代表我们成功安装了这个函数。</p>
+<h3 id="改变函数定义"><a href="#改变函数定义" class="headerlink" title="改变函数定义"></a>改变函数定义</h3><p>想要修改已经安装好的函数定义很简单，我们只需要重新安装一遍即可，例如我们想要将<code>multiply-by-seven</code>函数改为用<code>+</code>来实现，这样做:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defun multiply-by-seven (number)</span><br><span class="line">  &quot;使number(参量)加7次&quot;</span><br><span class="line">  (+ number number number number number number number)) ;; =&gt; multiply-by-seven</span><br><span class="line"></span><br><span class="line">(multiply-by-seven 7) ;; =&gt; 49</span><br></pre></td></tr></table></figure>
+<p>所以编写Emacs Lisp代码时的流程通常是:<strong>写函数，装函数，测函数，改函数，装函数</strong>。</p>
+<h2 id="使函数成为交互式函数"><a href="#使函数成为交互式函数" class="headerlink" title="使函数成为交互式函数"></a>使函数成为交互式函数</h2><p>交互式函数的特点是可以通过<code>M-x</code>调用，还可以通过键序列调用，例如常用的移动光标<code>C-n</code>就是一个交互式函数，并且交互式函数是不会自动将返回值输出至回显区的，因为让一个函数称为交互式函数通常被认为是想得到函数的附加效果，而不是返回值。</p>
+<p>想要使一个函数称为交互式函数，可以在函数定义时，将<code>defun</code>特殊表开头的列表的第四个元素写成一个<code>interactive</code>特殊表开头的列表。例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defun multiply-by-seven-interactive (number)</span><br><span class="line">  &quot;打印 number(参量) 乘以 7</span><br><span class="line">这是个交互式函数&quot;</span><br><span class="line">  (interactive &quot;p&quot;)</span><br><span class="line">  (message &quot;7 * %d = %d&quot; number (* number 7))) ;; =&gt; multiply-by-seven-interactive</span><br></pre></td></tr></table></figure>
+<p>安装好这个函数后，可以有三种方式调用它:</p>
+<ul>
+<li>对表达式<code>(multiply-by-seven-interactive 7**</code>求值</li>
+<li>键入<code>C-u</code>然后输入一个数字作为函数的参量，键入<code>M-x</code>然后键入函数名最后键入<code>RET</code>。</li>
+<li>还有一种暂时没搞成功，等学到16章的第7节就知道了。</li>
+</ul>
+<p><strong>交互式函数不会自动将返回值打印至回显区</strong> 并且当使用第二种调用方式时，没有在<code>C-u</code>之后键入数字的话将会以默认值4来替代。</p>
+<h3 id="交互的multiply-by-seven函数"><a href="#交互的multiply-by-seven函数" class="headerlink" title="交互的multiply-by-seven函数"></a>交互的multiply-by-seven函数</h3><p>我们为<code>multiply-by-seven</code>函数定义了交互式版本，但没有解释其中的<code>(interactive &quot;p&quot;)</code>列表是个什么东西，这里就说一下。</p>
+<p>首先<code>(interactive &quot;p&quot;)</code>中的<code>p</code>代表将接收一个前缀参量，这个前缀参量也就是我们通过<code>C-u 数字 M-x 函数名</code>这种方式调用时的<code>数字</code>了，例如这个数字是<code>5</code>那么就会把<code>5</code>传递给<code>number</code>参量，然后在<code>message</code>函数中的<code>(* 7 5)</code>求值，最终由于函数是一个交互式函数，所以函数不会自动将返回值输出到回显区中，而<code>message</code>函数的返回值原本是带双引号的，由于是交互式函数，我们要的只是函数带来的附加效果，而不是返回值。</p>
+<h3 id="interactive函数的不同选项"><a href="#interactive函数的不同选项" class="headerlink" title="interactive函数的不同选项"></a>interactive函数的不同选项</h3><p>前面已经解释过<code>interactive</code>函数的<code>p</code>选项，其实<code>interactive</code>特殊表有20多个预定义的选项，我们可以结合多个选项使得将信息正确交互地选送给函数。</p>
+<p>下面介绍两个选项，首先是<code>r</code>，<strong>它可以让Emacs将位点所在区域的开始值和结束值作为函数的两个参量</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(interactive &quot;r&quot;) ;; =&gt; (13945 13978)</span><br></pre></td></tr></table></figure>
+<p>再则是<code>B</code>选项，<strong>它可告诉Emacs用缓冲区的名字作为函数的参量</strong>，它会让Emacs在小缓冲区提示用户输入缓冲区名字，并将跟在<code>B</code>后面的字符串作为提示，而且Emacs还会进行函数名的补全（按TAB）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">;; 会出来一个交互式的窗口</span><br><span class="line">(interactive &quot;B请输入Buffer名称:&quot;) ;; =&gt; (&quot;test.el&quot;)</span><br></pre></td></tr></table></figure>
+<p>下面再看一个例子，可以获取任意Buffer所对应的文件路径以及位点的开始及结束点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun get-buffer_name-point_start-point_end (buffer start end)</span><br><span class="line">  &quot;获取buffer所对应的文件以及位点的开始结束值&quot;</span><br><span class="line">  (interactive &quot;B请输入Buffer名称: \nr&quot;)</span><br><span class="line">  (message &quot;Buffer-file:%s\npoint-start:%d\npoint-end:%d&quot;(buffer-file-name (get-buffer buffer)) start end))</span><br></pre></td></tr></table></figure>
+<p>通过<code>interactive</code>的<code>B</code>选项获取任意buffer的名称，再通过<code>r</code>选项后去位点的开始和结束值。最后在输出时通过<code>get-buffer</code>获取Buffer对象，从而达到目的。</p>
+<p><strong><code>interactive</code>是支持控制字符的，例如上个例子中用到的<code>\n</code>。并且<code>interactive</code>还可以无参量，这样的话跟<code>mark-whole-buffer</code>函数差不多。如果<code>interactive</code>的选项不能满足你的要求，那么你可以将参量传递给<code>nteractive</code>做为一个列表。</strong></p>
+<h3 id="永久地安装代码"><a href="#永久地安装代码" class="headerlink" title="永久地安装代码"></a>永久地安装代码</h3><p>前面我们写了那么多的函数，在我们没有关闭Emacs之前这些函数都是可以被我们随意求值的，但是当我们关闭Emacs之后再打开就必须重新安装函数才能求值了。所以有几种方式可以永久地安装函数或其他的代码。</p>
+<ul>
+<li>如果代码作为个人使用，可以把函数定义的代码放到<code>.emacs</code>初始化文件中，当启动Emacs时，将会自动对<code>.emacs</code>文件中的代码求值。</li>
+<li>如果代码很多，可以将函数定义存放至多个文件，然后使用<code>load</code>函数使得emacs对单独存放函数的文件求值。</li>
+<li>如果是当前计算机其他用户需要使用的代码，可以将代码放入<code>site-init.el</code>文件中，这样使得所有的用户都可以使用你的代码。</li>
+<li>如果你想让你的作为全世界的人使用，那么你可以将代码放到互联网上，或着给自由软件基金会发送一份拷贝，它有可能被加入下一个发行版本中。</li>
+</ul>
+<p><strong>Emacs在过去的年代里成长的道路————奉献。</strong></p>
+<h2 id="let函数"><a href="#let函数" class="headerlink" title="let函数"></a>let函数</h2><p><code>let</code>函数与<code>defun</code>函数一样，都是EmacsLisp中的特殊表。</p>
+<p><code>let</code>函数将一个符号附着到或者绑定到一个值上。这些被绑定的值是只能在<code>let</code>函数之内使用，就像说<code>defun</code>特殊表举的例子，两个同名的事物在不同的场景下代表了不同的意思，例如你的房子和你朋友的房子都是房子，你对你朋友说，你要粉刷房子，在你听来是要粉刷你家的房子，但你朋友有可能会认为你要粉刷他的房子。</p>
+<p>而<code>let</code>函数就避免了这种问题，在<code>let</code>函数中绑定的变量都只能在<code>let</code>函数中访问，这就是局部变量的概念。</p>
+<p><code>let</code>函数跟<code>setq</code>以及<code>set</code>函数有个很大的区别就在于:</p>
+<ul>
+<li><code>let</code>函数绑定的变量可有任意个 <code>setq</code>和<code>set</code>只能有一个</li>
+<li><code>let</code>函数可以执行一个或多个列表。</li>
+<li><code>let</code>函数绑定的变量都是局部的。</li>
+</ul>
+<h3 id="let表达式的各个部分"><a href="#let表达式的各个部分" class="headerlink" title="let表达式的各个部分"></a>let表达式的各个部分</h3><p><code>let</code>表达式分为三个部分，第一个就是<code>let</code>符号，第二个是变量列表，第三个是主体。</p>
+<p><strong>第二个部分的变量列表是由一个列表组成的，这个列表内可以是任意多个符号或任意多个由两个元素组成且第一个元素必定是符号的列表。*</strong></p>
+<p><strong>第三个部分是<code>let</code>表达式主体，由任意多个列表组成。</strong></p>
+<p><code>let</code>表达式的模板看起来像:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(let varlist body...)</span><br></pre></td></tr></table></figure>
+<p>其中变量列表的符号是由<code>let</code>特殊表赋初始化值的变量.符号本身的初始值是nil.而作为两元素列表的首元素的每一个符号被绑定到对第二个元素求值后的返回值.</p>
+<p>所以一个简单的变量列表看起来可能是这样的:<code>(apple (pear 10))</code>.在这个例子中,<code>apple</code>的值是nil,因为我们没有为其赋予初始值.而<code>pear</code>的值为10.</p>
+<p>那么当变量是由两个元素的列表组成,就可以是下面这样的模板:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(let ((variable value) (variable value) variable...)</span><br><span class="line">  (body1)</span><br><span class="line">  (body2)...)</span><br></pre></td></tr></table></figure>
+<h3 id="let表达式例子"><a href="#let表达式例子" class="headerlink" title="let表达式例子"></a>let表达式例子</h3><p>现在需要创建一些关于水果的栗子,不同的水果有不同的数量.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(let (apple (pear 10) (banana &apos;4斤) watermelon)</span><br><span class="line">  (message &quot;苹果数量:%S\t梨子数量:%d\t香蕉数量:%s\t西瓜数量:%S&quot; apple pear banana watermelon)) ;; =&gt; &quot;苹果数量:nil	梨子数量:10	香蕉数量:4斤	西瓜数量:nil&quot;</span><br></pre></td></tr></table></figure>
+<p>我们创建了两个初始值为nil的变量<code>apple</code>和<code>watermelon</code>,以及一个绑定到10的变量pear,还有一个绑定到<code>4斤</code>的变量banana.随后在<code>let</code>主体中将创建的变量都用<code>message</code>函数打印在回显区.</p>
+<h3 id="let语句中的未初始化变量"><a href="#let语句中的未初始化变量" class="headerlink" title="let语句中的未初始化变量"></a>let语句中的未初始化变量</h3><p>在<code>let</code>表达式的变量列表中,允许不给予变量初始化值,那么Lisp解释器将会为其默认绑定到nil值上.</p>
+<p>并且,如果没有给予初始值,那么它可以称作:<code>作为独立的原子出现</code>.</p>
+<h2 id="if特殊表"><a href="#if特殊表" class="headerlink" title="if特殊表"></a>if特殊表</h2><p><code>if</code>函数是除了<code>defun</code>/<code>let</code>特殊表之外的一个特殊表,它用于让计算机做一些判断的工作.</p>
+<p>首先来看<code>if</code>函数的模板:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if if-part</span><br><span class="line">    then)</span><br></pre></td></tr></table></figure>
+<p>其工作方式是：首先测试<code>if-part</code>的返回值是否不为nil，如果不为nil，那么就执行<code>then</code>的表达式。</p>
+<p><strong>通常会把then部分放在if-part的下一行，这样更有利于阅读。</strong></p>
+<p>下面做一个简单的栗子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if (&gt; 5 4)</span><br><span class="line">    (message &quot;5 比 4 大!&quot;)) ;; =&gt; &quot;5 比 4 大!&quot;</span><br></pre></td></tr></table></figure>
+<p>其中<code>&gt;</code>函数测试它的第一个参量和第二个参量进行比较大小，如果第一个参量大于第二个参量则返回“真”，否则返回nil。</p>
+<p>可往往在日常编码中，<code>if-part</code>的值不能直接确定，它可能是一个表达式，又可能是一个函数调用。</p>
+<p>例如测试参量可能被绑定在函数定义的参量上:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(defun type-of-animal (animal-name)</span><br><span class="line">  &quot;根据animal-name打印信息到回显区</span><br><span class="line">如果animal-name是符号&apos;fierce则返回&apos;tiger&quot;</span><br><span class="line">  (if (equal animal-name &apos;fierce)</span><br><span class="line">      (message &quot;It&apos;s a tiger&quot;)))</span><br><span class="line">(type-of-animal &apos;fierce) ;; =&gt; &quot;It’s a tiger&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>type-of-animal函数详解</strong></p>
+<p>首先<code>type-of-animal</code>是包含了两个特殊表模板，分别是<code>defun</code>和<code>if</code>。<code>type-of-animal</code>是函数名，紧跟着函数名的是函数参量列表，然后跟着的是函数的文档。最后函数的主体内是一个if函数，if函数的的一个参量是一个列表，这个列表的首元素的符号是一个函数<code>equal</code>，在Lisp中，<code>equal</code>函数用于比较参量一和参量二是否相等，如果相等则输出<code>if</code>函数的第二个参量，也是一个列表，这个列表的首元素是符号且是函数<code>message</code>，将<code>It&#39;s a tiger</code>打印至回显区。</p>
+<h2 id="if-then-else表达式"><a href="#if-then-else表达式" class="headerlink" title="if-then-else表达式"></a>if-then-else表达式</h2><p>其实<code>if-then-else</code>表达式就是在<code>if</code>特殊表之上加了一个参量，其他没什么不同，新增的参量是当参量一的值为nil时，对参量三求值。</p>
+<p>它的函数模板可以写成这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(if true-or-false-test</span><br><span class="line">    action-to-carry-out-if-the-test-returns-true</span><br><span class="line">  action-to-carry-out-if-the-test-returns-false)</span><br></pre></td></tr></table></figure>
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(if (&gt; 4 5)</span><br><span class="line">  (message &quot;5 大于 4!&quot;)</span><br><span class="line">(message &quot;4 小于 5&quot;)) ;; =&gt; &quot;4 小于 5&quot;</span><br></pre></td></tr></table></figure>
+<p>通过这个例子，我们发现当<code>if</code>函数的第一参量值为nil时就会对第三参量求值。并且第三参量的缩进也要少于第二参量。</p>
+<p>那我们现在将<code>type-of-animal</code>函数改造成:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(defun type-of-animal (animal-name) ;second version</span><br><span class="line">  &quot;根据animal-name打印信息到回显区</span><br><span class="line">如果animal-name是符号&apos;fierce则输出&apos;It&apos;s tiger!否则输出Tt not fierce&quot;</span><br><span class="line">  (if (equal animal-name &apos;fierce)</span><br><span class="line">      (message &quot;It&apos;s tiger&quot;)</span><br><span class="line">    (message &quot;It not fierce&quot;)))</span><br><span class="line">(type-of-animal &apos;fierce) ;; =&gt;&quot;It’s tiger&quot;</span><br><span class="line">(type-of-animal &apos;notfierce)  ;; =&gt; &quot;It not fierce&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="Lisp中的真与假"><a href="#Lisp中的真与假" class="headerlink" title="Lisp中的真与假"></a>Lisp中的真与假</h2><p>Lisp中所有除了nil的都是真，nil也就是我们常说的假，nil有多种意思，一种就是nil代表假，另一种则是代表空列表，但往往都把空列表写成<code>()</code>，而当Lisp解释器对表达式求值时，只要值不是nil或空列表那么都是真，不管得到的值为一个数字或字符串或列表，它都代表真。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(if nil</span><br><span class="line">    &apos;true</span><br><span class="line">  &apos;false) ;; =&gt; false</span><br><span class="line">(if t</span><br><span class="line">    &apos;true</span><br><span class="line">  &apos;false) ;; =&gt; true</span><br></pre></td></tr></table></figure>
+<p>真也有另外一种表示方式，在表达式求值后没什么可返回时就会返回<code>t</code>，例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&gt; 5 4) ;; =&gt; t</span><br></pre></td></tr></table></figure>
+<h2 id="save-excursion函数"><a href="#save-excursion函数" class="headerlink" title="save-excursion函数"></a>save-excursion函数</h2>
       
     </div>
 
@@ -763,7 +863,7 @@
   <p><span>本文标题:</span><a href="/2019/12/21/《GNU-Emacs-Lisp编程入门》读书笔记/">《GNU Emacs Lisp编程入门》读书笔记</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
   <p><span>发布时间:</span>2019年12月21日 - 16:12</p>
-  <p><span>最后更新:</span>2019年12月25日 - 16:12</p>
+  <p><span>最后更新:</span>2019年12月29日 - 02:12</p>
   <p><span>原始链接:</span><a href="/2019/12/21/《GNU-Emacs-Lisp编程入门》读书笔记/" title="《GNU Emacs Lisp编程入门》读书笔记">https://evanmeek.github.io/2019/12/21/《GNU-Emacs-Lisp编程入门》读书笔记/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/12/21/《GNU-Emacs-Lisp编程入门》读书笔记/" aria-label="复制成功！"></i></span>
   </p>
@@ -1125,7 +1225,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-列表处理"><span class="nav-number">1.</span> <span class="nav-text">第一章 列表处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lisp列表"><span class="nav-number">1.1.</span> <span class="nav-text">Lisp列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lisp原子"><span class="nav-number">1.1.2.</span> <span class="nav-text">Lisp原子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表中的空格"><span class="nav-number">1.1.3.</span> <span class="nav-text">列表中的空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GNU-Emacs帮助你输入列表"><span class="nav-number">1.1.4.</span> <span class="nav-text">GNU Emacs帮助你输入列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行一个程序"><span class="nav-number">1.2.</span> <span class="nav-text">运行一个程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#产生错误消息"><span class="nav-number">1.3.</span> <span class="nav-text">产生错误消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lisp解释器"><span class="nav-number">1.4.</span> <span class="nav-text">Lisp解释器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字节编译"><span class="nav-number">1.4.1.</span> <span class="nav-text">字节编译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求值"><span class="nav-number">1.5.</span> <span class="nav-text">求值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对一个内部列表求值"><span class="nav-number">1.5.1.</span> <span class="nav-text">对一个内部列表求值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.6.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号无值时的错误信息"><span class="nav-number">1.6.1.</span> <span class="nav-text">符号无值时的错误信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参量"><span class="nav-number">1.7.</span> <span class="nav-text">参量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参量的数据类型"><span class="nav-number">1.7.1.</span> <span class="nav-text">参量的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作为变量和列表的值的参量"><span class="nav-number">1.7.2.</span> <span class="nav-text">作为变量和列表的值的参量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数目可变的参量"><span class="nav-number">1.7.3.</span> <span class="nav-text">数目可变的参量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用一个错误类型的数据对象作为参量"><span class="nav-number">1.7.4.</span> <span class="nav-text">用一个错误类型的数据对象作为参量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message函数"><span class="nav-number">1.7.5.</span> <span class="nav-text">message函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给一个变量赋值"><span class="nav-number">1.8.</span> <span class="nav-text">给一个变量赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用set函数"><span class="nav-number">1.8.1.</span> <span class="nav-text">使用set函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用setq函数"><span class="nav-number">1.8.2.</span> <span class="nav-text">使用setq函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数"><span class="nav-number">1.8.3.</span> <span class="nav-text">计数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.9.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.10.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-求值实践"><span class="nav-number">2.</span> <span class="nav-text">第二章 求值实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区名"><span class="nav-number">2.1.</span> <span class="nav-text">缓冲区名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获得缓冲区"><span class="nav-number">2.2.</span> <span class="nav-text">获得缓冲区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换缓冲区"><span class="nav-number">2.3.</span> <span class="nav-text">切换缓冲区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区大小和位点的定位"><span class="nav-number">2.4.</span> <span class="nav-text">缓冲区大小和位点的定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">2.5.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-列表处理"><span class="nav-number">1.</span> <span class="nav-text">第一章 列表处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lisp列表"><span class="nav-number">1.1.</span> <span class="nav-text">Lisp列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lisp原子"><span class="nav-number">1.1.2.</span> <span class="nav-text">Lisp原子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表中的空格"><span class="nav-number">1.1.3.</span> <span class="nav-text">列表中的空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GNU-Emacs帮助你输入列表"><span class="nav-number">1.1.4.</span> <span class="nav-text">GNU Emacs帮助你输入列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行一个程序"><span class="nav-number">1.2.</span> <span class="nav-text">运行一个程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#产生错误消息"><span class="nav-number">1.3.</span> <span class="nav-text">产生错误消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lisp解释器"><span class="nav-number">1.4.</span> <span class="nav-text">Lisp解释器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字节编译"><span class="nav-number">1.4.1.</span> <span class="nav-text">字节编译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求值"><span class="nav-number">1.5.</span> <span class="nav-text">求值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对一个内部列表求值"><span class="nav-number">1.5.1.</span> <span class="nav-text">对一个内部列表求值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.6.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#符号无值时的错误信息"><span class="nav-number">1.6.1.</span> <span class="nav-text">符号无值时的错误信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参量"><span class="nav-number">1.7.</span> <span class="nav-text">参量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参量的数据类型"><span class="nav-number">1.7.1.</span> <span class="nav-text">参量的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作为变量和列表的值的参量"><span class="nav-number">1.7.2.</span> <span class="nav-text">作为变量和列表的值的参量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数目可变的参量"><span class="nav-number">1.7.3.</span> <span class="nav-text">数目可变的参量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用一个错误类型的数据对象作为参量"><span class="nav-number">1.7.4.</span> <span class="nav-text">用一个错误类型的数据对象作为参量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message函数"><span class="nav-number">1.7.5.</span> <span class="nav-text">message函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给一个变量赋值"><span class="nav-number">1.8.</span> <span class="nav-text">给一个变量赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用set函数"><span class="nav-number">1.8.1.</span> <span class="nav-text">使用set函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用setq函数"><span class="nav-number">1.8.2.</span> <span class="nav-text">使用setq函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数"><span class="nav-number">1.8.3.</span> <span class="nav-text">计数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.9.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.10.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-求值实践"><span class="nav-number">2.</span> <span class="nav-text">第二章 求值实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区名"><span class="nav-number">2.1.</span> <span class="nav-text">缓冲区名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获得缓冲区"><span class="nav-number">2.2.</span> <span class="nav-text">获得缓冲区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换缓冲区"><span class="nav-number">2.3.</span> <span class="nav-text">切换缓冲区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲区大小和位点的定位"><span class="nav-number">2.4.</span> <span class="nav-text">缓冲区大小和位点的定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">2.5.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-如何编写函数定义"><span class="nav-number">3.</span> <span class="nav-text">第三章 如何编写函数定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#defun-特殊表"><span class="nav-number">3.1.</span> <span class="nav-text">defun 特殊表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装函数定义"><span class="nav-number">3.2.</span> <span class="nav-text">安装函数定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改变函数定义"><span class="nav-number">3.2.1.</span> <span class="nav-text">改变函数定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使函数成为交互式函数"><span class="nav-number">3.3.</span> <span class="nav-text">使函数成为交互式函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交互的multiply-by-seven函数"><span class="nav-number">3.3.1.</span> <span class="nav-text">交互的multiply-by-seven函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interactive函数的不同选项"><span class="nav-number">3.3.2.</span> <span class="nav-text">interactive函数的不同选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#永久地安装代码"><span class="nav-number">3.3.3.</span> <span class="nav-text">永久地安装代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let函数"><span class="nav-number">3.4.</span> <span class="nav-text">let函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let表达式的各个部分"><span class="nav-number">3.4.1.</span> <span class="nav-text">let表达式的各个部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let表达式例子"><span class="nav-number">3.4.2.</span> <span class="nav-text">let表达式例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let语句中的未初始化变量"><span class="nav-number">3.4.3.</span> <span class="nav-text">let语句中的未初始化变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if特殊表"><span class="nav-number">3.5.</span> <span class="nav-text">if特殊表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-then-else表达式"><span class="nav-number">3.6.</span> <span class="nav-text">if-then-else表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lisp中的真与假"><span class="nav-number">3.7.</span> <span class="nav-text">Lisp中的真与假</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#save-excursion函数"><span class="nav-number">3.8.</span> <span class="nav-text">save-excursion函数</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -961,4 +961,171 @@ Lisp代码可以分为多个模块或包，如果想要查看某个模块的帮�
 
 ## 简化的beginning-of-buffer函数定义 ##
 
+对于`beginning-of-buffer`函数你们可能已经使用过了，其绑定的键序列是`M-<`。其作用是将当前光标移动至buffer的起始处。
+
+下面我们将自己实现一个简单的`beginning-of-buffer`函数。
+
+让我们来看看我们需要做什么事:
+
+1. 首先这个函数得是个交互式函数，以便我们能通过键序列调用或用`M-x`调用。
+2. 其次我们需要记录个位点为标记
+3. 最后我们再跳转到buffer起始处
+
+相比与真正的`beginning-of-buffer`函数定义，没有考虑一些复杂的选项，但是我们先完成这个简化版本吧!
+
+``` emacs-lisp
+(defun simple-beginning-of-buffer ()
+  "移动光标至buffer开始处"
+  (interactive)
+  (push-mark)
+  (goto-char (point-min)))
+```
+
+这个`defun`函数包含了5个部分:
+
+1. 首先是这个函数的函数名————`simple-beginning-of-buffer`
+2. 再就是函数的文档
+3. 随后是交互式表达式
+4. 然后记录位点为标记
+5. 最后跳转至buffer的起始处 
+
+由于这个函数是无参量的，所以交互式表达式内也不用写任何字符串，而`push-mark`函数默认将`point`加入到标记中，最后通过`goto-char`跳转至`point-min`的位置。如果想要回到原来的位置可以使用`C-x C-x`。
+
+既然已经写了一个`simple-beginning-of-buffer`那我们也可以写一个`simple-end-of-buffer`吧!
+
+``` emacs-lisp
+(defun simple-end-of-buffer()
+  "移动光标至buffer结束处"
+  (interactive)
+  (push-mark)
+  (goto-char (point-max)))
+```
+
+最后则是，如果遇到不了解的函数，可以将光标放置函数之上，键入键序列`C-h f RET`即可。 
+
+## mark-whole-buffer函数定义 ##
+
+`mark-whole-buffer` 不比`simple-end-of-buffer`复杂多少。
+
+这次我们来看一个函数的完整定义
+
+这是书中的定义:
+
+``` emacs-lisp
+(defun mark-whole-buffer ()
+  "Put point at beginning and mark at end of buffer."
+  (interactive)
+  (push-mark (point))
+  (push-mark (point-max))
+  (goto-char (point-min)))
+```
+
+书中讲不知道为啥函数体内的第一条表达式`push-mark`内还需要写`(point)`，但我现在再去看，这个函数已经改变了，并且也改掉了这个冗余的代码。
+
+``` emacs-lisp
+(defun mark-whole-buffer ()
+  "Put point at beginning and mark at end of buffer.
+If narrowing is in effect, only uses the accessible part of the buffer.
+You probably should not use this function in Lisp programs;
+it is usually a mistake for a Lisp function to use any subroutine
+that uses or sets the mark."
+  (declare (interactive-only t))
+  (interactive)
+  (push-mark)
+  (push-mark (point-max) nil t)
+  ;; This is really `point-min' in most cases, but if we're in the
+  ;; minibuffer, this is at the end of the prompt.
+  (goto-char (minibuffer-prompt-end)))
+```
+
+并且还改了一些代码，先不看`declare`，我们发现变化的有`(push-mark (point-max))`，最新的`mark-whole-buffer`函数中函数体第二个表达式多了两个参量，第二个参量代表如果值不为nil则显示`Mark set`。第三个参量代表如果在瞬时标记模式下，值不为nil则激活。
+
+并且最后一条表达式也修改过了，原本是`point-min`但改为`minibuffer-prompt-end`，其区别在于:
+
+`minibuffer-prompt-end会在返回buffer位置时输出信息至minibuffer`
+
+在是如果当前buffer不是minibuffer那么就返回`point-min`
+
+
+
+
+## append-to-buffer函数定义 ##
+
+由于我看的这本书年代久远(2001)，现在是2019年，整整过去18年，Emacs也已经发生了巨大的变化。
+
+所以我将先试着记录书中所讲的`append-to-buffer`函数再对Emacs 26.3版本的`append-to-buffer`函数进行讲解，希望对看到这篇博客的同仁们提供一些微薄的帮助。
+
+> 这个计划已经鸽了，我发现用我现在所学还是很难解释清楚26.3版本的append-to-buffer函数的工作方式。所以后面的26.版 append-to-buffer会在以后完成，十分抱歉。
+
+首先`append-to-buffer`函数的作用是将指定buffer区域(region)中的文本追加到当前Buffer的point前。
+
+### 旧版append-to-buffer ###
+
+先让我们看看书中的`append-to-buffer`函数定义:
+
+``` emacs-lisp
+(defun append-to-buffer (buffer start end)
+  "Append to specified buffer the text of the region.
+It is inserted into that buffer before its point.
+When alling from a program, give three arguments:
+a buffer or the name of one, and two character numbers
+specifying the portion of the current buffer to be copied."
+  (interactive "BAppend to buffer: \nr")
+  (let ((oldbuf (current-buffer)))
+    (save-excursion
+      (set-buffer (get-buffer-create buffer))
+      (insert-buffer-substring oldbuf start end))))
+```
+
+通过阅读这个函数的文档就能很清晰的了解这个函数的工作方式。
+
+略过函数名和文档，我们直接来看`interactive`。`interative`中的`B`代表让用户选择一个Buffer(可能不存在)并将buffer名称传给函数参量一，其次是一些友好的文本`Append to buffer: `，紧跟其后的`\n`用于控制换行，最后的`r`获取当前区域(point和mark)，并将其传给函数的参量二和参量三。 
+
+随后是一个`let`特殊表，在`let`的变量列表中，定义了一个`oldbuf`，其绑定的值是`(current-buffer)`的返回值，也就是当前Buffer对象。在`let`的表达式体中有一个`save-excursion`函数。
+
+`save-excursion`函数体中有两条表达式，第一条表达式`(set-buffer)`用于将当前缓冲区变换到另外一个缓冲区，而其参量又是一个函数`get-buffer-create`，这个函数的作用是获取指定BUFFER对象或名(称为BUFFER-OR-NAME)，如果这个BUFFER-OR-NAME不存在，将会自动创建。
+
+`save-excursion`函数体的第二条表达式是一个`(insert-buffer-substring)`函数这个函数将参量一从参量二到参量三的区域的字符串插入到当前Buffer的point之前。
+
+
+
+
+### 26.3版append-to-buffer ###
+
+由于本人水平有限，如有错误，欢迎提出issue.
+
+先让我们看函数定义原型:
+
+``` emacs-lisp
+(defun append-to-buffer (buffer start end)
+  "Append to specified BUFFER the text of the region.
+The text is inserted into that buffer before its point.
+BUFFER can be a buffer or the name of a buffer; this
+function will create BUFFER if it doesn't already exist.
+
+When calling from a program, give three arguments:
+BUFFER (or buffer name), START and END.
+START and END specify the portion of the current buffer to be copied."
+  (interactive
+   (list (read-buffer "Append to buffer: " (other-buffer (current-buffer) t))
+	 (region-beginning) (region-end)))
+  (let* ((oldbuf (current-buffer))
+         (append-to (get-buffer-create buffer))
+         (windows (get-buffer-window-list append-to t t))
+         point)
+    (save-excursion
+      (with-current-buffer append-to
+        (setq point (point))
+        (barf-if-buffer-read-only)
+        (insert-buffer-substring oldbuf start end)
+        (dolist (window windows)
+          (when (= (window-point window) point)
+            (set-window-point window (point))))))))
+```
+
+我们发现函数参量没有变化，并且注释也没有大的变化，只是函数体内发生了较大的变化。
+
+首先是`interactive`函数参量发生了变化，变成了一个`list`函数，回想一下，`list`函数是用于构造一个列表的函数，这个`list`函数的第一个参量是`(read-buffer)`函数。
+
+`read-buffer`函数可以通过buffer名称读取buffer中的字符串并返回。其第一个参量是用于提示用户的友好信息，并且特意指出这个提示信息必须是由冒号和空格结尾且被双引号包围的字符串。第二个参量用于也就是返回值，它的默认值为列表
 

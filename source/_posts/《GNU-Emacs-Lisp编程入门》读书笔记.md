@@ -1190,3 +1190,15 @@ START and END specify the portion of the current buffer to be copied."
 * 用find-tag找到copy-to-buffer函数的源代码
 
 不会...
+
+# 第五章 更复杂的函数
+
+本章我们将在已学内容的基础之上学习更复杂的函数，例如有使用两次`save-excursion`的
+`copy-to-buffer`函数，以及一个在`interactive`中使用`*`和`or`函数的函数。
+
+## copy-to-buffer函数的定义
+
+`copy-to-buffer`函数与前面学过的`append-to-buffer`的定义很类似。
+
+`copy-to-buffer`是替换指定`BUFFER`的内容，而`append-to-buffer`是在指定`BUFFER`中追加内容。
+    

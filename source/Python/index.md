@@ -9,6 +9,8 @@ date: 2019-08-28 14:21:35
 
 [Python基础教程]("http://c.biancheng.net/python/")
 
+> 暂时停止更新! mmp这个教程原本还免费，现在就收费了!
+
 # 目录
 
 > [第一章----Python教程基础](https://evanmeek.github.io/2019/08/29/Python-01-Python%E6%95%99%E7%A8%8B%E5%9F%BA%E7%A1%80/)

@@ -22,6 +22,16 @@
     {% endif %}
   <script src="{{ pace_js_uri }}"></script>
   <link rel="stylesheet" href="{{ pace_css_uri }}"/>
+  <script>
+    (function(){
+        if('{{ page.password }}'){
+            if (prompt('请输入文章密码') !== '{{ page.password }}'){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+  </script>
 {% endif %}
 
 {% if theme.han %}

@@ -99,7 +99,7 @@
   <meta name="description" content="LIFE IS FANTASTIC!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="我不会编程的博客">
-<meta property="og:url" content="https://evanmeek.github.io/tags/VIM/index.html">
+<meta property="og:url" content="https://evanmeek.github.io/tags/Vim/index.html">
 <meta property="og:site_name" content="我不会编程的博客">
 <meta property="og:description" content="LIFE IS FANTASTIC!">
 <meta property="og:locale" content="zh-CN">
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://evanmeek.github.io/tags/VIM/">
+  <link rel="canonical" href="https://evanmeek.github.io/tags/Vim/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>标签: VIM | 我不会编程的博客</title>
+  <title>标签: Vim | 我不会编程的博客</title>
   
 
 
@@ -164,6 +164,8 @@
   </style>
 </noscript>
 
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -430,7 +432,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>VIM<small>标签</small>
+        <h1>Vim<small>标签</small>
         </h1>
       </div>
 
@@ -442,43 +444,17 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/07/14/What-is-Vim/" itemprop="url">
+          <a class="post-title-link" href="/2019/09/27/读《笨方法学习VimScript》所学/" itemprop="url">
             
-              <span itemprop="name">What is Vim?</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-14T20:08:54+08:00" content="2019-07-14">
-          07-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/06/21/我的VIM配置详解/" itemprop="url">
-            
-              <span itemprop="name">我的VIM配置详解</span>
+              <span itemprop="name">读《笨方法学习VimScript》所学</span>
             
           </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-21T17:35:54+08:00" content="2019-06-21">
-          06-21
+        <time class="post-time" itemprop="dateCreated" datetime="2019-09-27T18:26:16+08:00" content="2019-09-27">
+          09-27
         </time>
       </div>
 
@@ -683,12 +659,49 @@
           
 
           
-
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/evanmeek" title="GitHub &rarr; https://github.com/evanmeek" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:the_lty_mail@foxmail.com" title="E-Mail &rarr; mailto:the_lty_mail@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/EvanMeek" title="Telegram &rarr; https://t.me/EvanMeek" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                </span>
+              
+            </div>
           
 
           
+
           
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
                 推荐链接
@@ -785,6 +798,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -873,6 +888,36 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz',
+    appKey: 'd9FgNU9rPxvw0QhusRpgOfW3',
+    placeholder: '欢迎留下你的足迹👣',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
 
 
 
@@ -1297,5 +1342,60 @@
 
   
 
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+  </div>
+<script src="https://evanmeek.github.io/live2d/autoload.js"></script>
 </body>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+</html>
+pgOfW3',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+  </div>
+<script src="https://evanmeek.github.io/live2d/autoload.js"></script>
+</body>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
 </html>

@@ -10,7 +10,7 @@ tags:
 借了本Elisp的书，不厚，200多页，大概一周(两周)就能看完吧!
 
 <!--more-->
-
+    
 # 第一章 列表处理 #
 
 列表是Lisp的基础。
@@ -513,7 +513,7 @@ count ;;输出
 ```
 
 # 第三章 如何编写函数定义 #
-
+    
 本章内容较多，不止于函数定义，还介绍了一些常用的函数。
 
 ## defun 特殊表 ##
@@ -1201,4 +1201,129 @@ START and END specify the portion of the current buffer to be copied."
 `copy-to-buffer`函数与前面学过的`append-to-buffer`的定义很类似。
 
 `copy-to-buffer`是替换指定`BUFFER`的内容，而`append-to-buffer`是在指定`BUFFER`中追加内容。
-    
+
+首先来看看`copy-to-buffer`的函数定义:
+
+``` emacs-lisp
+(defun copy-to-buffer-t (BUFFER START END)
+  "docutments..."
+  (interactive "BCopy to buffer: \nr")
+  (let ((oldbuf (get-buffer-create BUFFER)))
+    (save-excursion
+      (set-buffer BUFFER)
+      (save-excursion
+        (insert-buffer-substring oldbuf START END)))))
+```
+
+略过函数名与文档不看，可以看到这个函数被定义为交互式函数，并且这个函数的参量要求
+是一个BUFFER对象，以及两个表示位置的数字。这三个参量都由`interactive`所解决，其
+使得让用户选择一个BUFFER，然后获取当前`Buffer`的`point`和`mark`，作为`START`和
+`END`。
+
+随后是一个`let`表达式，其在它的`varlist`部分将`BUFFER`参量通过
+`get-buffer-create`函数获取了其对象(就算`BUFFER`参量的值不存在也会创建一个)，并
+且将这个BUFFER对象赋值给`oldbuf`。在`let`表达式的`BODY`部分，出现了一个
+`save-excursion`函数，这个函数用于记录当前`point`和`mark`的位置，然后在其参量求
+值完毕后恢复记录的位置，这个参量也就是`set-buffer`，这个函数用于改变当前BUFFER为
+  参量`BUFFER`。随后又是一个`save-excursion`函数，其参量
+  `insert-buffer-substring`函数我们也了解过，其用于将当前BUFFER的START到END之间
+  的区间插入到`oldbuf`内。
+
+## insert-buffer函数的定义
+
+前面我们用过`append-to-buffer`以及`copy-to-buffer`，他们都是将当前`BUFFER`的内容
+拷贝或追加到某一个`BUFFER`中，而`insert-buffer`可以将当前`BUFFER`的内容，拷贝至
+一个已存在的`BUFFER`当中。
+
+先来看看其函数定义:
+
+``` emacs-lisp
+(defun insert-buffer-t (buffer)
+  "docutmens.."
+  (interactive "*bInsert buffer: ")
+  (or (bufferp buffer)
+      (setq buffer (get-buffer buffer)))
+  (let (start end newmark)
+    (save-excursion
+      (save-excursion
+        (set-buffer buffer)
+        (setq start (point-min) end (point-max)))
+      (insert-buffer-substring buffer start end)
+      (setq newmark (point)))
+    (push-mark newmark)))
+```
+
+先简单整理一下这个函数都包含了什么东西:
+
+- 一个参量
+- 函数文档
+- 定义交互式函数
+- `interactive`参量说明有\*和 `b`
+- 以及一个`or`函数，这个函数内有两个参量
+- 第一个参量是`bufferp`函数
+- 第二个参量是`setq`函数，`setq`的第二个参量是`get-buffer`函数。
+- 随后是一个`let`表达式
+- `let`表达式中先是初始化了三个空变量
+- 一个外层`save-excursion`函数
+- 一个内层`save-excursion`函数
+- 其第一个参量是一个`set-buffer`函数
+- 第二个参量是`setq`函数
+- 外层`save-excursion`的第二个参量是一个`insert-buffer-substring`函数
+- 第三个参量是一个`setq`函数。
+- 最后是一个`push-mark`函数。 
+
+### insert-buffer函数中的交互表达式
+
+让我们先从`interactive`表达式说起，首先起表达式说明分为三个部分：
+
+1. `*`代表只读缓冲区，这个说明会在当`b`说明返回的buffer是一个只读缓冲区时在回显
+   区提示错误。也就是说当这个`insert-buffer`函数当在一个只读缓冲区被调用时，将不
+   被允许。
+2. `b`代表要求是一个存在的缓冲区或者是缓冲区名，它与`B`说明不同。
+
+3. `Insert buffer: `是友好的提示。
+
+**提示:\*控制符无需后接一个换行符来分割不同的参量。**
+
+### insert-buffer函数体
+
+主要有两个部分，分别是`or`函数和`let`函数。
+
+先让我们来看看`or`函数，其第一个参量是一个`bufferp`函数，这个函数用于当其参量是
+是一个已存在的buffer或buffer的名称才会返回`non-nil`的值，也就是真/非假，其第二个
+参量是一个`setq`函数，里面有一个`get-buffer`函数，这个函数是用于获取一个已存在的
+buffer对象根据buffer对象或buffer的名称，并将buffer绑定到`get-buffer`的值之上。
+
+其实这个函数的意思是，要让`buffer`参量确定是一个已存在的buffer，我们可以用`if`函
+数重写一遍。
+
+### 用if表达式编写insert-buffer函数
+
+我们的需求是，必须确保`buffer`的值是一个已存在的buffer或buffer的名称。
+
+``` emacs-lisp
+(if (not (bufferp buffer)
+         (setq buffer (get-buffer buffer))))
+```
+
+就可以这样写，当`bufferp`函数的值为nil时，那么就会尝试获取`buffer`的对象并且保存，
+否则则报错。
+
+
+### insert-buffer函数中的let表达式
+
+在我们确保`buffer`参量是一个非只读缓冲区后，可以开始写拷贝内容的代码了。
+
+首先我们初始化三个空变量: start end newmark
+
+  `let`表达式体中有一个外层`save-excursion`函数，其记录了我们的`point`和`mark`，
+其第一个参量又是一个`save-excursion`函数，我们称为内层`save-excursion`。内层
+`save-excursion`主要做了两件事，首先是将Emacs的注意力转移到`buffer`之上，随后为
+`start`以及`end`附上`buffer`的`point-min`和`point-max`的值，并且由于内层
+`save-excursion`已经求值完毕，那么会恢复在求值过程中可能变动的位点和标记的值。随
+后外层`save-excursion`函数的第二个参量是将`buffer`参量的内容插入到当前buffer从
+`start`到`end`结束的内容，这个`start`和`end`也就是`buffer`参量所有的内容。随后又
+把`newmark`变量绑定到值`point`之上，最后将`newmark`记录为`标记`。
+
+## beginning-of-buffer函数的完整定义
+

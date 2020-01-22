@@ -1327,3 +1327,76 @@ buffer对象根据buffer对象或buffer的名称，并将buffer绑定到`get-buf
 
 ## beginning-of-buffer函数的完整定义
 
+前面我们尝试写了`beginning-of-buffer`函数的部分定义，它是一个无参量的函数，那么
+这次我们来写一个有参量的`beginning-of-buffer`函数。
+
+这个带参量的`beginning-of-buffer`函数可以指定在当前缓冲区的几分之几标记位置。
+
+那么现来说下需求:`beginning-of-buffer`函数接受一个可选参量，这个参量的返回是1-10
+之间，这个参量作为标记点的位置。
+
+### 可选参量
+
+在需求里我们提到: 
+
+> `beginning-of-buffer`函数接受一个可选参量
+
+除非特别声明，否则Lisp会认为函数的参量是必须在函数被调用时传递一个值给该参量的。
+如果不传入参量，则该函数就会出错:`Wrong number of arguments`。
+
+而如果需要使一个或多个参量变为可选参数只需要在参量前加上`&optional`关键字，例如:
+
+``` emacs-lisp
+(defun beginning-of-defun-function-t (&optional arg1 arg2)
+  "documentation"
+  (interactive "P")
+  (push-mark)
+  (goto-char
+   ;; if-there-is-an-argument
+   ;;   xxxx
+   ;; else-go-to
+   (point-min)))
+```
+
+对比前面的`simple-beginning-to-buffer`函数，好像唯一多的地方是在`goto-char`函数
+的第一个参量，变成了`if`特殊表。这个`if`函数判断由`interactive`的`P`参量获得到的前
+缀参量是否为一个非nil值，如果是则执行`if then`部分，否则执行跟
+`simple-beginning-to-buffer`一样的操作。
+
+### 带参量的beginning-of-buffer函数 
+
+`goto-char`函数中有一个`if`表达式，这个表达式做了很多关于算术的操作。 
+
+ ``` emacs-lisp
+(defun beginning-of-defun-function-t (&optional arg)
+  "documentation"
+  (interactive "P")
+  (push-mark)
+  (goto-char
+   (if (> (buffer-size) 10000)
+       (/ (prefix-numeric-value arg) 10)
+     (/
+      (+ 10
+         (*
+          (buffer-size) (prefix-numeric-value arg))) 10))
+   (point-min)))
+ ```
+ 
+ 一眼看上去有些复杂，其实我们通过函数模板来揭开其中的奥秘，十分简单。
+ 
+我们看将`if`函数的结构看成这样:
+
+``` emacs-lisp
+(if (buffer-is-large
+     divide-buffer-size-by-10-and-multiply-by-arg)
+    else-use-alternate-calculation)
+```
+
+要吃饭了
+
+这里的`if`函数用于检查缓冲区的大小，这是因为书中使用的是第18版本的Elisp，其使用
+了不大于800w的数字来描述缓冲区的大小，如果有在某次求值中遇到更大的缓冲区，Emacs
+
+
+
+

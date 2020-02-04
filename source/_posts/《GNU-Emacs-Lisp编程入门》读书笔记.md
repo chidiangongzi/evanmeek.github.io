@@ -7,7 +7,7 @@ tags:
  - EmacsLisp
 ---
 
-借了本Elisp的书，不厚，200多页，大概一周(两周)就能看完吧!
+借了本Elisp的书，不厚，200多页，大概一周(两周(一個月))就能看完吧!
 
 <!--more-->
     
@@ -1403,4 +1403,190 @@ buffer对象根据buffer对象或buffer的名称，并将buffer绑定到`get-buf
 
 当`(if (> (buffer-size) 10000))`时，执行`if`表达式的`then`部分，这部分内有一个
 `prefix-numeric-value`用于将从`(interactive "P")`读入的参数转为一个数字，也就是
-把`arg`的值转为数字，并且将其除以10
+把`arg`的值转为数字，并且将其除以10，這樣可以讓產生的數比緩衝區中相應的比例多只
+多一個字符。 
+
+
+
+### 完整的beginning-of-buffer函數
+
+``` emacs-lisp
+(defun beginning-of-buffer-t (&optional arg)
+  "Move point to the beginning of the buffer;
+leave mark at previous position.
+Wwith arg N, put point N/10 of the way from the true beginning.
+Don't use this in Lisp programs!
+\(goto-char (point-min)) is faster
+and does not set the mark."
+  (interactive "P")
+  (push-mark)
+  (goto-char
+   (if arg
+       (if (> (buffer-size) 10000)
+           ;; Avoid overflow for large buffer sizes!
+           (* (prefix-numeric-value arg)
+              (/ (buffer-size) 10))
+         (/ (+ 10 (* (buffer-size)
+                     (prefix-numeric-value arg)))
+            10))
+     (point-min)))
+  (if arg (forward-line 1)))
+```
+
+
+## 回顧
+
+慣例抄書
+
+* or
+
+逐一對每一個參量求值，並返回第一個非空值（不是nil)。如果所有參量的值都是nil，則
+返回nil。
+
+* and
+
+逐一對每一個參量求值，如果有任意一個參量的值爲nil，則返回nil，並且隨後的參量不會
+進行求值。
+
+* &optional
+
+指定函數定義時參量爲可選項，如果有任意參量前有&optional則表明當前且隨後的參量都
+是可選參量。
+
+* prefix-numberic-value
+
+將由 `(interactive "P")`產生的尚未加工的前綴參量轉換成一個數值。
+
+* erase-buffer
+
+刪除當前緩衝區的所有內容 
+
+* bufferp
+
+如果參量是一個buffer對象則返回真，否則返回 nil。
+
+
+
+
+
+
+## &optional 參量練習
+
+題目
+
+> 編寫一個帶可選參量的交互參量，這個函數要測試函數被調用時是否有參量（其值是一個
+> 數），這個數是否大於或小於fill-column的值，並將結果以一個消息的形式給出。然而，
+> 如果不帶參量調用這個函數時，則使用56作爲默認值。
+
+解答
+
+``` emacs-lisp
+(defun bigger-fill-column (&optional arg)
+  "判斷是否大於fill-column
+ARG爲可選參量，默認值爲56"
+  (interactive "P")
+  (if arg
+      (if (> arg fill-column)
+          (message "%d大於fill-column的值" arg)
+        (message "%d小於fill-column的值" arg))
+    (if (< 56 fill-column)
+        (message "fill-column的值大於於56"))))
+```
+
+# 第六章 變窄和增寬
+
+變窄(narrowing)是Emacs的一個特性，它的作用是使得當前buffer在開啓變窄後將變窄範圍
+之外的內容屏蔽。
+
+上面提到的屏蔽不僅有視覺效果而且還對EmacsLisp解釋器有效。
+
+## save-restriction特殊表
+
+前面我們學習過`save-excursion`函數，其作用是記錄當前位點和標記的位置，而對於變窄，
+Emacs提供了一個`save-restriction`函數，其作用是記錄當前變窄的標記位置，當其表達
+式內參量求值完成後再恢復記錄過的變窄的標記位置，這麼做可以讓當遇到取消變窄的表達
+式後可以恢復。
+
+其函數模板見:
+
+``` emacs-lisp
+(save-restriction body...)
+```
+
+**注意:**
+
+如果同時連續使用`save-excursion`函數和`save-restriction`函數時必須將
+`save-excursion`函數放在`save-restriction`之前，類似於:
+
+``` emacs-lisp
+(save-excursion
+  (save-restriction))
+```
+
+如果位置反過來則會出現`save-excursion`無法記錄變窄範圍之外的標記。
+
+
+ 
+
+
+
+## what-line函數
+
+這個函數是一個典型的同時使用`save-restriction`和`save-excursion`的例子，其作用是
+返回當前光標所在當前buffer的行數。
+
+先看看它的實現:
+
+``` emacs-lisp
+(defun what-line ()
+  "Print the current line number (in the buffer) of point."
+  (interactive)
+  (save-restriction
+  (widen)
+  (save-excursion
+    (beginning-of-line)
+    (message "Line %d"
+    (1+ (count-lines 1 (point)))))))
+```
+
+首先看到`widen`函數，這個函數可以取消變窄開啓，但是它被`save-restriction`包住，
+這意味着就算取消了變窄開啓，`save-restriction`也可以保證變窄範圍不會變化.
+
+再看到`beginning-of-line`，這個函數會移動point到當前行的首個字符.明顯這個函數改
+變了`point`值，不過由於`save-excursion`的出現，這些改變位點和標記的操作都將會被
+恢復。
+
+前面所做的類似`widen`和`beginning-of-line`都可以說是爲了後面真正求出行數的計算做
+的準備。
+
+
+現在再讓我們看向`(message)`函數，裏面只是簡單的做了一個友好提示以及格式化，隨後
+讓我們注意`(1+ (count-lines 1 (point)))`，`count-lines`的作用是計算其第一個參量
+到第二個參量之間的總行數，至於`1+`是爲了處理一些疑難雜症。
+
+## 練習：變窄
+
+題目
+
+> 編寫一個函數，這個函數在即使設置了變窄開啓而使緩衝區的前一半不可見的情況下也能
+> 顯示出當前緩衝區的頭60個字符。要在顯示完成之後恢復位點、標記和變窄開啓等相關設
+> 置。對於這個練習題，要使用`save-restriction`、`widen`、`goto-char`、
+> `point-min`、`buffer-substring`、`message` 和其他函數，真可以算得上是一個大雜
+> 燴。
+
+解題
+
+``` emacs-lisp
+(defun print-60-char ()
+  "輸出當前buffer前60個字符
+變窄範圍之外也算"
+  (interactive)
+  (save-restriction
+    (widen)
+    (save-excursion
+      (message "%s"
+               (buffer-substring
+                (point-min)
+                (goto-char 60))))))
+```
+

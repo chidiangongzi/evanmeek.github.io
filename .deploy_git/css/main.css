@@ -1929,7 +1929,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff08d4;
+  background: #c826ff;
 }
 .feed-link,
 .chat {
@@ -3177,4 +3177,11 @@ ul.breadcrumb li+li:last-child {
   z-index: -1;
   width: 100%;
   height: 100%;
+}
+body {
+  background: url("https://images7.alphacoders.com/554/thumb-1920-554285.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
 }

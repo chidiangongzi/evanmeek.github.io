@@ -1756,3 +1756,5 @@ animal ;; => (cat a b c d)
 
 fishes
 ```
+
+# 第八章 剪切和存儲文本

@@ -1429,8 +1429,7 @@ and does not set the mark."
          (/ (+ 10 (* (buffer-size)
                      (prefix-numeric-value arg)))
             10))
-     (point-min)))
-  (if arg (forward-line 1)))
+     (point-min))) (if arg (forward-line 1)))
 ```
 
 
@@ -1587,6 +1586,173 @@ Emacs提供了一個`save-restriction`函數，其作用是記錄當前變窄的
       (message "%s"
                (buffer-substring
                 (point-min)
-                (goto-char 60))))))
+                60)))))
 ```
 
+# 第七章 基本函數: car、cdr、cons
+
+本章學習car、cdr、cons等函數，這三個函數都是Lisp中非常基礎的函數。 
+
+`car`
+
+> Contents of the address part of the Register.
+
+`cdr`
+
+> Contents of the Decrement part of the Register.
+
+`cons`
+
+> construct
+    
+## car和cdr函數 
+
+我們見過類似這樣的列表:
+
+``` emacs-lisp
+'(cat dog tiger lion)
+```
+
+而這個列表的car也就是`cat`，car函數用於獲取列表的第一部分(也就是第一個符號)。
+
+這個列表的cdr是`(dog tiger lion)`，cdr函數用於獲取列表的第二部分(除了首符號之外
+的符號)。
+
+**注意:**
+
+- 這裏由cdr獲取的部分是一個列表，而`car`獲取的部分只是一個符號罷了。
+
+- `car`和`cdr`函數都是非破壞性的，也就是說他們不會對操作對象有任何修改操作，只是
+  讀取。
+
+
+
+
+
+
+
+
+## cons函數
+
+`cons`函數用於構造新列表，例如想要爲`(cat dog tiger lion)`中添加一個`panda`可以
+這麼寫:
+
+``` emacs-lisp
+(cons 'panda '(cat dog tiger lion)) ;; => (panda cat dog tiger lion)
+```
+
+**注意:**
+
+`cons`函數不能憑空構造一個新列表，**其必須有一個待插入新元素的列表**。
+
+``` emacs-lisp
+(cons 'panda ()) 
+(cons 'water '(milk nongfu_spring)) ;; => (water milk nongfu_spring)
+```
+
+### 查詢列表的長度: length函數
+
+`length`函數可以獲取列表的長度，也就是元素的個數。
+
+``` emacs-lisp
+(length '(a b c d)) ;; => 4
+```
+
+也可以查詢空列表的長度:
+
+``` emacs-lisp
+(length ()) ;; => 0
+```
+
+但是此函數必須有一個列表對象的參量:
+
+``` emacs-lisp
+(length ) ;; => eval: Wrong number of arguments: length, 0
+```
+
+
+
+
+## nthcdr函數
+
+`nthcdr`函數於`cdr`函數是有聯繫的，試想下如果你想要通過`cdr`函數獲取列表`(cat
+dog lion)`的最後一個元素，你可以這麼做:
+
+``` emacs-lisp
+(cdr (cdr '(cat dog lion))) ;; => (lion)
+```
+
+但假如這個列表的長度有10000，你想獲取最後一個元素還是用這種方式將會十分麻煩，這
+時候就可以使用`nthcdr`函數了，它可以重複`cdr`函數的操作。
+
+``` emacs-lisp
+;; 返回移出前五個元素的列表
+(nthcdr 5 '(car dog lion tiger panda fish)) ;; => fish
+;; 返回移出前三個元素的列表
+(nthcdr 3 '(car dog lion tiger panda fish)) ;; => (tiger panda fish)
+;; 留下全部列表
+(nthcdr 0 '(car dog lion tiger panda fish)) ;; => (car dog lion tiger panda fish)
+```
+
+**注意:**
+
+當`nthcdr`第一個參量大於等於列表長度時將永遠得到`nil`值。
+
+`nthcdr`函數也是不據破壞性的。
+
+
+## setcar函數
+
+`setcar`函數有些類似`cons`函數，只不過其會改變列表的值，也就是說具有破壞性的。
+
+`setcar`將某個值替換某個列表的第一部分。
+
+``` emacs-lisp
+(setq animal '(cat dog lion riger panda fish)) ;; => cat dog lion riger panda fish
+
+(setcar animal 'cow) ;; => cow
+
+animal ;; => (cow dog lion riger panda fish)
+```
+
+於`setcar`類似的還有一個`setcdr`函數，其作用是將列表的第二個參量設置爲第一個參量。
+
+``` emacs-lisp
+(setq animal '(cat dog lion riger panda fish)) ;; => cat dog lion riger panda fish
+
+(setcdr animal '(a b c d)) ;; => (a b c d)
+
+animal ;; => (cat a b c d)
+```
+
+
+
+
+
+
+## 練習
+
+題目
+
+> 通過對幾個cons表達式求值，來構建一個四元素的，有關鳥的列表。試一試，當你對列表
+> 本身使用cons函數時會發生什麼？用一種魚取代這個列表的第一個元素。用其他魚的列表
+> 取代這個列表的其餘部分。
+
+解題
+
+``` emacs-lisp
+
+;; 鳥列表
+(setq fishes
+      (cons 'sparrow
+            (cons 'owl
+                  (cons 'kingfisher
+                        (cons 'ostrich ())))))
+
+;; 魚取代鳥列表第一部分
+(setcar fishes '多寶魚)
+;; 魚列表取代鳥列表第二部分 
+(setcdr fishes (cons '(甲魚 中華鱘) ()))
+
+fishes
+```

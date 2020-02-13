@@ -1715,7 +1715,8 @@ dog lion)`的最後一個元素，你可以這麼做:
 animal ;; => (cow dog lion riger panda fish)
 ```
 
-於`setcar`類似的還有一個`setcdr`函數，其作用是將列表的第二個參量設置爲第一個參量。
+於`setcar`類似的還有一個`setcdr`函數，其作用是將列表的第二個參量設置爲第一個參量
+的第二部分。
 
 ``` emacs-lisp
 (setq animal '(cat dog lion riger panda fish)) ;; => cat dog lion riger panda fish
@@ -1761,6 +1762,428 @@ fishes
 
 > 本人又可以用回简体中文啦！ 而且词库还增加了！可以打字更快了呢！
 
+首先需要先引入一个概念————在Emacs中有一个kill环，这个环记录了kill的数据，在这里
+的kill不代表“杀死”，而是clip的意思。
+
+## zap-to-char函数
+
+书中讲了zap-to-char函数的两个版本，分别是第19版和第18版。 
+
+先让我们来看啊可能`zap-to-char`函数的第`19版本`。
+
+``` emacs-lisp
+(defun zap-to-char (arg char) ;; version 19 implementation
+  "Kill up to and including ARG'th occurrence of CHAR.
+Goes backward if ARG is negative; error if CHAR not found."
+  (interactive "*p\ncZap to char: ")
+  (kill-region (point)
+               (progn
+                 (search-forward
+                 (char-to-string char) nil nil arg))
+               (point)))
+```
+
+简单的描述下这个函数做了什么:
+
+这个函数的功能是将当前位点到指定字符之间的字符串剪切到kill环内，其ARG的作用是指
+定指定字符的次数(可能会有多个指定字符，所以可以选择是哪一个)。
+
+例如有这么一段文字:`Thus,if the cursor were are begining of this sentence...`
+
+我们的光标处于`if the`的`t`之上，当我们通过传递前缀参量`2`给`zap-to-char`函数，
+并且指定`zap-to-char`函数的`CHAR`参量为`s`就会发现`the cursor were are beginning
+of this`被截取了，并且通过`C-y(Yark)`可以将剪切掉的文本找回。
+
+### interactive 表达式
+
+让我们看看`interactive`表达式:
+
+``` emacs-lisp
+(interactive "*p\ncZap to char: ")
+```
+
+双引号部分的作用:
+
+-r `*`代表只读缓冲区，也就是说当我们尝试对一个只读缓冲区使用`zap-to-char`函数将会
+  获得一个报错信息。
+- `p`代表这个函数可以传递一个数值类型的前缀参量。
+- `\n` 换行
+- `c`代表这个函数会提示输入一个字符类型的值。
+- `Zap to char: `一个友好的提示，冒号后面的空格只是让格式更好看罢了。
+
+**通过分析我们大概能知道，这个`interactive`表达式可以做到 监测是否为只读缓冲区，并
+且支持通过前缀参量传递数值类型的值，在使用这个函数时还会提示输入一个字符。**
+
+### zap-to-char函数体
+
+函数体内通过几行简短的代码完成将当前位点到指定字符之间的文本添加到kill环内并删除
+的操作。
+
+跳过`interactive`表达式，可以看到所有的代码都被一个`kill-region`函数给包裹起来了，
+其第一个参量是`(point)`，也就是当前的位点位置，第二个参量是`progn`函数，要讲解这
+个函数的作用先让我们看看`search-forward`函数。
+
+### search-forward函数
+
+或许你曾经使用过`search-forward`函数，它接收四个参量:
+- 第一个参量是要查找的字符
+- 第二个参量(可选)是指定查找范围，可以绑定当前Buffer的一个位置.
+- 第三个参量(可选)是当查找不到时，可以指定一个返回值，如果为t，则再出错时只返回
+  一个nil，如果既不为nil也不为t，则使搜索改变，并且返回一个nil，如果为nil则返回
+  出错信息。
+- 第四个参量(可选)是重复计数值————待查找字符出现的次数，如果值为负数则从后查找。默认值为1。
+
+**注意:**
+
+找到某个字符后位点也会随之改变。
+
+### progn函数
+
+`progn`函数很简单，它的作用就是将任意多个参量进行一一求值，并且返回最后一个参量
+的值。
+
+在这个函数内将`kill-region`所需的第二个参量获取出来了。
+
+首先使用`search-forward`函数将位点改变到要查找的字符上，然后再对`(point)`求值，
+利用自身特性返回最后一个参量的值，从而让`kill-region`函数正常工作。
+
+### 总结zap-to-char函数
+
+了解了`search-forward`以及`progn`函数后我们大致能了解`zap-to-char`函数的工作方式
+了。
+
+其中`kill-region`作用是将某个区域的字符添加到kill环，并且删除，其接收两个参量，
+第一个参量作为区域的开始，第二个参量作为区域的结束，区域开始很容易获取，通过对
+`(point)`求值可以得到，而区域的结束也就是我们要查找的字符的位置，首先通过
+`progn`函数将多条函数放在一个函数内，其中里面的`search-forward`将位点改变为待查
+找的字符上，由于`search-forward`函数的第一个参量必须要是一个字符串类型的值，所以
+我们将通过`interactive`函数获取的字符由`char-to-string`转化为字符类型，其次由于
+位点改变后我们再对`(point)`求值，可以获取区域结束的位置了。
 
 
+### 第18版本的zap-to-char函数
+
+> 个人感觉18版本的zap-to-char很复杂，但是也很精妙的体现出Emacs开发者的智慧。
+
+**第18版本的zap-to-char函数跟第19版本的区别在于，第18版本的剪切区域是去除待查找字
+符本身的。**
+
+先让我们看看代码:
+
+``` emacs-lisp
+(defun zap-to-char-18 (arg char)
+  (interactive "*p\ncZap to char: ")
+  (kill-region (point)
+               (if (search-forward
+                    (char-to-string char) ;; target
+                    nil ;; bind buffer position
+                    t ;; return 
+                    arg) ;; repetition count
+                   (progn
+                     (goto-char
+                      (if (> arg 0)
+                          (1- (point))
+                        (1+ (point))))
+                     (point))
+                 (if (> arg 0) ;; else-part
+                     (point-max)
+                   (point-min)))))
+```
+
+18版本的`zap-to-char`看起来更加复杂，并且功能也更多。
+
+首先，两个版本的主要作用基本相同，都是为了将当前位点到指定字符的位置之间的区域剪
+切，18版本相比较于19版本，多了几个特性:
+
+- 不会剪切指定字符(忽略指定的字符，其他的剪切)
+- 当指定字符不存在将会改变位点为buffer的位点最小值或最大值。 
+
+下面让我们来分析下吧!
+
+看到`interactive`表达式，并没有任何改变，这里可以忽略。而`kill-region`的第一个参
+量仍然是当前位点，后面则有巨大的改变。第二个参量被一个`if`表达式包裹住，这个
+`if`表达式的CONS部分是一个`search-forward`函数，其作用是判断指定字符是否存在，如
+果存在则执行THEN部分的`progn`表达式。
+
+### progn表达式主体
+
+`progn`函数的表达式主体内有两个参量，根据`progn`函数的特性，我们知道，只有最后一
+个参量会被返回，先看看第一个参量，  是一个`goto-char`函数，让我们回顾下18版本的
+特性，其在剪切时会忽略指定的字符，那么这个`goto-char`函数就是做了这么件事，当ARG
+大于0时(往前搜索时字符出现的次数)，那么就将位点往后挪一，反之加一。最后由于改变
+了位点， 并且`progn`函数的第二个参量是`(point)`又将改变后的位点返回，也就成了
+`kill-region`函数的结束区域了。
+
+最后是`if`表达式的ELSE部分，其作用是当为查找到指定字符时，将会根据ARG的值来判断
+剪切到最后还是最前。
+
+
+
+
+
+## kill-region函数
+
+在前面的`zap-to-char`函数使用了`kill-region`函数，现在让我们来康康这个函数的内部
+实现吧！
+
+``` emacs-lisp
+(defun kill-region-19 (begin end)
+  "Kill between point and mark.
+The text is deleted but saved in the kill ring."
+  (interactive "*r")
+  (copy-region-as-kill begin end)
+  (delete-region begin end))
+```
+
+**注意: 看注释**
+
+
+
+
+
+## delete-region函数:接触C
   
+
+`kill-region`函数的`delete-region`函数是一个由C语言宏编写的函数，让我们看看它的
+第一部分:
+
+``` c++
+DEFUN ("delete-region", Fdelete_region, Sdelete_region, 2, 2, "r",
+       doc: /* Delete the text between START and END.
+If called interactively, delete the region between point and mark.
+This command deletes buffer text without modifying the kill ring.  */)
+  (Lisp_Object start, Lisp_Object end)
+{
+  validate_region (&start, &end);
+  del_range (XINT (start), XINT (end));
+  return Qnil;
+}
+```
+
+这里不过多解释(书中没讲，本人也不太了解)
+
+这个宏可以分为7个部分分别是:
+
+- Lisp 中的函数名，也就是被双引号括住的"delete-region"。
+- C语言中的函数名，也就是`Fdelete_region`。
+- C常数结构名，`Sdelete_region`。
+- 第四和第五部分是指明函数参量数目的最小和最大值。
+- 第六部分就像interactive函数的说明表达式一样， 这里是"r"，代表函数的两个参量是
+  某个缓冲区中某个区域的开始和结束。
+- 第七部分是文档字符串，跟Emacs Lisp的函数文档不同在于换行时必须显式的写出`\n`。
+
+再后面就是真正的函数参量，并且每个参量所对应的数据类型都有一段解释。
+
+下面则是函数的主体了，其中`validate-region`函数用于检查参量的值的类型，而
+`del-range`函数则是用于删除区域内字符的函数。
+  
+## 用defvar初始化变量 
+
+`defvar`用于初始化变量，想必有些小伙伴会想到`setq`，`defvar`与其的区别在于:
+
+- `defvar`只能为无值的变量赋值。
+- `defvar`如果在为一个有值的变量赋值时将不会覆盖。
+- 由`defvar`设置的变量可以给予变量文档。
+
+``` emacs-lisp
+(defvar box nil
+  "Just a test box")
+box ;; => nil
+(defvar box 20
+  "Just a test box")
+  box ;; = > nil
+```
+
+不是说由 `defvar`定义的变量就不能够重新赋值了，其实是可以的，但是必须在变量文档
+前加上`*`，并且由`setq`变量重新赋值。
+
+``` emacs-lisp
+
+(defvar t-box nil
+  "*Just a test box")
+t-box ;; => nil
+(defvar t-box 20
+  "*Just a test box")
+t-box ;; => nil
+(setq t-box 20)
+t-box ;; => 20
+```
+
+## copy-region-as-kill函数 
+
+> 这一小节我鸽了好久，原因是内容有点多，我懒得写。。
+
+> 好了，让我们继续写吧(刚刚看了欧阳娜娜的Vlog，感觉真好)！
+
+先让我们看看这个函数的源码:
+
+``` emacs-lisp
+(defun copy-region-as-kill (begin end)
+  "Save the region as if killed, but don't kill it."
+  (interactive "r")
+  (if (eq last-command 'kill-region)
+      ;; then-part: Combine newly copied text with previously copied text
+      (kill-append (buffer-substring begin end) (< end begin))
+
+``    ;; else-part: Add newly copied text as new element
+``    ;; to the kill ring and shorten the kill ring if necessary
+    (setq kill-ring
+          (cons (buffer-substring begin end) kill-ring))
+    (if (> (length kill-ring) kill-ring-max)
+        (setcdr (nthcdr (1- kill-ring-max) kill-ring) nil)))
+  (setq this-command 'kill-region)
+  (setq kill-ring-yank-pointer kill-ring))
+```
+
+由于书上的内容我是前几天看的，而我每次写笔记又是直接根据源码来解读的，所以跟书上
+有些表达不同（甚至有错误），希望各位能理解（有没有人看都是个问题..)。
+
+根据这个函数的文档可以知道，这个函数的作用是:如果某个区域被剪切过了那么就将其保
+存，但是并不再一次剪切。
+
+`copy-region-as-kill`函数接收两个参量，它们分别代表了两个位置，通过这两个位置可
+以确定一个区域。
+
+### copy-region-as-kill函数体
+
+把视野转向`interactive`函数，其表达式只有一个`r`，它的作用是：代表这个函数接收一
+个`region`，也就是把`point`和`mark`作为这个函数的两个参量以数值类型传递过去。
+
+随后让我们看到`if`特殊表，它几乎涵盖了整个函数体，下面我们来看看其`CONS`部分的作
+用。`CONS`部分如下:
+
+``` emacs-lisp
+(eq last-command 'kill-region)
+```
+
+这里有一个我们没有遇到过的函数————`eq`，其作用跟`equal`函数类似，用于比较，但
+`eq`函数比较的是其参量的对象是否相同，然而`eqaul`函数用于判断其参量的内容或结构
+是否相同。
+
+这里就是将`last-command`与`kill-region`进行比较，其中`last-command`是一个变量，
+其作用是记录最后一个执行过的命令。在这个例子中就是将 Emacs最后一次执行的命令与
+`kill-region`进行对象比对，测试其是否为同一个对象。换种说法就是`if`特殊表判断最
+后一次执行的命令是否为`kill-region`。
+
+如果是`kill-region`那么会发生什么呢？先让我们回顾前一章所学的`kill-region`，其作
+用是将某个`region`添加到`kill环`中，并将其删除，从而实现剪切的操作。并且由于其通
+常只被`kill-region`函数所使用，所以对于`kill-region`进行单独适配。
+
+让我们看向`THEN`部分吧！
+
+``` emacs-lisp
+(kill-append (buffer-substring begin end) (< end begin))
+```
+
+整个`THEN`部分只有一个`kill-append`函数， 通过这个函数名我们就大概能猜到其作用是
+将数据`追加`到`kill环`的操作。
+
+首先，`kill-append`函数接收两个参量，先说第一个，其要求第一个参量是一个
+`STRING`类型的数值，而这里就可以使用`buffer-substrin`函数获得要追加的字符串。第
+二个参量用于判断将`STRING` 放置于`kill环`中原数据之前还是之后，这里就是将`end`与
+`begin`进行比较，如果结束位置小于开始位置则代表用户想要从缓冲区的开始往后剪切，
+否则是从缓冲区后往前进行剪切。
+
+
+下面我们看`ELSE`部分，这个部分是当最后一个执行的命令不是`kill-region`时触发的，
+其作用让我们潸潸道来，首先是用`setq`函数更新`kill-ring`中的数据:
+
+
+``` emacs-lisp
+(setq kill-ring
+      (cons (buffer-substring begin end) kill-ring))
+```
+
+其为`kill-ring`重新赋值，值为通过`buffer-substring`函数获取的字符串，并将其通过
+`cons`函数将字符串设置为`kill-ring`的car部分。
+
+随后是一个`if`表达式，这个表达式的作用是防止`kill环`的长度超过`kill-ring-max`的
+值，如果当前`kill-ring`的长度超过`kill-ring-max`，那么就将`kill-ring`最后一个元
+素去除。去除的方式是通过`setcdr`以及`nthcdr`函数，首先通过`nthcdr`函数获取`kill
+环 `中最后一个元素，再通过`setcdr`函数将其设置为`nil`。
+
+到此，涵盖整个函数体的`if`表达式就执行完了，后面的则一些后续的工作，例如设置
+`this-command`值为`kill-region`函数。
+
+最后的:
+
+``` emacs-lisp
+(setq kill-ring-yank-pointer kill-ring)
+```
+
+中的`kill-ring-yank-pointer`也只不过是`kill-ring`的一个全局变量的复制品罢了。
+
+
+
+
+
+
+## 回顾
+
+* cdr,car
+car 返回一个列表的第一个元素，cdr返回从列表第二个元素开始到最后一个元素的列表。
+
+* cons
+这个函数用于将其第一个参量插入至第二个参量从而构造一个新列表。
+
+* nthcdr
+获取第一个参量个第二个参量的cdr部分。
+
+* setcdr、setcar
+setcar用于设置列表的car部分，setcdr用于设置列表的car部分。
+
+* progn
+这个函数可以依次对其多个参量求值并最终返回最后一个参量的值。
+
+* save-restriction
+这个函数用于记录当前缓冲区变窄是否设置，如果设置那么其后续的参量求值后都将恢
+复记录过的变窄设置。
+
+* search-forward
+这个函数用于查找字符串，如果查找就将当前位点改变为查找到的字符串的位点。
+并且其还自带四个参量:
+  * 要查找的字符串
+  * 查找的限制范围(region)
+  * 如果查找失败的处理方式，如果为nil则返回错误信息。
+  * 重复查找多次
+  
+* kill-region
+此函数将`region`复制进`kill环`并 将其在buffer中删除。
+
+* delete-region
+将某个`region`之间的数据全部删除。
+
+* copy-region-as-kill
+将某个`region`之间的数据复制进`kill环`。
+
+ 
+## 查找练习
+
+* 编写一个查找字符串的交互函数。如果找到需要的字符串，在其后设置位点并显示这样的
+  一条消息:"Found!"
+  
+``` emacs-lisp
+(defun search-forward-t (str)
+  (interactive "MSearch String:")
+  (let ((isfound nil))
+    (if (search-forward str nil nil nil)
+        (message "Found!"))))
+```
+
+* 编写一个函数，这个函数在回显区打印kill环的三个元素，如果kill环没有第三个元素，
+  则打印一条适当的消息。
+
+``` emacs-lisp
+(defun print-kill-ring-three ()
+  (if (nthcdr 3 kill-ring)
+      (nthcdr 3 kill-ring)
+    (message "kill-ring not have 3'th cdr")))
+```
+
+* 在第19.29版中，copy-region-as-kill函数不再设置this-command变量。这种变化的后果
+  是什么？要采取什么相应的变化，才能达到相同的效果? 
+ 
+答: 不会
+  
+
+# 第九章 列表是如何实现的

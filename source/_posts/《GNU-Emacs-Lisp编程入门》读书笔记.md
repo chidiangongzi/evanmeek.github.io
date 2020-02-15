@@ -2367,3 +2367,110 @@ more-flowers ;; ==> (chrysanthemum carnation shark buttercup)
 
 > 女朋友闹分手，很好(都是我的错)，我又有时间学习了.
 
+前面在讲剪切和存储文本时讲到被kill的数据将会添加到kill环中，并且随时可以将其取出。
+本章将会学习`yank`及相关命令。
+
+先对`kill-ring`求值，看看里面有些什么吧，如果数据过多可以将`kill-ring`设置为nil，
+但是注意一旦清除就无法找回。
+
+现在你的`kill环`就是一个空列表了，那么下面你可以通过`kill-region`或
+`copy-region-as-kill`添加一些数据到`kill环`中。
+
+那么现在你可以通过`yank`命令取出最后一个放入`kill环`的数据。`yank`命令通常被绑定
+在`C-y`键上，如果你再接上按键`M-y`就持续循环找回数据，例如`kill环`列表的求值结果
+是:
+
+``` emacs-lisp
+kill-ring ;; ==> ("some text" "a different piece of text " " yet more text" )
+```
+
+可以按一次`C-y`找回`some text`，然后再按任意次`M-y`键，能一次循环找回`kill环`中
+的文本，如果找到`kill环`最后一个时将会重置顺序，从第一个开始找。`M-y`键绑定的是
+`yank-pop`命令。
+
+能从`kill环`找回文本的函数目前我只知道三个，分别是`yank`、`yank-pop`、
+`rotate-yank-pointer`。这三个函数都使用了`kill-ring-yank-pointer`变量。
+
+## kill-ring-yank-pointer变量 
+
+`kill-ring-yank-pointer`和`kill-ring`都是一个变量，只不过
+`kill-ring-yank-pointer` 可以通过被绑定相应的值来指向某些东西。
+
+因此，如果`kill环`的值为:
+
+```
+("some text" "a different piece of text" " yet more text" )
+```
+
+并且`kill-ring-yank-pointer`是指向其中第二个元素，那么`kill-ring-yank-pointer`的
+值就是:
+
+``` 
+("a different piece of text " " yet more text")
+```
+
+为啥会出现这样的结果呢？因为计算机不会同时为`kill-ring-yank-pointer`和
+`kill-ring`拷贝一份相同的数据，而是存储一个地址。
+
+``` emacs-lisp
+kill-ring   kill-ring-yank-pointer
+        |             |
+        |    ___ ___  |    ___ ___       ___ ___
+        |   |   |   | --> |   |   |     |   |   |
+        --> |___|___| --> |___|___| --> |___|___| --> nil
+              |             |             |
+              |             |             |
+              |             |             |
+              |             |             --> "yet more text"
+              |             --> "a different piece of text"
+              |--> "some text"
+```
+
+其实变量`kill-ring`和`kill-ring-yank-pointer`都是指针，但是好像大家在提到
+`kill-ring`时都像是特指它的组成部分，也就是说提到它就像是提到`kill环`列表，而不
+是说它是一个指向列表的指针。但是`kill-ring-yank-pointer`大家一看就会觉得是一个指
+向列表的指针。
+
+其实取出`kill环`中具体哪个元素取决于`rotate-yank-pointer`函数，这个函数将会在附
+录B提供详解。
+
+## 练习
+
+  * 使用C-h v (describe-variable) 命令，看一看你的kill环的值。为你的kill环增加几
+    个元素，再看一看它的值。使用M-y(yank-pop)命令在kill环中移动。你的kill环到底
+    有几个元素？用kill-ring-max得到这个值。你的kill环是否已满，或者你能否可以继
+    续往其中保存更多的文本块？
+    
+    ``` emacs-lisp
+    ;; 增加元素
+    (setq kill-ring (cons 'test kill-ring))
+    ;; kill环中移动
+    (counsel-yank-pop)
+    ;; kill环的元素总量
+    (length kill-ring)
+    ;; kill环的元素数量最大值
+    kill-ring-max
+    ;; kill环了后是否还能继续保存文本？
+    ;; 不能 
+    ```
+  * 使用nthcdr和car函数构建一系列表达式分别来返回一个列表的第一个元素，第二个元素，
+    第三个元素，等。
+    
+    ``` emacs-lisp
+    ;; 第一个元素
+    (car '(a b c))
+    ;; 第二个元素
+    (nthcdr 1 '(a b c))
+    ```
+
+# 第十一章 循环和递归
+
+
+
+
+
+
+
+
+
+

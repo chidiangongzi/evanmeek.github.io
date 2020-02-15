@@ -2,7 +2,7 @@
 title: 《GNU Emacs Lisp编程入门》读书笔记
 copyright: true
 date: 2019-12-21 16:17:25
-categories: Lisp
+bucategories: Lisp
 tags:
  - EmacsLisp
 ---
@@ -2184,6 +2184,186 @@ setcar用于设置列表的car部分，setcdr用于设置列表的car部分。
   是什么？要采取什么相应的变化，才能达到相同的效果? 
  
 答: 不会
-  
 
 # 第九章 列表是如何实现的
+
+本章讲述的是列表的原理而不是实现，也不知道书中为何要这么起标题。
+
+列表是由一系列的成对指针构成的，这每对指针的第一个指针要么指向一个原子，要么指向
+另一个列表，而第二个指针要么指向下一个系列列表要么指向nil，nil也就代表这整个列表
+系列中最后一个列表。 
+
+指针其实就是一个指向电子地址的玩意，由此可得知列表就是一堆指向电子地址的指针。
+
+那一个简单的列表举例
+
+``` emacs-lisp
+'(rose violet buttercup)
+```
+
+这个列表中有三个元素，每个元素也就是我们所说的一个成对的指针，如图:
+
+``` 
+
+ ___ ___       ___ ___       ___ ___
+|___|___| --> |___|___| --> |___|___| --> nil
+  |             |             |
+  |             |             |
+  -->rose       --> violet    --> buttercup
+
+```
+
+上图每个方框都代表计算机中的某个地址，例如，第一个方框中保存的就是指向"rose"的地
+址，你也可以直接理解为保存的就是"rose"的地址，计算机可以直接通过地址来访问"rose"
+这个数据。而第二个方框要么指向下一个元素要么指向nil，这里是指向的下一个元素的地
+址，这个地址也就是第二个成对方框的地址，而这第二个元素的第一个方框中保存的是
+"violet"的地址，跟第一个元素的第一个方框一样，有不同的在于第三个元素的第二个方框，
+它指向的是一个nil，代表这个元素是这个列表最后的元素，也就是用于标记结束。
+
+如果我们通过`setq`函数将这个整个列表赋值给一变量这个图会怎么表示呢?
+
+``` emacs-lisp
+(setq bouquet '(rose violet buttercup))
+```
+
+我们知道`setq`的第二个参量是一个列表，所以只需要将这个列表的第一个元素的地址赋值
+给`bouquet`，这样就可以通过`bouquet`访问这个花(上面的这个列表可以称为花列表，因
+为它们都是花的名称)列表了。
+
+用图表示:
+
+``` 
+bouquet
+      |
+      |
+      |     ___ ___       ___ ___       ___ ___
+      -->  |___|___| --> |___|___| --> |___|___| --> nil
+              |             |             |
+              |             |             |
+              -->rose       --> violet    --> buttercup
+
+```
+
+前面说过Lisp中除了列表就是原子，像前面这个花列表的每个元素也可以称为一个列表或是
+cons，因为是成对的结构，我们可以理解为`car`和`cdr`的关系，如果用图可以这样表示:
+
+``` 
+bouquet
+      |
+      |     ________ _______       ________ ________       _________ ________
+      -->  | car    | cdr   |     |  car   | cdr    |     | car     | cdr    |
+           | rose   | 0     ----> | violet | 0      ----> | butter- | 0      |
+           |        |       |     |        |        |     | cup     |        |
+            -------   ------       -------- --------       --------- --------
+
+```
+
+
+对于函数来说，我们可以将它的结构想象成一个抽屉，通过下图来将想象的抽屉画出来:
+
+``` 
+
+      抽屉箱子              抽屉内容
+ ___________________
+|                   |
+| symbol name       | --> bouquet
+|                   |
+ -------------------
+|                   |
+| symbol definition | --> [none]
+|                   |
+ -------------------
+|                   |
+| variable value    | --> (rose violet buttercup)
+|                   |
+ -------------------
+|                   |
+| property list     | --> [not describe here]
+|                   |
+ -------------------
+|/                 \|
+```
+
+ELisp把符号定义、变量值、符号名放在单独的抽屉内，每个抽屉内存储的是其指向的真正
+数据的地址，这样做的好处是例如在改变变量值时其他的符号不会有任何改变。
+
+其实还有一个属性列表，书中没有讲，有兴趣的可以点下这个连接[Property List With GNU-EMACS Manual](https://www.gnu.org/software/emacs/manual/html_node/elisp/Property-Lists.html)
+
+符号讲完，我们再继续讨论，如果将一个列表的cdr部分赋值给一个变量，那么用图怎么表
+示它的结构呢？先看看如下代码:
+
+``` emacs-lisp
+(setq flowers (cdr bouquet))
+```
+
+其实十分简单，也只不过是通过`cdr`函数取出`bouquet`变量所指向的花列表的第二部分，
+然后将其地址赋值给`flowers`变量。
+
+``` 
+bouquet
+      |        flowers
+      |              |
+      |     ___ ___  |    ___ ___       ___ ___
+      |    |   |   | --> |   |   |     |   |   | 
+       --> |___|___| --> |___|___| --> |___|___| --> nil
+              |             |             |
+              -->rose       --> violet    --> buttercup
+
+```
+
+## 带点偶对 
+
+带点偶对(dotted pair)又被称为cons原胞(cons cell)，它代表一个成对的地址框。
+
+我们都知道`cons`函数会把第一个参量作为新元素插入到第二个列表类型的参量中作为
+`car`部分，那如果插入一个新值其他与其他元素有关系的符号会不会有影响呢？请看代码
+和图:
+
+``` emacs-lisp
+(setq bouquet (cons 'lily bouquet))
+```
+
+上段代码可以得到下图:
+
+``` 
+bouquet
+      |                    flowers
+      |                          |
+      |    ___ ___      ___ ___  |    ___ ___       ___ ___
+      |   |   |   |    |   |   | --> |   |   |     |   |   | 
+       -->|___|___|--> |___|___| --> |___|___| --> |___|___| --> nil
+              |             |             |
+              --> lily      -->rose       --> violet    --> buttercup
+
+```
+
+如果用`eq`函数将`flowers`与`bouquet`的`nthcdr` 2 部分进行比较会是怎样呢?
+
+``` emacs-lisp
+(eq flowers (nthcdr 2 bouquet))
+```
+
+我们发现`flowers`的值并没有变化，这完全是因为Lisp中，想要得到一个列表的`cdr`，只
+要得到地址系列中下一个cons原胞的地址即可；要得到一个列表的`car`只需要的得到这个
+列表的第一个元素的地址；而要插入一个新元素，只不过是往列表中添加了新的cons原胞罢
+了。
+
+经过上面的演示，可以得到一个列表最后一个cons原胞的最后一个地址指向的是。
+
+## 练习
+
+将符号flowers设置为violet和buttercup两个元素组成的列表啊。 往这个列表中增加两种
+新的花名，并将这个列表赋值给more-flowers变量。将flowers的car设置为一种鱼的名字。
+看一看more-flowers列表现在的内容是什么?
+
+``` emacs-lisp
+(setq flowers '(violet buttercup)) ;; ==> (violet buttercup)
+(setq more-flowers (cons 'chrysanthemum (cons 'carnation flowers)))  ;; ==> (chrysanthemum carnation violet buttercup)
+(setcar flowers 'shark) ;; ==> shark
+more-flowers ;; ==> (chrysanthemum carnation shark buttercup)
+```
+
+# 第十章 找回文本
+
+> 女朋友闹分手，很好(都是我的错)，我又有时间学习了.
+

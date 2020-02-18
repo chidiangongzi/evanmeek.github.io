@@ -2465,10 +2465,406 @@ kill-ring   kill-ring-yank-pointer
 
 # 第十一章 循环和递归
 
+Emacs Lisp 有 `while`循环和使用递归(recursion)来对任意多个表达式重复求值。
+
+## while
+
+`while`特殊表会对其第一个参量求值，如果值不为false/nil，则执行循环体内部表达式，
+执行完毕后会再次测试第一个参量的求值结果是否为false/nil，如果值为flase/nil则不执
+行循环体内部表达式，并且退出循环，不再对一个参量求值。
+
+## while循环和列表 
+
+我们使用列表作为`while`循环的控制语句部分，因为如果一个列表为nil(空列表)，那么
+`while`将不会再重复执行，例如有这么一个列表。
+
+``` emacs-lisp
+(setq lst ())
+```
+
+然后这个将这个包含了一个空列表的变量`lst`作为`while`循环控制语句部分，`while`将
+不会重复执行一次，因为`while`重复执行的条件是，当对控制语句部分求值时值不为nil才
+会执行循环体内部的代码。
+
+而如果我们有一个有数据的列表会怎样呢:
+
+``` emacs-lisp
+(setq lst'(a b c d e))
+```
+
+就像这样，如果我们直接将其作为`while`循环的控制将会使得`while`循环永远的执行，因
+为`lst`的值永远都是非`nil`的。
+
+为了让`while`循环不要永远的执行，我们必须尝试改变`lst`的值，让其每次都有变化，直
+到循环体内达到我们想要的效果，就可以将`lst`的值设置为`nil`了。
+
+下面编写一个函数，可以让任何函数列表参量的元素都被打印到`MESSAGE`缓冲区，并
+且当所有的元素被打印过一次后，使得`while`循环结束。
+
+## 一个例子: print-elements-of-list
+
+前面一直都没有提到`while`语句的结构，这里简单说下:
+
+``` emacs-lisp
+(while true-or-false-test
+    body...)
+```
+
+其中`true-or-false-test`为`while`语句的控制语句部分，`body`为循环体，可以有多个
+表达式。
+
+而在这里我们的代码是:
+
+``` emacs-lisp
+(defun print-elements-of-list (lst)
+  "打印LST列表的每个元素至MESSAGE缓冲区"
+  (while lst
+    (message "%s" (car lst))
+    (setq lst (cdr lst))))
+(print-elements-of-list lst)
+```
+
+我们可以通过函数的结构来分析这个函数:
+
+``` emacs-lisp
+(defun fun-name (fun-argument)
+    "fun-doc"
+    (while true-or-false-test
+        body..))
+```
+
+这个函数接收一个参量，随后是函数的文档，文档内清楚的写了函数的功能，随后就是
+`while`表达式了，这个表达式的控制语句部分是将参量`lst`进行求值，根据`while`表达
+式的特性我们直到只有控制语句部分的值为`nil`循环体才会停止循环，让我们看看循环体
+部分，循环体部分有一个`message`函数用于打印`lst`参量第一个元素的值，随后是一个
+`setq`这个函数将`lst`重新赋值了，其值就是将原本列表的值重新赋值为原本的cdr部分，
+随后`while`再一次判断`lst`的值是否为nil，如果不是继续执行，直到`lst`的值为nil为
+止，由于循环体的副作用，`lst`的每个元素都被打印出来了。
+
+## 使用增量计数器的循环
+
+多说不宜，让我们赶快写个案例来使用一下 `while`循环吧!
+
+下面有一个场景，数石头:
+
+``` 
+*
+**
+***
+****
+*****
+```
+
+每个星号就代表一个石头，现在这个三角形一共有五行石头，如果一个一个数数可以很快的
+数出一共有15个石头，但是假如现在有100行，那么再一个溢恶个去数数确实显得比较慢了，
+所以我们在这里就可以使用循环来帮助我们完成一些重复性的工作。
+
+那么我们就要设计一个函数，这个函数可以根据用户录入的行数计算出石头的总量。那么首
+先根据"需要一个用户录入的行数"可以预想，这个函数需要一个参量当作用户给定的行数，
+下面我们跳过函数文档直接来写`while`部分，首先是`while`函数的控制语句部分，这个控
+制语句决定了我们是否要继续执行函数体内部的代码，那内部的代码我们暂时未知，但是我
+们可以预想，这个控制语句部分的值不能永远是非`nil`的值，如果是则会一直循环，永远
+无法退出，那这个控制语句该怎么写呢？我们目前有一个参量可用，是由用户录入的总行数，
+那么是不是当我们计算到的当前行小于或等于总行数时才可以执行循环体，但是我们发现，
+现在没有定义表示当前行的变量，所以我们在写`while`循环体时就必须加一个计数器，这
+个计数器可以用`let`函数来生成，但是我们是否还差一个变量呢？我们好像还需要一个可
+以存储每次计算后石头的总量的变量，所以我们还需要使用`let`函数定义一个石头总量的
+变量。那么就有一段这样的代码:
+
+``` emacs-lisp
+(defun calculation-triangle (row-total)
+  "计算石头总量"
+  (let (
+        (current-row 1) ;; 当前行
+        (stone-total 0) ;; 当前石头总量
+        )
+    (while (<= current-row row-total)
+      body...)
+    ...))
+```
+
+为什么要把`current-row`设置为`1`呢？因为我们肯定是从第一行开始计算，所以默认值就
+为1，至于`stone-total`很简单，因为一开始没有计算的时候，我们的石头总量为0.
+
+那么下面我们只需要写`while`语句的循环体部分即可，也就是我们真正计算的地方，试想
+一下，要如何计算呢？其实很简单，我们知道`current-row`当前行行数就等于那一行的石
+头个数，那么我们只需要每次执行循环体时将`stone-total`的值加上`current-row`的值，
+即可做到累加石头个数，但这样还不够，因为为了让循环体循环次数得到我们想要的结果，
+是需要将`current-row`在每次计算后加一，这样也代表当前行计算完成，需要转移到下一
+行。那么这样`while`语句的循环体内的代码是这样的:
+
+``` emacs-lisp
+(while (<= current-row row-total)
+  (setq stone-total (+ stone-total current-row))
+  (setq current-row (1+ current-row)))
+```
+
+那么现在一切都计算完成，我们还需要做一步，那就是将`stone-total`返回，不然我们的
+计算等于白做了，最终的函数实现代码是:
+
+``` emacs-lisp
+(defun calculation-triangle (row-total)
+  "计算石头总量"
+  (let (
+        (current-row 1) ;; 当前行
+        (stone-total 0) ;; 当前石头总量
+        )
+    (while (<= current-row row-total)
+      (setq stone-total (+ stone-total current-row))
+      (setq current-row (1+ current-row)))
+    stone-total)) ;; => calculation-triangle
+
+(calculation-triangle 100) ;; => 5050
+(calculation-triangle 5) ;; => 15
+```
+ 
+
+
+## 使用减量计数器的循环
+
+有增那也有减，这个例子我们使用减的方式，将任意行数的石头总量计算出来，规则不变，
+还是相同100行的石头有100个石头，99行的石头有99个石头，那么下面就让我们来分析一下
+吧.
+
+首先是我们同样需要用户录入石头的总行数，其次我们仍然需要两个变量，分别用于存储计
+算得到的石头个数，以及当前行数。那么我们也就大概知道每次循环体内部需要做的事就是
+将石头总数加上当前行以及将当前行减去1。
+
+``` emacs-lisp
+(defun calculation-triangle-sub (row-total)
+  "计算石头总量"
+  (let ((current-row row-total)
+        (stone-total 0))
+    (while (> current-row 0)
+      (setq stone-total (+ current-row stone-total))
+      (setq current-row  (1- current-row)))
+    stone-total)) ;; => calculation-triangle-sub
+
+(calculation-triangle-sub 5) ;; => 15
+```
+
+这段代码跟增量计数器有两点不同，分别是初始化`current-row`的值以及对
+`current-row`进行修改时有变化，先让我们来看为什么把`current-row`的初始值设置为
+`row-total`，因为我们是要使用减量计数器来计算，所以我们需要直接从最大石头个数的
+行数开始算，直到行数小于1为止，而要做到“直到小于1为止”那么则需要通过`while`函数
+的控制语句以及修改每次`current-row`时做的事了，我们先是通过将`current-now`与
+`0`进行比较，当`current-now`小于0时，也就代表了所有行数的石头都累加完成，至于是
+如何从最大石头个数的行开始计算是通过`(setq current-now (1- current-now))`实现的。
 
 
 
 
+
+
+## 递归
+
+递归是一种调用函数的方式，但是由于其特殊性，它可以做到类似循环的操作，**递归就是
+一种自身调用自身的函数**，与`while`循环类似，如果不为递归提供一个停止自身调用的
+机制，那么递归将会陷入死循环，永不止境的调用自身。
+
+一个递归函数的常用组合:
+
+* 一个真假测试，决定函数是否要继续调用自身，称作**do-again-test**。
+* 函数名。
+* 一个表达式，它在函数被重复求值正确的次数之后使条件表达式返回“假”值，称作
+**next-step-expression**。
+
+根据以上这三个部分可以为递归函数画一个模板:
+
+``` emacs-lisp
+(defun name-of-recursive-function (argument-list)
+  "docutmentation..."
+  body...
+  (if do-agaion-test
+      (name-of-recursive-function next-step-expression)))
+```
+
+在每一次执行时至少要让`next-step-expression`的值发生变化，这样做是为了让当函数不
+必再递归时使得`do-again-test`返回假。
+
+`do-again-test`是真假测试表达式，也可以称作`停止条件`。
+
+### 使用列表的递归函数
+
+下面我们将前面用`while`循环做的将一个列表的元素一一打印出来，用递归函数来实现一
+次。
+
+书中是使用的`print`将列表的元素一一输出，我这边直接用`message`函数，这样方便查看：
+
+``` emacs-lisp
+(defun print-element-by-recursion (lst)
+  "用递归的方式打印一个列表的元素"
+  (message "%s" (car lst)) ;; body
+  (if lst ;; do-again-test
+      (print-element-by-recursion ;; recursive call
+       (cdr lst)))) ;; next-step-expression
+```
+
+这个递归函数首先打印了`lst`的`car`部分，也就是第一个元素，然后经由
+`do-again-test`进行判断，如果`lst`不为`nil`那么则调用自身，形成递归，但是在
+`recursion-call`时传递的参量是原本`lst`的`cdr`部分，也就是从第二个元素到最后一个
+元素的列表，然后依次递归，每递归一次`lst`的长度就会减少，直到其只剩下`nil`，
+`do-again-test`控制得以不再递归。
+
+最终得到的结果可以在`*MESSAGE*`缓冲区查看:
+
+``` 
+a
+b
+c
+d
+e
+nil
+```
+
+### 用递归算法替代计数器
+
+前面我们写过计算石头个数的例子，其实它是一个数列求和，我们知道最大行数，也就是最
+大个数，也知道最小个数为一，那么我们可以通过一个公式求出其总和，这个公式就是:`((1
++ n) * n) / 2`，头加尾，乘以数量，除以2.那么我们原本的计算石头个数例子就可以通过
+这个公式来计算:
+
+``` emacs-lisp
+(defun sum-stone (number)
+  (/ (* number (1+ number)) 2))
+(sum-stone 5)
+```
+
+虽然这样算也比较方便，但是其实这是用一个公式计算得到的，遇到其他不可用公式但是需
+要用计数器的地方，我们就可以使用递归了。
+
+先来看看递归版本:
+
+``` emacs-lisp
+(defun sum-stone-recursive (row-total)
+  (if (= row-total 1)
+      1
+    (+ row-total (sum-stone-recursive (1- row-total)))))
+
+(sum-stone-recursive 5) ;; => 15
+```
+
+为了解释这个函数如何工作，我们将会一次对这个函数传递1、2、3来分析其运作过程。
+
+首先其参量的值1，当遇到`if`判断时`row-total`等于1，那么就直接返回1，不会递归，得
+到我们想要的答案1。
+
+再就是参量的值为2的情况，当遇到`if`判断时`row-total`不等于1，那么进入`ELSE`部分，
+这里将`row-total`与`sum-stone-recursive`的返回值进行相加，此时的`row-total`的值
+为2，然后当递归调用时，传递的参量是`row-total`减1，此时`row-total`的值为1，当遇
+到`if`判断时返回值为1，那么现在程序运行到递归前将`row-total`与
+`sum-stone-recursive`相加时了，这表达式得到的结果是3，因为是2+1，那么这个递归函
+数就停止递归了，得到我们下更要的答案3。
+
+最后是参量值尾3的情况，这一切跟参量为2时情况差不多。
+
+
+
+
+### 使用cond的递归例子
+
+`cond`是一个类似`if`特殊表的特殊表，其跟`if`特殊表不同的是，其没有ELSE部分,其函
+数模板是这样的:
+
+``` emacs-lisp
+(cond
+ ((first-t-or-f-test first-consequent)
+  (second-t-or-f-test second-consequent)
+  (third-t-or-f-test third-consequent)
+  ...))
+```
+
+Lisp解释器首先计算`t-or-f-test`部分，如果为t，那么对`consequent`部分求值，如果为
+nil，则直接忽略，继续计算下一个`t-or-f-test`部分，如果`cond`内的所有表达式的值都
+为nil，那么`cond`的返回值为nil。
+
+下面可以通过`cond`特殊表来修改下`sum-stone-recursive`函数，可以为其添加几种情况
+的处理方式：
+
+``` emacs-lisp
+(defun sum-stone-recursive (row-total)
+  (cond
+   ((= row-total 0) 0)
+   ((= row-total 1) 1)
+   ((> row-total 1) (+ row-total
+                       (sum-stone-recursive
+                        (1- row-total))))))
+```
+
+## 有关循环表达式的练习 
+
+* 编写一个与calculation-triangle函数类似的函数，在这个函数中，每一行的值等于所
+在行的平方。使用while循环来编写这个函数。
+
+``` emacs-lisp
+(defun demo-01 (row-total)
+  (let ((current-row 1)
+        (stone-total 0))
+    (while (<= current-row row-total)
+      (setq stone-total (+ stone-total (* 2 current-row)))
+      (setq current-row (1+ current-row)))
+    (1- stone-total)))
+
+(demo-01 2) ;; => 5
+```
+
+* 编写一个与`sum-stone`函数相似的函数，求那些数的积，而不是和。
+
+``` emacs-lisp
+(defun demo-02 (number)
+  (let ((sum-number 1)
+        (count-number 1))
+    (while (<= count-number number)
+      (setq sum-number (* sum-number count-number))
+      (setq count-number (1+ count-number)))
+    sum-number))
+
+(demo-02 3) ;; => 6
+```
+
+* 用递归的方法重新编写上面两个函数，然后用`cond`表达式重新编写这两个函数。
+
+``` emacs-lisp
+(defun demo-03-1 (number)
+  "demo-01的递归版本"
+  (if (= number 1)
+      1
+    (+ (* 2 number) (demo-03-1 (1- number)))))
+
+(demo-03-1 2) ;; => 5
+
+(defun demo-03-2 (number)
+  "demo-02的递归版本"
+  (if (= number 1)
+      1
+    (* number (demo-03-2 (1- number)))))
+
+(demo-03-2 3) ;; => 6
+
+(defun demo-03-3 (number)
+  "demo-01的cond递归版本"
+  (cond
+    ((= number 0) 0)
+    ((= number 1) 1)
+    ((> number 1) (+ (* 2 number) (demo-03-3 (1- number))))))
+
+(demo-03-3 2)
+
+(defun demo-03-4 (number)
+  "demo-02的cond递归版本"
+  (cond
+    ((= number 0) 0)
+    ((= number 1) 1)
+    ((> number 1) (* number (demo-03-4 (1- number))))))
+
+(demo-03-4 3)
+```
+
+* 为Textinfo模式编写一个函数，这个函数再每一个以"@dfn"开始的段落创建一个索引入口。
+  (在一个Texinfo文件中ing，"@dfn"标记一个函数定义。关于这方面的详细资料，参见
+  《Texinfo: GNU文档格式》中关于"标记函数和命令等" 的一节。)
+  
+  不会。。。
 
 
 

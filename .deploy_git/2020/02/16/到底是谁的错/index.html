@@ -14,8 +14,8 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -70,7 +70,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '7.1.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="Python系列第二章笔记，查看Python系列所有文章，请点击💿">
-<meta name="keywords" content="Python系列">
+  <meta name="description" content="让我先把你所写的文字都拿出来吧。 你 : 2020.2.15 4:12  就我经常有写一些东西，心里话，我前几天翻我发现我们第一次提分手话题是10.9号，然后其实……我觉得我当时可能还不太懂，但是我当时就是觉得相处的就开始让我很不舒服了，所以我一度觉得肯定是你开学了很少理我，所以我是不喜欢你这点。后来你也有改，你现在也比以前好很多了。但是……我却总会在一个时间段会很想分手，我到现在想想我都觉得，">
+<meta name="keywords" content="女朋友">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Python-02]Python初探">
-<meta property="og:url" content="https://evanmeek.github.io/2019/08/29/Python-01-Python初探/index.html">
+<meta property="og:title" content="到底是谁的错?">
+<meta property="og:url" content="https://evanmeek.github.io/2020/02/16/到底是谁的错/index.html">
 <meta property="og:site_name" content="我不会编程的博客">
-<meta property="og:description" content="Python系列第二章笔记，查看Python系列所有文章，请点击💿">
+<meta property="og:description" content="让我先把你所写的文字都拿出来吧。 你 : 2020.2.15 4:12  就我经常有写一些东西，心里话，我前几天翻我发现我们第一次提分手话题是10.9号，然后其实……我觉得我当时可能还不太懂，但是我当时就是觉得相处的就开始让我很不舒服了，所以我一度觉得肯定是你开学了很少理我，所以我是不喜欢你这点。后来你也有改，你现在也比以前好很多了。但是……我却总会在一个时间段会很想分手，我到现在想想我都觉得，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://evanmeek.github.io/2019/08/29/Python-01-Python初探/Python-02-Python初探/python2运行.png">
-<meta property="og:image" content="https://evanmeek.github.io/2019/08/29/Python-01-Python初探/Python-02-Python初探/python3运行.png">
-<meta property="og:updated_time" content="2019-08-29T08:37:48.346Z">
+<meta property="og:updated_time" content="2020-02-16T13:22:24.250Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Python-02]Python初探">
-<meta name="twitter:description" content="Python系列第二章笔记，查看Python系列所有文章，请点击💿">
-<meta name="twitter:image" content="https://evanmeek.github.io/2019/08/29/Python-01-Python初探/Python-02-Python初探/python2运行.png">
+<meta name="twitter:title" content="到底是谁的错?">
+<meta name="twitter:description" content="让我先把你所写的文字都拿出来吧。 你 : 2020.2.15 4:12  就我经常有写一些东西，心里话，我前几天翻我发现我们第一次提分手话题是10.9号，然后其实……我觉得我当时可能还不太懂，但是我当时就是觉得相处的就开始让我很不舒服了，所以我一度觉得肯定是你开学了很少理我，所以我是不喜欢你这点。后来你也有改，你现在也比以前好很多了。但是……我却总会在一个时间段会很想分手，我到现在想想我都觉得，">
 
 
 
@@ -120,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://evanmeek.github.io/2019/08/29/Python-01-Python初探/">
+  <link rel="canonical" href="https://evanmeek.github.io/2020/02/16/到底是谁的错/">
 
 
 
@@ -130,7 +127,7 @@
   };
 </script>
 
-  <title>[Python-02]Python初探 | 我不会编程的博客</title>
+  <title>到底是谁的错? | 我不会编程的博客</title>
   
 
 
@@ -169,6 +166,8 @@
   </style>
 </noscript>
 
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -318,7 +317,7 @@
         
         
           
-          <li class="menu-item menu-item-todo">
+          <li class="menu-item menu-item-python">
 
     
     
@@ -328,7 +327,7 @@
 
     
 
-    <a href="/TODO" rel="section"><i class="menu-item-icon fa fa-fw fa-TODO"></i> <br>TODO</a>
+    <a href="/Python" rel="section"><i class="menu-item-icon fa fa-fw fa-python"></i> <br>Python</a>
 
   </li>
 
@@ -344,9 +343,6 @@
       
     </ul>
   
-
-  
-    
 
   
 
@@ -397,6 +393,9 @@
       <div class="main-inner">
         <div class="content-wrap">
           
+            
+
+          
           <div id="content" class="content">
             
 
@@ -416,7 +415,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://evanmeek.github.io/2019/08/29/Python-01-Python初探/">
+    <link itemprop="mainEntityOfPage" href="https://evanmeek.github.io/2020/02/16/到底是谁的错/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="EvanMeek">
@@ -433,7 +432,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[Python-02]Python初探
+          <h1 class="post-title" itemprop="name headline">到底是谁的错?
 
               
             
@@ -459,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-08-29 11:52:56 / 修改时间：16:37:48" itemprop="dateCreated datePublished" datetime="2019-08-29T11:52:56+08:00">2019-08-29</time>
+              <time title="创建时间：2020-02-16 20:42:33 / 修改时间：21:22:24" itemprop="dateCreated datePublished" datetime="2020-02-16T20:42:33+08:00">2020-02-16</time>
             
 
             
@@ -481,7 +480,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/个人感想/" itemprop="url" rel="index"><span itemprop="name">个人感想</span></a></span>
 
                 
                 
@@ -492,11 +491,24 @@
           
             
             
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2020/02/16/到底是谁的错/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/16/到底是谁的错/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-            <span id="/2019/08/29/Python-01-Python初探/" class="leancloud_visitors" data-flag-title="[Python-02]Python初探">
+            <span id="/2020/02/16/到底是谁的错/" class="leancloud_visitors" data-flag-title="到底是谁的错?">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -527,92 +539,29 @@
       
 
       
-        <p>Python系列第二章笔记，查看Python系列所有文章，请点击<a href="https://evanmeek.github.io/Python/">💿</a></p>
-<a id="more"></a>
-<h1 id="Mac安装Python环境"><a href="#Mac安装Python环境" class="headerlink" title="Mac安装Python环境"></a>Mac安装Python环境</h1><p>由于我目前的设备只有一台Mac Book，所以我就只记录Mac安装Python的过程。</p>
-<p>最新的Mac OS X以及集成了Python 2，打开终端(Terminal)输入:<code>python</code>检查是否已安装</p>
-<p><img src="/2019/08/29/Python-01-Python初探/Python-02-Python初探/python2运行.png" alt="Python2运行"></p>
-<p>安装Python3可以在这个页面进行下载:<a href="https://www.python.org/downloads/" target="_blank" rel="noopener">💿Python下载页面</a></p>
-<h1 id="python不是内部或外部命令的解决方法"><a href="#python不是内部或外部命令的解决方法" class="headerlink" title="python不是内部或外部命令的解决方法"></a>python不是内部或外部命令的解决方法</h1><p>由于这个问题只有Windows才会出现，所以遇到问题的话，去看下原文吧<a href="http://c.biancheng.net/view/4171.html" target="_blank" rel="noopener">💿点我看原文解决方案</a></p>
-<h1 id="第一个Python程序"><a href="#第一个Python程序" class="headerlink" title="第一个Python程序"></a>第一个Python程序</h1><p>打开终端，输入<code>python3</code>命令，进入交互式解释器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;hello,world!&quot;)</span><br></pre></td></tr></table></figure>
-<p>即可输出包括在双引号之间的字符</p>
-<p>注意点:</p>
-<ul>
-<li><p>小括号与双引号必须在英文半角状态下输入</p>
-</li>
-<li><p>print必须全部为小写</p>
-</li>
-</ul>
+        <a id="more"></a>
+<p>让我先把你所写的文字都拿出来吧。</p>
+<p><strong>你 :</strong></p>
+<p><em>2020.2.15 4:12</em></p>
 <blockquote>
-<p>文本编辑器编写并执行Python程序</p>
+<p>就我经常有写一些东西，心里话，我前几天翻我发现我们第一次提分手话题是10.9号，然<br>后其实……我觉得我当时可能还不太懂，但是我当时就是觉得相处的就开始让我很不舒<br>服了，所以我一度觉得肯定是你开学了很少理我，所以我是不喜欢你这点。后来你也有改，<br>你现在也比以前好很多了。但是……我却总会在一个时间段会很想分手，我到现在想想<br>我都觉得，其实，一开始我们两个本来就不合适，我很喜欢贴心的男生，我想要的男朋友<br>是能在一些重要的节日给我一些惊喜，在我心情不好的时候，能在我说出第一句话的时候<br>发现我不开心，然后会问我为什么，能哄我。我喜欢暖男，但是你不是，你就算哄我，我<br>有时候真的不一定能真的是很开心的笑，我只能苦笑，表面开心，内心难过的要死，挂了<br>电话后立马哭出来。但是你并不知道。你也不暖，我想要的那种感觉你一直都没有给我，<br>虽然跟你在一起我有时候很开心，但是，我总是因为你给不到我想要的感觉一次次失望，<br>所以总是会提分手。我觉得其实这也说明了两个人真的并不合适，但是你会认为这是我没<br>事找事。我也之前一度怀疑自己是不是真的没事找事，每次吵架后……我总会反思，会<br>想。我也跟我闺密聊，我闺密也跟我说，你男朋友太直男了，一根筋。但是她没劝我分手，<br>她就说看我自己怎么想的。其实我有时候真的很羡慕她，因为她男朋友对她很好，你总说<br>我要求高，可是在我每次跟我身边有男朋友的女生聊天，我觉得我要求并不高，我就想要<br>我男朋友是个暖男，能懂女生一点。我闺密总说我谈恋爱太容易满足了，别人对你一点好，<br>你就觉得他很好很好。确实，我这个人我感觉在谈恋爱这方面太容易满足了，我如果很喜<br>欢一个人，我会愿意去为他做很多我不愿意做的事情。其实我当初跟韩浩强在一起我也觉<br>得很(跟)现在差不多，那种感觉，他其实也一直都不懂我，这就是为什么后来我不给他机<br>会直接分手了。现在……其实，我想自己呆着了，因为我也不知道该怎么办，我这几天<br>想的就是这样吧，就算做个挂名的男女朋友也好，可以不一起出去，在微信想聊天时再聊，<br>但其实我觉得这样只会让我很难过，我会想凭什么我谈恋爱男朋友需要我这样，总是这么<br>难过，我的男朋友从来没有懂过我，我在想什么时候，那个真正适合我的才会出现。我没<br>有过过一次情人节，所以我不想过。我觉得每一次我谈恋爱都很草率，被追到手后。我却<br>发现就不是我想的那么美好。你说你能改，其实你可以不用改，你不用每天定时找我，这<br>让我觉得很刻意，因为你就不是那种类型的男生。我也喜欢你不要改，每个人都不同，改<br>了，你也就不是你自己了，你还是做你自己吧，做你自己喜欢做的事情。总会有女生，喜<br>欢你这种类型。其实分手一开始是会很难过，因为你会习惯我的存在，但是其实时间久了，<br>你总是会适应。让我一直开心下去的其实就是分手，我不想经常性的难过，跟你吵架，再<br>复合再吵架，我觉得，跟你在一起后我就一直进入这种死循环，我以及很烦这样了，我怕<br>这样下去，我只会厌恶腻了，所以，我想停止。</p>
 </blockquote>
-<p>可以使用Vim编辑器编写Python源代码，然后终端中执行</p>
-<p>注意点:</p>
-<ul>
-<li>不要使用Word或Windows的记事本程序编写Python源码，因为这两款软件会为源代码添加隐藏符号，而这些符号不被Python所解释，程序将会报错。</li>
-</ul>
-<h1 id="Python交互式解释器及用法"><a href="#Python交互式解释器及用法" class="headerlink" title="Python交互式解释器及用法"></a>Python交互式解释器及用法</h1><p>交互式解释器是为了让开发者快速学习、则是Python的功能。</p>
-<p>在终端内执行<code>python</code>命令即可打开</p>
-<p><img src="/2019/08/29/Python-01-Python初探/Python-02-Python初探/python3运行.png" alt="python3运行"></p>
-<p>其中<code>&gt;&gt;&gt;</code>提示符，我们写的命令都是能被python解释器所执行的Python命令，如果输入的内容没有定义，那么解释器将会报错。</p>
-<h1 id="IDE-集成开发环境-是什么"><a href="#IDE-集成开发环境-是什么" class="headerlink" title="IDE(集成开发环境)是什么"></a>IDE(集成开发环境)是什么</h1><p><code>IDE(Intergreated Development Environment)</code>,用来辅助开发者开发的应用软件。</p>
-<p>集成开发环境是一些列开发工具的组合套装，例如我们编写Python程序，不仅需要解释器，而且还需要一些辅助工具，例如:语言编辑器、自动构建工具、除错器。</p>
-<h1 id="Python-IDE有哪些，哪款适合初学者？"><a href="#Python-IDE有哪些，哪款适合初学者？" class="headerlink" title="Python IDE有哪些，哪款适合初学者？"></a>Python IDE有哪些，哪款适合初学者？</h1><p>首先说明，合适自己的才是最好的。</p>
+<p><strong>我 :</strong></p>
+<p><em>2020.2.15 8:50</em></p>
 <blockquote>
-<p>PyCharm</p>
+<p>早上好啊<br>希望没有我你会开心些<br>抱歉是我让你每天不开心</p>
 </blockquote>
-<p>由JetBrains公司开发的Python开发工具</p>
-<p>优点:</p>
-<ul>
-<li><p>跨平台</p>
-</li>
-<li><p>支持语法高粱、项目代码管理、智能提示、自动完成、调试、单元测试、版本控制等</p>
-</li>
-<li><p>支持Django Web开发框架</p>
-</li>
-<li><p>社区版本免费</p>
-</li>
-</ul>
-<p>缺点:</p>
-<ul>
-<li><p>软件较大，比较重</p>
-</li>
-<li><p>专业版，收费</p>
-</li>
-</ul>
+<p><strong>你 :</strong></p>
+<p><em>2020.2.15 13:42</em></p>
 <blockquote>
-<p>Microsoft Visual Studio</p>
+<p>早</p>
 </blockquote>
-<p>由微软开发用于进行C#和.NET等应用的开发工具，简称VS。</p>
-<p>要让VS支持Python，需要安装<code>PTVS</code>插件。</p>
-<p>优点:</p>
-<ul>
-<li><p>PTVS插件开源</p>
-</li>
-<li><p>支持编辑、浏览、智能感知、混合Python/C++调试、Django</p>
-</li>
-</ul>
-<p>缺点:</p>
-<ul>
-<li><p>不跨平台，只支持Windows</p>
-</li>
-<li><p>软件较大，比较重</p>
-</li>
-<li><p>非学生收费</p>
-</li>
-</ul>
-<h1 id="Python-IDLE使用方法详解"><a href="#Python-IDLE使用方法详解" class="headerlink" title="Python IDLE使用方法详解"></a>Python IDLE使用方法详解</h1><p>由于本人不使用IDLE作为我的Python开发工具，所以这里就不提了。</p>
-<p>想了解的，看原文<a href="http://c.biancheng.net/view/4221.html" target="_blank" rel="noopener">💿点击查看原文</a></p>
-<h1 id="Python注释-多行注释和单行注释"><a href="#Python注释-多行注释和单行注释" class="headerlink" title="Python注释(多行注释和单行注释)"></a>Python注释(多行注释和单行注释)</h1><p>注释是写给人看的，是用来用自然语言解释代码给开发者看的。</p>
-<p>注释不被解释器所执行。</p>
-<p>Python允许在任何地方差人注释和字符串，除了在标志符和字符串之间。</p>
-<p>Python中有三种注释分别是:</p>
+<p><em>2020.2.16 13:18</em></p>
 <blockquote>
-<p>单行注释</p>
+<p>不要堕落呀，好好学习</p>
 </blockquote>
-<p>语法格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 注释内容</span><br></pre></td></tr></table></figure></p>
-<p>单行注释所在位置可以是代码的上一行，可以是当前行的末尾。</p>
+<p>如果你看到这篇博客，不用联系我啊！我就是喜欢把话说出来，从不噎着！就算是告诉所有人。</p>
+<p>以后再也不用联系了。</p>
 
       
     </div>
@@ -632,12 +581,12 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2019/08/29/Python-01-Python初探/">[Python-02]Python初探</a></p>
+  <p><span>本文标题:</span><a href="/2020/02/16/到底是谁的错/">到底是谁的错?</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 EvanMeek 的个人博客">EvanMeek</a></p>
-  <p><span>发布时间:</span>2019年08月29日 - 11:08</p>
-  <p><span>最后更新:</span>2019年08月29日 - 16:08</p>
-  <p><span>原始链接:</span><a href="/2019/08/29/Python-01-Python初探/" title="[Python-02]Python初探">https://evanmeek.github.io/2019/08/29/Python-01-Python初探/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2019/08/29/Python-01-Python初探/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年02月16日 - 20:02</p>
+  <p><span>最后更新:</span>2020年02月16日 - 21:02</p>
+  <p><span>原始链接:</span><a href="/2020/02/16/到底是谁的错/" title="到底是谁的错?">https://evanmeek.github.io/2020/02/16/到底是谁的错/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://evanmeek.github.io/2020/02/16/到底是谁的错/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://choosealicense.com/licenses/mit/" target="_blank" title="MIT License Copyright (c) [2019] [EvanMeek]">MIT License Copyright (c) [2019] [EvanMeek]</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -705,7 +654,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python系列/" rel="tag"># Python系列</a>
+            <a href="/tags/女朋友/" rel="tag"># 女朋友</a>
           
         </div>
       
@@ -718,8 +667,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/29/Python-02-Python初探/" rel="next" title="[Python-01]Python初探">
-                <i class="fa fa-chevron-left"></i> [Python-01]Python初探
+              <a href="/2020/02/09/Linux下连接蓝牙/" rel="next" title="Linux下连接蓝牙">
+                <i class="fa fa-chevron-left"></i> Linux下连接蓝牙
               </a>
             
           </div>
@@ -749,6 +698,10 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+
+  
 
 
         </div>
@@ -769,17 +722,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -796,7 +740,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -833,7 +777,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -910,7 +862,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -930,12 +896,49 @@
           
 
           
-
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/evanmeek" title="GitHub &rarr; https://github.com/evanmeek" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:the_lty_mail@foxmail.com" title="E-Mail &rarr; mailto:the_lty_mail@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://t.me/EvanMeek" title="Telegram &rarr; https://t.me/EvanMeek" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+                </span>
+              
+            </div>
           
 
           
+
           
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
                 推荐链接
@@ -975,23 +978,6 @@
       </div>
 
       
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac安装Python环境"><span class="nav-number">1.</span> <span class="nav-text">Mac安装Python环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python不是内部或外部命令的解决方法"><span class="nav-number">2.</span> <span class="nav-text">python不是内部或外部命令的解决方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Python程序"><span class="nav-number">3.</span> <span class="nav-text">第一个Python程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python交互式解释器及用法"><span class="nav-number">4.</span> <span class="nav-text">Python交互式解释器及用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE-集成开发环境-是什么"><span class="nav-number">5.</span> <span class="nav-text">IDE(集成开发环境)是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-IDE有哪些，哪款适合初学者？"><span class="nav-number">6.</span> <span class="nav-text">Python IDE有哪些，哪款适合初学者？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-IDLE使用方法详解"><span class="nav-number">7.</span> <span class="nav-text">Python IDLE使用方法详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python注释-多行注释和单行注释"><span class="nav-number">8.</span> <span class="nav-text">Python注释(多行注释和单行注释)</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
       
 
@@ -1007,7 +993,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1019,7 +1005,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
@@ -1027,7 +1013,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.0</div>
 
 
 
@@ -1048,6 +1034,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1079,6 +1067,12 @@
 
 
 
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
@@ -1115,7 +1109,9 @@
   
 
 
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
 
 
 
@@ -1139,6 +1135,36 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'jFkXbCrGzpjLca4LeGtCNVLo-gzGzoHsz',
+    appKey: 'd9FgNU9rPxvw0QhusRpgOfW3',
+    placeholder: '欢迎留下你的足迹👣',
+    avatar: 'retro',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
 
 
   
@@ -1562,5 +1588,10 @@
 
   
 
+  <div class="bg_content">
+    <canvas id="canvas"></canvas>
+  </div>
+<script src="https://evanmeek.github.io/live2d/autoload.js"></script>
 </body>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
 </html>
